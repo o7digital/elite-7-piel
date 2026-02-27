@@ -12,7 +12,7 @@
     "@popperjs/core": "2.11.8",
     "@react-google-maps/api": "^2.20.6",
     "bootstrap": "^5.0.2",
-    "next": "15.1.6",
+    "next": "15.1.11",
     "photoswipe": "^5.4.4",
     "rc-slider": "^11.1.8",
     "react": "19.0.0",
