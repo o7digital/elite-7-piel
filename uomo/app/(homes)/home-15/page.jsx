@@ -3,7 +3,6 @@ import Footer14 from "@/components/footers/Footer14";
 
 import Header14 from "@/components/headers/Header14";
 
-import Blogs from "@/components/homes/home-15/Blogs";
 import Categories from "@/components/homes/home-15/Categories";
 import Featured from "@/components/homes/home-15/Featured";
 import Hero from "@/components/homes/home-15/Hero";
@@ -31,8 +30,6 @@ export default function HomePage15() {
           <PopulerProducts />
           <div className="mb-3 mb-xl-5 pb-3 pt-1 pb-xl-5"></div>
           <Lookbook />
-          <div className="mb-3 mb-xl-5 pb-3 pt-1 pb-xl-5"></div>
-          <Blogs />
           <div className="mb-3 mb-xl-5 pb-3 pt-1 pb-xl-5"></div>
           <Brands />
           <div className="mb-3 mb-xl-5 pb-3 pt-1 pb-xl-5"></div>

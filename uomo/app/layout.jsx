@@ -8,12 +8,11 @@ import "tippy.js/dist/tippy.css";
 import LoginFormPopup from "@/components/common/LoginFormPopup";
 import { useEffect } from "react";
 import ScrollTop from "@/components/common/ScrollTop";
+import SpanishRuntime from "@/components/common/SpanishRuntime";
 import Context from "@/context/Context";
 import QuickView from "@/components/modals/QuickView";
 import CartDrawer from "@/components/shopCartandCheckout/CartDrawer";
 import SiteMap from "@/components/modals/SiteMap";
-import NewsLetter from "@/components/modals/NewsLetter";
-import CookieContainer from "@/components/common/CookieContainer";
 import MobileHeader from "@/components/headers/MobileHeader";
 import SizeGuide from "@/components/modals/SizeGuide";
 import Delivery from "@/components/modals/Delivery";
@@ -79,6 +78,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+        <SpanishRuntime />
         <Svgs />
         <Context>
           <MobileHeader />
@@ -87,8 +87,6 @@ export default function RootLayout({ children }) {
           {/* //modals and asides */}
           <LoginFormPopup />
           <QuickView />
-          <NewsLetter />
-          <CookieContainer />
           <SizeGuide />
           <Delivery />
           <CartDrawer />

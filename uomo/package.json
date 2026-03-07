@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate:i18n:es": "node scripts/generate-es-translations.mjs"
+  },
+  "devDependencies": {
+    "@babel/parser": "^7.28.4",
+    "@babel/traverse": "^7.28.4"
   },
   "dependencies": {
     "@popperjs/core": "2.11.8",
@@ -23,5 +28,9 @@
     "sass": "^1.85.0",
     "swiper": "^11.2.3",
     "tippy.js": "^6.3.7"
+  },
+  "devDependencies": {
+    "@babel/parser": "^7.29.0",
+    "@babel/traverse": "^7.29.0"
   }
 }
