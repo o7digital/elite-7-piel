@@ -8,8 +8,8 @@ const SKIPPED_TAGS = new Set(["SCRIPT", "STYLE", "NOSCRIPT", "SVG"]);
 const LOCALIZED_PREFIX = "/es";
 const STATIC_PREFIXES = ["/_next", "/api", "/assets"];
 
-function isSpanishPath(pathname = "") {
-  return pathname === LOCALIZED_PREFIX || pathname.startsWith(`${LOCALIZED_PREFIX}/`);
+function isSpanishPath() {
+  return true;
 }
 
 function normalizeText(value = "") {
@@ -30,7 +30,6 @@ function localizeHref(href = "") {
   }
 
   if (
-    href.startsWith(LOCALIZED_PREFIX) ||
     STATIC_PREFIXES.some((prefix) => href.startsWith(prefix)) ||
     href === "/favicon.ico" ||
     hasFileExtension(href)
@@ -38,7 +37,11 @@ function localizeHref(href = "") {
     return href;
   }
 
-  return href === "/" ? LOCALIZED_PREFIX : `${LOCALIZED_PREFIX}${href}`;
+  if (href === LOCALIZED_PREFIX || href.startsWith(`${LOCALIZED_PREFIX}/`)) {
+    return href.replace(/^\/es/, "") || "/";
+  }
+
+  return href;
 }
 
 function buildTranslator(translations) {
@@ -182,7 +185,6 @@ export default function SpanishRuntime() {
 
     if (!isSpanish) {
       setTranslations(null);
-      document.documentElement.lang = "en";
       return undefined;
     }
 

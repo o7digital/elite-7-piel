@@ -58,6 +58,10 @@ function normalizeText(value = "") {
 }
 
 function isLikelyCssToken(value) {
+  if (/^[A-Z][A-Za-z0-9&'/-]*$/.test(value) || /^[A-Z]{2,}$/.test(value)) {
+    return false;
+  }
+
   return (
     !value.includes(" ") &&
     /^[.#]?[a-z0-9_-]+$/i.test(value) &&

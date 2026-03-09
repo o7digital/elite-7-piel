@@ -20,6 +20,8 @@ const manualExact = {
   "Already have account?": "¿Ya tienes una cuenta?",
   "Apply Coupon": "Aplicar cupón",
   "APPLY COUPON": "APLICAR CUPÓN",
+  "Beaux products protect, moisturize, and lubricate your skin. It smartly nourish your skin.":
+    "Los productos Beaux protegen, hidratan y lubrican tu piel. La nutren de forma inteligente.",
   "Back to": "Volver a",
   Blog: "Blog",
   Brands: "Marcas",
@@ -76,6 +78,8 @@ const manualExact = {
   Subtotal: "Subtotal",
   Terms: "Términos",
   "Track Order": "Rastrear pedido",
+  "with lotions, day creams, night creams, tinted moisturizers, and more.":
+    "con lociones, cremas de día, cremas de noche, hidratantes con color y más.",
   Wishlist: "Favoritos",
   "Your cart is empty": "Tu carrito está vacío",
   "Your email address": "Tu correo electrónico"
@@ -144,7 +148,20 @@ const ignore = [
   "Facebook",
   "Twitter",
   "Pinterest",
-  "YouTube"
+  "YouTube",
+  "Adidas",
+  "Balenciaga",
+  "Balmain",
+  "Burberry",
+  "Givenchy",
+  "Kenzo",
+  "Zara",
+  "XS",
+  "S",
+  "M",
+  "L",
+  "XL",
+  "XXL"
 ];
 
 export const spanishTranslations = {
