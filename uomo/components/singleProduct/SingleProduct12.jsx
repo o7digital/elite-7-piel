@@ -5,15 +5,24 @@ import BreadCumb from "./BreadCumb";
 import Star from "../common/Star";
 import Colors from "./Colors";
 import Size from "./Size";
-import Description from "./Description";
-import AdditionalInfo from "./AdditionalInfo";
 import Reviews from "./Reviews";
-import Link from "next/link";
 import ShareComponent from "../common/ShareComponent";
 import { useContextElement } from "@/context/Context";
 export default function SingleProduct12({ product }) {
   const { cartProducts, setCartProducts } = useContextElement();
   const [quantity, setQuantity] = useState(1);
+  const descriptionHtml =
+    product.descriptionHtml ||
+    `<p>${product.shortDescriptionText || "Product description coming soon."}</p>`;
+  const additionalInformation = product.attributes?.length
+    ? [
+        ...product.attributes,
+        {
+          name: "SKU",
+          values: [product.sku || "N/A"],
+        },
+      ]
+    : [];
 
   const isIncludeCard = () => {
     const item = cartProducts.filter((elm) => elm.id == product.id)[0];
@@ -30,13 +39,12 @@ export default function SingleProduct12({ product }) {
         setCartProducts(items);
       }
     } else {
-      setQuantity(quantity - 1 ? quantity : 1);
+      setQuantity(quantity >= 1 ? quantity : 1);
     }
   };
   const addToCart = () => {
-    if (!isIncludeCard()) {
-      const item = product;
-      item.quantity = quantity;
+    if (!isIncludeCard() && product.inStock) {
+      const item = { ...product, quantity };
       setCartProducts((pre) => [...pre, item]);
     }
   };
@@ -44,7 +52,7 @@ export default function SingleProduct12({ product }) {
     <section className="product-single container">
       <div className="row">
         <div className="col-lg-7">
-          <ProductSlider1 />
+          <ProductSlider1 images={product.images} title={product.title} />
         </div>
         <div className="col-lg-5">
           <div className="d-flex justify-content-between mb-4 pb-md-2">
@@ -87,42 +95,47 @@ export default function SingleProduct12({ product }) {
               <Star stars={5} />
             </div>
             <span className="reviews-note text-lowercase text-secondary ms-1">
-              8k+ reviews
+              {product.reviews}
             </span>
           </div>
           <div className="product-single__price">
-            <span className="current-price">${product.price}</span>
+            <span className="current-price">{product.priceDisplay}</span>
           </div>
           <div className="product-single__short-desc">
-            <p>
-              Phasellus sed volutpat orci. Fusce eget lore mauris vehicula
-              elementum gravida nec dui. Aenean aliquam varius ipsum, non
-              ultricies tellus sodales eu. Donec dignissim viverra nunc, ut
-              aliquet magna posuere eget.
-            </p>
+            {product.shortDescriptionHtml ? (
+              <div
+                dangerouslySetInnerHTML={{ __html: product.shortDescriptionHtml }}
+              />
+            ) : (
+              <p>{product.shortDescriptionText}</p>
+            )}
           </div>
           <form onSubmit={(e) => e.preventDefault()}>
             <div className="product-single__swatches">
-              <div className="product-swatch text-swatches">
-                <label>Sizes</label>
-                <div className="swatch-list">
-                  <Size />
+              {product.sizeOptions?.length ? (
+                <div className="product-swatch text-swatches">
+                  <label>Sizes</label>
+                  <div className="swatch-list">
+                    <Size sizes={product.sizeOptions} />
+                  </div>
+                  <a
+                    href="#"
+                    className="sizeguide-link"
+                    data-bs-toggle="modal"
+                    data-bs-target="#sizeGuide"
+                  >
+                    Size Guide
+                  </a>
                 </div>
-                <a
-                  href="#"
-                  className="sizeguide-link"
-                  data-bs-toggle="modal"
-                  data-bs-target="#sizeGuide"
-                >
-                  Size Guide
-                </a>
-              </div>
-              <div className="product-swatch color-swatches">
-                <label>Color</label>
-                <div className="swatch-list">
-                  <Colors />
+              ) : null}
+              {product.colorSwatches?.length ? (
+                <div className="product-swatch color-swatches">
+                  <label>Color</label>
+                  <div className="swatch-list">
+                    <Colors colors={product.colorSwatches} />
+                  </div>
                 </div>
-              </div>
+              ) : null}
             </div>
             <div className="product-single__addtocart">
               <div className="qty-control position-relative">
@@ -132,7 +145,7 @@ export default function SingleProduct12({ product }) {
                   value={isIncludeCard() ? isIncludeCard().quantity : quantity}
                   min="1"
                   onChange={(e) =>
-                    setQuantityCartItem(product.id, e.target.value)
+                    setQuantityCartItem(product.id, Number(e.target.value))
                   }
                   className="qty-control__number text-center"
                 />
@@ -163,9 +176,14 @@ export default function SingleProduct12({ product }) {
               <button
                 type="submit"
                 className="btn btn-primary btn-addtocart js-open-aside"
+                disabled={!product.inStock}
                 onClick={() => addToCart()}
               >
-                {isIncludeCard() ? "Already Added" : "Add to Cart"}
+                {!product.inStock
+                  ? "Out of Stock"
+                  : isIncludeCard()
+                    ? "Already Added"
+                    : "Add to Cart"}
               </button>
             </div>
           </form>
@@ -187,15 +205,15 @@ export default function SingleProduct12({ product }) {
           <div className="product-single__meta-info">
             <div className="meta-item">
               <label>SKU:</label>
-              <span>N/A</span>
+              <span>{product.sku || "N/A"}</span>
             </div>
             <div className="meta-item">
               <label>Categories:</label>
-              <span>Casual & Urban Wear, Jackets, Men</span>
+              <span>{product.categories?.join(", ") || "Uncategorized"}</span>
             </div>
             <div className="meta-item">
               <label>Tags:</label>
-              <span>biker, black, bomber, leather</span>
+              <span>{product.tags?.join(", ") || "No tags"}</span>
             </div>
           </div>
         </div>
@@ -238,7 +256,7 @@ export default function SingleProduct12({ product }) {
               aria-controls="tab-reviews"
               aria-selected="false"
             >
-              Reviews (2)
+              Reviews ({product.reviewCount})
             </a>
           </li>
         </ul>
@@ -249,7 +267,10 @@ export default function SingleProduct12({ product }) {
             role="tabpanel"
             aria-labelledby="tab-description-tab"
           >
-            <Description />
+            <div
+              className="product-single__description"
+              dangerouslySetInnerHTML={{ __html: descriptionHtml }}
+            />
           </div>
           <div
             className="tab-pane fade"
@@ -257,7 +278,23 @@ export default function SingleProduct12({ product }) {
             role="tabpanel"
             aria-labelledby="tab-additional-info-tab"
           >
-            <AdditionalInfo />
+            {additionalInformation.length ? (
+              <div className="product-single__addtional-info">
+                {additionalInformation.map((item) => (
+                  <div key={item.name} className="item">
+                    <label className="h6">{item.name}</label>
+                    <span>{item.values.join(", ")}</span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="product-single__addtional-info">
+                <div className="item">
+                  <label className="h6">Stock</label>
+                  <span>{product.inStock ? "In stock" : "Out of stock"}</span>
+                </div>
+              </div>
+            )}
           </div>
           <div
             className="tab-pane fade"

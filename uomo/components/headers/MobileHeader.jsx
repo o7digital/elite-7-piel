@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 import CartLength from "./components/CartLength";
 import { openCart } from "@/utlis/openCart";
 import MobileNav from "./components/MobileNav";
-import Image from "next/image";
+import Link from "next/link";
 
 export default function MobileHeader() {
   const [scrollDirection, setScrollDirection] = useState("down");
@@ -64,15 +64,9 @@ export default function MobileHeader() {
         </a>
 
         <div className="logo">
-          <a href="/">
-            <Image
-              src="/assets/images/logo.png"
-              width={112}
-              height={28}
-              alt="Uomo"
-              className="logo__image d-block"
-            />
-          </a>
+          <Link href="/" className="site-wordmark site-wordmark_mobile">
+            ELITE 7 PIEL
+          </Link>
         </div>
         {/* <!-- /.logo --> */}
 

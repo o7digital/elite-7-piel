@@ -9,13 +9,20 @@ import Hero from "@/components/homes/home-15/Hero";
 import Instagram from "@/components/homes/home-15/Instagram";
 import Lookbook from "@/components/homes/home-15/Lookbook";
 import PopulerProducts from "@/components/homes/home-15/PopulerProducts";
+import { getStoreProducts } from "@/lib/woocommerce";
 import React from "react";
 
 export const metadata = {
   title: "Home 15 || Uomo eCommerce React Nextjs Template",
   description: "Uomo eCommerce React Nextjs Template",
 };
-export default function HomePage15() {
+export default async function HomePage15() {
+  const products = await getStoreProducts({ perPage: 12 }).catch(() => []);
+  const featuredProducts = products.slice(0, 8);
+  const popularProducts = products.slice(4, 12).length
+    ? products.slice(4, 12)
+    : featuredProducts;
+
   return (
     <>
       <div className="theme-15">
@@ -23,11 +30,11 @@ export default function HomePage15() {
         <main>
           <Hero />
           <div className="mb-3 mb-xl-5 pb-3 pt-1 pb-xl-5"></div>
-          <Featured />
+          <Featured products={featuredProducts} />
           <div className="mb-3 mb-xl-5 pb-3 pt-1 pb-xl-5"></div>
           <Categories />
           <div className="mb-3 mb-xl-5 pb-3 pt-1 pb-xl-5"></div>
-          <PopulerProducts />
+          <PopulerProducts products={popularProducts} />
           <div className="mb-3 mb-xl-5 pb-3 pt-1 pb-xl-5"></div>
           <Lookbook />
           <div className="mb-3 mb-xl-5 pb-3 pt-1 pb-xl-5"></div>

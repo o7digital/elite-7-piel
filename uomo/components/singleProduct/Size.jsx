@@ -1,68 +1,46 @@
 "use client";
 
-import { useEffect } from "react";
+import { Fragment, useEffect, useId } from "react";
 import tippy from "tippy.js";
 
-export default function Size() {
+const defaultSizes = ["XS", "S", "M", "L", "XL"];
+
+export default function Size({ sizes }) {
+  const baseId = useId();
+
   useEffect(() => {
     tippy("[data-tippy-content]");
   }, []);
+
+  const sizeOptions = (sizes?.length ? sizes : defaultSizes).map(
+    (size, index) => ({
+      id: `${baseId}-size-${index + 1}`,
+      label: typeof size === "string" ? size : size.label || size.value || "N/A",
+    })
+  );
+
   return (
     <>
-      <label
-        className="swatch js-swatch"
-        htmlFor="swatch-1"
-        aria-label="Extra Small"
-        data-bs-toggle="tooltip"
-        data-bs-placement="top"
-        data-tippy-content="Extra Small"
-      >
-        XS
-      </label>
-      <input type="radio" name="size" id="swatch-2" defaultChecked />
-      <label
-        className="swatch js-swatch"
-        htmlFor="swatch-2"
-        aria-label="Small"
-        data-bs-toggle="tooltip"
-        data-bs-placement="top"
-        data-tippy-content="Small"
-      >
-        S
-      </label>
-      <input type="radio" name="size" id="swatch-3" />
-      <label
-        className="swatch js-swatch"
-        htmlFor="swatch-3"
-        aria-label="Middle"
-        data-bs-toggle="tooltip"
-        data-bs-placement="top"
-        data-tippy-content="Middle"
-      >
-        M
-      </label>
-      <input type="radio" name="size" id="swatch-4" />
-      <label
-        className="swatch js-swatch"
-        htmlFor="swatch-4"
-        aria-label="Large"
-        data-bs-toggle="tooltip"
-        data-bs-placement="top"
-        data-tippy-content="Large"
-      >
-        L
-      </label>
-      <input type="radio" name="size" id="swatch-5" />
-      <label
-        className="swatch js-swatch"
-        htmlFor="swatch-5"
-        aria-label="Extra Large"
-        data-bs-toggle="tooltip"
-        data-bs-placement="top"
-        data-tippy-content="Extra Large"
-      >
-        XL
-      </label>
+      {sizeOptions.map((size, index) => (
+        <Fragment key={size.id}>
+          <input
+            type="radio"
+            name={`${baseId}-size`}
+            id={size.id}
+            defaultChecked={index === 0}
+          />
+          <label
+            className="swatch js-swatch"
+            htmlFor={size.id}
+            aria-label={size.label}
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            data-tippy-content={size.label}
+          >
+            {size.label}
+          </label>
+        </Fragment>
+      ))}
     </>
   );
 }

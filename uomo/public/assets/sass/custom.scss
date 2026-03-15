@@ -158,3 +158,20 @@ body {
 .product-single__thumbnail .swiper-slide {
   height: fit-content !important;
 }
+
+.site-wordmark {
+  display: inline-block;
+  color: #111111;
+  text-decoration: none;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.site-wordmark_mobile {
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+}

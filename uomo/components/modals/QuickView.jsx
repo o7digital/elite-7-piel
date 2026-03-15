@@ -6,7 +6,7 @@ import Size from "../singleProduct/Size";
 import Colors from "../singleProduct/Colors";
 import Image from "next/image";
 import ShareComponent from "../common/ShareComponent";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function QuickView() {
   const { quickViewItem } = useContextElement();
@@ -25,14 +25,20 @@ export default function QuickView() {
         ".modal-dialog.quick-view .product-single__media .swiper-button-prev",
     },
   };
-  const swiperSlideItems = [
-    quickViewItem.imgSrc,
-    quickViewItem.imgSrc,
-    quickViewItem.imgSrc,
-    quickViewItem.imgSrc,
-  ];
+  const swiperSlideItems = quickViewItem.images?.length
+    ? quickViewItem.images
+    : [
+        {
+          src: quickViewItem.imgSrc,
+          alt: quickViewItem.title,
+        },
+      ];
   const { cartProducts, setCartProducts } = useContextElement();
   const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    setQuantity(1);
+  }, [quickViewItem.id]);
 
   const isIncludeCard = () => {
     const item = cartProducts.filter((elm) => elm.id == quickViewItem.id)[0];
@@ -49,13 +55,12 @@ export default function QuickView() {
         setCartProducts(items);
       }
     } else {
-      setQuantity(quantity - 1 ? quantity : 1);
+      setQuantity(quantity >= 1 ? quantity : 1);
     }
   };
   const addToCart = () => {
-    if (!isIncludeCard()) {
-      const item = quickViewItem;
-      item.quantity = quantity;
+    if (!isIncludeCard() && quickViewItem?.id) {
+      const item = { ...quickViewItem, quantity };
       setCartProducts((pre) => [...pre, item]);
     }
   };
@@ -90,8 +95,8 @@ export default function QuickView() {
                           height: "100%",
                           objectFit: "contain",
                         }}
-                        src={elm}
-                        alt="image"
+                        src={elm.src}
+                        alt={elm.alt || quickViewItem.title || "Product image"}
                       />
                     </SwiperSlide>
                   ))}
@@ -122,38 +127,43 @@ export default function QuickView() {
             <div className="product-single__detail">
               <h1 className="product-single__name">{quickViewItem.title}</h1>
               <div className="product-single__price">
-                <span className="current-price">${quickViewItem.price}</span>
+                <span className="current-price">
+                  {quickViewItem.priceDisplay || `$${quickViewItem.price || 0}`}
+                </span>
               </div>
               <div className="product-single__short-desc">
                 <p>
-                  Phasellus sed volutpat orci. Fusce eget lore mauris vehicula
-                  elementum gravida nec dui. Aenean aliquam varius ipsum, non
-                  ultricies tellus sodales eu. Donec dignissim viverra nunc, ut
-                  aliquet magna posuere eget.
+                  {quickViewItem.shortDescriptionText ||
+                    quickViewItem.descriptionText ||
+                    "Product details coming soon."}
                 </p>
               </div>
               <form onSubmit={(e) => e.preventDefault()}>
                 <div className="product-single__swatches">
-                  <div className="product-swatch text-swatches">
-                    <label>Sizes</label>
-                    <div className="swatch-list">
-                      <Size />
+                  {quickViewItem.sizeOptions?.length ? (
+                    <div className="product-swatch text-swatches">
+                      <label>Sizes</label>
+                      <div className="swatch-list">
+                        <Size sizes={quickViewItem.sizeOptions} />
+                      </div>
+                      <a
+                        href="#"
+                        className="sizeguide-link"
+                        data-bs-toggle="modal"
+                        data-bs-target="#sizeGuide"
+                      >
+                        Size Guide
+                      </a>
                     </div>
-                    <a
-                      href="#"
-                      className="sizeguide-link"
-                      data-bs-toggle="modal"
-                      data-bs-target="#sizeGuide"
-                    >
-                      Size Guide
-                    </a>
-                  </div>
-                  <div className="product-swatch color-swatches">
-                    <label>Color</label>
-                    <div className="swatch-list">
-                      <Colors />
+                  ) : null}
+                  {quickViewItem.colorSwatches?.length ? (
+                    <div className="product-swatch color-swatches">
+                      <label>Color</label>
+                      <div className="swatch-list">
+                        <Colors colors={quickViewItem.colorSwatches} />
+                      </div>
                     </div>
-                  </div>
+                  ) : null}
                 </div>
                 <div className="product-single__addtocart">
                   <div className="qty-control position-relative">
@@ -166,7 +176,7 @@ export default function QuickView() {
                       readOnly
                       min="1"
                       onChange={(e) =>
-                        setQuantityCartItem(quickViewItem.id, e.target.value)
+                        setQuantityCartItem(quickViewItem.id, Number(e.target.value))
                       }
                       className="qty-control__number text-center"
                     />
@@ -228,15 +238,19 @@ export default function QuickView() {
               <div className="product-single__meta-info mb-0">
                 <div className="meta-item">
                   <label>SKU:</label>
-                  <span>N/A</span>
+                  <span>{quickViewItem.sku || "N/A"}</span>
                 </div>
                 <div className="meta-item">
                   <label>Categories:</label>
-                  <span>Casual & Urban Wear, Jackets, Men</span>
+                  <span>
+                    {quickViewItem.categories?.join(", ") ||
+                      quickViewItem.category ||
+                      "Uncategorized"}
+                  </span>
                 </div>
                 <div className="meta-item">
                   <label>Tags:</label>
-                  <span>biker, black, bomber, leather</span>
+                  <span>{quickViewItem.tags?.join(", ") || "No tags"}</span>
                 </div>
               </div>
             </div>

@@ -2,28 +2,46 @@
 
 import Star from "@/components/common/Star";
 import { useContextElement } from "@/context/Context";
-import { products33 } from "@/data/products/cosmetics";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-const filterCategories = ["Face", "Eyes", "Lips"];
 import Image from "next/image";
-export default function PopulerProducts() {
+
+export default function PopulerProducts({ products = [] }) {
   const { toggleWishlist, isAddedtoWishlist } = useContextElement();
   const { setQuickViewItem } = useContextElement();
   const { addProductToCart, isAddedToCartProducts } = useContextElement();
-  const [currentCategory, setCurrentCategory] = useState(filterCategories[0]);
-  const [filtered, setFiltered] = useState(products33);
+  const categoryOptions = Array.from(
+    new Set(products.map((product) => product.category).filter(Boolean))
+  );
+  const [currentCategory, setCurrentCategory] = useState("All");
+  const [filtered, setFiltered] = useState(products);
+
   useEffect(() => {
-    if (currentCategory == "All") {
-      setFiltered(products33);
-    } else {
-      setFiltered([
-        ...products33.filter((elm) => elm.filterCategory == currentCategory),
-      ]);
+    const hasCurrentCategory =
+      currentCategory === "All" || categoryOptions.includes(currentCategory);
+
+    if (!hasCurrentCategory) {
+      setCurrentCategory("All");
     }
-  }, [currentCategory]);
+  }, [categoryOptions, currentCategory]);
+
+  useEffect(() => {
+    if (currentCategory === "All") {
+      setFiltered(products);
+      return;
+    }
+
+    setFiltered(
+      products.filter((product) => product.category === currentCategory)
+    );
+  }, [currentCategory, products]);
+
+  if (!products.length) {
+    return null;
+  }
+
   const swiperOptions = {
     autoplay: {
       delay: 5000,
@@ -71,7 +89,7 @@ export default function PopulerProducts() {
         id="collections-tab"
         role="tablist"
       >
-        {filterCategories.map((elm, i) => (
+        {["All", ...categoryOptions].map((elm, i) => (
           <li
             onClick={() => setCurrentCategory(elm)}
             key={i}
@@ -110,13 +128,13 @@ export default function PopulerProducts() {
                         src={elm.imgSrc}
                         width="330"
                         height="400"
-                        alt="Cropped Faux leather Jacket"
+                        alt={elm.title}
                         className="pc__img"
                       />
                     </Link>
                     <button
                       className="pc__atc btn btn-primary btn-lg anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium js-add-cart js-open-aside left-0 w-100 bottom-0 btn-50 text-white d-flex align-items-center justify-content-center gap-2"
-                      onClick={() => addProductToCart(elm.id)}
+                      onClick={() => addProductToCart(elm)}
                       title={
                         isAddedToCartProducts(elm.id)
                           ? "Already Added"
@@ -194,7 +212,7 @@ export default function PopulerProducts() {
                     </h6>
                     <div className="product-card__price d-flex align-items-center justify-content-center mb-2">
                       <span className="money price fw-medium">
-                        ${elm.price}
+                        {elm.priceDisplay}
                       </span>
                     </div>
                     <div className="product-card__review d-flex align-items-center justify-content-center">

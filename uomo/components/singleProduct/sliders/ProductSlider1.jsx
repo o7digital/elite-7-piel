@@ -8,7 +8,7 @@ import "swiper/css";
 import "photoswipe/dist/photoswipe.css";
 
 import { Gallery, Item } from "react-photoswipe-gallery";
-const images = [
+const defaultImages = [
   {
     imgSrc: "/assets/images/products/product_0.jpg",
   },
@@ -24,11 +24,18 @@ const images = [
 ];
 import Image from "next/image";
 import tippy from "tippy.js";
-export default function ProductSlider1() {
+export default function ProductSlider1({ images, title }) {
   useEffect(() => {
     tippy("[data-tippy-content]");
   }, []);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const productImages = images?.length
+    ? images
+    : defaultImages.map((image) => ({
+        src: image.imgSrc,
+        thumbnail: image.imgSrc,
+        alt: title || "Product image",
+      }));
   return (
     <div className="product-single__media vertical-thumbnail product-media-initialized">
       <div className="product-single__image position-relative">
@@ -40,7 +47,7 @@ export default function ProductSlider1() {
             navigation={{ prevEl: ".ssnbp1", nextEl: ".ssnbn1" }}
             className="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events"
           >
-            {images.map((elm, i) => (
+            {productImages.map((elm, i) => (
               <SwiperSlide
                 style={{
                   maxWidth: "100%",
@@ -51,8 +58,8 @@ export default function ProductSlider1() {
                 className="swiper-slide product-single__image-item"
               >
                 <Item
-                  original={elm.imgSrc}
-                  thumbnail={elm.imgSrc}
+                  original={elm.src}
+                  thumbnail={elm.thumbnail || elm.src}
                   width="674"
                   height="674"
                 >
@@ -61,10 +68,10 @@ export default function ProductSlider1() {
                       <Image
                         loading="lazy"
                         className="h-auto w-100"
-                        src={elm.imgSrc}
+                        src={elm.src}
                         width="674"
                         height="674"
-                        alt="image"
+                        alt={elm.alt || title || "Product image"}
                       />
                       <a
                         ref={ref}
@@ -131,7 +138,7 @@ export default function ProductSlider1() {
           onSwiper={setThumbsSwiper}
           slidesPerView={4}
         >
-          {images.map((elm, i) => (
+          {productImages.map((elm, i) => (
             <SwiperSlide
               key={i}
               className="swiper-slide product-single__image-item"
@@ -140,10 +147,10 @@ export default function ProductSlider1() {
               <Image
                 loading="lazy"
                 className="h-auto"
-                src={elm.imgSrc}
+                src={elm.thumbnail || elm.src}
                 width="104"
                 height="104"
-                alt="image"
+                alt={elm.alt || title || "Product image"}
               />
             </SwiperSlide>
           ))}

@@ -3,7 +3,6 @@ import Link from "next/link";
 import CartLength from "./components/CartLength";
 import Nav from "./components/Nav";
 import { openCart } from "@/utlis/openCart";
-import Image from "next/image";
 import User from "./components/User";
 import { currencyOptions, languageOptions2 } from "@/data/footer";
 import { socialLinks } from "@/data/socials";
@@ -109,14 +108,8 @@ export default function Header14() {
               </div>
             </div>
             <div className="logo">
-              <Link href="/">
-                <Image
-                  src="/assets/images/logo-cosmetics.png"
-                  width={112}
-                  height={28}
-                  alt="Uomo"
-                  className="logo__image"
-                />
+              <Link href="/" className="site-wordmark">
+                ELITE 7 PIEL
               </Link>
             </div>
             {/* <!-- /.logo --> */}

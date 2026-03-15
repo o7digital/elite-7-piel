@@ -2,16 +2,20 @@
 
 import Star from "@/components/common/Star";
 import { useContextElement } from "@/context/Context";
-import { products33 } from "@/data/products/cosmetics";
 import Link from "next/link";
 import { Autoplay, Navigation } from "swiper/modules";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-export default function Featured() {
+export default function Featured({ products = [] }) {
   const { toggleWishlist, isAddedtoWishlist } = useContextElement();
   const { setQuickViewItem } = useContextElement();
   const { addProductToCart, isAddedToCartProducts } = useContextElement();
+
+  if (!products.length) {
+    return null;
+  }
+
   const swiperOptions = {
     autoplay: {
       delay: 5000,
@@ -23,8 +27,8 @@ export default function Featured() {
     loop: true,
     pagination: false,
     navigation: {
-      nextEl: ".products-carousel__next",
-      prevEl: ".products-carousel__prev",
+      nextEl: "#featured_products .products-carousel__next",
+      prevEl: "#featured_products .products-carousel__prev",
     },
     breakpoints: {
       320: {
@@ -54,12 +58,12 @@ export default function Featured() {
         The World's Premium Brands In One Destination.
       </p>
 
-      <div className="position-relative">
+      <div id="featured_products" className="position-relative">
         <Swiper
           className="swiper-container js-swiper-slider"
           {...swiperOptions}
         >
-          {products33.map((elm, i) => (
+          {products.map((elm, i) => (
             <SwiperSlide key={i} className="swiper-slide product-card">
               <div className="pc__img-wrapper">
                 <Link href={`/product1_simple/${elm.id}`}>
@@ -68,13 +72,13 @@ export default function Featured() {
                     src={elm.imgSrc}
                     width="330"
                     height="400"
-                    alt="Cropped Faux leather Jacket"
+                    alt={elm.title}
                     className="pc__img"
                   />
                 </Link>
                 <button
                   className="pc__atc btn btn-primary btn-lg anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium js-add-cart js-open-aside left-0 w-100 bottom-0 btn-50 text-white d-flex align-items-center justify-content-center gap-2"
-                  onClick={() => addProductToCart(elm.id)}
+                  onClick={() => addProductToCart(elm)}
                   title={
                     isAddedToCartProducts(elm.id)
                       ? "Already Added"
@@ -147,7 +151,9 @@ export default function Featured() {
                   <Link href={`/product1_simple/${elm.id}`}>{elm.title}</Link>
                 </h6>
                 <div className="product-card__price d-flex align-items-center justify-content-center mb-2">
-                  <span className="money price fw-medium">${elm.price}</span>
+                  <span className="money price fw-medium">
+                    {elm.priceDisplay}
+                  </span>
                 </div>
                 <div className="product-card__review d-flex align-items-center justify-content-center">
                   <div className="reviews-group d-flex">

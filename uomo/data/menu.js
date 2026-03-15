@@ -1,3 +1,38 @@
+export const mainMenuItems = [
+  {
+    id: 1,
+    title: "Inicio",
+    href: "/",
+    activePrefixes: ["/"],
+    exact: true,
+  },
+  {
+    id: 2,
+    title: "Tienda",
+    href: "/shop-1",
+    activePrefixes: [
+      "/shop-",
+      "/product",
+      "/shop_cart",
+      "/shop_checkout",
+      "/shop_order_complete",
+      "/shop_order_tracking",
+    ],
+  },
+  {
+    id: 3,
+    title: "Quienes Somos",
+    href: "/about",
+    activePrefixes: ["/about"],
+  },
+  {
+    id: 4,
+    title: "Contacto",
+    href: "/contact",
+    activePrefixes: ["/contact"],
+  },
+];
+
 export const homePages = [
   { id: 1, title: "Home 1", href: "/" },
   { id: 2, title: "Home 2", href: "/home-2" },

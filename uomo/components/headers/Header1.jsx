@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Nav from "./components/Nav";
 import { openCart } from "@/utlis/openCart";
 import CartLength from "./components/CartLength";
-import Image from "next/image";
 import User from "./components/User";
 import SearchPopup from "./components/SearchPopup";
 
@@ -51,14 +50,8 @@ export default function Header1() {
       <div className="container">
         <div className="header-desk header-desk_type_1">
           <div className="logo">
-            <Link href="/">
-              <Image
-                src="/assets/images/logo.png"
-                width={112}
-                height={28}
-                alt="Uomo"
-                className="logo__image d-block"
-              />
+            <Link href="/" className="site-wordmark">
+              ELITE 7 PIEL
             </Link>
           </div>
           {/* <!-- /.logo --> */}

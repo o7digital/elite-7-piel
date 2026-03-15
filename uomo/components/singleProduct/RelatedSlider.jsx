@@ -1,15 +1,18 @@
 "use client";
 import { useContextElement } from "@/context/Context";
-import { products51 } from "@/data/products/fashion";
 import Link from "next/link";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 
-export default function RelatedSlider() {
+export default function RelatedSlider({ products = [] }) {
   const { toggleWishlist, isAddedtoWishlist } = useContextElement();
-  const { setQuickViewItem } = useContextElement();
   const { addProductToCart, isAddedToCartProducts } = useContextElement();
+
+  if (!products.length) {
+    return null;
+  }
+
   const swiperOptions = {
     autoplay: false,
     slidesPerView: 4,
@@ -56,7 +59,7 @@ export default function RelatedSlider() {
           className="swiper-container js-swiper-slider"
           data-settings=""
         >
-          {products51.map((elm, i) => (
+          {products.map((elm, i) => (
             <SwiperSlide key={i} className="swiper-slide product-card">
               <div className="pc__img-wrapper">
                 <Link href={`/product1_simple/${elm.id}`}>
@@ -65,21 +68,21 @@ export default function RelatedSlider() {
                     src={elm.imgSrc}
                     width="330"
                     height="400"
-                    alt="Cropped Faux leather Jacket"
+                    alt={elm.title}
                     className="pc__img"
                   />
                   <Image
                     loading="lazy"
-                    src={elm.imgSrc2}
+                    src={elm.imgSrc2 || elm.imgSrc}
                     width="330"
                     height="400"
-                    alt="Cropped Faux leather Jacket"
+                    alt={elm.title}
                     className="pc__img pc__img-second"
                   />
                 </Link>
                 <button
                   className="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium js-add-cart js-open-aside"
-                  onClick={() => addProductToCart(elm.id)}
+                  onClick={() => addProductToCart(elm)}
                   title={
                     isAddedToCartProducts(elm.id)
                       ? "Already Added"
@@ -98,7 +101,7 @@ export default function RelatedSlider() {
                   <Link href={`/product1_simple/${elm.id}`}>{elm.title}</Link>
                 </h6>
                 <div className="product-card__price d-flex">
-                  <span className="money price">${elm.price}</span>
+                  <span className="money price">{elm.priceDisplay}</span>
                 </div>
 
                 <button
