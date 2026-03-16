@@ -1,69 +1,127 @@
 "use client";
 
-import { storesLocations } from "@/data/storeLocations";
+import { useState } from "react";
+import { submitFormspree } from "@/lib/formspree";
 
 export default function Contact() {
+  const [formStatus, setFormStatus] = useState({
+    type: "idle",
+    message: "",
+  });
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    formData.set("form_type", "contact");
+    formData.set("_subject", "Contacto ELITE 7 PIEL");
+
+    setFormStatus({
+      type: "loading",
+      message: "Enviando mensaje...",
+    });
+
+    try {
+      await submitFormspree(formData);
+      form.reset();
+      setFormStatus({
+        type: "success",
+        message: "Gracias. Tu mensaje fue enviado correctamente.",
+      });
+    } catch (error) {
+      setFormStatus({
+        type: "error",
+        message: error.message || "No se pudo enviar el formulario.",
+      });
+    }
+  };
+
   return (
     <section className="contact-us container">
       <div className="mw-930">
-        <div className="row mb-5">
-          {storesLocations.slice(0, 2).map((elm, i) => (
-            <div key={i} className="col-lg-6">
-              <h3 className="mb-4">Store in {elm.city}</h3>
-              <p className="mb-4">
-                {elm.address}
-                <br />
-                {elm.country}
-              </p>
-              <p className="mb-4">
-                {elm.emailAddress}
-                <br />
-                {elm.phone}
-              </p>
+        <div className="row mb-5 gy-4">
+          <div className="col-lg-5">
+            <h3 className="mb-4">Atencion al cliente</h3>
+            <p className="mb-4">
+              Escribenos para cualquier duda sobre pedidos, envios, cambios o
+              recomendaciones de producto.
+            </p>
+            <p className="mb-4">
+              <strong>Email</strong>
+              <br />
+              <a href="mailto:venteas@elite7piel.com">
+                venteas@elite7piel.com
+              </a>
+            </p>
+            <p className="mb-4">
+              <strong>Telefono</strong>
+              <br />
+              +1 246-345-0695
+            </p>
+            <p className="mb-0">
+              <strong>Horario</strong>
+              <br />
+              24 horas al dia, 7 dias a la semana
+            </p>
+          </div>
+          <div className="col-lg-7">
+            <div className="contact-us__form">
+              <form className="needs-validation" onSubmit={handleSubmit}>
+                <h3 className="mb-5">Escribenos</h3>
+                <div className="form-floating my-4">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="contact_us_name"
+                    name="name"
+                    placeholder="Nombre *"
+                    required
+                  />
+                  <label htmlFor="contact_us_name">Nombre *</label>
+                </div>
+                <div className="form-floating my-4">
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="contact_us_email"
+                    name="email"
+                    placeholder="Correo electronico *"
+                    required
+                  />
+                  <label htmlFor="contact_us_email">Correo electronico *</label>
+                </div>
+                <div className="my-4">
+                  <textarea
+                    className="form-control form-control_gray"
+                    placeholder="Tu mensaje"
+                    name="message"
+                    cols="30"
+                    rows="8"
+                    required
+                  ></textarea>
+                </div>
+                <div className="my-4">
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                    disabled={formStatus.type === "loading"}
+                  >
+                    {formStatus.type === "loading" ? "Enviando..." : "Enviar"}
+                  </button>
+                </div>
+                {formStatus.message ? (
+                  <p
+                    className={`mb-0 ${
+                      formStatus.type === "error" ? "text-danger" : "text-success"
+                    }`}
+                  >
+                    {formStatus.message}
+                  </p>
+                ) : null}
+              </form>
             </div>
-          ))}
-        </div>
-        <div className="contact-us__form">
-          <form
-            className="needs-validation"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <h3 className="mb-5">Get In Touch</h3>
-            <div className="form-floating my-4">
-              <input
-                type="text"
-                className="form-control"
-                id="contact_us_name"
-                placeholder="Name *"
-                required
-              />
-              <label htmlFor="contact_us_name">Name *</label>
-            </div>
-            <div className="form-floating my-4">
-              <input
-                type="email"
-                className="form-control"
-                id="contact_us_email"
-                placeholder="Email address *"
-                required
-              />
-              <label htmlFor="contact_us_name">Email address *</label>
-            </div>
-            <div className="my-4">
-              <textarea
-                className="form-control form-control_gray"
-                placeholder="Your Message"
-                cols="30"
-                rows="8"
-                required
-              ></textarea>
-            </div>
-            <div className="my-4">
-              <button type="submit" className="btn btn-primary">
-                Submit
-              </button>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </section>

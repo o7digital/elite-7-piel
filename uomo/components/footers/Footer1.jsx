@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -10,8 +10,42 @@ import {
   languageOptions,
   socialLinks,
 } from "@/data/footer";
+import { submitFormspree } from "@/lib/formspree";
 
 export default function Footer1() {
+  const [newsletterStatus, setNewsletterStatus] = useState({
+    type: "idle",
+    message: "",
+  });
+
+  const handleNewsletterSubmit = async (event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    formData.set("form_type", "newsletter");
+    formData.set("_subject", "Newsletter ELITE 7 PIEL");
+
+    setNewsletterStatus({
+      type: "loading",
+      message: "Enviando...",
+    });
+
+    try {
+      await submitFormspree(formData);
+      form.reset();
+      setNewsletterStatus({
+        type: "success",
+        message: "Gracias. Tu suscripcion fue enviada.",
+      });
+    } catch (error) {
+      setNewsletterStatus({
+        type: "error",
+        message: error.message || "No se pudo enviar el formulario.",
+      });
+    }
+  };
+
   return (
     <footer className="footer footer_type_1">
       <div className="footer-middle container">
@@ -29,12 +63,15 @@ export default function Footer1() {
               </Link>
             </div>
             {/* <!-- /.logo --> */}
-            <p className="footer-address">
-              1418 River Drive, Suite 35 Cottonhall, CA 9622 United States
-            </p>
-
             <p className="m-0">
-              <strong className="fw-medium">sale@uomo.com</strong>
+              <strong className="fw-medium">
+                <a
+                  href="mailto:venteas@elite7piel.com"
+                  className="text-reset text-decoration-none"
+                >
+                  venteas@elite7piel.com
+                </a>
+              </strong>
             </p>
             <p>
               <strong className="fw-medium">+1 246-345-0695</strong>
@@ -110,7 +147,7 @@ export default function Footer1() {
               much more!
             </p>
             <form
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleNewsletterSubmit}
               className="footer-newsletter__form position-relative bg-body"
             >
               <input
@@ -118,13 +155,25 @@ export default function Footer1() {
                 type="email"
                 name="email"
                 placeholder="Your email address"
+                required
               />
-              <input
+              <button
                 className="btn-link fw-medium bg-white position-absolute top-0 end-0 h-100"
                 type="submit"
-                defaultValue="JOIN"
-              />
+                disabled={newsletterStatus.type === "loading"}
+              >
+                {newsletterStatus.type === "loading" ? "Enviando..." : "Enviar"}
+              </button>
             </form>
+            {newsletterStatus.message ? (
+              <p
+                className={`mt-2 mb-0 small ${
+                  newsletterStatus.type === "error" ? "text-danger" : "text-success"
+                }`}
+              >
+                {newsletterStatus.message}
+              </p>
+            ) : null}
 
             <div className="mt-4 pt-3">
               <strong className="fw-medium">Secure payments</strong>
@@ -148,9 +197,19 @@ export default function Footer1() {
 
       <div className="footer-bottom container">
         <div className="d-block d-md-flex align-items-center">
-          <span className="footer-copyright me-auto">
-            ©{new Date().getFullYear()} Uomo
-          </span>
+          <div className="me-auto d-flex flex-wrap align-items-center gap-3">
+            <span className="footer-copyright mb-0">
+              ©{new Date().getFullYear()} ELITE 7 PIEL
+            </span>
+            <a
+              href="https://o7digital.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-reset text-decoration-none"
+            >
+              created by o7digital.com
+            </a>
+          </div>
           <div className="footer-settings d-block d-md-flex align-items-center">
             <div className="d-flex align-items-center">
               <label
