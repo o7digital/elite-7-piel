@@ -193,6 +193,17 @@ function normalizeAttributes(product) {
     .filter((attribute) => attribute.values.length);
 }
 
+function normalizeCategory(category) {
+  return {
+    id: category.id,
+    name: decodeHtmlEntities(category.name),
+    slug: category.slug,
+    count: Number(category.count || 0),
+    reviewCount: Number(category.review_count || 0),
+    permalink: category.permalink || "",
+  };
+}
+
 function normalizeProduct(product) {
   const images = normalizeImages(product);
   const categoryData = (product.categories || []).map((category) => ({
@@ -214,9 +225,12 @@ function normalizeProduct(product) {
     id: product.id,
     slug: product.slug,
     type: product.type,
+    createdAt:
+      product.date_created_gmt || product.date_created || product.modified || "",
     title: decodeHtmlEntities(product.name),
     category: categoryData[0]?.name || "Product",
     categoryIds: categoryData.map((category) => category.id).filter(Boolean),
+    categorySlugs: categoryData.map((category) => category.slug).filter(Boolean),
     categories: categoryData.map((category) => category.name),
     tags: tagNames,
     sku: decodeHtmlEntities(product.sku || "N/A"),
@@ -261,6 +275,38 @@ export async function getStoreProducts(options = {}) {
   });
 
   return products.map(normalizeProduct);
+}
+
+export async function getAllStoreProducts(options = {}) {
+  const pageSize = options.perPage || 100;
+  const maxPages = options.maxPages || 20;
+  const allProducts = [];
+
+  for (let page = 1; page <= maxPages; page += 1) {
+    const pageProducts = await getStoreProducts({
+      ...options,
+      page,
+      perPage: pageSize,
+    });
+
+    allProducts.push(...pageProducts);
+
+    if (pageProducts.length < pageSize) {
+      break;
+    }
+  }
+
+  return allProducts;
+}
+
+export async function getStoreCategories(options = {}) {
+  const categories = await storefrontFetch("products/categories", {
+    hide_empty: options.hideEmpty ?? true,
+    page: options.page || 1,
+    per_page: options.perPage || 50,
+  });
+
+  return categories.map(normalizeCategory);
 }
 
 export async function getStoreProduct(productId) {

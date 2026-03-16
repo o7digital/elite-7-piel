@@ -26,7 +26,7 @@ export default function Lookbook() {
             Get styled with the high-fashion products and transform yourself.
           </p>
           <Link
-            href="/shop-1"
+            href="/shop"
             className="btn-link btn-link_md default-underline text-uppercase fw-medium"
           >
             Shop Now
@@ -46,7 +46,7 @@ export default function Lookbook() {
               className="example"
               render={({ content, activeAnchor }) => (
                 <div className="popover-product">
-                  <Link href={`/product1_simple/${id}`}>
+                  <Link href="/shop">
                     <Image
                       loading="lazy"
                       className="mb-3"
@@ -54,10 +54,10 @@ export default function Lookbook() {
                       height={400}
                       src={imgSrc}
                       alt="image"
-                    />
-                  </Link>
+                  />
+                </Link>
                   <p className="fw-medium mb-0">
-                    <Link href={`/product1_simple/${id}`}>{title}</Link>
+                    <Link href="/shop">{title}</Link>
                   </p>
                   <p className="mb-0">${price}</p>
                 </div>

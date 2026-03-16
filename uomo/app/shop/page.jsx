@@ -1,15 +1,14 @@
 import Footer1 from "@/components/footers/Footer1";
-
 import Header1 from "@/components/headers/Header1";
 import Shop1 from "@/components/shoplist/Shop1";
 import { getAllStoreProducts, getStoreCategories } from "@/lib/woocommerce";
-import React from "react";
 
 export const metadata = {
-  title: "Shop 1 || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
+  title: "Shop || ELITE 7 PIEL",
+  description: "Tienda ELITE 7 PIEL",
 };
-export default async function ShopPage1() {
+
+export default async function ShopPage() {
   const [products, categories] = await Promise.all([
     getAllStoreProducts({ perPage: 100 }).catch(() => []),
     getStoreCategories({ perPage: 100 }).catch(() => []),

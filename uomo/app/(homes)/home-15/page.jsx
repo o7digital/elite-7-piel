@@ -2,11 +2,10 @@ import Footer14 from "@/components/footers/Footer14";
 
 import Header14 from "@/components/headers/Header14";
 
-import Featured from "@/components/homes/home-15/Featured";
+import AllProductsGrid from "@/components/homes/home-15/AllProductsGrid";
 import Hero from "@/components/homes/home-15/Hero";
 import Lookbook from "@/components/homes/home-15/Lookbook";
-import PopulerProducts from "@/components/homes/home-15/PopulerProducts";
-import { getStoreProducts } from "@/lib/woocommerce";
+import { getAllStoreProducts } from "@/lib/woocommerce";
 import React from "react";
 
 export const metadata = {
@@ -14,11 +13,7 @@ export const metadata = {
   description: "Uomo eCommerce React Nextjs Template",
 };
 export default async function HomePage15() {
-  const products = await getStoreProducts({ perPage: 12 }).catch(() => []);
-  const featuredProducts = products.slice(0, 8);
-  const popularProducts = products.slice(4, 12).length
-    ? products.slice(4, 12)
-    : featuredProducts;
+  const products = await getAllStoreProducts({ perPage: 100 }).catch(() => []);
 
   return (
     <>
@@ -26,10 +21,7 @@ export default async function HomePage15() {
         <Header14 />
         <main>
           <Hero />
-          <div className="mb-3 mb-xl-5 pb-3 pt-1 pb-xl-5"></div>
-          <Featured products={featuredProducts} />
-          <div className="mb-3 mb-xl-5 pb-3 pt-1 pb-xl-5"></div>
-          <PopulerProducts products={popularProducts} />
+          <AllProductsGrid products={products} />
           <div className="mb-3 mb-xl-5 pb-3 pt-1 pb-xl-5"></div>
           <Lookbook />
         </main>

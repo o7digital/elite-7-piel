@@ -66,7 +66,7 @@ export default function Featured({ products = [] }) {
           {products.map((elm, i) => (
             <SwiperSlide key={i} className="swiper-slide product-card">
               <div className="pc__img-wrapper">
-                <Link href={`/product1_simple/${elm.id}`}>
+                <Link href={`/shop/product/${elm.id}`}>
                   <Image
                     loading="lazy"
                     src={elm.imgSrc}
@@ -148,7 +148,7 @@ export default function Featured({ products = [] }) {
               <div className="pc__info position-relative text-center">
                 <p className="pc__category text-secondary">{elm.category}</p>
                 <h6 className="pc__title text-uppercase fw-medium mb-2">
-                  <Link href={`/product1_simple/${elm.id}`}>{elm.title}</Link>
+                  <Link href={`/shop/product/${elm.id}`}>{elm.title}</Link>
                 </h6>
                 <div className="product-card__price d-flex align-items-center justify-content-center mb-2">
                   <span className="money price fw-medium">

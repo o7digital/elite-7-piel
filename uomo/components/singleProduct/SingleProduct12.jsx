@@ -1,311 +1,598 @@
 "use client";
-import React, { useState } from "react";
-import ProductSlider1 from "./sliders/ProductSlider1";
-import BreadCumb from "./BreadCumb";
-import Star from "../common/Star";
-import Colors from "./Colors";
-import Size from "./Size";
-import Reviews from "./Reviews";
-import ShareComponent from "../common/ShareComponent";
+
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 import { useContextElement } from "@/context/Context";
+import { openCart } from "@/utlis/openCart";
+
+function renderStars(rating = 0) {
+  const roundedRating = Math.max(0, Math.min(5, Math.round(rating)));
+
+  return Array.from({ length: 5 }, (_, index) => (
+    <span
+      key={index}
+      className={`dosalga-detail__star ${index < roundedRating ? "is-active" : ""}`}
+      aria-hidden="true"
+    >
+      ★
+    </span>
+  ));
+}
+
 export default function SingleProduct12({ product }) {
-  const { cartProducts, setCartProducts } = useContextElement();
+  const router = useRouter();
+  const { setCartProducts } = useContextElement();
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
-  const descriptionHtml =
-    product.descriptionHtml ||
-    `<p>${product.shortDescriptionText || "Product description coming soon."}</p>`;
-  const additionalInformation = product.attributes?.length
-    ? [
-        ...product.attributes,
-        {
-          name: "SKU",
-          values: [product.sku || "N/A"],
-        },
-      ]
-    : [];
+  const [selectedSize, setSelectedSize] = useState(product.sizeOptions?.[0] || "");
 
-  const isIncludeCard = () => {
-    const item = cartProducts.filter((elm) => elm.id == product.id)[0];
-    return item;
-  };
-  const setQuantityCartItem = (id, quantity) => {
-    if (isIncludeCard()) {
-      if (quantity >= 1) {
-        const item = cartProducts.filter((elm) => elm.id == id)[0];
-        const items = [...cartProducts];
-        const itemIndex = items.indexOf(item);
-        item.quantity = quantity;
-        items[itemIndex] = item;
-        setCartProducts(items);
+  useEffect(() => {
+    setSelectedImageIndex(0);
+    setQuantity(1);
+    setSelectedSize(product.sizeOptions?.[0] || "");
+  }, [product.id, product.sizeOptions]);
+
+  const mainCategory = product.categories?.[0] || "Sin categoría";
+  const reviewLabel =
+    product.reviewCount === 1
+      ? "(1 opinión)"
+      : `(${product.reviewCount || 0} opiniones)`;
+  const summaryText =
+    product.shortDescriptionText ||
+    product.descriptionText ||
+    "Información del producto disponible pronto.";
+  const currentImage =
+    product.images?.[selectedImageIndex] || product.images?.[0] || null;
+  const detailRows = useMemo(() => {
+    const baseRows = [
+      { label: "SKU", value: product.sku || "N/D" },
+      { label: "Categoría", value: mainCategory },
+    ];
+
+    if (product.tags?.length) {
+      baseRows.push({ label: "Etiquetas", value: product.tags.join(", ") });
+    }
+
+    return baseRows;
+  }, [mainCategory, product.sku, product.tags]);
+
+  const updateCart = (redirectToCheckout = false) => {
+    if (!product.inStock) {
+      return;
+    }
+
+    const nextQuantity = Math.max(1, quantity);
+
+    setCartProducts((previous) => {
+      const existingIndex = previous.findIndex((item) => item.id === product.id);
+
+      if (existingIndex >= 0) {
+        const nextItems = [...previous];
+        const existingItem = nextItems[existingIndex];
+
+        nextItems[existingIndex] = {
+          ...existingItem,
+          quantity: existingItem.quantity + nextQuantity,
+          selectedSize: selectedSize || existingItem.selectedSize || "",
+        };
+
+        return nextItems;
       }
-    } else {
-      setQuantity(quantity >= 1 ? quantity : 1);
-    }
-  };
-  const addToCart = () => {
-    if (!isIncludeCard() && product.inStock) {
-      const item = { ...product, quantity };
-      setCartProducts((pre) => [...pre, item]);
-    }
-  };
-  return (
-    <section className="product-single container">
-      <div className="row">
-        <div className="col-lg-7">
-          <ProductSlider1 images={product.images} title={product.title} />
-        </div>
-        <div className="col-lg-5">
-          <div className="d-flex justify-content-between mb-4 pb-md-2">
-            <div className="breadcrumb mb-0 d-none d-md-block flex-grow-1">
-              <BreadCumb />
-            </div>
-            {/* <!-- /.breadcrumb --> */}
 
-            <div className="product-single__prev-next d-flex align-items-center justify-content-between justify-content-md-end flex-grow-1">
-              <a className="text-uppercase fw-medium">
-                <svg
-                  className="mb-1px"
-                  width="10"
-                  height="10"
-                  viewBox="0 0 25 25"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <use href="#icon_prev_md" />
-                </svg>
-                <span className="menu-link menu-link_us-s">Prev</span>
-              </a>
-              <a className="text-uppercase fw-medium">
-                <span className="menu-link menu-link_us-s">Next</span>
-                <svg
-                  className="mb-1px"
-                  width="10"
-                  height="10"
-                  viewBox="0 0 25 25"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <use href="#icon_next_md" />
-                </svg>
-              </a>
-            </div>
-            {/* <!-- /.shop-acs --> */}
-          </div>
-          <h1 className="product-single__name">{product.title}</h1>
-          <div className="product-single__rating">
-            <div className="reviews-group d-flex">
-              <Star stars={5} />
-            </div>
-            <span className="reviews-note text-lowercase text-secondary ms-1">
-              {product.reviews}
-            </span>
-          </div>
-          <div className="product-single__price">
-            <span className="current-price">{product.priceDisplay}</span>
-          </div>
-          <div className="product-single__short-desc">
-            {product.shortDescriptionHtml ? (
-              <div
-                dangerouslySetInnerHTML={{ __html: product.shortDescriptionHtml }}
-              />
-            ) : (
-              <p>{product.shortDescriptionText}</p>
-            )}
-          </div>
-          <form onSubmit={(e) => e.preventDefault()}>
-            <div className="product-single__swatches">
-              {product.sizeOptions?.length ? (
-                <div className="product-swatch text-swatches">
-                  <label>Sizes</label>
-                  <div className="swatch-list">
-                    <Size sizes={product.sizeOptions} />
-                  </div>
-                  <a
-                    href="#"
-                    className="sizeguide-link"
-                    data-bs-toggle="modal"
-                    data-bs-target="#sizeGuide"
-                  >
-                    Size Guide
-                  </a>
+      return [
+        ...previous,
+        {
+          ...product,
+          quantity: nextQuantity,
+          selectedSize: selectedSize || "",
+        },
+      ];
+    });
+
+    if (redirectToCheckout) {
+      router.push("/shop_checkout");
+      return;
+    }
+
+    openCart();
+  };
+
+  if (!currentImage) {
+    return null;
+  }
+
+  return (
+    <section className="dosalga-detail">
+      <div className="container">
+        <div className="row gy-5 align-items-start">
+          <div className="col-lg-6">
+            <div className="dosalga-detail__media">
+              {product.images?.length > 1 ? (
+                <div className="dosalga-detail__thumbs" aria-label="Miniaturas del producto">
+                  {product.images.map((image, index) => (
+                    <button
+                      key={`${product.id}-${index}`}
+                      type="button"
+                      className={
+                        index === selectedImageIndex
+                          ? "dosalga-detail__thumb is-active"
+                          : "dosalga-detail__thumb"
+                      }
+                      onClick={() => setSelectedImageIndex(index)}
+                    >
+                      <Image
+                        src={image.thumbnail || image.src}
+                        alt={image.alt || product.title}
+                        fill
+                        sizes="96px"
+                      />
+                    </button>
+                  ))}
                 </div>
               ) : null}
-              {product.colorSwatches?.length ? (
-                <div className="product-swatch color-swatches">
-                  <label>Color</label>
-                  <div className="swatch-list">
-                    <Colors colors={product.colorSwatches} />
-                  </div>
-                </div>
-              ) : null}
-            </div>
-            <div className="product-single__addtocart">
-              <div className="qty-control position-relative">
-                <input
-                  type="number"
-                  name="quantity"
-                  value={isIncludeCard() ? isIncludeCard().quantity : quantity}
-                  min="1"
-                  onChange={(e) =>
-                    setQuantityCartItem(product.id, Number(e.target.value))
-                  }
-                  className="qty-control__number text-center"
+
+              <div className="dosalga-detail__main-image">
+                <Image
+                  src={currentImage.src}
+                  alt={currentImage.alt || product.title}
+                  fill
+                  sizes="(max-width: 991px) 100vw, 50vw"
+                  priority
                 />
-                <div
-                  onClick={() =>
-                    setQuantityCartItem(
-                      product.id,
-                      isIncludeCard()?.quantity - 1 || quantity - 1
-                    )
-                  }
-                  className="qty-control__reduce"
-                >
-                  -
-                </div>
-                <div
-                  onClick={() =>
-                    setQuantityCartItem(
-                      product.id,
-                      isIncludeCard()?.quantity + 1 || quantity + 1
-                    )
-                  }
-                  className="qty-control__increase"
-                >
-                  +
-                </div>
               </div>
-              {/* <!-- .qty-control --> */}
-              <button
-                type="submit"
-                className="btn btn-primary btn-addtocart js-open-aside"
-                disabled={!product.inStock}
-                onClick={() => addToCart()}
-              >
-                {!product.inStock
-                  ? "Out of Stock"
-                  : isIncludeCard()
-                    ? "Already Added"
-                    : "Add to Cart"}
-              </button>
-            </div>
-          </form>
-          <div className="product-single__addtolinks">
-            <a href="#" className="menu-link menu-link_us-s add-to-wishlist">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <use href="#icon_heart" />
-              </svg>
-              <span>Add to Wishlist</span>
-            </a>
-            <ShareComponent title={product.title} />
-          </div>
-          <div className="product-single__meta-info">
-            <div className="meta-item">
-              <label>SKU:</label>
-              <span>{product.sku || "N/A"}</span>
-            </div>
-            <div className="meta-item">
-              <label>Categories:</label>
-              <span>{product.categories?.join(", ") || "Uncategorized"}</span>
-            </div>
-            <div className="meta-item">
-              <label>Tags:</label>
-              <span>{product.tags?.join(", ") || "No tags"}</span>
             </div>
           </div>
-        </div>
-      </div>
-      <div className="product-single__details-tab">
-        <ul className="nav nav-tabs" id="myTab1" role="tablist">
-          <li className="nav-item" role="presentation">
-            <a
-              className="nav-link nav-link_underscore active"
-              id="tab-description-tab"
-              data-bs-toggle="tab"
-              href="#tab-description"
-              role="tab"
-              aria-controls="tab-description"
-              aria-selected="true"
-            >
-              Description
-            </a>
-          </li>
-          <li className="nav-item" role="presentation">
-            <a
-              className="nav-link nav-link_underscore"
-              id="tab-additional-info-tab"
-              data-bs-toggle="tab"
-              href="#tab-additional-info"
-              role="tab"
-              aria-controls="tab-additional-info"
-              aria-selected="false"
-            >
-              Additional Information
-            </a>
-          </li>
-          <li className="nav-item" role="presentation">
-            <a
-              className="nav-link nav-link_underscore"
-              id="tab-reviews-tab"
-              data-bs-toggle="tab"
-              href="#tab-reviews"
-              role="tab"
-              aria-controls="tab-reviews"
-              aria-selected="false"
-            >
-              Reviews ({product.reviewCount})
-            </a>
-          </li>
-        </ul>
-        <div className="tab-content">
-          <div
-            className="tab-pane fade show active"
-            id="tab-description"
-            role="tabpanel"
-            aria-labelledby="tab-description-tab"
-          >
-            <div
-              className="product-single__description"
-              dangerouslySetInnerHTML={{ __html: descriptionHtml }}
-            />
-          </div>
-          <div
-            className="tab-pane fade"
-            id="tab-additional-info"
-            role="tabpanel"
-            aria-labelledby="tab-additional-info-tab"
-          >
-            {additionalInformation.length ? (
-              <div className="product-single__addtional-info">
-                {additionalInformation.map((item) => (
-                  <div key={item.name} className="item">
-                    <label className="h6">{item.name}</label>
-                    <span>{item.values.join(", ")}</span>
+
+          <div className="col-lg-6">
+            <div className="dosalga-detail__content">
+              <h1>{product.title}</h1>
+
+              <div className="dosalga-detail__rating">
+                <div className="dosalga-detail__stars">{renderStars(product.rating)}</div>
+                <p>{reviewLabel}</p>
+              </div>
+
+              <p className="dosalga-detail__summary">
+                <strong>Información del producto:</strong> {summaryText}
+              </p>
+
+              <p className="dosalga-detail__price">{product.priceDisplay}</p>
+
+              <div className="dosalga-detail__selectors">
+                <div className="dosalga-detail__selector">
+                  <h2>Cantidad</h2>
+                  <div className="dosalga-detail__quantity">
+                    <button
+                      type="button"
+                      onClick={() => setQuantity((current) => Math.max(1, current - 1))}
+                    >
+                      -
+                    </button>
+                    <span>{quantity}</span>
+                    <button
+                      type="button"
+                      onClick={() => setQuantity((current) => current + 1)}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+
+                {product.sizeOptions?.length ? (
+                  <div className="dosalga-detail__selector">
+                    <h2>Talla</h2>
+                    <div className="dosalga-detail__chips">
+                      {product.sizeOptions.map((size) => (
+                        <button
+                          key={size}
+                          type="button"
+                          className={
+                            selectedSize === size
+                              ? "dosalga-detail__chip is-active"
+                              : "dosalga-detail__chip"
+                          }
+                          onClick={() => setSelectedSize(size)}
+                        >
+                          {size}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+
+              <div className="dosalga-detail__cta">
+                <button
+                  type="button"
+                  className="dosalga-detail__primary-btn"
+                  disabled={!product.inStock}
+                  onClick={() => updateCart(false)}
+                >
+                  {product.inStock ? "Agregar al carrito" : "Agotado"}
+                </button>
+                <button
+                  type="button"
+                  className="dosalga-detail__secondary-btn"
+                  disabled={!product.inStock}
+                  onClick={() => updateCart(true)}
+                >
+                  Comprar ahora
+                </button>
+              </div>
+
+              <div className="dosalga-detail__meta">
+                {detailRows.map((row) => (
+                  <div key={row.label} className="dosalga-detail__meta-item">
+                    <span>{row.label}:</span>
+                    <strong>{row.value}</strong>
                   </div>
                 ))}
               </div>
-            ) : (
-              <div className="product-single__addtional-info">
-                <div className="item">
-                  <label className="h6">Stock</label>
-                  <span>{product.inStock ? "In stock" : "Out of stock"}</span>
-                </div>
-              </div>
-            )}
+            </div>
           </div>
-          <div
-            className="tab-pane fade"
-            id="tab-reviews"
-            role="tabpanel"
-            aria-labelledby="tab-reviews-tab"
-          >
-            <Reviews />
+        </div>
+
+        <div className="dosalga-detail__extra row gy-4">
+          <div className="col-lg-8">
+            <div className="dosalga-detail__panel">
+              <h2>Descripción</h2>
+              <div
+                className="dosalga-detail__description"
+                dangerouslySetInnerHTML={{
+                  __html:
+                    product.descriptionHtml ||
+                    `<p>${product.descriptionText || summaryText}</p>`,
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="dosalga-detail__panel">
+              <h2>Información adicional</h2>
+              <div className="dosalga-detail__attributes">
+                {product.attributes?.length ? (
+                  product.attributes.map((attribute) => (
+                    <div key={attribute.name} className="dosalga-detail__attribute">
+                      <span>{attribute.name}</span>
+                      <strong>{attribute.values.join(", ")}</strong>
+                    </div>
+                  ))
+                ) : (
+                  <div className="dosalga-detail__attribute">
+                    <span>Stock</span>
+                    <strong>{product.inStock ? "Disponible" : "Agotado"}</strong>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .dosalga-detail {
+          padding: 5rem 0 6rem;
+        }
+
+        .dosalga-detail__media {
+          display: grid;
+          grid-template-columns: 92px minmax(0, 1fr);
+          gap: 18px;
+          align-items: start;
+        }
+
+        .dosalga-detail__thumbs {
+          display: grid;
+          gap: 14px;
+          max-height: 760px;
+          overflow-y: auto;
+          padding-right: 4px;
+        }
+
+        .dosalga-detail__thumb {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 1;
+          border: 1px solid #d9d9d9;
+          background: #fff;
+          overflow: hidden;
+          transition: border-color 0.2s ease;
+        }
+
+        .dosalga-detail__thumb.is-active {
+          border-color: #1f1f1f;
+        }
+
+        .dosalga-detail__thumb :global(img) {
+          object-fit: cover;
+        }
+
+        .dosalga-detail__main-image {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 1 / 1.05;
+          background: #f6f6f6;
+          overflow: hidden;
+        }
+
+        .dosalga-detail__main-image :global(img) {
+          object-fit: contain;
+        }
+
+        .dosalga-detail__content h1 {
+          margin: 0;
+          color: #131313;
+          font-size: clamp(2rem, 2.7vw, 3.5rem);
+          line-height: 1.08;
+          font-weight: 700;
+          letter-spacing: -0.03em;
+        }
+
+        .dosalga-detail__rating {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-top: 1.25rem;
+        }
+
+        .dosalga-detail__rating p {
+          margin: 0;
+          color: #4d4d4d;
+          font-size: 1rem;
+        }
+
+        .dosalga-detail__stars {
+          display: flex;
+          gap: 8px;
+        }
+
+        .dosalga-detail__star {
+          color: #d7d7d7;
+          font-size: 1.45rem;
+          line-height: 1;
+        }
+
+        .dosalga-detail__star.is-active {
+          color: #f2ab00;
+        }
+
+        .dosalga-detail__summary {
+          margin: 1.75rem 0 0;
+          color: #666666;
+          font-size: 1rem;
+          line-height: 1.7;
+        }
+
+        .dosalga-detail__summary strong {
+          color: #3b3b3b;
+          font-weight: 600;
+        }
+
+        .dosalga-detail__price {
+          margin: 1.8rem 0 0;
+          color: #1f1f1f;
+          font-size: clamp(2rem, 1vw + 1.5rem, 2.7rem);
+          font-weight: 700;
+          line-height: 1;
+        }
+
+        .dosalga-detail__selectors {
+          display: grid;
+          gap: 1.75rem;
+          margin-top: 2.25rem;
+        }
+
+        .dosalga-detail__selector h2 {
+          margin: 0 0 1rem;
+          font-size: 1.15rem;
+          font-weight: 700;
+        }
+
+        .dosalga-detail__quantity {
+          display: inline-flex;
+          align-items: center;
+          gap: 1rem;
+        }
+
+        .dosalga-detail__quantity button,
+        .dosalga-detail__quantity span {
+          width: 46px;
+          height: 42px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #d9d9d9;
+          background: #fff;
+          color: #1f1f1f;
+          font-size: 1.4rem;
+          font-weight: 600;
+        }
+
+        .dosalga-detail__quantity span {
+          font-size: 1.1rem;
+        }
+
+        .dosalga-detail__chips {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+
+        .dosalga-detail__chip {
+          min-width: 72px;
+          min-height: 50px;
+          border: 1px solid #d9d9d9;
+          background: #fff;
+          color: #1f1f1f;
+          font-size: 1rem;
+          font-weight: 700;
+          padding: 10px 16px;
+        }
+
+        .dosalga-detail__chip.is-active {
+          border-color: #1f1f1f;
+          background: #1f1f1f;
+          color: #fff;
+        }
+
+        .dosalga-detail__cta {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 18px;
+          margin-top: 2.25rem;
+          padding-bottom: 2.25rem;
+          border-bottom: 1px solid #1f1f1f;
+        }
+
+        .dosalga-detail__primary-btn,
+        .dosalga-detail__secondary-btn {
+          min-width: 220px;
+          min-height: 66px;
+          border: 1px solid #1f1f1f;
+          font-size: 1.1rem;
+          font-weight: 700;
+          padding: 16px 28px;
+        }
+
+        .dosalga-detail__primary-btn {
+          background: #1f1f1f;
+          color: #fff;
+        }
+
+        .dosalga-detail__secondary-btn {
+          background: #fff;
+          color: #1f1f1f;
+        }
+
+        .dosalga-detail__primary-btn:disabled,
+        .dosalga-detail__secondary-btn:disabled {
+          opacity: 0.55;
+          cursor: not-allowed;
+        }
+
+        .dosalga-detail__meta {
+          display: grid;
+          gap: 14px;
+          margin-top: 1.8rem;
+        }
+
+        .dosalga-detail__meta-item {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          color: #6b6b6b;
+          font-size: 1rem;
+        }
+
+        .dosalga-detail__meta-item span {
+          color: #1f1f1f;
+          font-weight: 600;
+        }
+
+        .dosalga-detail__meta-item strong {
+          color: #6b6b6b;
+          font-weight: 500;
+        }
+
+        .dosalga-detail__extra {
+          margin-top: 4.5rem;
+        }
+
+        .dosalga-detail__panel {
+          height: 100%;
+          border: 1px solid #ececec;
+          background: #fff;
+          padding: 2rem;
+        }
+
+        .dosalga-detail__panel h2 {
+          margin: 0 0 1.25rem;
+          font-size: 1.4rem;
+          font-weight: 700;
+        }
+
+        .dosalga-detail__description :global(p) {
+          color: #666;
+          line-height: 1.75;
+        }
+
+        .dosalga-detail__description :global(ul) {
+          padding-left: 1.2rem;
+          color: #666;
+        }
+
+        .dosalga-detail__attributes {
+          display: grid;
+          gap: 16px;
+        }
+
+        .dosalga-detail__attribute {
+          display: grid;
+          gap: 6px;
+          padding-bottom: 16px;
+          border-bottom: 1px solid #efefef;
+        }
+
+        .dosalga-detail__attribute:last-child {
+          padding-bottom: 0;
+          border-bottom: 0;
+        }
+
+        .dosalga-detail__attribute span {
+          color: #8a8a8a;
+          font-size: 0.95rem;
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+        }
+
+        .dosalga-detail__attribute strong {
+          color: #1f1f1f;
+          font-weight: 600;
+        }
+
+        @media (max-width: 991px) {
+          .dosalga-detail {
+            padding-top: 3rem;
+          }
+
+          .dosalga-detail__media {
+            grid-template-columns: 1fr;
+          }
+
+          .dosalga-detail__thumbs {
+            order: 2;
+            grid-auto-flow: column;
+            grid-auto-columns: 92px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            max-height: none;
+            padding-bottom: 4px;
+          }
+
+          .dosalga-detail__main-image {
+            order: 1;
+          }
+        }
+
+        @media (max-width: 767px) {
+          .dosalga-detail__cta {
+            gap: 12px;
+          }
+
+          .dosalga-detail__primary-btn,
+          .dosalga-detail__secondary-btn {
+            width: 100%;
+            min-width: 0;
+          }
+
+          .dosalga-detail__panel {
+            padding: 1.5rem;
+          }
+        }
+      `}</style>
     </section>
   );
 }

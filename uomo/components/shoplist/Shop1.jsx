@@ -1,311 +1,523 @@
 "use client";
-import { products51 } from "@/data/products/fashion";
-import { Swiper, SwiperSlide } from "swiper/react";
-import Star from "../common/Star";
-import ColorSelection from "../common/ColorSelection";
-import { Navigation } from "swiper/modules";
-import Pagination1 from "../common/Pagination1";
-import { useEffect, useState } from "react";
-import BreadCumb from "./BreadCumb";
-import Link from "next/link";
-import { useContextElement } from "@/context/Context";
-const itemPerRow = [2, 3, 4];
-import Image from "next/image";
-import { openModalShopFilter } from "@/utlis/aside";
-import {
-  menuCategories,
-  sortingOptions,
-} from "@/data/products/productCategories";
-export default function Shop1() {
-  const { toggleWishlist, isAddedtoWishlist } = useContextElement();
-  const [selectedColView, setSelectedColView] = useState(4);
 
-  const { addProductToCart, isAddedToCartProducts } = useContextElement();
-  const [currentCategory, setCurrentCategory] = useState(menuCategories[0]);
-  const [filtered, setFiltered] = useState(products51);
+import DosalgaProductCard from "@/components/common/DosalgaProductCard";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useMemo, useRef, useState } from "react";
+
+const SORT_OPTIONS = [
+  { value: "newest", label: "Más reciente" },
+  { value: "oldest", label: "Más antiguo" },
+  { value: "price_low", label: "Precio: menor a mayor" },
+  { value: "price_high", label: "Precio: mayor a menor" },
+  { value: "popular", label: "Más populares" },
+];
+
+function buildFallbackCategories(products = []) {
+  const categoryMap = new Map();
+
+  products.forEach((product) => {
+    product.categoryIds?.forEach((categoryId, index) => {
+      const categoryName = product.categories?.[index] || product.category;
+
+      if (!categoryId || !categoryName) {
+        return;
+      }
+
+      const current = categoryMap.get(categoryId) || {
+        id: categoryId,
+        name: categoryName,
+        count: 0,
+      };
+
+      current.count += 1;
+      categoryMap.set(categoryId, current);
+    });
+  });
+
+  return Array.from(categoryMap.values());
+}
+
+function sortProducts(products, sortKey) {
+  const nextProducts = [...products];
+
+  switch (sortKey) {
+    case "oldest":
+      return nextProducts.sort((left, right) => {
+        const leftDate = new Date(left.createdAt || 0).getTime();
+        const rightDate = new Date(right.createdAt || 0).getTime();
+
+        return leftDate - rightDate || left.id - right.id;
+      });
+    case "price_low":
+      return nextProducts.sort((left, right) => left.price - right.price);
+    case "price_high":
+      return nextProducts.sort((left, right) => right.price - left.price);
+    case "popular":
+      return nextProducts.sort((left, right) => {
+        return (
+          right.reviewCount - left.reviewCount ||
+          right.rating - left.rating ||
+          right.id - left.id
+        );
+      });
+    case "newest":
+    default:
+      return nextProducts.sort((left, right) => {
+        const leftDate = new Date(left.createdAt || 0).getTime();
+        const rightDate = new Date(right.createdAt || 0).getTime();
+
+        return rightDate - leftDate || right.id - left.id;
+      });
+  }
+}
+
+export default function Shop1({ products = [], categories = [] }) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [sortKey, setSortKey] = useState("newest");
+  const [columnCount, setColumnCount] = useState(4);
+
+  const sidebarRef = useRef(null);
+  const toggleRef = useRef(null);
+
   useEffect(() => {
-    if (currentCategory == "All") {
-      setFiltered(products51);
-    } else {
-      setFiltered(
-        products51.filter((elm) => elm.filterCategory2 == currentCategory)
-      );
+    if (!isSidebarOpen) {
+      return undefined;
     }
-  }, [currentCategory]);
+
+    const handleOutsideClick = (event) => {
+      const clickedInsideSidebar = sidebarRef.current?.contains(event.target);
+      const clickedToggle = toggleRef.current?.contains(event.target);
+
+      if (!clickedInsideSidebar && !clickedToggle) {
+        setIsSidebarOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [isSidebarOpen]);
+
+  const availableCategories = useMemo(() => {
+    const fallbackCategories = buildFallbackCategories(products);
+
+    if (!categories.length) {
+      return fallbackCategories;
+    }
+
+    return categories.filter((category) =>
+      products.some((product) => product.categoryIds?.includes(category.id))
+    );
+  }, [categories, products]);
+
+  const filteredProducts = useMemo(() => {
+    const nextProducts = selectedCategory
+      ? products.filter((product) =>
+          product.categoryIds?.includes(Number(selectedCategory))
+        )
+      : products;
+
+    return sortProducts(nextProducts, sortKey);
+  }, [products, selectedCategory, sortKey]);
+
+  const topProducts = useMemo(() => {
+    return sortProducts(products, "popular").slice(0, 3);
+  }, [products]);
+
+  const gridColumnClass =
+    columnCount === 2
+      ? "col-md-6"
+      : columnCount === 3
+        ? "col-md-6 col-xl-4"
+        : "col-md-6 col-xl-3";
 
   return (
-    <>
-      <section className="full-width_padding">
-        <div
-          className="full-width_border border-2"
-          style={{ borderColor: "#eeeeee" }}
-        >
-          <div className="shop-banner position-relative">
-            <div
-              className="background-img"
-              style={{ backgroundColor: "#eeeeee" }}
+    <section className="dosalga-shop container">
+      <div className="dosalga-shop__toolbar">
+        <p className="dosalga-shop__count">
+          Mostrando {filteredProducts.length} producto
+          {filteredProducts.length === 1 ? "" : "s"}
+        </p>
+
+        <div className="dosalga-shop__controls">
+          <button
+            type="button"
+            className="dosalga-shop__filter-btn"
+            ref={toggleRef}
+            onClick={() => setIsSidebarOpen((previous) => !previous)}
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 14 10"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <Image
-                loading="lazy"
-                src="/assets/images/shop/shop_banner_character1.png"
-                width="1759"
-                height="420"
-                alt="Pattern"
-                className="slideshow-bg__img object-fit-cover"
-              />
-            </div>
+              <use href="#icon_filter" />
+            </svg>
+            <span>Filtros</span>
+          </button>
 
-            <div className="shop-banner__content container position-absolute start-50 top-50 translate-middle">
-              <h2 className="stroke-text h1 smooth-16 text-uppercase fw-bold mb-3 mb-xl-4 mb-xl-5">
-                Jackets & Coats
-              </h2>
-              <ul className="d-flex flex-wrap list-unstyled text-uppercase h6">
-                {menuCategories.map((elm, i) => (
-                  <li key={i} className="me-3 me-xl-4 pe-1">
-                    <a
-                      onClick={() => setCurrentCategory(elm)}
-                      className={`menu-link menu-link_us-s ${
-                        currentCategory == elm ? "menu-link_active" : ""
-                      }`}
-                    >
-                      {elm}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {/* <!-- /.shop-banner__content --> */}
-          </div>
-          {/* <!-- /.shop-banner position-relative --> */}
-        </div>
-        {/* <!-- /.full-width_border --> */}
-      </section>
-      <div className="mb-4 pb-lg-3"></div>
-      <section className="shop-main container">
-        <div className="d-flex justify-content-between mb-4 pb-md-2">
-          <div className="breadcrumb mb-0 d-none d-md-block flex-grow-1">
-            <BreadCumb />
-          </div>
+          <select
+            className="dosalga-shop__sort"
+            value={sortKey}
+            onChange={(event) => setSortKey(event.target.value)}
+            aria-label="Ordenar productos"
+          >
+            {SORT_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
 
-          <div className="shop-acs d-flex align-items-center justify-content-between justify-content-md-end flex-grow-1">
-            <select
-              className="shop-acs__select form-select w-auto border-0 py-0 order-1 order-md-0"
-              aria-label="Sort Items"
-              name="total-number"
-            >
-              {sortingOptions.map((option, index) => (
-                <option key={index} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-
-            <div className="shop-asc__seprator mx-3 bg-light d-none d-md-block order-md-0"></div>
-
-            <div className="col-size align-items-center order-1 d-none d-lg-flex">
-              <span className="text-uppercase fw-medium me-2">View</span>
-              {itemPerRow.map((elm, i) => (
-                <button
-                  key={i}
-                  onClick={() => setSelectedColView(elm)}
-                  className={`btn-link fw-medium me-2 js-cols-size ${
-                    selectedColView == elm ? "btn-link_active" : ""
-                  } `}
-                >
-                  {elm}
-                </button>
-              ))}
-            </div>
-            {/* <!-- /.col-size --> */}
-
-            <div className="shop-asc__seprator mx-3 bg-light d-none d-lg-block order-md-1"></div>
-
-            <div className="shop-filter d-flex align-items-center order-0 order-md-3">
+          <div className="dosalga-shop__views" aria-label="Cambiar vista">
+            {[2, 3, 4].map((count) => (
               <button
-                className="btn-link btn-link_f d-flex align-items-center ps-0 js-open-aside"
-                onClick={openModalShopFilter}
+                key={count}
+                type="button"
+                className={columnCount === count ? "is-active" : ""}
+                onClick={() => setColumnCount(count)}
               >
-                <svg
-                  className="d-inline-block align-middle me-2"
-                  width="14"
-                  height="10"
-                  viewBox="0 0 14 10"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <use href="#icon_filter" />
-                </svg>
-                <span className="text-uppercase fw-medium d-inline-block align-middle">
-                  Filter
-                </span>
+                {count}
               </button>
-            </div>
-            {/* <!-- /.col-size d-flex align-items-center ms-auto ms-md-3 --> */}
+            ))}
           </div>
-          {/* <!-- /.shop-acs --> */}
         </div>
-        {/* <!-- /.d-flex justify-content-between --> */}
+      </div>
 
-        <div
-          className={`products-grid row row-cols-2 row-cols-md-3 row-cols-lg-${selectedColView}`}
-          id="products-grid"
-        >
-          {products51.map((elm, i) => (
-            <div key={i} className="product-card-wrapper">
-              <div className="product-card mb-3 mb-md-4 mb-xxl-5">
-                <div className="pc__img-wrapper">
-                  <Swiper
-                    className="swiper swiper-container swiper-initialized swiper-horizontal swiper-backface-hidden background-img js-swiper-slider"
-                    slidesPerView={1}
-                    modules={[Navigation]}
-                    navigation={{
-                      prevEl: ".prev" + i,
-                      nextEl: ".next" + i,
-                    }}
-                  >
-                    {[elm.imgSrc, elm.imgSrc2].map((elm2, i) => (
-                      <SwiperSlide key={i} className="swiper-slide">
-                        <Link href={`/product1_simple/${elm.id}`}>
-                          <Image
-                            loading="lazy"
-                            src={elm2}
-                            width="330"
-                            height="400"
-                            alt="Cropped Faux leather Jacket"
-                            className="pc__img"
-                          />
-                        </Link>
-                      </SwiperSlide>
-                    ))}
+      <div
+        className={`dosalga-shop__backdrop ${isSidebarOpen ? "is-open" : ""}`}
+        onClick={() => setIsSidebarOpen(false)}
+      />
 
-                    <span
-                      className={`cursor-pointer pc__img-prev ${"prev" + i} `}
-                    >
-                      <svg
-                        width="7"
-                        height="11"
-                        viewBox="0 0 7 11"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <use href="#icon_prev_sm" />
-                      </svg>
-                    </span>
-                    <span
-                      className={`cursor-pointer pc__img-next ${"next" + i} `}
-                    >
-                      <svg
-                        width="7"
-                        height="11"
-                        viewBox="0 0 7 11"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <use href="#icon_next_sm" />
-                      </svg>
-                    </span>
-                  </Swiper>
-                  <button
-                    className="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium js-add-cart js-open-aside"
-                    onClick={() => addProductToCart(elm.id)}
-                    title={
-                      isAddedToCartProducts(elm.id)
-                        ? "Already Added"
-                        : "Add to Cart"
-                    }
-                  >
-                    {isAddedToCartProducts(elm.id)
-                      ? "Already Added"
-                      : "Add To Cart"}
-                  </button>
-                </div>
+      <aside
+        ref={sidebarRef}
+        className={`dosalga-shop__sidebar ${isSidebarOpen ? "is-open" : ""}`}
+      >
+        <div className="dosalga-shop__sidebar-section">
+          <h2>Categorías</h2>
+          <button
+            type="button"
+            className={`dosalga-shop__category ${
+              selectedCategory ? "" : "is-active"
+            }`}
+            onClick={() => {
+              setSelectedCategory("");
+              setIsSidebarOpen(false);
+            }}
+          >
+            Todos los productos
+          </button>
 
-                <div className="pc__info position-relative">
-                  <p className="pc__category">{elm.category}</p>
-                  <h6 className="pc__title">
-                    <Link href={`/product1_simple/${elm.id}`}>{elm.title}</Link>
-                  </h6>
-                  <div className="product-card__price d-flex">
-                    {elm.priceOld ? (
-                      <>
-                        {" "}
-                        <span className="money price price-old">
-                          ${elm.priceOld}
-                        </span>
-                        <span className="money price price-sale">
-                          ${elm.price}
-                        </span>
-                      </>
-                    ) : (
-                      <span className="money price">${elm.price}</span>
-                    )}
-                  </div>
-                  {elm.colors && (
-                    <div className="d-flex align-items-center mt-1">
-                      {" "}
-                      <ColorSelection />{" "}
-                    </div>
-                  )}
-                  {elm.reviews && (
-                    <div className="product-card__review d-flex align-items-center">
-                      <div className="reviews-group d-flex">
-                        <Star stars={elm.rating} />
-                      </div>
-                      <span className="reviews-note text-lowercase text-secondary ms-1">
-                        {elm.reviews}
-                      </span>
-                    </div>
-                  )}
+          {availableCategories.map((category) => (
+            <button
+              key={category.id}
+              type="button"
+              className={`dosalga-shop__category ${
+                String(category.id) === selectedCategory ? "is-active" : ""
+              }`}
+              onClick={() => {
+                setSelectedCategory(String(category.id));
+                setIsSidebarOpen(false);
+              }}
+            >
+              <span>{category.name}</span>
+              <small>{category.count}</small>
+            </button>
+          ))}
+        </div>
 
-                  <button
-                    className={`pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 js-add-wishlist ${
-                      isAddedtoWishlist(elm.id) ? "active" : ""
-                    }`}
-                    onClick={() => toggleWishlist(elm.id)}
-                    title="Add To Wishlist"
-                  >
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <use href="#icon_heart" />
-                    </svg>
-                  </button>
-                </div>
-                {elm.discont && (
-                  <div className="pc-labels position-absolute top-0 start-0 w-100 d-flex justify-content-between">
-                    <div className="pc-labels__right ms-auto">
-                      <span className="pc-label pc-label_sale d-block text-white">
-                        -{elm.discont}%
-                      </span>
-                    </div>
-                  </div>
-                )}
-                {elm.isNew && (
-                  <div className="pc-labels position-absolute top-0 start-0 w-100 d-flex justify-content-between">
-                    <div className="pc-labels__left">
-                      <span className="pc-label pc-label_new d-block bg-white">
-                        NEW
-                      </span>
-                    </div>
-                  </div>
-                )}
-              </div>
+        {topProducts.length ? (
+          <div className="dosalga-shop__sidebar-section">
+            <h2>Productos destacados</h2>
+
+            <div className="dosalga-shop__top-products">
+              {topProducts.map((product) => (
+                <Link
+                  key={product.id}
+                  href={`/shop/product/${product.id}`}
+                  className="dosalga-shop__top-product"
+                  onClick={() => setIsSidebarOpen(false)}
+                >
+                  <span className="dosalga-shop__top-product-image">
+                    <Image
+                      src={product.imgSrc}
+                      alt={product.title}
+                      fill
+                      sizes="96px"
+                    />
+                  </span>
+                  <span className="dosalga-shop__top-product-content">
+                    <strong>{product.title}</strong>
+                    <span>{product.priceDisplay}</span>
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        ) : null}
+      </aside>
+
+      {filteredProducts.length ? (
+        <div className="row g-4">
+          {filteredProducts.map((product) => (
+            <div key={product.id} className={gridColumnClass}>
+              <DosalgaProductCard
+                product={product}
+                detailHref={`/shop/product/${product.id}`}
+              />
             </div>
           ))}
         </div>
-        {/* <!-- /.products-grid row --> */}
-
-        <p className="mb-5 text-center fw-medium">SHOWING 36 of 497 items</p>
-        <Pagination1 />
-
-        <div className="text-center">
-          <a className="btn-link btn-link_lg text-uppercase fw-medium" href="#">
-            Show More
-          </a>
+      ) : (
+        <div className="dosalga-shop__empty">
+          <h3>No hay productos disponibles.</h3>
+          <p>Prueba con otra categoría o vuelve a cargar la tienda.</p>
         </div>
-      </section>
-    </>
+      )}
+
+      <style jsx>{`
+        .dosalga-shop {
+          position: relative;
+          padding-top: 7rem;
+          padding-bottom: 7rem;
+        }
+
+        .dosalga-shop__toolbar {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 20px;
+          margin-bottom: 2.75rem;
+        }
+
+        .dosalga-shop__count {
+          margin: 0;
+          color: #7c7c7c;
+          font-size: 1.05rem;
+        }
+
+        .dosalga-shop__controls {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: flex-end;
+          gap: 18px;
+        }
+
+        .dosalga-shop__filter-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          border: 0;
+          background: transparent;
+          color: #1f1f1f;
+          font-size: 1rem;
+          font-weight: 600;
+        }
+
+        .dosalga-shop__sort {
+          min-width: 240px;
+          height: 48px;
+          border: 1px solid #dcdcdc;
+          border-radius: 10px;
+          padding: 0 16px;
+          background: #fff;
+          color: #1f1f1f;
+        }
+
+        .dosalga-shop__views {
+          display: inline-flex;
+          align-items: center;
+          gap: 14px;
+        }
+
+        .dosalga-shop__views button {
+          width: 48px;
+          height: 48px;
+          border-radius: 999px;
+          border: 1px solid #d9d9d9;
+          background: #fff;
+          color: #1f1f1f;
+          font-size: 1.15rem;
+          font-weight: 700;
+        }
+
+        .dosalga-shop__views button.is-active {
+          background: #1f1f1f;
+          border-color: #1f1f1f;
+          color: #fff;
+        }
+
+        .dosalga-shop__backdrop {
+          position: fixed;
+          inset: 0;
+          background: rgba(15, 15, 15, 0.32);
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.2s ease;
+          z-index: 1090;
+        }
+
+        .dosalga-shop__backdrop.is-open {
+          opacity: 1;
+          pointer-events: auto;
+        }
+
+        .dosalga-shop__sidebar {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: min(360px, calc(100vw - 24px));
+          height: 100vh;
+          background: #fff;
+          z-index: 1100;
+          transform: translateX(-100%);
+          transition: transform 0.28s ease;
+          overflow-y: auto;
+          padding: 32px 24px;
+          box-shadow: 0 16px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .dosalga-shop__sidebar.is-open {
+          transform: translateX(0);
+        }
+
+        .dosalga-shop__sidebar-section + .dosalga-shop__sidebar-section {
+          margin-top: 2rem;
+          padding-top: 2rem;
+          border-top: 1px solid #ececec;
+        }
+
+        .dosalga-shop__sidebar-section h2 {
+          margin: 0 0 1rem;
+          font-size: 1.15rem;
+          font-weight: 700;
+        }
+
+        .dosalga-shop__category {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border: 0;
+          background: transparent;
+          padding: 12px 0;
+          color: #575757;
+          text-align: left;
+          border-bottom: 1px solid #f1f1f1;
+        }
+
+        .dosalga-shop__category small {
+          color: #9d9d9d;
+          font-size: 0.85rem;
+        }
+
+        .dosalga-shop__category.is-active {
+          color: #1f1f1f;
+          font-weight: 700;
+        }
+
+        .dosalga-shop__top-products {
+          display: grid;
+          gap: 16px;
+        }
+
+        .dosalga-shop__top-product {
+          display: grid;
+          grid-template-columns: 84px minmax(0, 1fr);
+          gap: 14px;
+          align-items: center;
+          text-decoration: none;
+        }
+
+        .dosalga-shop__top-product-image {
+          position: relative;
+          display: block;
+          width: 84px;
+          aspect-ratio: 1;
+          background: #f6f6f6;
+          overflow: hidden;
+        }
+
+        .dosalga-shop__top-product-image :global(img) {
+          object-fit: cover;
+        }
+
+        .dosalga-shop__top-product-content {
+          display: grid;
+          gap: 6px;
+        }
+
+        .dosalga-shop__top-product-content strong {
+          color: #1f1f1f;
+          font-size: 0.95rem;
+          line-height: 1.3;
+        }
+
+        .dosalga-shop__top-product-content span {
+          color: #1f1f1f;
+          font-weight: 700;
+        }
+
+        .dosalga-shop__empty {
+          padding: 5rem 1rem;
+          text-align: center;
+          border: 1px solid #ececec;
+          background: #fafafa;
+        }
+
+        .dosalga-shop__empty h3 {
+          margin-bottom: 0.75rem;
+          font-size: 1.4rem;
+        }
+
+        .dosalga-shop__empty p {
+          margin: 0;
+          color: #717171;
+        }
+
+        @media (max-width: 991px) {
+          .dosalga-shop {
+            padding-top: 4.5rem;
+            padding-bottom: 4.5rem;
+          }
+
+          .dosalga-shop__toolbar {
+            flex-direction: column;
+            align-items: stretch;
+          }
+
+          .dosalga-shop__controls {
+            justify-content: space-between;
+          }
+
+          .dosalga-shop__sort {
+            min-width: 0;
+            flex: 1 1 220px;
+          }
+        }
+
+        @media (max-width: 767px) {
+          .dosalga-shop__controls {
+            gap: 12px;
+          }
+
+          .dosalga-shop__filter-btn,
+          .dosalga-shop__sort {
+            width: 100%;
+          }
+
+          .dosalga-shop__views {
+            width: 100%;
+            justify-content: flex-end;
+          }
+        }
+      `}</style>
+    </section>
   );
 }

@@ -3,9 +3,8 @@ import Header1 from "@/components/headers/Header1";
 import SingleProduct12 from "@/components/singleProduct/SingleProduct12";
 import { getStoreProduct } from "@/lib/woocommerce";
 import { notFound } from "next/navigation";
-import React from "react";
 
-export default async function ProductDetailsPage1(props) {
+export default async function ShopProductPage(props) {
   const params = await props.params;
   const productId = params.id;
   const product = await getStoreProduct(productId);
