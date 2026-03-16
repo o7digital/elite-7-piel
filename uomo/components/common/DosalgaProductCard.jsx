@@ -136,22 +136,28 @@ export default function DosalgaProductCard({
         <h3 className="dosalga-card__title">
           <Link href={detailHref}>{product.title}</Link>
         </h3>
-        <p className="dosalga-card__category">{product.category}</p>
-        <p className="dosalga-card__price">{product.priceDisplay}</p>
-        <div className="dosalga-card__rating" aria-label="Valoración del producto">
-          {renderStars(product.rating)}
-        </div>
-        <div className="dosalga-card__share">
-          <span>{shareLabel}</span>
-          <button type="button" onClick={() => handleShare("x")}>
-            X
-          </button>
-          <button type="button" onClick={() => handleShare("facebook")}>
-            FB
-          </button>
-          <button type="button" onClick={() => handleShare("whatsapp")}>
-            WA
-          </button>
+
+        <div className="dosalga-card__meta">
+          <p className="dosalga-card__category">{product.category}</p>
+          <p className="dosalga-card__price">{product.priceDisplay}</p>
+          <div
+            className="dosalga-card__rating"
+            aria-label="Valoración del producto"
+          >
+            {renderStars(product.rating)}
+          </div>
+          <div className="dosalga-card__share">
+            <span>{shareLabel}</span>
+            <button type="button" onClick={() => handleShare("x")}>
+              X
+            </button>
+            <button type="button" onClick={() => handleShare("facebook")}>
+              FB
+            </button>
+            <button type="button" onClick={() => handleShare("whatsapp")}>
+              WA
+            </button>
+          </div>
         </div>
       </div>
 
@@ -274,6 +280,10 @@ export default function DosalgaProductCard({
           font-weight: 700;
           letter-spacing: -0.02em;
           max-width: 14ch;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 5;
+          overflow: hidden;
         }
 
         .dosalga-card__title :global(a) {
@@ -283,6 +293,15 @@ export default function DosalgaProductCard({
 
         .dosalga-card__title :global(a:hover) {
           color: #000000;
+        }
+
+        .dosalga-card__meta {
+          width: 100%;
+          margin-top: auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
         }
 
         .dosalga-card__category {
@@ -318,7 +337,6 @@ export default function DosalgaProductCard({
         }
 
         .dosalga-card__share {
-          margin-top: auto;
           padding-top: 12px;
           display: flex;
           flex-wrap: wrap;

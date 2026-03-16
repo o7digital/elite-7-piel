@@ -233,47 +233,11 @@ export default function SingleProduct12({ product }) {
           </div>
         </div>
 
-        <div className="dosalga-detail__extra row gy-4">
-          <div className="col-lg-8">
-            <div className="dosalga-detail__panel">
-              <h2>Descripción</h2>
-              <div
-                className="dosalga-detail__description"
-                dangerouslySetInnerHTML={{
-                  __html:
-                    product.descriptionHtml ||
-                    `<p>${product.descriptionText || summaryText}</p>`,
-                }}
-              />
-            </div>
-          </div>
-
-          <div className="col-lg-4">
-            <div className="dosalga-detail__panel">
-              <h2>Información adicional</h2>
-              <div className="dosalga-detail__attributes">
-                {product.attributes?.length ? (
-                  product.attributes.map((attribute) => (
-                    <div key={attribute.name} className="dosalga-detail__attribute">
-                      <span>{attribute.name}</span>
-                      <strong>{attribute.values.join(", ")}</strong>
-                    </div>
-                  ))
-                ) : (
-                  <div className="dosalga-detail__attribute">
-                    <span>Stock</span>
-                    <strong>{product.inStock ? "Disponible" : "Agotado"}</strong>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <style jsx>{`
         .dosalga-detail {
-          padding: 5rem 0 6rem;
+          padding: 5rem 0;
         }
 
         .dosalga-detail__media {
@@ -364,6 +328,10 @@ export default function SingleProduct12({ product }) {
           color: #666666;
           font-size: 1rem;
           line-height: 1.7;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 4;
+          overflow: hidden;
         }
 
         .dosalga-detail__summary strong {
@@ -381,7 +349,10 @@ export default function SingleProduct12({ product }) {
 
         .dosalga-detail__selectors {
           display: grid;
-          gap: 1.75rem;
+          grid-template-columns: minmax(0, 160px) minmax(0, 1fr);
+          column-gap: 2.25rem;
+          row-gap: 1.75rem;
+          align-items: start;
           margin-top: 2.25rem;
         }
 
@@ -474,8 +445,9 @@ export default function SingleProduct12({ product }) {
         }
 
         .dosalga-detail__meta {
-          display: grid;
-          gap: 14px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 14px 48px;
           margin-top: 1.8rem;
         }
 
@@ -495,62 +467,6 @@ export default function SingleProduct12({ product }) {
         .dosalga-detail__meta-item strong {
           color: #6b6b6b;
           font-weight: 500;
-        }
-
-        .dosalga-detail__extra {
-          margin-top: 4.5rem;
-        }
-
-        .dosalga-detail__panel {
-          height: 100%;
-          border: 1px solid #ececec;
-          background: #fff;
-          padding: 2rem;
-        }
-
-        .dosalga-detail__panel h2 {
-          margin: 0 0 1.25rem;
-          font-size: 1.4rem;
-          font-weight: 700;
-        }
-
-        .dosalga-detail__description :global(p) {
-          color: #666;
-          line-height: 1.75;
-        }
-
-        .dosalga-detail__description :global(ul) {
-          padding-left: 1.2rem;
-          color: #666;
-        }
-
-        .dosalga-detail__attributes {
-          display: grid;
-          gap: 16px;
-        }
-
-        .dosalga-detail__attribute {
-          display: grid;
-          gap: 6px;
-          padding-bottom: 16px;
-          border-bottom: 1px solid #efefef;
-        }
-
-        .dosalga-detail__attribute:last-child {
-          padding-bottom: 0;
-          border-bottom: 0;
-        }
-
-        .dosalga-detail__attribute span {
-          color: #8a8a8a;
-          font-size: 0.95rem;
-          text-transform: uppercase;
-          letter-spacing: 0.04em;
-        }
-
-        .dosalga-detail__attribute strong {
-          color: #1f1f1f;
-          font-weight: 600;
         }
 
         @media (max-width: 991px) {
@@ -575,6 +491,10 @@ export default function SingleProduct12({ product }) {
           .dosalga-detail__main-image {
             order: 1;
           }
+
+          .dosalga-detail__selectors {
+            grid-template-columns: 1fr;
+          }
         }
 
         @media (max-width: 767px) {
@@ -588,8 +508,8 @@ export default function SingleProduct12({ product }) {
             min-width: 0;
           }
 
-          .dosalga-detail__panel {
-            padding: 1.5rem;
+          .dosalga-detail__meta {
+            gap: 12px 24px;
           }
         }
       `}</style>

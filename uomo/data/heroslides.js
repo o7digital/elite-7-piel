@@ -460,14 +460,14 @@ export const slideData10 = [
   {
     id: 1,
     bgImage: "/assets/images/home/demo15/slider1_bg.jpg",
-    title: "Natural Glow",
+    title: "Resplandor",
     description:
       "Beaux products protect, moisturize, and lubricate your skin. It smartly nourish your skin. with lotions, day creams, night creams, tinted moisturizers, and more.",
   },
   {
     id: 2,
     bgImage: "/assets/images/home/demo15/slider2_bg.jpg",
-    title: "Natural Glow",
+    title: "Resplandor",
     description:
       "Beaux products protect, moisturize, and lubricate your skin. It smartly nourish your skin. with lotions, day creams, night creams, tinted moisturizers, and more.",
   },
