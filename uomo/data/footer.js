@@ -13,12 +13,11 @@ export const footerLinks2 = [
   { href: "/shop-1", text: "Shop All" },
 ];
 export const footerLinks3 = [
-  { href: "/about", text: "Customer Service" },
-  { href: "/account_dashboard", text: "My Account" },
-  { href: "/store_location", text: "Find a Store" },
-  { href: "/terms", text: "Legal & Privacy" },
-  { href: "/contact", text: "Contact" },
-  { href: "/about", text: "Gift Card" },
+  { href: "/contact", text: "Servicio al cliente" },
+  { href: "/account_dashboard", text: "Mi cuenta" },
+  { href: "/aviso-de-privacidad", text: "Aviso de Privacidad" },
+  { href: "/politica-de-cookies", text: "Política de Cookies" },
+  { href: "/contact", text: "Contacto" },
 ];
 
 export const languageOptions = [
