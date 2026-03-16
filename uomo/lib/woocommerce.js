@@ -1,7 +1,6 @@
 import "server-only";
 
 const DEFAULT_STORE_API_BASE = "https://oliviers52.sg-host.com/wp-json/wc/store/v1/";
-const DEFAULT_REVALIDATE_SECONDS = 300;
 const FALLBACK_IMAGE = "/assets/images/home/demo15/product-1.jpg";
 const DEFAULT_STOCK_STATUSES = ["instock", "outofstock", "onbackorder"];
 
@@ -69,7 +68,7 @@ function buildStoreApiUrl(base, pathname, params = {}) {
 
 async function storefrontFetchFromBase(base, pathname, params = {}, options = {}) {
   const response = await fetch(buildStoreApiUrl(base, pathname, params), {
-    next: { revalidate: DEFAULT_REVALIDATE_SECONDS },
+    cache: "no-store",
   });
 
   if (options.allowNotFound && response.status === 404) {
