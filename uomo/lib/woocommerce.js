@@ -1,10 +1,9 @@
 import "server-only";
 
-const STORE_API_BASE =
-  process.env.WORDPRESS_STORE_API_URL ||
-  "https://oliviers52.sg-host.com/wp-json/wc/store/v1/";
+const DEFAULT_STORE_API_BASE = "https://oliviers52.sg-host.com/wp-json/wc/store/v1/";
 const DEFAULT_REVALIDATE_SECONDS = 300;
 const FALLBACK_IMAGE = "/assets/images/home/demo15/product-1.jpg";
+const DEFAULT_STOCK_STATUSES = ["instock", "outofstock", "onbackorder"];
 
 const HTML_ENTITIES = {
   amp: "&",
@@ -33,8 +32,22 @@ const COLOR_MAP = {
   yellow: "#f1c40f",
 };
 
-function buildStoreApiUrl(pathname, params = {}) {
-  const url = new URL(pathname.replace(/^\//, ""), STORE_API_BASE);
+function normalizeStoreApiBase(base) {
+  return String(base).endsWith("/") ? String(base) : `${String(base)}/`;
+}
+
+function getStoreApiBases() {
+  return [
+    ...new Set(
+      [process.env.WORDPRESS_STORE_API_URL, DEFAULT_STORE_API_BASE]
+        .filter(Boolean)
+        .map(normalizeStoreApiBase)
+    ),
+  ];
+}
+
+function buildStoreApiUrl(base, pathname, params = {}) {
+  const url = new URL(pathname.replace(/^\//, ""), base);
 
   Object.entries(params).forEach(([key, value]) => {
     if (value === undefined || value === null || value === "") {
@@ -54,8 +67,8 @@ function buildStoreApiUrl(pathname, params = {}) {
   return url;
 }
 
-async function storefrontFetch(pathname, params = {}, options = {}) {
-  const response = await fetch(buildStoreApiUrl(pathname, params), {
+async function storefrontFetchFromBase(base, pathname, params = {}, options = {}) {
+  const response = await fetch(buildStoreApiUrl(base, pathname, params), {
     next: { revalidate: DEFAULT_REVALIDATE_SECONDS },
   });
 
@@ -70,6 +83,90 @@ async function storefrontFetch(pathname, params = {}, options = {}) {
   }
 
   return response.json();
+}
+
+let preferredStoreApiBasePromise;
+
+async function resolvePreferredStoreApiBase() {
+  if (!preferredStoreApiBasePromise) {
+    preferredStoreApiBasePromise = (async () => {
+      const bases = getStoreApiBases();
+      let bestBase = bases[0];
+      let bestCount = -1;
+      let lastError;
+
+      for (const base of bases) {
+        try {
+          const products = await storefrontFetchFromBase(
+            base,
+            "products",
+            {
+              page: 1,
+              per_page: 100,
+              catalog_visibility: "any",
+              stock_status: DEFAULT_STOCK_STATUSES,
+            },
+            {}
+          );
+          const count = Array.isArray(products) ? products.length : 0;
+
+          if (count > bestCount) {
+            bestCount = count;
+            bestBase = base;
+          }
+        } catch (error) {
+          lastError = error;
+        }
+      }
+
+      if (bestCount >= 0) {
+        return bestBase;
+      }
+
+      throw lastError || new Error("Unable to resolve a WooCommerce Store API base.");
+    })();
+  }
+
+  return preferredStoreApiBasePromise;
+}
+
+async function storefrontFetch(pathname, params = {}, options = {}) {
+  const bases = [];
+  let notFoundOnAllBases = false;
+
+  try {
+    bases.push(await resolvePreferredStoreApiBase());
+  } catch {
+    // Fall back to trying every known base below.
+  }
+
+  getStoreApiBases().forEach((base) => {
+    if (!bases.includes(base)) {
+      bases.push(base);
+    }
+  });
+
+  let lastError;
+
+  for (const base of bases) {
+    try {
+      const result = await storefrontFetchFromBase(base, pathname, params, options);
+
+      if (result !== null) {
+        return result;
+      }
+
+      notFoundOnAllBases = true;
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  if (options.allowNotFound && notFoundOnAllBases) {
+    return null;
+  }
+
+  throw lastError || new Error("WooCommerce storefront request failed.");
 }
 
 function decodeHtmlEntities(value = "") {
@@ -265,6 +362,7 @@ function normalizeProduct(product) {
 
 export async function getStoreProducts(options = {}) {
   const products = await storefrontFetch("products", {
+    catalog_visibility: options.catalogVisibility || "any",
     category: options.category,
     exclude: options.exclude,
     order: options.order || "desc",
@@ -272,6 +370,7 @@ export async function getStoreProducts(options = {}) {
     page: options.page || 1,
     per_page: options.perPage || 8,
     search: options.search,
+    stock_status: options.stockStatus || DEFAULT_STOCK_STATUSES,
   });
 
   return products.map(normalizeProduct);
@@ -296,7 +395,9 @@ export async function getAllStoreProducts(options = {}) {
     }
   }
 
-  return allProducts;
+  return Array.from(
+    new Map(allProducts.map((product) => [product.id, product])).values()
+  );
 }
 
 export async function getStoreCategories(options = {}) {
