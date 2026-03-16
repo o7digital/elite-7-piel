@@ -188,7 +188,7 @@ export default function SpanishRuntime() {
       return undefined;
     }
 
-    document.documentElement.lang = "es";
+    document.documentElement.lang = "es-MX";
 
     import("@/data/i18n/es").then((module) => {
       if (!cancelled) {

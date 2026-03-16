@@ -59,6 +59,7 @@ export default function Header14() {
             <select
               className="form-select form-select-sm bg-transparent color-white"
               name="store-language"
+              defaultValue={languageOptions2[0].value}
             >
               {languageOptions2.map((option, index) => (
                 <option key={index} value={option.value}>
@@ -69,6 +70,7 @@ export default function Header14() {
             <select
               className="form-select form-select-sm bg-transparent color-white"
               name="store-currency"
+              defaultValue={currencyOptions[0].value}
             >
               {currencyOptions.map((option, index) => (
                 <option

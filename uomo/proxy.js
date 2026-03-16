@@ -95,7 +95,7 @@ export async function proxy(request) {
       });
       const responseHeaders = new Headers(upstreamResponse.headers);
 
-      responseHeaders.set("content-language", "es");
+      responseHeaders.set("content-language", "es-MX");
       responseHeaders.set("content-type", "text/html; charset=utf-8");
       responseHeaders.delete("content-length");
       responseHeaders.delete("content-encoding");

@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {
   currencyOptions,
   footerLinks1,
@@ -96,14 +95,8 @@ export default function Footer14() {
         <div className="row row-cols-lg-5 row-cols-2">
           <div className="footer-column footer-store-info col-12 mb-4 mb-lg-0">
             <div className="logo">
-              <Link href="/">
-                <Image
-                  src="/assets/images/logo-white-cosmetics.png"
-                  width={112}
-                  height={28}
-                  alt="Uomo"
-                  className="logo__image d-block"
-                />
+              <Link href="/" className="site-wordmark site-wordmark_footer text-white">
+                ELITE 7 PIEL
               </Link>
             </div>
             {/* <!-- /.logo --> */}
@@ -216,7 +209,7 @@ export default function Footer14() {
       <div className="footer-bottom container">
         <div className="d-block d-md-flex align-items-center">
           <span className="footer-copyright me-auto">
-            ©{new Date().getFullYear()} Uomo
+            ©{new Date().getFullYear()} ELITE 7 PIEL
           </span>
           <div className="footer-settings d-block d-md-flex align-items-center">
             <div className="d-flex align-items-center">
@@ -231,6 +224,7 @@ export default function Footer14() {
                 className="form-select form-select-sm bg-transparent border-0"
                 aria-label="Default select example"
                 name="store-language"
+                defaultValue={languageOptions[0].value}
               >
                 {languageOptions.map((option, index) => (
                   <option
@@ -255,7 +249,8 @@ export default function Footer14() {
                 id="footerSettingsCurrency"
                 className="form-select form-select-sm bg-transparent border-0"
                 aria-label="Default select example"
-                name="store-language"
+                name="store-currency"
+                defaultValue={currencyOptions[0].value}
               >
                 {currencyOptions.map((option, index) => (
                   <option

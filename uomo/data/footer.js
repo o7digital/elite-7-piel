@@ -22,24 +22,25 @@ export const footerLinks3 = [
 ];
 
 export const languageOptions = [
-  { value: "", text: "United Kingdom | English", selected: true },
-  { value: "1", text: "United States | English" },
-  { value: "2", text: "German" },
-  { value: "3", text: "French" },
-  { value: "4", text: "Swedish" },
+  { value: "es-MX", text: "Mexico | Espanol", selected: true },
+  { value: "en-US", text: "Estados Unidos | Ingles" },
+  { value: "de-DE", text: "Aleman" },
+  { value: "fr-FR", text: "Frances" },
+  { value: "sv-SE", text: "Sueco" },
 ];
 
 export const languageOptions2 = [
-  { value: "english", text: "English", selected: true },
-  { value: "german", text: "German" },
-  { value: "french", text: "French" },
-  { value: "swedish", text: "Swedish" },
+  { value: "es-MX", text: "Espanol (MX)", selected: true },
+  { value: "en-US", text: "Ingles" },
+  { value: "de-DE", text: "Aleman" },
+  { value: "fr-FR", text: "Frances" },
+  { value: "sv-SE", text: "Sueco" },
 ];
 
 export const currencyOptions = [
-  { value: "", text: "$ USD", selected: true },
-  { value: "1", text: "£ GBP" },
-  { value: "2", text: "€ EURO" },
+  { value: "MXN", text: "MXN", selected: true },
+  { value: "USD", text: "USD" },
+  { value: "EUR", text: "EUR" },
 ];
 
 export const socialLinks = [

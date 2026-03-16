@@ -131,7 +131,7 @@ function injectSeoTags(html = "", { origin, pathname }) {
   const canonicalUrl = new URL(pathname || "/", origin).toString();
   const seoTags = [
     `<link rel="canonical" href="${canonicalUrl}">`,
-    `<meta property="og:locale" content="es_ES">`,
+    `<meta property="og:locale" content="es_MX">`,
   ].join("");
 
   if (!html.includes("</head>")) {
@@ -143,10 +143,10 @@ function injectSeoTags(html = "", { origin, pathname }) {
 
 function updateDocumentLanguage(html = "") {
   if (/<html[^>]*lang=/i.test(html)) {
-    return html.replace(/(<html[^>]*\slang=(["']))[^"']*(\2)/i, "$1es$3");
+    return html.replace(/(<html[^>]*\slang=(["']))[^"']*(\2)/i, "$1es-MX$3");
   }
 
-  return html.replace(/<html/i, '<html lang="es"');
+  return html.replace(/<html/i, '<html lang="es-MX"');
 }
 
 function translateTextNodes(html = "") {

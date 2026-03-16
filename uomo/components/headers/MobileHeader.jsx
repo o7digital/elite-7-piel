@@ -167,6 +167,7 @@ export default function MobileHeader() {
               className="form-select form-select-sm bg-transparent border-0"
               aria-label="Default select example"
               name="store-language"
+              defaultValue={languageOptions[0].value}
             >
               {languageOptions.map((option, index) => (
                 <option
@@ -185,8 +186,8 @@ export default function MobileHeader() {
             <select
               className="form-select form-select-sm bg-transparent border-0"
               aria-label="Default select example"
-              name="store-language"
-              defaultValue={"fghgjhgj"}
+              name="store-currency"
+              defaultValue={currencyOptions[0].value}
             >
               {currencyOptions.map((option, index) => (
                 <option
