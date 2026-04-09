@@ -66,10 +66,10 @@ export default function Footer1() {
             <p className="m-0">
               <strong className="fw-medium">
                 <a
-                  href="mailto:venteas@elite7piel.com"
+                  href="mailto:ventas@elite7piel.com"
                   className="text-reset text-decoration-none"
                 >
-                  venteas@elite7piel.com
+                  ventas@elite7piel.com
                 </a>
               </strong>
             </p>

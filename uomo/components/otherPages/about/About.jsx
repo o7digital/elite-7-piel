@@ -5,7 +5,7 @@ export default function About() {
   return (
     <section className="about-us container">
       <div className="mw-930">
-        <h2 className="page-title">ABOUT UOMO</h2>
+        <h2 className="page-title">QUIENES SOMOS</h2>
       </div>
       <div className="about-us__content pb-5 mb-5">
         <p className="mb-5">
@@ -16,40 +16,45 @@ export default function About() {
             src="/assets/images/about/about-1.jpg"
             width="1410"
             height="550"
-            alt="image"
+            alt="Elite 7 Piel"
           />
         </p>
         <div className="mw-930">
-          <h3 className="mb-4">OUR STORY</h3>
+          <h3 className="mb-4">Nuestra historia</h3>
           <p className="fs-6 fw-medium mb-4">
-            Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum.
+            En Elite 7 Piel nos apasiona ayudar a las personas a cuidar su
+            piel, su cabello y su bienestar con productos de belleza de alta
+            calidad y tecnologia estetica pensada para la rutina diaria.
           </p>
           <p className="mb-4">
-            Saw wherein fruitful good days image them, midst, waters upon, saw.
-            Seas lights seasons. Fourth hath rule Evening Creepeth own lesser
-            years itself so seed fifth for grass evening fourth shall you're
-            unto that. Had. Female replenish for yielding so saw all one to
-            yielding grass you'll air sea it, open waters subdue, hath. Brought
-            second Made. Be. Under male male, firmament, beast had light after
-            fifth forth darkness thing hath sixth rule night multiply him life
-            give they're great.
+            Somos una empresa dedicada a ofrecer cremas especializadas,
+            dispositivos electronicos para el rejuvenecimiento facial y
+            tratamientos para el cuidado capilar. Nuestro objetivo es brindar
+            soluciones innovadoras que ayuden a mejorar la apariencia y salud
+            de la piel y el cabello, combinando tecnologia moderna con una
+            seleccion cuidadosa de productos.
+          </p>
+          <p className="mb-4">
+            Creemos que el cuidado personal es una parte fundamental de la
+            confianza y la autoestima. Por eso trabajamos constantemente para
+            ofrecer opciones efectivas, seguras y accesibles, pensadas para
+            quienes desean verse y sentirse mejor cada dia.
           </p>
           <div className="row mb-3">
             <div className="col-md-6">
-              <h5 className="mb-3">Our Mission</h5>
+              <h5 className="mb-3">Nuestra mision</h5>
               <p className="mb-3">
-                Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.
+                Acercar soluciones modernas de cuidado personal que aporten
+                beneficios reales y se integren facilmente a la vida diaria de
+                nuestros clientes.
               </p>
             </div>
             <div className="col-md-6">
-              <h5 className="mb-3">Our Vision</h5>
+              <h5 className="mb-3">Nuestra vision</h5>
               <p className="mb-3">
-                Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.
+                Ser una marca de confianza en belleza y bienestar, reconocida
+                por ofrecer productos que ayudan a lograr una piel saludable,
+                un cabello fuerte y una imagen radiante.
               </p>
             </div>
           </div>
@@ -63,18 +68,17 @@ export default function About() {
               src="/assets/images/about/about-2.jpg"
               width="450"
               height="500"
-              alt="image"
+              alt="Cuidado personal Elite 7 Piel"
             />
           </div>
           <div className="content-wrapper col-lg-6 px-lg-4">
-            <h5 className="mb-3">The Company</h5>
+            <h5 className="mb-3">Nuestro compromiso</h5>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet
-              sapien dignissim a elementum. Sociis metus, hendrerit mauris id
-              in. Quis sit sit ultrices tincidunt euismod luctus diam. Turpis
-              sodales orci etiam phasellus lacus id leo. Amet turpis nunc, nulla
-              massa est viverra interdum. Praesent auctor nulla morbi non
-              posuere mattis. Arcu eu id maecenas cras.
+              En Elite 7 Piel queremos acompanarte en el camino hacia una piel
+              mas saludable, un cabello mas fuerte y una belleza que refleje
+              bienestar y confianza. Mas que una tienda, buscamos ser tu aliado
+              con opciones practicas, confiables y cuidadosamente seleccionadas
+              para que puedas cuidar de ti desde la comodidad de tu hogar.
             </p>
           </div>
         </div>

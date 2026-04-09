@@ -41,7 +41,7 @@ export default function Clients() {
   };
   return (
     <section className="brands-carousel container mw-930">
-      <h5 className="mb-3 mb-xl-5">Company Partners</h5>
+      <h5 className="mb-3 mb-xl-5">Marcas destacadas</h5>
       <div className="position-relative">
         <Swiper
           {...swiperOptions}

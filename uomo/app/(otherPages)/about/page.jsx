@@ -7,8 +7,9 @@ import Services from "@/components/otherPages/about/Services";
 import React from "react";
 
 export const metadata = {
-  title: "About || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
+  title: "Quienes Somos | Elite 7 Piel",
+  description:
+    "Conoce Elite 7 Piel, nuestra historia, compromiso y enfoque en productos de belleza, cuidado capilar y bienestar.",
 };
 export default function AboutPage() {
   return (

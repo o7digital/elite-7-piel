@@ -1,11 +1,31 @@
-import { servicePromotions } from "@/data/features";
 import React from "react";
+
+const aboutHighlights = [
+  {
+    icon: "#icon_shipping",
+    title: "PRODUCTOS SELECCIONADOS",
+    content:
+      "Elegimos cremas, tratamientos y tecnologia estetica con enfoque en calidad, seguridad y uso practico.",
+  },
+  {
+    icon: "#icon_headphone",
+    title: "ATENCION CERCANA",
+    content:
+      "Acompanamos a cada cliente para ayudarle a encontrar opciones alineadas con su rutina y sus objetivos.",
+  },
+  {
+    icon: "#icon_shield",
+    title: "BIENESTAR Y CONFIANZA",
+    content:
+      "Buscamos ofrecer soluciones que ayuden a verse mejor, sentirse bien y fortalecer la confianza personal.",
+  },
+];
 
 export default function Services() {
   return (
     <section className="service-promotion horizontal container mw-930 pt-0 mb-md-4 pb-md-4 mb-xl-5">
       <div className="row">
-        {servicePromotions.map((elm, i) => (
+        {aboutHighlights.map((elm, i) => (
           <div key={i} className="col-md-4 text-center mb-5 mb-md-0">
             <div className="service-promotion__icon mb-4">
               <svg

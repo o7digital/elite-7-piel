@@ -50,8 +50,8 @@ export default function Contact() {
             <p className="mb-4">
               <strong>Email</strong>
               <br />
-              <a href="mailto:venteas@elite7piel.com">
-                venteas@elite7piel.com
+              <a href="mailto:ventas@elite7piel.com">
+                ventas@elite7piel.com
               </a>
             </p>
             <p className="mb-4">
