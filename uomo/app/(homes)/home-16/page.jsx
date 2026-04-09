@@ -9,12 +9,10 @@ import GridBanner from "@/components/homes/home-16/GridBanner";
 import Hero from "@/components/homes/home-16/Hero";
 import MostPopuler from "@/components/homes/home-16/MostPopuler";
 import VideoBanner from "@/components/homes/home-16/VideoBanner";
+import { demoHomeMetadata } from "@/lib/seo/pageMetadata";
 import React from "react";
 
-export const metadata = {
-  title: "Home 16 || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
-};
+export const metadata = demoHomeMetadata;
 export default function HomePage16() {
   return (
     <>

@@ -3,12 +3,10 @@ import Blog1 from "@/components/blogs/Blog1";
 import Footer1 from "@/components/footers/Footer1";
 
 import Header1 from "@/components/headers/Header1";
+import { blogListingMetadata } from "@/lib/seo/pageMetadata";
 import React from "react";
 
-export const metadata = {
-  title: "Blog 1 || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
-};
+export const metadata = blogListingMetadata;
 export default function BlogPage1() {
   return (
     <>

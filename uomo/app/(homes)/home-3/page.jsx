@@ -7,12 +7,10 @@ import FeaturesProducts from "@/components/homes/home-3/FeaturesProducts";
 import Hero from "@/components/homes/home-3/Hero";
 import HotDeals from "@/components/homes/home-3/HotDeals";
 import Instagram from "@/components/homes/home-3/Instagram";
+import { demoHomeMetadata } from "@/lib/seo/pageMetadata";
 import React from "react";
 
-export const metadata = {
-  title: "Home 3 || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
-};
+export const metadata = demoHomeMetadata;
 export default function HomePage3() {
   return (
     <div className="gradient-bg">

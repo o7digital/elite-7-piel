@@ -3,12 +3,10 @@ export default function ReviewForm() {
   return (
     <div className="blog-single__review-form">
       <form onSubmit={(e) => e.preventDefault()} className="needs-validation">
-        <h5>Be the first to review “Message Cotton T-Shirt”</h5>
-        <p>
-          Your email address will not be published. Required fields are marked *
-        </p>
+        <h3 className="fs-5">Comparte tu opinion sobre este articulo</h3>
+        <p>Tu correo no se publicara. Los campos obligatorios estan marcados con *</p>
         <div className="select-star-rating">
-          <label>Your rating *</label>
+          <label>Tu valoracion *</label>
           <span className="star-rating">
             <svg
               className="star-rating__star-icon"
@@ -66,21 +64,21 @@ export default function ReviewForm() {
         <div className="mb-4">
           <textarea
             className="form-control form-control_gray"
-            placeholder="Your Review"
+            placeholder="Escribe tu comentario"
             cols="30"
             rows="8"
             required
           ></textarea>
         </div>
         <div className="form-label-fixed mb-4">
-          <label className="form-label">Name *</label>
+          <label className="form-label">Nombre *</label>
           <input
             className="form-control form-control-md form-control_gray"
             required
           />
         </div>
         <div className="form-label-fixed mb-4">
-          <label className="form-label">Email address *</label>
+          <label className="form-label">Correo electronico *</label>
           <input
             type="email"
             className="form-control form-control-md form-control_gray"
@@ -94,13 +92,13 @@ export default function ReviewForm() {
             defaultValue=""
           />
           <label className="form-check-label">
-            Save my name, email, and website in this browser for the next time I
-            comment.
+            Guardar mi nombre y correo en este navegador para la proxima vez
+            que comente.
           </label>
         </div>
         <div className="form-action">
           <button type="submit" className="btn btn-primary">
-            Submit
+            Enviar comentario
           </button>
         </div>
       </form>

@@ -4,10 +4,16 @@ import StoreMap from "./StoreMap";
 import { storesLocations } from "@/data/storeLocations";
 
 export default function StoreLocator() {
-  const [getLocation, setLocation] = useState(null);
+  const [getLocation, setLocation] = useState(storesLocations[0] || null);
+
   return (
     <section className="store-location container">
-      <h2 className="page-title">STORE LOCATOR</h2>
+      <h1 className="page-title">Atencion y ubicacion</h1>
+      <p className="mx-auto mb-4 text-center" style={{ maxWidth: "760px" }}>
+        Nuestro canal principal de atencion esta disponible por WhatsApp y
+        correo para dudas sobre productos, pedidos, envios y recomendaciones de
+        compra.
+      </p>
 
       <div className="row">
         <div className="col-lg-4">
@@ -17,11 +23,13 @@ export default function StoreLocator() {
                 className="store-location__search-input"
                 type="text"
                 name="search-keyword"
-                placeholder="Enter your country or city"
+                placeholder="Atencion en Ciudad de Mexico"
+                readOnly
               />
               <button
                 className="btn-icon store-location__search-btn"
                 type="submit"
+                aria-label="Buscar ubicacion"
               >
                 <svg
                   className="d-block"
@@ -37,9 +45,12 @@ export default function StoreLocator() {
             </div>
 
             <div className="store-location__search-result">
-              {storesLocations.map((elm, i) => (
-                <div key={i} className="store-location__search-result__item">
-                  <h5>Store in {elm.city}</h5>
+              {storesLocations.map((elm) => (
+                <div
+                  key={elm.id}
+                  className="store-location__search-result__item"
+                >
+                  <h2 className="fs-5">Atencion en {elm.city}</h2>
                   <p>
                     {elm.address}
                     <br />
@@ -48,10 +59,17 @@ export default function StoreLocator() {
                     {elm.phone}
                     <br />
                     {elm.hours}
+                    <br />
+                    {elm.emailAddress}
                   </p>
-                  <a id="store_selector_1" onClick={() => setLocation(elm)}>
-                    See on the map
-                  </a>
+                  <button
+                    id={`store_selector_${elm.id}`}
+                    type="button"
+                    className="btn-link p-0 border-0 bg-transparent"
+                    onClick={() => setLocation(elm)}
+                  >
+                    Ver en el mapa
+                  </button>
                 </div>
               ))}
             </div>

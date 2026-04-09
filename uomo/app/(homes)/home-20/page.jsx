@@ -8,14 +8,12 @@ import Features from "@/components/homes/home-20/Features";
 import Hero from "@/components/homes/home-20/Hero";
 import StrollerCollection from "@/components/homes/home-20/StrollerCollection";
 import ToysCollection from "@/components/homes/home-20/ToysCollection";
+import { demoHomeMetadata } from "@/lib/seo/pageMetadata";
 import React from "react";
 import Instagram from "@/components/homes/home-20/Instagram";
 import Footer20 from "@/components/footers/Footer20";
 
-export const metadata = {
-  title: "Home 20 || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
-};
+export const metadata = demoHomeMetadata;
 export default function HomePage20() {
   return (
     <>

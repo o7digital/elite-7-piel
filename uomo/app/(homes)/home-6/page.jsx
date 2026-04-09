@@ -4,12 +4,10 @@ import Header6 from "@/components/headers/Header6";
 import CategoryMassonry from "@/components/homes/home-6/CategoryMassonry";
 import Hero from "@/components/homes/home-6/Hero";
 import Instagram from "@/components/homes/home-6/Instagram";
+import { demoHomeMetadata } from "@/lib/seo/pageMetadata";
 import React from "react";
 
-export const metadata = {
-  title: "Home 6 || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
-};
+export const metadata = demoHomeMetadata;
 export default function HomePage6() {
   return (
     <>

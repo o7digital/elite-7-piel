@@ -9,12 +9,10 @@ import GridBanner from "@/components/homes/home-19/GridBanner";
 import Hero from "@/components/homes/home-19/Hero";
 import Instagram from "@/components/homes/home-19/Instagram";
 import TrendyItems from "@/components/homes/home-19/TrendyItems";
+import { demoHomeMetadata } from "@/lib/seo/pageMetadata";
 import React from "react";
 
-export const metadata = {
-  title: "Home 19 || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
-};
+export const metadata = demoHomeMetadata;
 export default function HomePage19() {
   return (
     <>

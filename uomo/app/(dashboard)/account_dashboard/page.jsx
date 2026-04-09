@@ -3,12 +3,10 @@ import Footer1 from "@/components/footers/Footer1";
 import Header1 from "@/components/headers/Header1";
 import Dashboard from "@/components/otherPages/Dashboard";
 import DashboardSidebar from "@/components/otherPages/DashboardSidebar";
+import { accountNoIndexMetadata } from "@/lib/seo/pageMetadata";
 import React from "react";
 
-export const metadata = {
-  title: "Dashboard-account || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
-};
+export const metadata = accountNoIndexMetadata;
 export default function AccountPage() {
   return (
     <>

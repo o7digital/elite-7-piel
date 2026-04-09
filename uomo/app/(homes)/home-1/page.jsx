@@ -10,11 +10,9 @@ import Products2 from "@/components/homes/home-1/Products2";
 import Products3 from "@/components/homes/home-1/Products3";
 import Products4 from "@/components/homes/home-1/Products4";
 import Products5 from "@/components/homes/home-1/Products5";
+import { demoHomeMetadata } from "@/lib/seo/pageMetadata";
 
-export const metadata = {
-  title: "Home 1 || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
-};
+export const metadata = demoHomeMetadata;
 export default function HomePage1() {
   return (
     <>

@@ -8,11 +8,9 @@ import InsideCollextions from "@/components/homes/home-4/InsideCollextions";
 import LimitedEdition from "@/components/homes/home-4/LimitedEdition";
 import Testimonials from "@/components/homes/home-4/Testimonials";
 import TrendingProducts from "@/components/homes/home-4/TrendingProducts";
+import { demoHomeMetadata } from "@/lib/seo/pageMetadata";
 
-export const metadata = {
-  title: "Home 4 || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
-};
+export const metadata = demoHomeMetadata;
 export default function HomePage4() {
   return (
     <>

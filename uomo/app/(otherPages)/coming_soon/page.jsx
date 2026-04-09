@@ -2,13 +2,11 @@ import Footer1 from "@/components/footers/Footer1";
 
 import Header1 from "@/components/headers/Header1";
 import CommingSoon from "@/components/otherPages/CommingSoon";
+import { comingSoonMetadata } from "@/lib/seo/pageMetadata";
 import Faq from "@/components/otherPages/Faq";
 import React from "react";
 
-export const metadata = {
-  title: "Comming Soon || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
-};
+export const metadata = comingSoonMetadata;
 export default function CommingSoonPage() {
   return (
     <>

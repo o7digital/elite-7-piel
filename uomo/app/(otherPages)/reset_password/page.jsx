@@ -2,12 +2,10 @@ import Footer1 from "@/components/footers/Footer1";
 
 import Header1 from "@/components/headers/Header1";
 import ResetPassword from "@/components/otherPages/ResetPassword";
+import { resetPasswordMetadata } from "@/lib/seo/pageMetadata";
 import React from "react";
 
-export const metadata = {
-  title: "Reset Password || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
-};
+export const metadata = resetPasswordMetadata;
 export default function ResetPasswordPage() {
   return (
     <>

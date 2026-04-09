@@ -5,13 +5,11 @@ import Header14 from "@/components/headers/Header14";
 import AllProductsGrid from "@/components/homes/home-15/AllProductsGrid";
 import Hero from "@/components/homes/home-15/Hero";
 import Lookbook from "@/components/homes/home-15/Lookbook";
+import { demoHomeMetadata } from "@/lib/seo/pageMetadata";
 import { getAllStoreProducts } from "@/lib/woocommerce";
 import React from "react";
 
-export const metadata = {
-  title: "Home 15 || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
-};
+export const metadata = demoHomeMetadata;
 export default async function HomePage15() {
   const products = await getAllStoreProducts({ perPage: 100 }).catch(() => []);
 

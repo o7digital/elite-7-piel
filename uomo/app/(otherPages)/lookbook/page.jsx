@@ -2,12 +2,10 @@ import Footer1 from "@/components/footers/Footer1";
 
 import Header1 from "@/components/headers/Header1";
 import Lookbook from "@/components/otherPages/Lookbook";
+import { lookbookMetadata } from "@/lib/seo/pageMetadata";
 import React from "react";
 
-export const metadata = {
-  title: "Lookbook || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
-};
+export const metadata = lookbookMetadata;
 export default function LookbookPage() {
   return (
     <>

@@ -3,12 +3,10 @@ import Footer1 from "@/components/footers/Footer1";
 import Header1 from "@/components/headers/Header1";
 import Categories from "@/components/shoplist/Categories";
 import Shop8 from "@/components/shoplist/Shop8";
+import { shopVariantMetadata } from "@/lib/seo/pageMetadata";
 import React from "react";
 
-export const metadata = {
-  title: "Shop 8 || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
-};
+export const metadata = shopVariantMetadata;
 export default function ShopPage8() {
   return (
     <>

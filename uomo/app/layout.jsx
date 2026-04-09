@@ -1,106 +1,112 @@
-"use client";
-import Svgs from "@/components/common/Svgs";
-import "react-tooltip/dist/react-tooltip.css";
-import "../public/assets/css/plugins/swiper.min.css";
-import "../public/assets/sass/style.scss";
-import "rc-slider/assets/index.css";
-import "tippy.js/dist/tippy.css";
-import LoginFormPopup from "@/components/common/LoginFormPopup";
-import WhatsAppFloat from "@/components/common/WhatsAppFloat";
-import { useEffect } from "react";
-import ScrollTop from "@/components/common/ScrollTop";
-import SpanishRuntime from "@/components/common/SpanishRuntime";
-import Context from "@/context/Context";
-import QuickView from "@/components/modals/QuickView";
-import CartDrawer from "@/components/shopCartandCheckout/CartDrawer";
-import SiteMap from "@/components/modals/SiteMap";
-import MobileHeader from "@/components/headers/MobileHeader";
-import SizeGuide from "@/components/modals/SizeGuide";
-import Delivery from "@/components/modals/Delivery";
-import CustomerLogin from "@/components/asides/CustomerLogin";
-import ShopFilter from "@/components/asides/ShopFilter";
-import ProductDescription from "@/components/asides/ProductDescription";
-import ProductAdditionalInformation from "@/components/asides/ProductAdditionalInformation";
-import ProductReviews from "@/components/asides/ProductReviews";
-import MobileFooter1 from "@/components/footers/MobileFooter1";
+import AppShell from "@/components/common/AppShell";
+import JsonLd from "@/components/common/JsonLd";
+
+const siteName = "ELITE 7 PIEL";
+const siteUrl = "https://elite7piel.com";
+const defaultTitle = "Cuidado facial y capilar profesional | ELITE 7 PIEL";
+const defaultDescription =
+  "Compra productos de cuidado facial, tecnologia estetica en casa y tratamiento capilar profesional en ELITE 7 PIEL.";
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: siteName,
+  url: siteUrl,
+  logo: `${siteUrl}/assets/images/logo.png`,
+  email: "ventas@elite7piel.com",
+  telephone: "+52 5510522299",
+  sameAs: [
+    "https://www.facebook.com/share/1CRwYJ67Yq/",
+    "https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=jdpg7j9",
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer support",
+    email: "ventas@elite7piel.com",
+    telephone: "+52 5510522299",
+    areaServed: "MX",
+    availableLanguage: ["es-MX"],
+  },
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteName,
+  url: siteUrl,
+  inLanguage: "es-MX",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${siteUrl}/shop?search={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
+};
+
+export const metadata = {
+  metadataBase: new URL(siteUrl),
+  applicationName: siteName,
+  title: defaultTitle,
+  description: defaultDescription,
+  keywords: [
+    "cuidado facial",
+    "tratamiento capilar",
+    "belleza profesional",
+    "tecnologia estetica",
+    "elite 7 piel",
+  ],
+  referrer: "origin-when-cross-origin",
+  category: "beauty",
+  creator: siteName,
+  publisher: siteName,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_MX",
+    url: siteUrl,
+    siteName,
+    title: defaultTitle,
+    description: defaultDescription,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: defaultTitle,
+    description: defaultDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/assets/images/favicon.png",
+    shortcut: "/assets/images/favicon.png",
+    apple: "/assets/images/favicon.png",
+  },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#ffffff",
+};
 
 export default function RootLayout({ children }) {
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      // Import the script only on the client side
-      import("bootstrap/dist/js/bootstrap.esm").then(() => {
-        // Module is imported, you can access any exported functionality if
-      });
-    }
-  }, []);
   return (
     <html lang="es-MX">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700;800;900&family=Lora:wght@400;500;600;700&family=Poppins:wght@400&display=swap"
-          rel="stylesheet"
-        />
-
-        <link
-          href="https://fonts.googleapis.com/css2?family=Allura&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-
-        <link
-          href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css?family=Average+Sans:400"
-          rel="stylesheet"
-          property="stylesheet"
-          media="all"
-          type="text/css"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body>
-        <SpanishRuntime />
-        <Svgs />
-        <Context>
-          <MobileHeader />
-          {children}
-          <MobileFooter1 />
-          {/* //modals and asides */}
-          <LoginFormPopup />
-          <QuickView />
-          <SizeGuide />
-          <Delivery />
-          <CartDrawer />
-          <SiteMap />
-          <CustomerLogin />
-          <ShopFilter />
-          <ProductDescription />
-          <ProductAdditionalInformation />
-          <ProductReviews />
-          <WhatsAppFloat />
-        </Context>
-        <div className="page-overlay" id="pageOverlay"></div>
-        <ScrollTop />
+        <JsonLd data={organizationJsonLd} />
+        <JsonLd data={websiteJsonLd} />
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

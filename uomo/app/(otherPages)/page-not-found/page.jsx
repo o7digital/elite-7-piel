@@ -2,11 +2,9 @@ import Footer1 from "@/components/footers/Footer1";
 
 import Header1 from "@/components/headers/Header1";
 import Notfound from "@/components/otherPages/Notfound";
+import { notFoundMetadata } from "@/lib/seo/pageMetadata";
 
-export const metadata = {
-  title: "Page Not Found || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
-};
+export const metadata = notFoundMetadata;
 export default function PageNotFound() {
   return (
     <>

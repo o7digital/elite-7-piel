@@ -2,12 +2,10 @@ import Footer1 from "@/components/footers/Footer1";
 
 import Header1 from "@/components/headers/Header1";
 import LoginRegister from "@/components/otherPages/LoginRegister";
+import { loginMetadata } from "@/lib/seo/pageMetadata";
 import React from "react";
 
-export const metadata = {
-  title: "Login Register || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
-};
+export const metadata = loginMetadata;
 export default function LoginPage() {
   return (
     <>

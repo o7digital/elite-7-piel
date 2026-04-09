@@ -3,7 +3,10 @@ import Header1 from "@/components/headers/Header1";
 
 import ChectoutSteps from "@/components/shopCartandCheckout/ChectoutSteps";
 import OrderCompleted from "@/components/shopCartandCheckout/OrderCompleted";
+import { orderCompleteMetadata } from "@/lib/seo/pageMetadata";
 import React from "react";
+
+export const metadata = orderCompleteMetadata;
 
 export default function () {
   return (

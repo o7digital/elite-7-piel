@@ -6,12 +6,10 @@ import Lookbook from "@/components/homes/home-7/Lookbook";
 import ProductsGrid from "@/components/homes/home-7/ProductsGrid";
 import ProductsSlider from "@/components/homes/home-7/ProductsSlider";
 import TrendingProducts from "@/components/homes/home-7/TrendingProducts";
+import { demoHomeMetadata } from "@/lib/seo/pageMetadata";
 import React from "react";
 
-export const metadata = {
-  title: "Home 7 || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
-};
+export const metadata = demoHomeMetadata;
 export default function HomePage7() {
   return (
     <>

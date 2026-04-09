@@ -2,7 +2,10 @@ import Footer1 from "@/components/footers/Footer1";
 import Header1 from "@/components/headers/Header1";
 import Cart from "@/components/shopCartandCheckout/Cart";
 import ChectoutSteps from "@/components/shopCartandCheckout/ChectoutSteps";
+import { cartMetadata } from "@/lib/seo/pageMetadata";
 import React from "react";
+
+export const metadata = cartMetadata;
 
 export default function () {
   return (

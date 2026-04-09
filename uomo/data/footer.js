@@ -5,18 +5,12 @@ export const footerLinks1 = [
   { href: "/contact", text: "Contacto" },
 ];
 export const footerLinks2 = [
-  { href: "/shop-2", text: "New Arrivals" },
-  { href: "/shop-3", text: "Accessories" },
-  { href: "/shop-4", text: "Men" },
-  { href: "/shop-5", text: "Women" },
-  { href: "/shop-1", text: "Shop All" },
+  { href: "/shop", text: "Catálogo" },
 ];
 export const footerLinks3 = [
-  { href: "/contact", text: "Servicio al cliente" },
+  { href: "/faq", text: "Preguntas Frecuentes" },
   { href: "/account_dashboard", text: "Mi cuenta" },
   { href: "/aviso-de-privacidad", text: "Aviso de Privacidad" },
-  { href: "/politica-de-cookies", text: "Política de Cookies" },
-  { href: "/contact", text: "Contacto" },
 ];
 
 export const languageOptions = [

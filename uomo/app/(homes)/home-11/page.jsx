@@ -8,12 +8,10 @@ import Hero from "@/components/homes/home-11/Hero";
 import RecentViewed from "@/components/homes/home-11/RecentViewed";
 import SpecialOffers from "@/components/homes/home-11/SpecialOffers";
 import TopDeals from "@/components/homes/home-11/TopDeals";
+import { demoHomeMetadata } from "@/lib/seo/pageMetadata";
 import React from "react";
 
-export const metadata = {
-  title: "Home 11 || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
-};
+export const metadata = demoHomeMetadata;
 export default function HomePage11() {
   return (
     <>

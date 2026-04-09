@@ -6,13 +6,11 @@ import Header8 from "@/components/headers/Header8";
 import RelatedSlider from "@/components/singleProduct/RelatedSlider";
 
 import SingleProduct3 from "@/components/singleProduct/SingleProduct3";
+import { productVariantMetadata } from "@/lib/seo/pageMetadata";
 import React from "react";
 import { allProducts } from "@/data/products";
 // e0e0e0;
-export const metadata = {
-  title: "Shop Single 8 || Uomo eCommerce React Nextjs Template",
-  description: "Uomo eCommerce React Nextjs Template",
-};
+export const metadata = productVariantMetadata;
 export default async function ProductDetailsPage8(props) {
   const params = await props.params;
   const productId = params.id;
