@@ -6,6 +6,7 @@ import "../public/assets/sass/style.scss";
 import "rc-slider/assets/index.css";
 import "tippy.js/dist/tippy.css";
 import LoginFormPopup from "@/components/common/LoginFormPopup";
+import WhatsAppFloat from "@/components/common/WhatsAppFloat";
 import { useEffect } from "react";
 import ScrollTop from "@/components/common/ScrollTop";
 import SpanishRuntime from "@/components/common/SpanishRuntime";
@@ -96,6 +97,7 @@ export default function RootLayout({ children }) {
           <ProductDescription />
           <ProductAdditionalInformation />
           <ProductReviews />
+          <WhatsAppFloat />
         </Context>
         <div className="page-overlay" id="pageOverlay"></div>
         <ScrollTop />

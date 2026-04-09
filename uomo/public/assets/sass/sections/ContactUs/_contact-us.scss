@@ -1,14 +1,42 @@
 .contact-us {
   .page-title {
-    font-size: 2.1875rem;
+    font-size: 2.625rem;
     font-weight: 700;
+    line-height: 1.2;
     text-transform: uppercase;
     margin-bottom: 2.5rem;
   }
-  
+
+  &__content {
+    h3 {
+      font-size: 2.25rem;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    p,
+    a,
+    label,
+    textarea,
+    input {
+      font-size: 1.1875rem;
+      line-height: 1.9;
+    }
+
+    strong {
+      font-size: 1.1875rem;
+      font-weight: 700;
+    }
+  }
+
   &__form {
     input.form-control {
       height: 3.4375rem;
+    }
+
+    .form-control,
+    .form-floating > label {
+      font-size: 1.1875rem;
     }
 
     .btn {
@@ -16,6 +44,37 @@
       height: 3.75rem;
       text-transform: uppercase;
       font-size: 0.875rem;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .contact-us {
+    .page-title {
+      font-size: 2.1rem;
+    }
+
+    &__content {
+      h3 {
+        font-size: 1.8rem;
+      }
+
+      p,
+      a,
+      label,
+      textarea,
+      input,
+      strong {
+        font-size: 1.0625rem;
+        line-height: 1.8;
+      }
+    }
+
+    &__form {
+      .form-control,
+      .form-floating > label {
+        font-size: 1.0625rem;
+      }
     }
   }
 }

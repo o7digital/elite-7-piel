@@ -40,7 +40,7 @@ export default function Contact() {
   return (
     <section className="contact-us container">
       <div className="mw-930">
-        <div className="row mb-5 gy-4">
+        <div className="contact-us__content row mb-5 gy-4">
           <div className="col-lg-5">
             <h3 className="mb-4">Atencion al cliente</h3>
             <p className="mb-4">
