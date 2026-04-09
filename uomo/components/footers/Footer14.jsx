@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   currencyOptions,
   footerLinks1,
@@ -159,11 +160,27 @@ export default function Footer14() {
             <div className="mt-4 pt-2">
               <strong className="fw-medium text-white">Pagos seguros</strong>
               <div className="payment-badges mt-3" data-no-runtime-translate>
-                <span className="payment-badge payment-badge_visa">VISA</span>
-                <span className="payment-badge payment-badge_mastercard">
-                  MasterCard
-                </span>
-                <span className="payment-badge payment-badge_amex">AMEX</span>
+                <Image
+                  src="/assets/images/pago/visa.jpeg"
+                  alt="Visa"
+                  width={343}
+                  height={147}
+                  className="payment-badge-image"
+                />
+                <Image
+                  src="/assets/images/pago/mc.png"
+                  alt="MasterCard"
+                  width={286}
+                  height={176}
+                  className="payment-badge-image"
+                />
+                <Image
+                  src="/assets/images/pago/amex.png"
+                  alt="Amex"
+                  width={268}
+                  height={188}
+                  className="payment-badge-image"
+                />
               </div>
             </div>
           </div>

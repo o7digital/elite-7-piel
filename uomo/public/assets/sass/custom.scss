@@ -185,38 +185,14 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
-}
-
-.payment-badge {
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  min-width: 4.75rem;
-  padding: 0.45rem 0.8rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  line-height: 1;
 }
 
-.payment-badge_visa {
+.payment-badge-image {
+  width: auto;
+  height: 1.9rem;
+  object-fit: contain;
+  border-radius: 0.35rem;
   background: #ffffff;
-  color: #1747b0;
-  border-color: #ffffff;
-}
-
-.payment-badge_mastercard {
-  background: #ffffff;
-  color: #202020;
-  border-color: #ffffff;
-}
-
-.payment-badge_amex {
-  background: #2e77bc;
-  color: #ffffff;
-  border-color: #2e77bc;
+  padding: 0.18rem 0.4rem;
 }

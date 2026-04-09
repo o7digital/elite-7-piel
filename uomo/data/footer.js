@@ -1,9 +1,8 @@
 export const footerLinks1 = [
-  { href: "/about", text: "About Us" },
-  { href: "/about", text: "Careers" },
-  { href: "/about", text: "Affiliates" },
-  { href: "/blog_list1", text: "Blog" },
-  { href: "/contact", text: "Contact Us" },
+  { href: "/shop", text: "Tienda" },
+  { href: "/about", text: "Quiénes Somos" },
+  { href: "/contact", text: "Trabaja con Nosotros" },
+  { href: "/contact", text: "Contacto" },
 ];
 export const footerLinks2 = [
   { href: "/shop-2", text: "New Arrivals" },

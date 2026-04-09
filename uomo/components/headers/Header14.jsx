@@ -4,87 +4,11 @@ import CartLength from "./components/CartLength";
 import Nav from "./components/Nav";
 import { openCart } from "@/utlis/openCart";
 import User from "./components/User";
-import { currencyOptions, languageOptions2 } from "@/data/footer";
-import { socialLinks } from "@/data/socials";
 import SearchPopup from "./components/SearchPopup";
 
 export default function Header14() {
   return (
     <header id="header" className="header sticky_disabled w-100">
-      <div className="header-top bg-black">
-        <div className="container d-flex container color-white align-items-center">
-          <ul className="list-unstyled d-flex flex-1 gap-3 m-0">
-            <li>
-              <a href="#" className="menu-link menu-link_us-s color-white">
-                Shipping
-              </a>
-            </li>
-            <li>
-              <a href="#" className="menu-link menu-link_us-s color-white">
-                FAQ
-              </a>
-            </li>
-            <li>
-              <a href="#" className="menu-link menu-link_us-s color-white">
-                Contact
-              </a>
-            </li>
-            <li>
-              <a href="#" className="menu-link menu-link_us-s color-white">
-                Track Order
-              </a>
-            </li>
-          </ul>
-          <ul className="social-links list-unstyled d-flex flex-wrap mx-auto mb-0">
-            {socialLinks.map((link, index) => (
-              <li key={index}>
-                <a
-                  href={link.href}
-                  className="footer__social-link d-block color-white"
-                >
-                  <svg
-                    className={link.className}
-                    width={link.width}
-                    height={link.height}
-                    viewBox={link.viewBox}
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <use href={link.icon} />
-                  </svg>
-                </a>
-              </li>
-            ))}
-          </ul>
-          <div className="heeader-top__right flex-1 d-flex gap-1 justify-content-end">
-            <select
-              className="form-select form-select-sm bg-transparent color-white"
-              name="store-language"
-              defaultValue={languageOptions2[0].value}
-            >
-              {languageOptions2.map((option, index) => (
-                <option key={index} value={option.value}>
-                  {option.text}
-                </option>
-              ))}
-            </select>
-            <select
-              className="form-select form-select-sm bg-transparent color-white"
-              name="store-currency"
-              defaultValue={currencyOptions[0].value}
-            >
-              {currencyOptions.map((option, index) => (
-                <option
-                  key={index}
-                  className="footer-select__option"
-                  value={option.value}
-                >
-                  {option.text}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-      </div>
       <div className="header-desk_type_8">
         <div className="header-middle py-4">
           <div className="container d-flex align-items-center my-2">
