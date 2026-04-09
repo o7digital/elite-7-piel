@@ -1,15 +1,13 @@
 export const homeSeoMetadata = {
-  title:
-    "Cuidado facial y capilar profesional | Professional facial and hair care | ELITE 7 PIEL",
+  title: "Cuidado facial y capilar profesional | ELITE 7 PIEL",
   description:
-    "Compra cremas antiarrugas efectivas, radiofrecuencia facial en casa, tratamiento capilar intensivo y productos de belleza originales. Buy anti-aging creams, facial devices, intensive hair care and original beauty products online.",
+    "Compra cremas antiarrugas efectivas, radiofrecuencia facial en casa, tratamiento capilar intensivo y productos de belleza originales.",
 };
 
 export const shopSeoMetadata = {
-  title:
-    "Tienda de cuidado facial y capilar | Facial and hair care store | ELITE 7 PIEL",
+  title: "Tienda de cuidado facial y capilar | ELITE 7 PIEL",
   description:
-    "Encuentra cremas para rejuvenecer la piel, aparatos antiarrugas, productos profesionales para el cabello y belleza online. Discover skin rejuvenation creams, anti-wrinkle devices and professional beauty products.",
+    "Encuentra cremas para rejuvenecer la piel, aparatos antiarrugas, productos profesionales para el cabello y belleza online.",
 };
 
 export const seoKeywordContent = {

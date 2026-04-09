@@ -2,8 +2,10 @@
 import { dashboardMenuItems } from "@/data/menu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { stripLocalePrefix } from "@/lib/i18n/locale";
 export default function DashboardSidebar() {
   const pathname = usePathname();
+  const normalizedPathname = stripLocalePrefix(pathname);
   return (
     <div className="col-lg-3">
       <ul className="account-nav">
@@ -12,7 +14,7 @@ export default function DashboardSidebar() {
             <Link
               href={elm.href}
               className={`menu-link menu-link_us-s ${
-                pathname == elm.href ? "menu-link_active" : ""
+                normalizedPathname == elm.href ? "menu-link_active" : ""
               } `}
             >
               {elm.title}

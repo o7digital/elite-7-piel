@@ -23,7 +23,7 @@ export default function SizeGuide() {
                   height={511}
                   style={{ height: "fit-content" }}
                   loading="lazy"
-                  src="/assets/images/size-guide.jpg"
+                  src="/assets/images/size-guide.webp"
                   alt="image"
                 />
               </div>

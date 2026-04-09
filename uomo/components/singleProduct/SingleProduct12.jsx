@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { useContextElement } from "@/context/Context";
 import { openCart } from "@/utlis/openCart";
+import { addLocalePrefix, getLocaleFromPath } from "@/lib/i18n/locale";
 
 function renderStars(rating = 0) {
   const roundedRating = Math.max(0, Math.min(5, Math.round(rating)));
@@ -91,7 +92,11 @@ export default function SingleProduct12({ product }) {
     });
 
     if (redirectToCheckout) {
-      router.push("/shop_checkout");
+      const locale =
+        typeof window === "undefined"
+          ? "es"
+          : getLocaleFromPath(window.location.pathname);
+      router.push(addLocalePrefix("/shop_checkout", locale));
       return;
     }
 

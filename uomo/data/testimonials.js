@@ -50,7 +50,7 @@ export const testimonials2 = [
     user: {
       name: "Nicole Wells",
       role: "Web Developer",
-      avatar: "/assets/images/home/demo18/avatar-1.jpg",
+      avatar: "/assets/images/home/demo18/avatar-1.webp",
     },
   },
   {
@@ -61,7 +61,7 @@ export const testimonials2 = [
     user: {
       name: "Gabriel Nolan",
       role: "Consultant",
-      avatar: "/assets/images/home/demo18/avatar-2.jpg",
+      avatar: "/assets/images/home/demo18/avatar-2.webp",
     },
   },
   {
@@ -72,7 +72,7 @@ export const testimonials2 = [
     user: {
       name: "Ashley Jenkins",
       role: "Designer",
-      avatar: "/assets/images/home/demo18/avatar-3.jpg",
+      avatar: "/assets/images/home/demo18/avatar-3.webp",
     },
   },
   {
@@ -83,7 +83,7 @@ export const testimonials2 = [
     user: {
       name: "Nicole Wells",
       role: "Web Developer",
-      avatar: "/assets/images/home/demo18/avatar-1.jpg",
+      avatar: "/assets/images/home/demo18/avatar-1.webp",
     },
   },
   {
@@ -94,7 +94,7 @@ export const testimonials2 = [
     user: {
       name: "Gabriel Nolan",
       role: "Consultant",
-      avatar: "/assets/images/home/demo18/avatar-2.jpg",
+      avatar: "/assets/images/home/demo18/avatar-2.webp",
     },
   },
   {
@@ -105,7 +105,7 @@ export const testimonials2 = [
     user: {
       name: "Ashley Jenkins",
       role: "Designer",
-      avatar: "/assets/images/home/demo18/avatar-3.jpg",
+      avatar: "/assets/images/home/demo18/avatar-3.webp",
     },
   },
 ];

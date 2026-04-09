@@ -23,7 +23,7 @@ export default function Collections() {
                   {collectionsData[0].productCount} Products
                 </p>
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="btn-link default-underline text-uppercase fw-medium"
                 >
                   Shop Now
@@ -38,7 +38,7 @@ export default function Collections() {
             <div className="position-relative flex-grow-1">
               <div className="row h-md-100">
                 {collectionsData.slice(1, 3).map((elm, i) => (
-                  <Link href={"/shop-1"} key={i} className="col-md-6 h-md-100">
+                  <Link href={"/shop"} key={i} className="col-md-6 h-md-100">
                     <div className="collection-grid__item h-md-100 position-relative">
                       <div
                         className="background-img"
@@ -59,7 +59,7 @@ export default function Collections() {
             <div className="position-relative flex-grow-1 mt-lg-3 pt-lg-1">
               <div className="row h-md-100">
                 {collectionsData.slice(3, 5).map((elm, i) => (
-                  <Link href={"/shop-1"} key={i} className="col-md-6 h-md-100">
+                  <Link href={"/shop"} key={i} className="col-md-6 h-md-100">
                     <div className="collection-grid__item h-md-100 position-relative">
                       <div
                         className="background-img"

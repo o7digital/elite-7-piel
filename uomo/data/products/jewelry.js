@@ -1,7 +1,7 @@
 export const products42 = [
   {
     id: 471,
-    imgSrc: "/assets/images/home/demo20/product-1.jpg",
+    imgSrc: "/assets/images/home/demo20/product-1.webp",
     title: "Sea Shell Sterling Silver",
     category: "Jewelry",
     price: 29,
@@ -10,7 +10,7 @@ export const products42 = [
   },
   {
     id: 472,
-    imgSrc: "/assets/images/home/demo20/product-2.jpg",
+    imgSrc: "/assets/images/home/demo20/product-2.webp",
     title: "Sphere Sterling",
     category: "Jewelry",
     price: 29,
@@ -21,7 +21,7 @@ export const products42 = [
   },
   {
     id: 473,
-    imgSrc: "/assets/images/home/demo20/product-3.jpg",
+    imgSrc: "/assets/images/home/demo20/product-3.webp",
     title: "Two Stone Sterling Silver",
     category: "Jewelry",
     price: 29,
@@ -30,7 +30,7 @@ export const products42 = [
   },
   {
     id: 474,
-    imgSrc: "/assets/images/home/demo20/product-4.jpg",
+    imgSrc: "/assets/images/home/demo20/product-4.webp",
     title: "Classic Round Cut",
     category: "Jewelry",
     price: 29,
@@ -39,7 +39,7 @@ export const products42 = [
   },
   {
     id: 475,
-    imgSrc: "/assets/images/home/demo20/product-2.jpg",
+    imgSrc: "/assets/images/home/demo20/product-2.webp",
     title: "Sphere Sterling",
     category: "Jewelry",
     price: 29,
@@ -50,7 +50,7 @@ export const products42 = [
   },
   {
     id: 476,
-    imgSrc: "/assets/images/home/demo20/product-3.jpg",
+    imgSrc: "/assets/images/home/demo20/product-3.webp",
     title: "Two Stone Sterling Silver",
     category: "Jewelry",
     price: 29,
@@ -59,7 +59,7 @@ export const products42 = [
   },
   {
     id: 477,
-    imgSrc: "/assets/images/home/demo20/product-1.jpg",
+    imgSrc: "/assets/images/home/demo20/product-1.webp",
     title: "Sea Shell Sterling Silver",
     category: "Jewelry",
     price: 29,
@@ -68,7 +68,7 @@ export const products42 = [
   },
   {
     id: 478,
-    imgSrc: "/assets/images/home/demo20/product-4.jpg",
+    imgSrc: "/assets/images/home/demo20/product-4.webp",
     title: "Classic Round Cut",
     category: "Jewelry",
     price: 29,
@@ -77,7 +77,7 @@ export const products42 = [
   },
   {
     id: 479,
-    imgSrc: "/assets/images/home/demo20/product-3.jpg",
+    imgSrc: "/assets/images/home/demo20/product-3.webp",
     title: "Two Stone Sterling Silver",
     category: "Jewelry",
     price: 29,
@@ -86,7 +86,7 @@ export const products42 = [
   },
   {
     id: 480,
-    imgSrc: "/assets/images/home/demo20/product-2.jpg",
+    imgSrc: "/assets/images/home/demo20/product-2.webp",
     title: "Sphere Sterling",
     category: "Jewelry",
     price: 29,
@@ -97,7 +97,7 @@ export const products42 = [
   },
   {
     id: 481,
-    imgSrc: "/assets/images/home/demo20/product-4.jpg",
+    imgSrc: "/assets/images/home/demo20/product-4.webp",
     title: "Classic Round Cut",
     category: "Jewelry",
     price: 29,
@@ -106,7 +106,7 @@ export const products42 = [
   },
   {
     id: 482,
-    imgSrc: "/assets/images/home/demo20/product-1.jpg",
+    imgSrc: "/assets/images/home/demo20/product-1.webp",
     title: "Sea Shell Sterling Silver",
     category: "Jewelry",
     price: 29,
@@ -115,7 +115,7 @@ export const products42 = [
   },
   {
     id: 483,
-    imgSrc: "/assets/images/home/demo20/product-1.jpg",
+    imgSrc: "/assets/images/home/demo20/product-1.webp",
     title: "Sea Shell Sterling Silver",
     category: "Jewelry",
     price: 29,
@@ -124,7 +124,7 @@ export const products42 = [
   },
   {
     id: 484,
-    imgSrc: "/assets/images/home/demo20/product-2.jpg",
+    imgSrc: "/assets/images/home/demo20/product-2.webp",
     title: "Sphere Sterling",
     category: "Jewelry",
     price: 29,
@@ -135,7 +135,7 @@ export const products42 = [
   },
   {
     id: 485,
-    imgSrc: "/assets/images/home/demo20/product-3.jpg",
+    imgSrc: "/assets/images/home/demo20/product-3.webp",
     title: "Two Stone Sterling Silver",
     category: "Jewelry",
     price: 29,
@@ -144,7 +144,7 @@ export const products42 = [
   },
   {
     id: 486,
-    imgSrc: "/assets/images/home/demo20/product-4.jpg",
+    imgSrc: "/assets/images/home/demo20/product-4.webp",
     title: "Classic Round Cut",
     category: "Jewelry",
     price: 29,
@@ -153,7 +153,7 @@ export const products42 = [
   },
   {
     id: 487,
-    imgSrc: "/assets/images/home/demo20/product-2.jpg",
+    imgSrc: "/assets/images/home/demo20/product-2.webp",
     title: "Sphere Sterling",
     category: "Jewelry",
     price: 29,
@@ -164,7 +164,7 @@ export const products42 = [
   },
   {
     id: 488,
-    imgSrc: "/assets/images/home/demo20/product-3.jpg",
+    imgSrc: "/assets/images/home/demo20/product-3.webp",
     title: "Two Stone Sterling Silver",
     category: "Jewelry",
     price: 29,
@@ -173,7 +173,7 @@ export const products42 = [
   },
   {
     id: 489,
-    imgSrc: "/assets/images/home/demo20/product-1.jpg",
+    imgSrc: "/assets/images/home/demo20/product-1.webp",
     title: "Sea Shell Sterling Silver",
     category: "Jewelry",
     price: 29,
@@ -182,7 +182,7 @@ export const products42 = [
   },
   {
     id: 490,
-    imgSrc: "/assets/images/home/demo20/product-4.jpg",
+    imgSrc: "/assets/images/home/demo20/product-4.webp",
     title: "Classic Round Cut",
     category: "Jewelry",
     price: 29,
@@ -191,7 +191,7 @@ export const products42 = [
   },
   {
     id: 491,
-    imgSrc: "/assets/images/home/demo20/product-3.jpg",
+    imgSrc: "/assets/images/home/demo20/product-3.webp",
     title: "Two Stone Sterling Silver",
     category: "Jewelry",
     price: 29,
@@ -200,7 +200,7 @@ export const products42 = [
   },
   {
     id: 492,
-    imgSrc: "/assets/images/home/demo20/product-2.jpg",
+    imgSrc: "/assets/images/home/demo20/product-2.webp",
     title: "Sphere Sterling",
     category: "Jewelry",
     price: 29,
@@ -211,7 +211,7 @@ export const products42 = [
   },
   {
     id: 493,
-    imgSrc: "/assets/images/home/demo20/product-4.jpg",
+    imgSrc: "/assets/images/home/demo20/product-4.webp",
     title: "Classic Round Cut",
     category: "Jewelry",
     price: 29,
@@ -220,7 +220,7 @@ export const products42 = [
   },
   {
     id: 494,
-    imgSrc: "/assets/images/home/demo20/product-1.jpg",
+    imgSrc: "/assets/images/home/demo20/product-1.webp",
     title: "Sea Shell Sterling Silver",
     category: "Jewelry",
     price: 29,

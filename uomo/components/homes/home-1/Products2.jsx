@@ -138,7 +138,7 @@ export default function Products2() {
           <div className="text-center mt-2">
             <Link
               className="btn-link btn-link_lg default-underline text-uppercase fw-medium"
-              href="/shop-1"
+              href="/shop"
             >
               Discover More
             </Link>

@@ -1,7 +1,7 @@
 export const products35 = [
   {
     id: 435,
-    imgSrc: "/assets/images/home/demo16/product-1.jpg",
+    imgSrc: "/assets/images/home/demo16/product-1.webp",
     title: "VALENCIA BIKE",
     category: "BIKES",
     price: 29,
@@ -10,7 +10,7 @@ export const products35 = [
   },
   {
     id: 436,
-    imgSrc: "/assets/images/home/demo16/product-2.jpg",
+    imgSrc: "/assets/images/home/demo16/product-2.webp",
     title: "PARIS BIKE",
     category: "BIKES",
     price: 29,
@@ -19,7 +19,7 @@ export const products35 = [
   },
   {
     id: 437,
-    imgSrc: "/assets/images/home/demo16/product-3.jpg",
+    imgSrc: "/assets/images/home/demo16/product-3.webp",
     title: "NEW YORK BIKE",
     category: "BIKES",
     price: 29,
@@ -28,7 +28,7 @@ export const products35 = [
   },
   {
     id: 438,
-    imgSrc: "/assets/images/home/demo16/product-4.jpg",
+    imgSrc: "/assets/images/home/demo16/product-4.webp",
     title: "LONDON BIKE",
     category: "BIKES",
     price: 29,
@@ -37,7 +37,7 @@ export const products35 = [
   },
   {
     id: 439,
-    imgSrc: "/assets/images/home/demo16/product-5.jpg",
+    imgSrc: "/assets/images/home/demo16/product-5.webp",
     title: "VALENCIA BIKE",
     category: "BIKES",
     price: 29,
@@ -46,7 +46,7 @@ export const products35 = [
   },
   {
     id: 440,
-    imgSrc: "/assets/images/home/demo16/product-6.jpg",
+    imgSrc: "/assets/images/home/demo16/product-6.webp",
     title: "PARIS BIKE",
     category: "BIKES",
     price: 29,
@@ -55,7 +55,7 @@ export const products35 = [
   },
   {
     id: 441,
-    imgSrc: "/assets/images/home/demo16/product-7.jpg",
+    imgSrc: "/assets/images/home/demo16/product-7.webp",
     title: "NEW YORK BIKE",
     category: "BIKES",
     price: 29,
@@ -64,7 +64,7 @@ export const products35 = [
   },
   {
     id: 442,
-    imgSrc: "/assets/images/home/demo16/product-8.jpg",
+    imgSrc: "/assets/images/home/demo16/product-8.webp",
     title: "LONDON BIKE",
     category: "BIKES",
     price: 29,
@@ -79,14 +79,14 @@ export const products36 = [
     category: "BIKES",
     title: "NEW YORK BIKE",
     price: 29,
-    imgSrc: "/assets/images/home/demo16/banner-4.jpg",
+    imgSrc: "/assets/images/home/demo16/banner-4.webp",
   },
   {
     id: 444,
     category: "BIKES",
     title: "NEW YORK BIKE",
     price: 29,
-    imgSrc: "/assets/images/home/demo16/banner-4.jpg",
+    imgSrc: "/assets/images/home/demo16/banner-4.webp",
   },
 ];
 
@@ -94,7 +94,7 @@ export const products37 = [
   {
     id: 445,
     title: "VALENCIA BIKE",
-    imgSrc: "/assets/images/home/demo16/product-5.jpg",
+    imgSrc: "/assets/images/home/demo16/product-5.webp",
     category: "BIKES",
     price: 29,
     rating: 5,
@@ -102,7 +102,7 @@ export const products37 = [
   {
     id: 446,
     title: "PARIS BIKE",
-    imgSrc: "/assets/images/home/demo16/product-6.jpg",
+    imgSrc: "/assets/images/home/demo16/product-6.webp",
     category: "BIKES",
     price: 29,
     rating: 5,
@@ -110,7 +110,7 @@ export const products37 = [
   {
     id: 447,
     title: "NEW YORK BIKE",
-    imgSrc: "/assets/images/home/demo16/product-7.jpg",
+    imgSrc: "/assets/images/home/demo16/product-7.webp",
     category: "BIKES",
     price: 29,
     rating: 5,
@@ -118,7 +118,7 @@ export const products37 = [
   {
     id: 448,
     title: "LONDON BIKE",
-    imgSrc: "/assets/images/home/demo16/product-8.jpg",
+    imgSrc: "/assets/images/home/demo16/product-8.webp",
     category: "BIKES",
     price: 29,
     rating: 5,
@@ -126,7 +126,7 @@ export const products37 = [
   {
     id: 449,
     title: "VALENCIA BIKE",
-    imgSrc: "/assets/images/home/demo16/product-5.jpg",
+    imgSrc: "/assets/images/home/demo16/product-5.webp",
     category: "BIKES",
     price: 29,
     rating: 5,
@@ -134,7 +134,7 @@ export const products37 = [
   {
     id: 450,
     title: "PARIS BIKE",
-    imgSrc: "/assets/images/home/demo16/product-6.jpg",
+    imgSrc: "/assets/images/home/demo16/product-6.webp",
     category: "BIKES",
     price: 29,
     rating: 5,
@@ -142,7 +142,7 @@ export const products37 = [
   {
     id: 451,
     title: "NEW YORK BIKE",
-    imgSrc: "/assets/images/home/demo16/product-7.jpg",
+    imgSrc: "/assets/images/home/demo16/product-7.webp",
     category: "BIKES",
     price: 29,
     rating: 5,
@@ -150,7 +150,7 @@ export const products37 = [
   {
     id: 452,
     title: "LONDON BIKE",
-    imgSrc: "/assets/images/home/demo16/product-8.jpg",
+    imgSrc: "/assets/images/home/demo16/product-8.webp",
     category: "BIKES",
     price: 29,
     rating: 5,

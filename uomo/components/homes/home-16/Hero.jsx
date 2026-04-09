@@ -53,13 +53,13 @@ export default function Hero() {
               </h2>
               <div className="d-flex align-items-center gap-4 animate animate_fade animate_btt animate_delay-7">
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="btn btn-outline-primary border-0 fw-bold text-uppercase"
                 >
                   Shop Now
                 </Link>
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="btn btn-outline-primary border-0 color-white fw-bold theme-bg-color text-uppercase"
                 >
                   View More

@@ -66,7 +66,7 @@ export default function Hero() {
                 {elm.subtitle}
               </p>
               <Link
-                href="/shop-1"
+                href="/shop"
                 className="btn btn-outline-primary animate_btt animate_delay-7 border-0 fs-base text-uppercase fw-medium btn-50 border-circle theme-bg-color-secondary text-white"
               >
                 <span>SHOP NOW</span>

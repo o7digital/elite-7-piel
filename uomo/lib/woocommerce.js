@@ -1,7 +1,7 @@
 import "server-only";
 
 const DEFAULT_STORE_API_BASE = "https://oliviers52.sg-host.com/wp-json/wc/store/v1/";
-const FALLBACK_IMAGE = "/assets/images/home/demo15/product-1.jpg";
+const FALLBACK_IMAGE = "/assets/images/home/demo15/product-1.webp";
 const DEFAULT_STOCK_STATUSES = ["instock", "outofstock", "onbackorder"];
 
 const HTML_ENTITIES = {

@@ -23,7 +23,7 @@ export const slides1 = [
 export const slides2 = [
   {
     id: 1,
-    imageSrc: "/assets/images/home/demo2/slider1.jpg",
+    imageSrc: "/assets/images/home/demo2/slider1.webp",
     imageAlt: "Pattern",
     imageStyle: { objectPosition: "80% center" },
     season: "Summer 2023",
@@ -32,7 +32,7 @@ export const slides2 = [
   },
   {
     id: 2,
-    imageSrc: "/assets/images/home/demo2/slider2.jpg",
+    imageSrc: "/assets/images/home/demo2/slider2.webp",
     imageAlt: "Pattern",
     imageStyle: { objectPosition: "70% center" },
     season: "Summer 2023",
@@ -41,7 +41,7 @@ export const slides2 = [
   },
   {
     id: 3,
-    imageSrc: "/assets/images/home/demo2/slider3.jpg",
+    imageSrc: "/assets/images/home/demo2/slider3.webp",
     imageAlt: "Pattern",
     imageStyle: { objectPosition: "70% center" },
     season: "Summer 2023",
@@ -143,44 +143,44 @@ export const slides6 = [
   {
     id: 1,
     bgColor: "#f5e6e0",
-    imgSrc: "/assets/images/home/demo5/slider1.jpg",
+    imgSrc: "/assets/images/home/demo5/slider1.webp",
     title: "Better Things In a Better Way",
   },
   {
     id: 2,
     bgColor: "#f5e6e0",
-    imgSrc: "/assets/images/home/demo5/slider1.jpg",
+    imgSrc: "/assets/images/home/demo5/slider1.webp",
     title: "Better Things In a Better Way",
   },
   {
     id: 3,
     bgColor: "#f5e6e0",
-    imgSrc: "/assets/images/home/demo5/slider1.jpg",
+    imgSrc: "/assets/images/home/demo5/slider1.webp",
     title: "Better Things In a Better Way",
   },
   {
     id: 4,
     bgColor: "#f5e6e0",
-    imgSrc: "/assets/images/home/demo5/slider1.jpg",
+    imgSrc: "/assets/images/home/demo5/slider1.webp",
     title: "Better Things In a Better Way",
   },
 ];
 export const slidesData = [
   {
     id: 1,
-    src: "/assets/images/home/demo6/slider1.jpg",
+    src: "/assets/images/home/demo6/slider1.webp",
     title: "Our All-Time Favourites",
     subtitle: "Blouses & Tops",
   },
   {
     id: 2,
-    src: "/assets/images/home/demo6/slider1.jpg",
+    src: "/assets/images/home/demo6/slider1.webp",
     title: "Our All-Time Favourites",
     subtitle: "Blouses & Tops",
   },
   {
     id: 3,
-    src: "/assets/images/home/demo6/slider1.jpg",
+    src: "/assets/images/home/demo6/slider1.webp",
     title: "Our All-Time Favourites",
     subtitle: "Blouses & Tops",
   },
@@ -188,70 +188,70 @@ export const slidesData = [
 export const slidesData2 = [
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo7/slider1.jpg",
+    imgSrc: "/assets/images/home/demo7/slider1.webp",
     title: "New In",
     width: 475,
     height: 800,
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo7/slider2.jpg",
+    imgSrc: "/assets/images/home/demo7/slider2.webp",
     title: "Coats",
     width: 475,
     height: 800,
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo7/slider3.jpg",
+    imgSrc: "/assets/images/home/demo7/slider3.webp",
     title: "Shoes",
     subMenuLinks: [
-      { text: "Trainers", link: "/shop-1" },
-      { text: "Sandals", link: "/shop-1" },
-      { text: "Heel shoes", link: "/shop-1" },
-      { text: "Flat shoes", link: "/shop-1" },
-      { text: "Special prices", link: "/shop-1" },
+      { text: "Trainers", link: "/shop" },
+      { text: "Sandals", link: "/shop" },
+      { text: "Heel shoes", link: "/shop" },
+      { text: "Flat shoes", link: "/shop" },
+      { text: "Special prices", link: "/shop" },
     ],
     width: 475,
     height: 800,
   },
   {
     id: 4,
-    imgSrc: "/assets/images/home/demo7/slider4.jpg",
+    imgSrc: "/assets/images/home/demo7/slider4.webp",
     title: "Accessories",
     width: 475,
     height: 800,
   },
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo7/slider1.jpg",
+    imgSrc: "/assets/images/home/demo7/slider1.webp",
     title: "New In",
     width: 475,
     height: 800,
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo7/slider2.jpg",
+    imgSrc: "/assets/images/home/demo7/slider2.webp",
     title: "Coats",
     width: 475,
     height: 800,
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo7/slider3.jpg",
+    imgSrc: "/assets/images/home/demo7/slider3.webp",
     title: "Shoes",
     subMenuLinks: [
-      { text: "Trainers", link: "/shop-1" },
-      { text: "Sandals", link: "/shop-1" },
-      { text: "Heel shoes", link: "/shop-1" },
-      { text: "Flat shoes", link: "/shop-1" },
-      { text: "Special prices", link: "/shop-1" },
+      { text: "Trainers", link: "/shop" },
+      { text: "Sandals", link: "/shop" },
+      { text: "Heel shoes", link: "/shop" },
+      { text: "Flat shoes", link: "/shop" },
+      { text: "Special prices", link: "/shop" },
     ],
     width: 475,
     height: 800,
   },
   {
     id: 4,
-    imgSrc: "/assets/images/home/demo7/slider4.jpg",
+    imgSrc: "/assets/images/home/demo7/slider4.webp",
     title: "Accessories",
     width: 475,
     height: 800,
@@ -260,7 +260,7 @@ export const slidesData2 = [
 export const slidesData3 = [
   {
     id: 1,
-    imageSrc: "/assets/images/home/demo8/slider1.jpg",
+    imageSrc: "/assets/images/home/demo8/slider1.webp",
     season: "Summer 2023",
     objectPosition: "50% center",
     title: "New Arrival Men’s",
@@ -268,7 +268,7 @@ export const slidesData3 = [
   },
   {
     id: 2,
-    imageSrc: "/assets/images/home/demo8/slider2.jpg",
+    imageSrc: "/assets/images/home/demo8/slider2.webp",
     season: "Summer 2023",
     objectPosition: "70% center",
     title: "New Arrival Women’s",
@@ -276,7 +276,7 @@ export const slidesData3 = [
   },
   {
     id: 3,
-    imageSrc: "/assets/images/home/demo8/slider3.jpg",
+    imageSrc: "/assets/images/home/demo8/slider3.webp",
     season: "Summer 2023",
     objectPosition: "50% center",
     title: "New Arrival Kid’s",
@@ -286,7 +286,7 @@ export const slidesData3 = [
 export const slidesData4 = [
   {
     id: 1,
-    imageSrc: "/assets/images/home/demo9/slider1.jpg",
+    imageSrc: "/assets/images/home/demo9/slider1.webp",
     imageAlt: "TRENDING 2023",
     subtitle: "Interior Designs",
     description:
@@ -294,7 +294,7 @@ export const slidesData4 = [
   },
   {
     id: 2,
-    imageSrc: "/assets/images/home/demo9/slider1.jpg",
+    imageSrc: "/assets/images/home/demo9/slider1.webp",
     imageAlt: "TRENDING 2023",
     subtitle: "Interior Designs",
     description:
@@ -302,7 +302,7 @@ export const slidesData4 = [
   },
   {
     id: 3,
-    imageSrc: "/assets/images/home/demo9/slider1.jpg",
+    imageSrc: "/assets/images/home/demo9/slider1.webp",
     imageAlt: "TRENDING 2023",
     subtitle: "Interior Designs",
     description:
@@ -310,7 +310,7 @@ export const slidesData4 = [
   },
   {
     id: 4,
-    imageSrc: "/assets/images/home/demo9/slider1.jpg",
+    imageSrc: "/assets/images/home/demo9/slider1.webp",
     imageAlt: "TRENDING 2023",
     subtitle: "Interior Designs",
     description:
@@ -420,7 +420,7 @@ export const slideData8 = [
   {
     id: 1,
     backgroundColor: "#f5e6e0",
-    imgSrc: "/assets/images/home/demo13/slider1.jpg",
+    imgSrc: "/assets/images/home/demo13/slider1.webp",
     imgAlt: "Pattern",
     title1: "EYEWEAR",
     title2: "UP TO $60 OFF POLARISED",
@@ -429,7 +429,7 @@ export const slideData8 = [
   {
     id: 2,
     backgroundColor: "#f5e6e0",
-    imgSrc: "/assets/images/home/demo13/slider1.jpg",
+    imgSrc: "/assets/images/home/demo13/slider1.webp",
     imgAlt: "Pattern",
     title1: "EYEWEAR",
     title2: "UP TO $60 OFF POLARISED",
@@ -440,15 +440,15 @@ export const slideData8 = [
 export const slideData9 = [
   {
     id: 1,
-    bgImg: "/assets/images/home/demo14/slider1_bg.jpg",
+    bgImg: "/assets/images/home/demo14/slider1_bg.webp",
     characterImg: "/assets/images/home/demo14/slider1_character.png",
     title: "Search Lab N95 Face Mask",
     subtitle: "Just a few seconds to measure your body temperature.",
-    btnLink: "/shop-1",
+    btnLink: "/shop",
   },
   {
     id: 2,
-    bgImg: "/assets/images/home/demo14/slider1_bg.jpg",
+    bgImg: "/assets/images/home/demo14/slider1_bg.webp",
     characterImg: "/assets/images/home/demo14/slider2_character.png",
     title: "Search Lab N95 Face Mask",
     subtitle: "Just a few seconds to measure your body temperature.",
@@ -459,30 +459,30 @@ export const slideData9 = [
 export const slideData10 = [
   {
     id: 1,
-    bgImage: "/assets/images/home/demo15/slider1_bg.jpg",
-    title: "Resplandor",
+    bgImage: "/assets/images/home/demo15/slider1_bg.webp",
+    title: "Cuidado facial",
     description:
-      "Beaux products protect, moisturize, and lubricate your skin. It smartly nourish your skin. with lotions, day creams, night creams, tinted moisturizers, and more.",
+      "Descubre cremas antiarrugas efectivas, crema para rejuvenecer la piel y productos anti edad profesionales para una rutina mas firme, luminosa y constante.",
   },
   {
     id: 2,
-    bgImage: "/assets/images/home/demo15/slider2_bg.jpg",
-    title: "Resplandor",
+    bgImage: "/assets/images/home/demo15/slider2_bg.webp",
+    title: "Belleza profesional",
     description:
-      "Beaux products protect, moisturize, and lubricate your skin. It smartly nourish your skin. with lotions, day creams, night creams, tinted moisturizers, and more.",
+      "Compra productos de belleza originales, dispositivo de radiofrecuencia facial en casa y tratamiento capilar intensivo desde una sola tienda especializada.",
   },
 ];
 
 export const slideData11 = [
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo16/slider1_bg.jpg",
+    imgSrc: "/assets/images/home/demo16/slider1_bg.webp",
     title: "NEW BIKE FOR 2024!",
     subtitle: "New Arrivals",
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo16/slider2_bg.jpg",
+    imgSrc: "/assets/images/home/demo16/slider2_bg.webp",
     title: "MOUNTAIN BIKE 2024!",
     subtitle: "New Arrivals",
   },
@@ -491,28 +491,28 @@ export const slideData11 = [
 export const slideData12 = [
   {
     id: 1,
-    imageUrl: "/assets/images/home/demo17/slider_bg_1.jpg",
+    imageUrl: "/assets/images/home/demo17/slider_bg_1.webp",
     imageUrl2: "/assets/images/home/demo17/slideshow-character1.png",
     text: "More than 30 varieties of wine",
     title: "Wine enjoying passion",
   },
   {
     id: 2,
-    imageUrl: "/assets/images/home/demo17/slider_bg_1.jpg",
+    imageUrl: "/assets/images/home/demo17/slider_bg_1.webp",
     imageUrl2: "/assets/images/home/demo17/slideshow-character1.png",
     text: "More than 30 varieties of wine",
     title: "Wine enjoying passion",
   },
   {
     id: 3,
-    imageUrl: "/assets/images/home/demo17/slider_bg_1.jpg",
+    imageUrl: "/assets/images/home/demo17/slider_bg_1.webp",
     imageUrl2: "/assets/images/home/demo17/slideshow-character1.png",
     text: "More than 30 varieties of wine",
     title: "Wine enjoying passion",
   },
   {
     id: 4,
-    imageUrl: "/assets/images/home/demo17/slider_bg_1.jpg",
+    imageUrl: "/assets/images/home/demo17/slider_bg_1.webp",
     imageUrl2: "/assets/images/home/demo17/slideshow-character1.png",
     text: "More than 30 varieties of wine",
     title: "Wine enjoying passion",
@@ -522,28 +522,28 @@ export const slideData12 = [
 export const slideData13 = [
   {
     id: 1,
-    imageUrl: "/assets/images/home/demo18/banner-1.jpg",
+    imageUrl: "/assets/images/home/demo18/banner-1.webp",
     title: "Special Offer",
     subTitle: "Save 20%",
     description: "First Service",
   },
   {
     id: 2,
-    imageUrl: "/assets/images/home/demo18/banner-1.jpg",
+    imageUrl: "/assets/images/home/demo18/banner-1.webp",
     title: "Special Offer",
     subTitle: "Save 20%",
     description: "First Service",
   },
   {
     id: 3,
-    imageUrl: "/assets/images/home/demo18/banner-1.jpg",
+    imageUrl: "/assets/images/home/demo18/banner-1.webp",
     title: "Special Offer",
     subTitle: "Save 20%",
     description: "First Service",
   },
   {
     id: 4,
-    imageUrl: "/assets/images/home/demo18/banner-1.jpg",
+    imageUrl: "/assets/images/home/demo18/banner-1.webp",
     title: "Special Offer",
     subTitle: "Save 20%",
     description: "First Service",
@@ -553,42 +553,42 @@ export const slideData13 = [
 export const heroSlides14 = [
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo19/category-1.jpg",
+    imgSrc: "/assets/images/home/demo19/category-1.webp",
     title: "Classic Collection",
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo19/category-2.jpg",
+    imgSrc: "/assets/images/home/demo19/category-2.webp",
     title: "Gold Collection",
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo19/category-3.jpg",
+    imgSrc: "/assets/images/home/demo19/category-3.webp",
     title: "Sport Collection",
   },
   {
     id: 4,
-    imgSrc: "/assets/images/home/demo19/category-4.jpg",
+    imgSrc: "/assets/images/home/demo19/category-4.webp",
     title: "Heritage Collection",
   },
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo19/category-1.jpg",
+    imgSrc: "/assets/images/home/demo19/category-1.webp",
     title: "Classic Collection",
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo19/category-2.jpg",
+    imgSrc: "/assets/images/home/demo19/category-2.webp",
     title: "Gold Collection",
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo19/category-3.jpg",
+    imgSrc: "/assets/images/home/demo19/category-3.webp",
     title: "Sport Collection",
   },
   {
     id: 4,
-    imgSrc: "/assets/images/home/demo19/category-4.jpg",
+    imgSrc: "/assets/images/home/demo19/category-4.webp",
     title: "Heritage Collection",
   },
 ];
@@ -596,7 +596,7 @@ export const heroSlides14 = [
 export const slideshows = [
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo20/slider1.jpg",
+    imgSrc: "/assets/images/home/demo20/slider1.webp",
     title: "Newest Arrivals",
     subtitle: "LATEST TRENDS",
     description:
@@ -604,7 +604,7 @@ export const slideshows = [
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo20/slider1.jpg",
+    imgSrc: "/assets/images/home/demo20/slider1.webp",
     title: "Newest Arrivals",
     subtitle: "LATEST TRENDS",
     description:
@@ -612,7 +612,7 @@ export const slideshows = [
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo20/slider1.jpg",
+    imgSrc: "/assets/images/home/demo20/slider1.webp",
     title: "Newest Arrivals",
     subtitle: "LATEST TRENDS",
     description:
@@ -620,7 +620,7 @@ export const slideshows = [
   },
   {
     id: 4,
-    imgSrc: "/assets/images/home/demo20/slider1.jpg",
+    imgSrc: "/assets/images/home/demo20/slider1.webp",
     title: "Newest Arrivals",
     subtitle: "LATEST TRENDS",
     description:
@@ -632,7 +632,7 @@ export const slideshows = [
 export const slidesData15 = [
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo21/slider1.jpg",
+    imgSrc: "/assets/images/home/demo21/slider1.webp",
     imgAlt: "Pattern",
     title: "Classic Play Kitchen",
     subTitle: "New Toys",
@@ -640,7 +640,7 @@ export const slidesData15 = [
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo21/slider1.jpg",
+    imgSrc: "/assets/images/home/demo21/slider1.webp",
     imgAlt: "Pattern 2",
     title: "Educational Toys",
     subTitle: "Explore & Learn",
@@ -648,7 +648,7 @@ export const slidesData15 = [
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo21/slider1.jpg",
+    imgSrc: "/assets/images/home/demo21/slider1.webp",
     imgAlt: "Pattern 3",
     title: "Outdoor Adventure",
     subTitle: "Gear Up for Fun",
@@ -660,25 +660,25 @@ export const slidesData15 = [
 export const slidesData16 = [
   {
     id: 1,
-    imageSrc: "/assets/images/home/demo22/slider-1.jpg",
+    imageSrc: "/assets/images/home/demo22/slider-1.webp",
     category: "GARDEN PRODUCTS",
     title: "WELCOME THE SUMMER IN YOUR GARDEN",
   },
   {
     id: 2,
-    imageSrc: "/assets/images/home/demo22/slider-2.jpg",
+    imageSrc: "/assets/images/home/demo22/slider-2.webp",
     category: "New Arrivals",
     title: "Up To 40% Off",
   },
   {
     id: 3,
-    imageSrc: "/assets/images/home/demo22/slider-1.jpg",
+    imageSrc: "/assets/images/home/demo22/slider-1.webp",
     category: "GARDEN PRODUCTS",
     title: "WELCOME THE SUMMER IN YOUR GARDEN",
   },
   {
     id: 4,
-    imageSrc: "/assets/images/home/demo22/slider-2.jpg",
+    imageSrc: "/assets/images/home/demo22/slider-2.webp",
     category: "New Arrivals",
     title: "Up To 40% Off",
   },

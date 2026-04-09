@@ -9,7 +9,7 @@ export default function Cta() {
       <div className="slideshow-bg position-absolute w-100 h-100">
         <Image
           loading="lazy"
-          src="/assets/images/home/demo13/newsletter_bg.jpg"
+          src="/assets/images/home/demo13/newsletter_bg.webp"
           width="1920"
           height="500"
           alt="Pattern"

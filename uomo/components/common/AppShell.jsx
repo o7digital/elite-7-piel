@@ -11,7 +11,7 @@ import LoginFormPopup from "@/components/common/LoginFormPopup";
 import CookieContainer from "@/components/common/CookieContainer";
 import WhatsAppFloat from "@/components/common/WhatsAppFloat";
 import ScrollTop from "@/components/common/ScrollTop";
-import SpanishRuntime from "@/components/common/SpanishRuntime";
+import LocaleRuntime from "@/components/common/LocaleRuntime";
 import Context from "@/context/Context";
 import QuickView from "@/components/modals/QuickView";
 import CartDrawer from "@/components/shopCartandCheckout/CartDrawer";
@@ -33,7 +33,7 @@ export default function AppShell({ children }) {
 
   return (
     <>
-      <SpanishRuntime />
+      <LocaleRuntime />
       <Svgs />
       <Context>
         <MobileHeader />

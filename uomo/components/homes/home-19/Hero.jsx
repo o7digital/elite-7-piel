@@ -53,7 +53,7 @@ export default function Hero() {
                 {elm.description.split(" ").slice(7).join(" ")}
               </p>
               <Link
-                href="/shop-1"
+                href="/shop"
                 className="btn-link btn-link_sm default-underline text-uppercase fw-medium animate animate_fade animate_btt animate_delay-7"
               >
                 Shop Now

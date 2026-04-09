@@ -40,7 +40,7 @@ export default function Hero() {
       <div className="slideshow-bg position-absolute left-0 top-0 w-100">
         <Image
           loading="lazy"
-          src="/assets/images/home/demo19/slider_bg_1.jpg"
+          src="/assets/images/home/demo19/slider_bg_1.webp"
           width="1920"
           height="1260"
           alt="Pattern"
@@ -60,7 +60,7 @@ export default function Hero() {
         </h2>
         <div className="d-flex align-items-center text-center justify-content-center">
           <Link
-            href="/shop-1"
+            href="/shop"
             className="btn btn-outline-primary border-0 fs-13 fw-semi-bold text-uppercase"
           >
             Shop Now
@@ -84,7 +84,7 @@ export default function Hero() {
                 />
                 <div className="text-left">
                   <Link
-                    href="/shop-1"
+                    href="/shop"
                     className="menu-link menu-link_us-s fw-semi-bold fs-18 text-white text-uppercase"
                   >
                     {elm.title}

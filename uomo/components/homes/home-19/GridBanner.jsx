@@ -25,7 +25,7 @@ export default function GridBanner() {
                 {banner.buttonText && (
                   <p className="mb-0">
                     <Link
-                      href="/shop-1"
+                      href="/shop"
                       className="btn-link default-underline text-uppercase text-white fw-normal fs-base w-auto"
                     >
                       {banner.buttonText}

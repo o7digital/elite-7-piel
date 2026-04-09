@@ -54,7 +54,7 @@ export default function Hero() {
                 {elm.price}
               </h2>
               <Link
-                href="/shop-1"
+                href="/shop"
                 className="btn-link btn-link_md default-underline fw-medium animate animate_fade animate_btt animate_delay-7"
               >
                 Shop Now

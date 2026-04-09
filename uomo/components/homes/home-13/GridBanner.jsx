@@ -21,7 +21,7 @@ export default function GridBanner() {
                   {elm.title}
                 </h3>
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="btn-link default-underline text-uppercase text-white fw-medium"
                 >
                   Shop Now

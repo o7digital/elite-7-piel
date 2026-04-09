@@ -8,10 +8,10 @@ import Star from "../common/Star";
 import Size from "./Size";
 import Colors from "./Colors";
 const imageUrls = [
-  "/assets/images/products/product_0-5.jpg",
-  "/assets/images/products/product_0-6.jpg",
-  "/assets/images/products/product_0-7.jpg",
-  "/assets/images/products/product_0-8.jpg",
+  "/assets/images/products/product_0-5.webp",
+  "/assets/images/products/product_0-6.webp",
+  "/assets/images/products/product_0-7.webp",
+  "/assets/images/products/product_0-8.webp",
 ];
 import Link from "next/link";
 import Image from "next/image";

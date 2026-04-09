@@ -51,7 +51,7 @@ export default function BestSelling() {
         </h2>
         <Link
           className="btn-link btn-link_md default-underline text-uppercase fw-medium"
-          href="/shop-1"
+          href="/shop"
         >
           See All Products
         </Link>

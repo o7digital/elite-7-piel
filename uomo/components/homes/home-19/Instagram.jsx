@@ -25,7 +25,7 @@ export default function Instagram() {
               <Image
                 loading="lazy"
                 className="instagram__img"
-                src="/assets/images/home/demo20/instagram1.jpg"
+                src="/assets/images/home/demo20/instagram1.webp"
                 width="466"
                 height="525"
                 alt="Insta image 1"

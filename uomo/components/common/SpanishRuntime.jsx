@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 
 const TEXT_ATTRIBUTES = ["placeholder", "title", "aria-label", "alt"];
 const SKIPPED_TAGS = new Set(["SCRIPT", "STYLE", "NOSCRIPT", "SVG"]);
+const SKIP_TRANSLATION_SELECTOR = "[data-no-runtime-translate]";
 const LOCALIZED_PREFIX = "/es";
 const STATIC_PREFIXES = ["/_next", "/api", "/assets"];
 
@@ -90,11 +91,19 @@ function buildTranslator(translations) {
   return { exactEntries, partialEntries, translateValue, translateNormalized };
 }
 
+function shouldSkipElement(element) {
+  return !!element?.closest(SKIP_TRANSLATION_SELECTOR);
+}
+
 function translateTextNodes(root, translator) {
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
     acceptNode(node) {
       const parentElement = node.parentElement;
-      if (!parentElement || SKIPPED_TAGS.has(parentElement.tagName)) {
+      if (
+        !parentElement ||
+        SKIPPED_TAGS.has(parentElement.tagName) ||
+        shouldSkipElement(parentElement)
+      ) {
         return NodeFilter.FILTER_REJECT;
       }
 
@@ -118,7 +127,7 @@ function translateTextNodes(root, translator) {
 
 function translateAttributes(root, translator) {
   root.querySelectorAll("*").forEach((element) => {
-    if (SKIPPED_TAGS.has(element.tagName)) {
+    if (SKIPPED_TAGS.has(element.tagName) || shouldSkipElement(element)) {
       return;
     }
 

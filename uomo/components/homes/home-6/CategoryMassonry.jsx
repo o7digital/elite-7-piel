@@ -20,7 +20,7 @@ export default function CategoryMassonry() {
               <Image
                 loading="lazy"
                 className="h-auto"
-                src="/assets/images/home/demo6/banner1.jpg"
+                src="/assets/images/home/demo6/banner1.webp"
                 width="570"
                 height="500"
                 alt="image"
@@ -28,7 +28,7 @@ export default function CategoryMassonry() {
             </div>
             <h2>Women’s Collection</h2>
             <Link
-              href="/shop-1"
+              href="/shop"
               className="btn-link btn-link_md default-underline text-uppercase fw-medium"
             >
               Discover Now
@@ -43,7 +43,7 @@ export default function CategoryMassonry() {
               <Image
                 loading="lazy"
                 className="h-auto"
-                src="/assets/images/home/demo6/banner2.jpg"
+                src="/assets/images/home/demo6/banner2.webp"
                 width="672"
                 height="480"
                 alt="image"
@@ -51,7 +51,7 @@ export default function CategoryMassonry() {
             </div>
             <h2>Newest Women Clothes</h2>
             <Link
-              href="/shop-1"
+              href="/shop"
               className="btn-link btn-link_md default-underline text-uppercase fw-medium"
             >
               Discover Now
@@ -66,7 +66,7 @@ export default function CategoryMassonry() {
               <Image
                 loading="lazy"
                 className="h-auto"
-                src="/assets/images/home/demo6/banner3.jpg"
+                src="/assets/images/home/demo6/banner3.webp"
                 width="570"
                 height="570"
                 alt="image"
@@ -74,7 +74,7 @@ export default function CategoryMassonry() {
             </div>
             <h2>Slouchy Colorblock Tunic Sweater</h2>
             <Link
-              href="/shop-1"
+              href="/shop"
               className="btn-link btn-link_md default-underline text-uppercase fw-medium"
             >
               Discover Now
@@ -89,7 +89,7 @@ export default function CategoryMassonry() {
               <Image
                 loading="lazy"
                 className="h-auto"
-                src="/assets/images/home/demo6/banner4.jpg"
+                src="/assets/images/home/demo6/banner4.webp"
                 width="450"
                 height="550"
                 alt="image"
@@ -97,7 +97,7 @@ export default function CategoryMassonry() {
             </div>
             <h2>Jackets & Coats</h2>
             <Link
-              href="/shop-1"
+              href="/shop"
               className="btn-link btn-link_md default-underline text-uppercase fw-medium"
             >
               Discover Now
@@ -114,7 +114,7 @@ export default function CategoryMassonry() {
               <Image
                 loading="lazy"
                 className="h-auto"
-                src="/assets/images/home/demo6/banner5.jpg"
+                src="/assets/images/home/demo6/banner5.webp"
                 width="570"
                 height="631"
                 alt="image"
@@ -122,7 +122,7 @@ export default function CategoryMassonry() {
             </div>
             <h2>Men’s Spring Collection 2020</h2>
             <Link
-              href="/shop-1"
+              href="/shop"
               className="btn-link btn-link_md default-underline text-uppercase fw-medium"
             >
               Discover Now
@@ -137,7 +137,7 @@ export default function CategoryMassonry() {
               <Image
                 loading="lazy"
                 className="h-auto"
-                src="/assets/images/home/demo6/banner6.jpg"
+                src="/assets/images/home/demo6/banner6.webp"
                 width="450"
                 height="550"
                 alt="image"
@@ -145,7 +145,7 @@ export default function CategoryMassonry() {
             </div>
             <h2>Fresh Dresses</h2>
             <Link
-              href="/shop-1"
+              href="/shop"
               className="btn-link btn-link_md default-underline text-uppercase fw-medium"
             >
               Discover Now
@@ -160,7 +160,7 @@ export default function CategoryMassonry() {
               <Image
                 loading="lazy"
                 className="h-auto"
-                src="/assets/images/home/demo6/banner7.jpg"
+                src="/assets/images/home/demo6/banner7.webp"
                 width="570"
                 height="450"
                 alt="image"
@@ -168,7 +168,7 @@ export default function CategoryMassonry() {
             </div>
             <h2>Shirt in Vintage Plaid</h2>
             <Link
-              href="/shop-1"
+              href="/shop"
               className="btn-link btn-link_md default-underline text-uppercase fw-medium"
             >
               Discover Now
@@ -184,7 +184,7 @@ export default function CategoryMassonry() {
               <Image
                 loading="lazy"
                 className="h-auto"
-                src="/assets/images/home/demo6/banner8.jpg"
+                src="/assets/images/home/demo6/banner8.webp"
                 width="450"
                 height="450"
                 alt="image"
@@ -192,7 +192,7 @@ export default function CategoryMassonry() {
             </div>
             <h2>Sleeve Bags</h2>
             <Link
-              href="/shop-1"
+              href="/shop"
               className="btn-link btn-link_md default-underline text-uppercase fw-medium"
             >
               Discover Now

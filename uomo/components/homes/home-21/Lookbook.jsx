@@ -39,7 +39,7 @@ export default function Lookbook() {
               <Image
                 loading="lazy"
                 className="h-auto"
-                src="/assets/images/home/demo22/banner-2.jpg"
+                src="/assets/images/home/demo22/banner-2.webp"
                 width="770"
                 height="750"
                 alt="image"

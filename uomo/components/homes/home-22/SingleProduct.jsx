@@ -10,19 +10,19 @@ import Colors from "@/components/singleProduct/Colors";
 const productImages = [
   {
     imageSrc: "/assets/images/home/demo23/product-1.png",
-    thumb: "/assets/images/home/demo23/product-1-thumb.jpg",
+    thumb: "/assets/images/home/demo23/product-1-thumb.webp",
   },
   {
     imageSrc: "/assets/images/home/demo23/product-2.png",
-    thumb: "/assets/images/home/demo23/product-2-thumb.jpg",
+    thumb: "/assets/images/home/demo23/product-2-thumb.webp",
   },
   {
     imageSrc: "/assets/images/home/demo23/product-1.png",
-    thumb: "/assets/images/home/demo23/product-3-thumb.jpg",
+    thumb: "/assets/images/home/demo23/product-3-thumb.webp",
   },
   {
     imageSrc: "/assets/images/home/demo23/product-2.png",
-    thumb: "/assets/images/home/demo23/product-4-thumb.jpg",
+    thumb: "/assets/images/home/demo23/product-4-thumb.webp",
   },
   // Add more images as needed
 ];

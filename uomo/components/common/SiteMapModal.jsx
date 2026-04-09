@@ -10,7 +10,7 @@ export default function SiteMapModal() {
           <div className="w-50 d-none d-lg-block">
             <Image
               loading="lazy"
-              src="/assets/images/nav-bg.jpg"
+              src="/assets/images/nav-bg.webp"
               alt="Site map"
               className="sitemap__bg"
               width={960}

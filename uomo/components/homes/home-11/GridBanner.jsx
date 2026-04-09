@@ -22,7 +22,7 @@ export default function GridBanner() {
                 <h3 className="fw-bold mb-1">{elm.title}</h3>
                 <p className="mb-2 text-secondary">{elm.description}</p>
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="btn-link text-uppercase fw-medium"
                 >
                   Shop Now

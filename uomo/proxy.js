@@ -1,21 +1,13 @@
 import { NextResponse } from "next/server";
 import {
-  isSpanishPath,
-  stripSpanishPrefix,
-  translateHtmlDocument,
-} from "@/lib/i18n/spanishSeo";
+  getLocaleFromPath,
+  isLegacySpanishPath,
+  shouldBypassPath,
+  stripLocalePrefix,
+} from "@/lib/i18n/locale";
+import { translateHtmlDocument } from "@/lib/i18n/localeSeo";
 
 const INTERNAL_TRANSLATION_HEADER = "x-spanish-html-pass";
-
-function shouldBypass(pathname) {
-  return (
-    pathname.startsWith("/_next") ||
-    pathname.startsWith("/api") ||
-    pathname.startsWith("/assets") ||
-    pathname === "/favicon.ico" ||
-    /\.[a-z0-9]+$/i.test(pathname)
-  );
-}
 
 function isDataRequest(request) {
   const accept = request.headers.get("accept") || "";
@@ -49,66 +41,90 @@ function shouldTranslateHtml(request) {
 
 export async function proxy(request) {
   const { pathname } = request.nextUrl;
+  const locale = getLocaleFromPath(pathname);
+  const normalizedPathname = stripLocalePrefix(pathname);
 
-  if (shouldBypass(pathname)) {
-    return NextResponse.next();
+  if (shouldBypassPath(normalizedPathname)) {
+    if (pathname === normalizedPathname) {
+      return NextResponse.next();
+    }
+
+    const rewriteUrl = request.nextUrl.clone();
+    rewriteUrl.pathname = normalizedPathname;
+
+    return NextResponse.rewrite(rewriteUrl);
+  }
+
+  if (isLegacySpanishPath(pathname)) {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = stripLocalePrefix(pathname);
+
+    return NextResponse.redirect(redirectUrl, 308);
   }
 
   if (request.headers.get(INTERNAL_TRANSLATION_HEADER) === "1") {
     return NextResponse.next();
   }
 
-  if (isSpanishPath(pathname)) {
-    const redirectUrl = request.nextUrl.clone();
-    redirectUrl.pathname = stripSpanishPrefix(pathname);
-
-    return NextResponse.redirect(redirectUrl, 308);
-  }
-
-  if (shouldTranslateHtml(request)) {
-    const upstreamUrl = request.nextUrl.clone();
-    const upstreamHeaders = new Headers(request.headers);
-    upstreamHeaders.set(INTERNAL_TRANSLATION_HEADER, "1");
-    const upstreamRequest = new Request(upstreamUrl, {
-      method: request.method,
-      headers: upstreamHeaders,
-      body: request.body,
-      cache: request.cache,
-      credentials: request.credentials,
-      integrity: request.integrity,
-      keepalive: request.keepalive,
-      mode: request.mode,
-      redirect: request.redirect,
-      referrer: request.referrer,
-      referrerPolicy: request.referrerPolicy,
-      signal: request.signal,
-    });
-
-    const upstreamResponse = await fetch(upstreamRequest);
-    const contentType = upstreamResponse.headers.get("content-type") || "";
-
-    if (contentType.includes("text/html")) {
-      const html = await upstreamResponse.text();
-      const translatedHtml = translateHtmlDocument(html, {
-        origin: request.nextUrl.origin,
-        pathname,
-      });
-      const responseHeaders = new Headers(upstreamResponse.headers);
-
-      responseHeaders.set("content-language", "es-MX");
-      responseHeaders.set("content-type", "text/html; charset=utf-8");
-      responseHeaders.delete("content-length");
-      responseHeaders.delete("content-encoding");
-
-      return new NextResponse(translatedHtml, {
-        headers: responseHeaders,
-        status: upstreamResponse.status,
-        statusText: upstreamResponse.statusText,
-      });
+  if (!shouldTranslateHtml(request)) {
+    if (pathname === normalizedPathname) {
+      return NextResponse.next();
     }
+
+    const rewriteUrl = request.nextUrl.clone();
+    rewriteUrl.pathname = normalizedPathname;
+
+    return NextResponse.rewrite(rewriteUrl);
   }
 
-  return NextResponse.next();
+  const upstreamUrl = request.nextUrl.clone();
+  upstreamUrl.pathname = normalizedPathname;
+
+  const upstreamHeaders = new Headers(request.headers);
+  upstreamHeaders.set(INTERNAL_TRANSLATION_HEADER, "1");
+  const upstreamRequest = new Request(upstreamUrl, {
+    method: request.method,
+    headers: upstreamHeaders,
+    body: request.body,
+    cache: request.cache,
+    credentials: request.credentials,
+    integrity: request.integrity,
+    keepalive: request.keepalive,
+    mode: request.mode,
+    redirect: request.redirect,
+    referrer: request.referrer,
+    referrerPolicy: request.referrerPolicy,
+    signal: request.signal,
+  });
+
+  const upstreamResponse = await fetch(upstreamRequest);
+  const contentType = upstreamResponse.headers.get("content-type") || "";
+
+  if (contentType.includes("text/html")) {
+    const html = await upstreamResponse.text();
+    const translatedHtml = translateHtmlDocument(html, {
+      origin: request.nextUrl.origin,
+      pathname,
+      locale,
+    });
+    const responseHeaders = new Headers(upstreamResponse.headers);
+
+    responseHeaders.set(
+      "content-language",
+      locale === "en" ? "en-US" : "es-MX"
+    );
+    responseHeaders.set("content-type", "text/html; charset=utf-8");
+    responseHeaders.delete("content-length");
+    responseHeaders.delete("content-encoding");
+
+    return new NextResponse(translatedHtml, {
+      headers: responseHeaders,
+      status: upstreamResponse.status,
+      statusText: upstreamResponse.statusText,
+    });
+  }
+
+  return upstreamResponse;
 }
 
 export const config = {

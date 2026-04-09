@@ -36,7 +36,7 @@ export default function OurStory() {
           <div className="col-lg-6 col-xl-5">
             <Image
               loading="lazy"
-              src="/assets/images/home/demo23/banner-3.jpg"
+              src="/assets/images/home/demo23/banner-3.webp"
               width="580"
               height="750"
               alt="Pattern"

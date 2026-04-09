@@ -62,7 +62,7 @@ export default function Categories() {
                 alt="image"
               />
               <div className="text-center">
-                <Link href="/shop-1" className="menu-link fw-medium">
+                <Link href="/shop" className="menu-link fw-medium">
                   {elm.name}
                 </Link>
               </div>

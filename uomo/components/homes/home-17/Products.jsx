@@ -59,7 +59,7 @@ export default function Products() {
 
         <Link
           className="btn-link default-underline text-uppercase fs-13 fw-semi-bold theme-color"
-          href="/shop-1"
+          href="/shop"
         >
           Shop All Products
         </Link>

@@ -12,7 +12,7 @@ export default function Lookbook() {
       <div className="position-relative">
         <Image
           loading="lazy"
-          src="/assets/images/home/demo15/banner-1.jpg"
+          src="/assets/images/home/demo15/banner-1.webp"
           className="w-100 h-auto"
           width="1410"
           height="600"
@@ -20,16 +20,17 @@ export default function Lookbook() {
         />
         <div className="content d-none d-lg-block text-center py-5 px-5 bg-white position-absolute position-center">
           <h3 className="fs-22 fw-medium text-uppercase mb-2">
-            Bring Out The Hidden Beauty
+            Tienda de cuidado facial y capilar
           </h3>
           <p className="fs-15 color-gray-5a5a5a mb-2">
-            Get styled with the high-fashion products and transform yourself.
+            Encuentra productos para cuidado de la piel, tecnologia facial en
+            casa y tratamientos para cabello dañado con enfoque profesional.
           </p>
           <Link
             href="/shop"
             className="btn-link btn-link_md default-underline text-uppercase fw-medium"
           >
-            Shop Now
+            Explorar tienda
           </Link>
         </div>
 

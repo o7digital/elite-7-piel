@@ -5,10 +5,10 @@ import Colors from "./Colors";
 import Size from "./Size";
 import Link from "next/link";
 const imageUrls = [
-  "/assets/images/products/product_0-5.jpg",
-  "/assets/images/products/product_0-6.jpg",
-  "/assets/images/products/product_0-7.jpg",
-  "/assets/images/products/product_0-8.jpg",
+  "/assets/images/products/product_0-5.webp",
+  "/assets/images/products/product_0-6.webp",
+  "/assets/images/products/product_0-7.webp",
+  "/assets/images/products/product_0-8.webp",
 ];
 import Image from "next/image";
 import ShareComponent from "../common/ShareComponent";

@@ -69,7 +69,7 @@ export default function Category() {
               />
               <h3 className="text-center m-0">
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="menu-link fw-normal text-uppercase fs-15"
                 >
                   {elm.name}

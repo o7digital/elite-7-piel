@@ -24,7 +24,7 @@ export default function CategoryBanner() {
               <div className="category-banner__item-content">
                 <h3 className="mb-0">{elm.category}</h3>
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="btn-link default-underline text-uppercase fw-medium"
                 >
                   Shop Now

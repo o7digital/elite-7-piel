@@ -9,7 +9,7 @@ export default function Banner() {
         <div className="col-lg-7">
           <Image
             loading="lazy"
-            src="/assets/images/home/demo19/banner-1.jpg"
+            src="/assets/images/home/demo19/banner-1.webp"
             width="810"
             height="600"
             alt="image"
@@ -33,7 +33,7 @@ export default function Banner() {
             </p>
             <p className="mb-0">
               <Link
-                href="/shop-1"
+                href="/shop"
                 className="btn-link btn-link_md default-underline text-uppercase fw-semi-bold fs-13"
               >
                 View More

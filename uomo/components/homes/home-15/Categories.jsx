@@ -61,7 +61,7 @@ export default function Categories() {
               />
               <div className="text-center">
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="menu-link h6 fw-medium text-uppercase"
                 >
                   {elm.altText}

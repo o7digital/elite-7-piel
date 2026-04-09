@@ -43,7 +43,7 @@ export default function Shop6() {
             >
               <Image
                 loading="lazy"
-                src="/assets/images/shop/shop_banner6.jpg"
+                src="/assets/images/shop/shop_banner6.webp"
                 width="1903"
                 height="420"
                 alt="Pattern"

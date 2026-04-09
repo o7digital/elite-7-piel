@@ -1,7 +1,7 @@
 export const products25 = [
   {
     id: 316,
-    imgSrc: "/assets/images/home/demo12/product-1.jpg",
+    imgSrc: "/assets/images/home/demo12/product-1.webp",
     title: "Organic Bartlett Pear",
     category: "Fruits",
     rating: 4.5,
@@ -11,7 +11,7 @@ export const products25 = [
   },
   {
     id: 317,
-    imgSrc: "/assets/images/home/demo12/product-2.jpg",
+    imgSrc: "/assets/images/home/demo12/product-2.webp",
     title: "Organic Strawberries, 1 lb",
     category: "Fruits",
     rating: 4.5,
@@ -21,7 +21,7 @@ export const products25 = [
   },
   {
     id: 318,
-    imgSrc: "/assets/images/home/demo12/product-3.jpg",
+    imgSrc: "/assets/images/home/demo12/product-3.webp",
     title: "Blueberry Organic, 6 Ounce",
     category: "Fruits",
     rating: 4.5,
@@ -31,7 +31,7 @@ export const products25 = [
   },
   {
     id: 319,
-    imgSrc: "/assets/images/home/demo12/product-4.jpg",
+    imgSrc: "/assets/images/home/demo12/product-4.webp",
     title: "Some Product Name",
     category: "Category",
     rating: 4.5,
@@ -41,7 +41,7 @@ export const products25 = [
   },
   {
     id: 320,
-    imgSrc: "/assets/images/home/demo12/product-5.jpg",
+    imgSrc: "/assets/images/home/demo12/product-5.webp",
     category: "Fruits",
     title: "Organic Banana",
     rating: 5,
@@ -51,7 +51,7 @@ export const products25 = [
   },
   {
     id: 321,
-    imgSrc: "/assets/images/home/demo12/product-6.jpg",
+    imgSrc: "/assets/images/home/demo12/product-6.webp",
     category: "Fruits",
     title: "McCormick Gourmet Orange",
     rating: 5,
@@ -61,7 +61,7 @@ export const products25 = [
   },
   {
     id: 322,
-    imgSrc: "/assets/images/home/demo12/product-7.jpg",
+    imgSrc: "/assets/images/home/demo12/product-7.webp",
     category: "Fruits",
     title: "Organic Strawberries, 1 lb",
     rating: 5,
@@ -71,7 +71,7 @@ export const products25 = [
   },
   {
     id: 323,
-    imgSrc: "/assets/images/home/demo12/product-8.jpg",
+    imgSrc: "/assets/images/home/demo12/product-8.webp",
     category: "Fruits",
     title: "Some Other Product",
     rating: 5,
@@ -81,7 +81,7 @@ export const products25 = [
   },
   {
     id: 324,
-    imgSrc: "/assets/images/home/demo12/product-9.jpg",
+    imgSrc: "/assets/images/home/demo12/product-9.webp",
     category: "Fruits",
     title: "Dried Pineapple Fruit Bar",
     rating: 5,
@@ -91,7 +91,7 @@ export const products25 = [
   },
   {
     id: 325,
-    imgSrc: "/assets/images/home/demo12/product-10.jpg",
+    imgSrc: "/assets/images/home/demo12/product-10.webp",
     category: "Fruits",
     title: "Holiday Nuts Gift Basket",
     rating: 5,
@@ -104,7 +104,7 @@ export const products25 = [
 export const products26 = [
   {
     id: 326,
-    imgSrc: "/assets/images/home/demo12/product-11.jpg",
+    imgSrc: "/assets/images/home/demo12/product-11.webp",
     category: "Fruits",
     title: "Organic Bartlett Pear",
     stars: 4,
@@ -113,7 +113,7 @@ export const products26 = [
   },
   {
     id: 327,
-    imgSrc: "/assets/images/home/demo12/product-12.jpg",
+    imgSrc: "/assets/images/home/demo12/product-12.webp",
     category: "Fruits",
     title: "Organic Strawberries, 1 lb",
     stars: 4,
@@ -122,7 +122,7 @@ export const products26 = [
   },
   {
     id: 328,
-    imgSrc: "/assets/images/home/demo12/product-13.jpg",
+    imgSrc: "/assets/images/home/demo12/product-13.webp",
     category: "Fruits",
     title: "Blueberry Organic, 6 Ounce",
     stars: 4,
@@ -131,7 +131,7 @@ export const products26 = [
   },
   {
     id: 329,
-    imgSrc: "/assets/images/home/demo12/product-14.jpg",
+    imgSrc: "/assets/images/home/demo12/product-14.webp",
     category: "Fruits",
     title: "Kiwi Organic, 1 Each",
     stars: 4,
@@ -140,7 +140,7 @@ export const products26 = [
   },
   {
     id: 330,
-    imgSrc: "/assets/images/home/demo12/product-15.jpg",
+    imgSrc: "/assets/images/home/demo12/product-15.webp",
     category: "Fruits",
     title: "Organic Banana",
     stars: 4,
@@ -149,7 +149,7 @@ export const products26 = [
   },
   {
     id: 331,
-    imgSrc: "/assets/images/home/demo12/product-11.jpg",
+    imgSrc: "/assets/images/home/demo12/product-11.webp",
     category: "Fruits",
     title: "Organic Bartlett Pear",
     stars: 4,
@@ -158,7 +158,7 @@ export const products26 = [
   },
   {
     id: 332,
-    imgSrc: "/assets/images/home/demo12/product-12.jpg",
+    imgSrc: "/assets/images/home/demo12/product-12.webp",
     category: "Fruits",
     title: "Organic Strawberries, 1 lb",
     stars: 4,
@@ -167,7 +167,7 @@ export const products26 = [
   },
   {
     id: 333,
-    imgSrc: "/assets/images/home/demo12/product-13.jpg",
+    imgSrc: "/assets/images/home/demo12/product-13.webp",
     category: "Fruits",
     title: "Blueberry Organic, 6 Ounce",
     stars: 4,
@@ -176,7 +176,7 @@ export const products26 = [
   },
   {
     id: 334,
-    imgSrc: "/assets/images/home/demo12/product-14.jpg",
+    imgSrc: "/assets/images/home/demo12/product-14.webp",
     category: "Fruits",
     title: "Kiwi Organic, 1 Each",
     stars: 4,
@@ -185,7 +185,7 @@ export const products26 = [
   },
   {
     id: 335,
-    imgSrc: "/assets/images/home/demo12/product-15.jpg",
+    imgSrc: "/assets/images/home/demo12/product-15.webp",
     category: "Fruits",
     title: "Organic Banana",
     stars: 4,
@@ -196,7 +196,7 @@ export const products26 = [
 export const products27 = [
   {
     id: 336,
-    imgSrc: "/assets/images/home/demo12/product-16.jpg",
+    imgSrc: "/assets/images/home/demo12/product-16.webp",
     category: "Fruits",
     title: "Organic Bartlett Pear",
     rating: 5,
@@ -205,7 +205,7 @@ export const products27 = [
   },
   {
     id: 337,
-    imgSrc: "/assets/images/home/demo12/product-17.jpg",
+    imgSrc: "/assets/images/home/demo12/product-17.webp",
     category: "Fruits",
     title: "Organic Strawberries, 1 lb",
     rating: 5,
@@ -214,7 +214,7 @@ export const products27 = [
   },
   {
     id: 338,
-    imgSrc: "/assets/images/home/demo12/product-18.jpg",
+    imgSrc: "/assets/images/home/demo12/product-18.webp",
     category: "Fruits",
     title: "Blueberry Organic, 6 Ounce",
     rating: 5,
@@ -223,7 +223,7 @@ export const products27 = [
   },
   {
     id: 339,
-    imgSrc: "/assets/images/home/demo12/product-19.jpg",
+    imgSrc: "/assets/images/home/demo12/product-19.webp",
     category: "Fruits",
     title: "Kiwi Organic, 1 lb",
     rating: 5,
@@ -232,7 +232,7 @@ export const products27 = [
   },
   {
     id: 340,
-    imgSrc: "/assets/images/home/demo12/product-16.jpg",
+    imgSrc: "/assets/images/home/demo12/product-16.webp",
     category: "Fruits",
     title: "Organic Bartlett Pear",
     rating: 5,
@@ -241,7 +241,7 @@ export const products27 = [
   },
   {
     id: 341,
-    imgSrc: "/assets/images/home/demo12/product-17.jpg",
+    imgSrc: "/assets/images/home/demo12/product-17.webp",
     category: "Fruits",
     title: "Organic Strawberries, 1 lb",
     rating: 5,
@@ -250,7 +250,7 @@ export const products27 = [
   },
   {
     id: 342,
-    imgSrc: "/assets/images/home/demo12/product-18.jpg",
+    imgSrc: "/assets/images/home/demo12/product-18.webp",
     category: "Fruits",
     title: "Blueberry Organic, 6 Ounce",
     rating: 5,
@@ -259,7 +259,7 @@ export const products27 = [
   },
   {
     id: 343,
-    imgSrc: "/assets/images/home/demo12/product-19.jpg",
+    imgSrc: "/assets/images/home/demo12/product-19.webp",
     category: "Fruits",
     title: "Kiwi Organic, 1 lb",
     rating: 5,

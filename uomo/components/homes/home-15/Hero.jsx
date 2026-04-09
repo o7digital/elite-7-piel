@@ -53,7 +53,7 @@ export default function Hero() {
               </p>
               <div className="animate animate_fade animate_btt animate_delay-7">
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="btn btn-primary border-0 fs-base text-uppercase fw-normal btn-50"
                 >
                   <span>VIEW MORE</span>

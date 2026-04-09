@@ -21,7 +21,7 @@ export default function GridBanner() {
                 </h3>
                 <p className="mb-0">
                   <Link
-                    href="/shop-1"
+                    href="/shop"
                     className="btn-link default-underline text-uppercase text-white fw-bold fs-base w-auto"
                   >
                     Shop Now

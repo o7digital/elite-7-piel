@@ -66,7 +66,7 @@ export default function Categories() {
               />
               <div className="text-center border-top py-4">
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="menu-link menu-link_us-s text-uppercase fw-semi-bold"
                 >
                   {elm.category}

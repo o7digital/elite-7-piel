@@ -96,7 +96,7 @@ export default function ProductsSlider() {
             <Image
               loading="lazy"
               className="h-auto"
-              src="/assets/images/home/demo7/banner.jpg"
+              src="/assets/images/home/demo7/banner.webp"
               width="720"
               height="776"
               alt="image"

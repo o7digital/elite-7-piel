@@ -14,7 +14,7 @@ export default function Products1() {
               <div
                 className="background-img"
                 style={{
-                  backgroundImage: "url(/assets/images/collection_grid_1.jpg)",
+                  backgroundImage: "url(/assets/images/collection_grid_1.webp)",
                 }}
               ></div>
               <div className="content_abs content_bottom content_left content_bottom-md content_left-md">
@@ -23,7 +23,7 @@ export default function Products1() {
                   <strong>Women</strong> Collection
                 </h3>
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="btn-link default-underline text-uppercase fw-medium"
                 >
                   Shop Now
@@ -39,7 +39,7 @@ export default function Products1() {
               <div
                 className="background-img"
                 style={{
-                  backgroundImage: "url(/assets/images/collection_grid_2.jpg)",
+                  backgroundImage: "url(/assets/images/collection_grid_2.webp)",
                 }}
               ></div>
               <div className="content_abs content_bottom content_left content_bottom-md content_left-md">
@@ -48,7 +48,7 @@ export default function Products1() {
                   <strong>Men</strong> Collection
                 </h3>
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="btn-link default-underline text-uppercase fw-medium"
                 >
                   Shop Now
@@ -64,7 +64,7 @@ export default function Products1() {
                       className="background-img"
                       style={{
                         backgroundImage:
-                          "url(/assets/images/collection_grid_3.jpg)",
+                          "url(/assets/images/collection_grid_3.webp)",
                       }}
                     ></div>
                     <div className="content_abs content_bottom content_left content_bottom-md content_left-md">
@@ -73,7 +73,7 @@ export default function Products1() {
                         <strong>Kids</strong> Collection
                       </h3>
                       <Link
-                        href="/shop-1"
+                        href="/shop"
                         className="btn-link default-underline text-uppercase fw-medium"
                       >
                         Shop Now
@@ -100,7 +100,7 @@ export default function Products1() {
                         really want.
                       </p>
                       <Link
-                        href="/shop-1"
+                        href="/shop"
                         className="btn-link default-underline text-uppercase fw-medium"
                       >
                         Shop Now

@@ -1,7 +1,7 @@
 export const products40 = [
   {
     id: 453,
-    imgSrc: "/assets/images/home/demo18/product-1.jpg",
+    imgSrc: "/assets/images/home/demo18/product-1.webp",
     category: "Cars",
     title: "12v Compact Battery Jump Starter",
     price: 35.9,
@@ -11,7 +11,7 @@ export const products40 = [
   },
   {
     id: 454,
-    imgSrc: "/assets/images/home/demo18/product-2.jpg",
+    imgSrc: "/assets/images/home/demo18/product-2.webp",
     category: "Cars",
     title: "12v Compact Battery Jump Starter",
     price: 35.9,
@@ -21,7 +21,7 @@ export const products40 = [
   },
   {
     id: 455,
-    imgSrc: "/assets/images/home/demo18/product-3.jpg",
+    imgSrc: "/assets/images/home/demo18/product-3.webp",
     category: "Cars",
     title: "12v Compact Battery Jump Starter",
     price: 35.9,
@@ -31,7 +31,7 @@ export const products40 = [
   },
   {
     id: 456,
-    imgSrc: "/assets/images/home/demo18/product-4.jpg",
+    imgSrc: "/assets/images/home/demo18/product-4.webp",
     category: "Cars",
     title: "12v Compact Battery Jump Starter",
     price: 35.9,
@@ -41,7 +41,7 @@ export const products40 = [
   },
   {
     id: 457,
-    imgSrc: "/assets/images/home/demo18/product-5.jpg",
+    imgSrc: "/assets/images/home/demo18/product-5.webp",
     category: "Cars",
     title: "12v Compact Battery Jump Starter",
     price: 35.9,
@@ -51,7 +51,7 @@ export const products40 = [
   },
   {
     id: 458,
-    imgSrc: "/assets/images/home/demo18/product-1.jpg",
+    imgSrc: "/assets/images/home/demo18/product-1.webp",
     category: "Cars",
     title: "12v Compact Battery Jump Starter",
     price: 35.9,
@@ -61,7 +61,7 @@ export const products40 = [
   },
   {
     id: 459,
-    imgSrc: "/assets/images/home/demo18/product-2.jpg",
+    imgSrc: "/assets/images/home/demo18/product-2.webp",
     category: "Cars",
     title: "12v Compact Battery Jump Starter",
     price: 35.9,
@@ -71,7 +71,7 @@ export const products40 = [
   },
   {
     id: 460,
-    imgSrc: "/assets/images/home/demo18/product-3.jpg",
+    imgSrc: "/assets/images/home/demo18/product-3.webp",
     category: "Cars",
     title: "12v Compact Battery Jump Starter",
     price: 35.9,
@@ -81,7 +81,7 @@ export const products40 = [
   },
   {
     id: 461,
-    imgSrc: "/assets/images/home/demo18/product-4.jpg",
+    imgSrc: "/assets/images/home/demo18/product-4.webp",
     category: "Cars",
     title: "12v Compact Battery Jump Starter",
     price: 35.9,
@@ -91,7 +91,7 @@ export const products40 = [
   },
   {
     id: 462,
-    imgSrc: "/assets/images/home/demo18/product-5.jpg",
+    imgSrc: "/assets/images/home/demo18/product-5.webp",
     category: "Cars",
     title: "12v Compact Battery Jump Starter",
     price: 35.9,

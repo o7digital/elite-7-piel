@@ -5,10 +5,10 @@ import {
   currencyOptions,
   footerLinks1,
   footerLinks3,
-  languageOptions,
   socialLinks,
 } from "@/data/footer";
 import { submitFormspree } from "@/lib/formspree";
+import LanguageSwitcherSelect from "@/components/common/LanguageSwitcherSelect";
 
 export default function Footer1() {
   const [newsletterStatus, setNewsletterStatus] = useState({
@@ -198,22 +198,11 @@ export default function Footer1() {
               >
                 Language
               </label>
-              <select
+              <LanguageSwitcherSelect
                 id="footerSettingsLanguage"
                 className="form-select form-select-sm bg-transparent"
-                aria-label="Default select example"
-                name="store-language"
-              >
-                {languageOptions.map((option, index) => (
-                  <option
-                    key={index}
-                    className="footer-select__option"
-                    value={option.value}
-                  >
-                    {option.text}
-                  </option>
-                ))}
-              </select>
+                ariaLabel="Language selector"
+              />
             </div>
 
             <div className="d-flex align-items-center">

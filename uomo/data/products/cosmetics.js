@@ -1,7 +1,7 @@
 export const products33 = [
   {
     id: 408,
-    imgSrc: "/assets/images/home/demo15/product-1.jpg",
+    imgSrc: "/assets/images/home/demo15/product-1.webp",
     category: "Makeup",
     title: "Rise & Shine",
     price: 29,
@@ -10,7 +10,7 @@ export const products33 = [
   },
   {
     id: 409,
-    imgSrc: "/assets/images/home/demo15/product-2.jpg",
+    imgSrc: "/assets/images/home/demo15/product-2.webp",
     category: "Makeup",
     title: "Laura Face Wash Lotion",
     price: 29,
@@ -19,7 +19,7 @@ export const products33 = [
   },
   {
     id: 410,
-    imgSrc: "/assets/images/home/demo15/product-3.jpg",
+    imgSrc: "/assets/images/home/demo15/product-3.webp",
     category: "Makeup",
     title: "Facefinity All Day Flawless",
     price: 29,
@@ -28,7 +28,7 @@ export const products33 = [
   },
   {
     id: 411,
-    imgSrc: "/assets/images/home/demo15/product-4.jpg",
+    imgSrc: "/assets/images/home/demo15/product-4.webp",
     category: "Makeup",
     title: "Radiant Lift Foundation",
     price: 29,
@@ -37,7 +37,7 @@ export const products33 = [
   },
   {
     id: 412,
-    imgSrc: "/assets/images/home/demo15/product-4.jpg",
+    imgSrc: "/assets/images/home/demo15/product-4.webp",
     category: "Makeup",
     title: "Radiant Lift Foundation",
     price: 29,
@@ -46,7 +46,7 @@ export const products33 = [
   },
   {
     id: 413,
-    imgSrc: "/assets/images/home/demo15/product-2.jpg",
+    imgSrc: "/assets/images/home/demo15/product-2.webp",
     category: "Makeup",
     title: "Laura Face Wash Lotion",
     price: 29,
@@ -55,7 +55,7 @@ export const products33 = [
   },
   {
     id: 414,
-    imgSrc: "/assets/images/home/demo15/product-3.jpg",
+    imgSrc: "/assets/images/home/demo15/product-3.webp",
     category: "Makeup",
     title: "Facefinity All Day Flawless",
     price: 29,
@@ -64,7 +64,7 @@ export const products33 = [
   },
   {
     id: 415,
-    imgSrc: "/assets/images/home/demo15/product-1.jpg",
+    imgSrc: "/assets/images/home/demo15/product-1.webp",
     category: "Makeup",
     title: "Rise & Shine",
     price: 29,
@@ -73,7 +73,7 @@ export const products33 = [
   },
   {
     id: 416,
-    imgSrc: "/assets/images/home/demo15/product-3.jpg",
+    imgSrc: "/assets/images/home/demo15/product-3.webp",
     category: "Makeup",
     title: "Facefinity All Day Flawless",
     price: 29,
@@ -82,7 +82,7 @@ export const products33 = [
   },
   {
     id: 417,
-    imgSrc: "/assets/images/home/demo15/product-2.jpg",
+    imgSrc: "/assets/images/home/demo15/product-2.webp",
     category: "Makeup",
     title: "Laura Face Wash Lotion",
     price: 29,
@@ -91,7 +91,7 @@ export const products33 = [
   },
   {
     id: 418,
-    imgSrc: "/assets/images/home/demo15/product-4.jpg",
+    imgSrc: "/assets/images/home/demo15/product-4.webp",
     category: "Makeup",
     title: "Radiant Lift Foundation",
     price: 29,
@@ -100,7 +100,7 @@ export const products33 = [
   },
   {
     id: 419,
-    imgSrc: "/assets/images/home/demo15/product-1.jpg",
+    imgSrc: "/assets/images/home/demo15/product-1.webp",
     category: "Makeup",
     title: "Rise & Shine",
     price: 29,
@@ -109,7 +109,7 @@ export const products33 = [
   },
   {
     id: 420,
-    imgSrc: "/assets/images/home/demo15/product-1.jpg",
+    imgSrc: "/assets/images/home/demo15/product-1.webp",
     category: "Makeup",
     title: "Rise & Shine",
     price: 29,
@@ -118,7 +118,7 @@ export const products33 = [
   },
   {
     id: 421,
-    imgSrc: "/assets/images/home/demo15/product-2.jpg",
+    imgSrc: "/assets/images/home/demo15/product-2.webp",
     category: "Makeup",
     title: "Laura Face Wash Lotion",
     price: 29,
@@ -127,7 +127,7 @@ export const products33 = [
   },
   {
     id: 422,
-    imgSrc: "/assets/images/home/demo15/product-3.jpg",
+    imgSrc: "/assets/images/home/demo15/product-3.webp",
     category: "Makeup",
     title: "Facefinity All Day Flawless",
     price: 29,
@@ -136,7 +136,7 @@ export const products33 = [
   },
   {
     id: 423,
-    imgSrc: "/assets/images/home/demo15/product-4.jpg",
+    imgSrc: "/assets/images/home/demo15/product-4.webp",
     category: "Makeup",
     title: "Radiant Lift Foundation",
     price: 29,
@@ -145,7 +145,7 @@ export const products33 = [
   },
   {
     id: 424,
-    imgSrc: "/assets/images/home/demo15/product-4.jpg",
+    imgSrc: "/assets/images/home/demo15/product-4.webp",
     category: "Makeup",
     title: "Radiant Lift Foundation",
     price: 29,
@@ -154,7 +154,7 @@ export const products33 = [
   },
   {
     id: 425,
-    imgSrc: "/assets/images/home/demo15/product-2.jpg",
+    imgSrc: "/assets/images/home/demo15/product-2.webp",
     category: "Makeup",
     title: "Laura Face Wash Lotion",
     price: 29,
@@ -163,7 +163,7 @@ export const products33 = [
   },
   {
     id: 426,
-    imgSrc: "/assets/images/home/demo15/product-3.jpg",
+    imgSrc: "/assets/images/home/demo15/product-3.webp",
     category: "Makeup",
     title: "Facefinity All Day Flawless",
     price: 29,
@@ -172,7 +172,7 @@ export const products33 = [
   },
   {
     id: 427,
-    imgSrc: "/assets/images/home/demo15/product-1.jpg",
+    imgSrc: "/assets/images/home/demo15/product-1.webp",
     category: "Makeup",
     title: "Rise & Shine",
     price: 29,
@@ -181,7 +181,7 @@ export const products33 = [
   },
   {
     id: 428,
-    imgSrc: "/assets/images/home/demo15/product-3.jpg",
+    imgSrc: "/assets/images/home/demo15/product-3.webp",
     category: "Makeup",
     title: "Facefinity All Day Flawless",
     price: 29,
@@ -190,7 +190,7 @@ export const products33 = [
   },
   {
     id: 429,
-    imgSrc: "/assets/images/home/demo15/product-2.jpg",
+    imgSrc: "/assets/images/home/demo15/product-2.webp",
     category: "Makeup",
     title: "Laura Face Wash Lotion",
     price: 29,
@@ -199,7 +199,7 @@ export const products33 = [
   },
   {
     id: 430,
-    imgSrc: "/assets/images/home/demo15/product-4.jpg",
+    imgSrc: "/assets/images/home/demo15/product-4.webp",
     category: "Makeup",
     title: "Radiant Lift Foundation",
     price: 29,
@@ -208,7 +208,7 @@ export const products33 = [
   },
   {
     id: 431,
-    imgSrc: "/assets/images/home/demo15/product-1.jpg",
+    imgSrc: "/assets/images/home/demo15/product-1.webp",
     category: "Makeup",
     title: "Rise & Shine",
     price: 29,
@@ -224,7 +224,7 @@ export const products34 = [
       left: "6%",
       top: "23%",
     },
-    imgSrc: "/assets/images/home/demo15/product-4.jpg",
+    imgSrc: "/assets/images/home/demo15/product-4.webp",
     title: "RISE & SHINE",
     price: 34,
   },
@@ -234,7 +234,7 @@ export const products34 = [
       left: "15%",
       top: "61%",
     },
-    imgSrc: "/assets/images/home/demo15/product-4.jpg",
+    imgSrc: "/assets/images/home/demo15/product-4.webp",
     title: "RISE & SHINE",
     price: 34,
   },
@@ -244,7 +244,7 @@ export const products34 = [
       left: "37%",
       top: "83%",
     },
-    imgSrc: "/assets/images/home/demo15/product-4.jpg",
+    imgSrc: "/assets/images/home/demo15/product-4.webp",
     title: "RISE & SHINE",
     price: 34,
   },

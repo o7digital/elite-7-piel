@@ -65,7 +65,7 @@ export default function Category() {
               />
               <div className="text-center">
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="menu-link menu-link_us-s fw-semi-bold theme-color"
                 >
                   {elm.title}

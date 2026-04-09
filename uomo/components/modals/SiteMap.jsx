@@ -13,7 +13,7 @@ export default function SiteMap() {
               height={950}
               style={{ height: "fit-content" }}
               loading="lazy"
-              src="/assets/images/nav-bg.jpg"
+              src="/assets/images/nav-bg.webp"
               alt="Site map"
               className="sitemap__bg"
             />

@@ -192,34 +192,34 @@ export default function Header13() {
               </h3>
               <ul className="categories-nav__list list-unstyled">
                 <li className="categories-nav__item">
-                  <Link href="/shop-1">Electronics</Link>
+                  <Link href="/shop">Electronics</Link>
                 </li>
                 <li className="categories-nav__item">
-                  <Link href="/shop-1">Computers</Link>
+                  <Link href="/shop">Computers</Link>
                 </li>
                 <li className="categories-nav__item">
-                  <Link href="/shop-1">Audio & Video</Link>
+                  <Link href="/shop">Audio & Video</Link>
                 </li>
                 <li className="categories-nav__item">
-                  <Link href="/shop-1">Mobiles & Tablets</Link>
+                  <Link href="/shop">Mobiles & Tablets</Link>
                 </li>
                 <li className="categories-nav__item">
-                  <Link href="/shop-1">TV & Audio</Link>
+                  <Link href="/shop">TV & Audio</Link>
                 </li>
                 <li className="categories-nav__item">
-                  <Link href="/shop-1">Car & Motorbike</Link>
+                  <Link href="/shop">Car & Motorbike</Link>
                 </li>
                 <li className="categories-nav__item">
-                  <Link href="/shop-1">Hmoe & Garden</Link>
+                  <Link href="/shop">Hmoe & Garden</Link>
                 </li>
                 <li className="categories-nav__item">
-                  <Link href="/shop-1">Toys & Kids</Link>
+                  <Link href="/shop">Toys & Kids</Link>
                 </li>
                 <li className="categories-nav__item">
-                  <Link href="/shop-1">Sporting Goods</Link>
+                  <Link href="/shop">Sporting Goods</Link>
                 </li>
                 <li className="categories-nav__item">
-                  <Link href="/shop-1">Pet Supplies</Link>
+                  <Link href="/shop">Pet Supplies</Link>
                 </li>
               </ul>
             </div>

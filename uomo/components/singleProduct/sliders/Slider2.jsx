@@ -5,16 +5,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const images = [
   {
-    imgSrc: "/assets/images/products/product_0.jpg",
+    imgSrc: "/assets/images/products/product_0.webp",
   },
   {
-    imgSrc: "/assets/images/products/product_0-1.jpg",
+    imgSrc: "/assets/images/products/product_0-1.webp",
   },
   {
-    imgSrc: "/assets/images/products/product_0-2.jpg",
+    imgSrc: "/assets/images/products/product_0-2.webp",
   },
   {
-    imgSrc: "/assets/images/products/product_0-3.jpg",
+    imgSrc: "/assets/images/products/product_0-3.webp",
   },
 ];
 import Image from "next/image";

@@ -6,10 +6,10 @@ import {
   currencyOptions,
   footerLinks1,
   footerLinks3,
-  languageOptions,
   socialLinks,
 } from "@/data/footer";
 import { submitFormspree } from "@/lib/formspree";
+import LanguageSwitcherSelect from "@/components/common/LanguageSwitcherSelect";
 
 export default function Footer14() {
   const [newsletterStatus, setNewsletterStatus] = useState({
@@ -161,7 +161,7 @@ export default function Footer14() {
               <strong className="fw-medium text-white">Pagos seguros</strong>
               <div className="payment-badges mt-3" data-no-runtime-translate>
                 <Image
-                  src="/assets/images/pago/visa.jpeg"
+                  src="/assets/images/pago/visa.webp"
                   alt="Visa"
                   width={343}
                   height={147}
@@ -206,6 +206,12 @@ export default function Footer14() {
             </a>
           </div>
           <div className="footer-settings d-block d-md-flex align-items-center">
+            <a
+              href="#header"
+              className="text-white text-decoration-none me-md-4 d-inline-flex align-items-center mb-3 mb-md-0"
+            >
+              Volver arriba
+            </a>
             <div className="d-flex align-items-center">
               <label
                 htmlFor="footerSettingsLanguage"
@@ -213,23 +219,11 @@ export default function Footer14() {
               >
                 Language
               </label>
-              <select
+              <LanguageSwitcherSelect
                 id="footerSettingsLanguage"
                 className="form-select form-select-sm bg-transparent border-0"
-                aria-label="Default select example"
-                name="store-language"
-                defaultValue={languageOptions[0].value}
-              >
-                {languageOptions.map((option, index) => (
-                  <option
-                    key={index}
-                    className="footer-select__option"
-                    value={option.value}
-                  >
-                    {option.text}
-                  </option>
-                ))}
-              </select>
+                ariaLabel="Language selector"
+              />
             </div>
 
             <div className="d-flex align-items-center">

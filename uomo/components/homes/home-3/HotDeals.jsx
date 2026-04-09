@@ -60,7 +60,7 @@ export default function HotDeals() {
           </div>
 
           <Link
-            href="/shop-1"
+            href="/shop"
             className="btn-link default-underline text-uppercase fw-medium mt-3"
           >
             View All

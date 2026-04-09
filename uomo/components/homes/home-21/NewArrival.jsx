@@ -60,7 +60,7 @@ export default function NewArrival() {
                     Equipment
                   </h3>
                   <Link
-                    href="/shop-1"
+                    href="/shop"
                     className="btn btn-outline-primary border-0 fs-12 fw-semi-bold btn-40 text-uppercase py-1 px-4 mb-3 d-inline-flex align-items-center"
                   >
                     <span>Shop Now</span>
@@ -70,7 +70,7 @@ export default function NewArrival() {
                   <Image
                     width={315}
                     height={563}
-                    src="/assets/images/home/demo22/banner-1.jpg"
+                    src="/assets/images/home/demo22/banner-1.webp"
                     alt="image"
                     className="w-100 h-100 object-fit-cover"
                   />

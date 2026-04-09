@@ -20,7 +20,7 @@ export default function Clolor2() {
       >
         <Image
           loading="lazy"
-          src="/assets/images/products/swatch_0.jpg"
+          src="/assets/images/products/swatch_0.webp"
           width="60"
           height="60"
           alt="image"
@@ -37,7 +37,7 @@ export default function Clolor2() {
       >
         <Image
           loading="lazy"
-          src="/assets/images/products/swatch_1.jpg"
+          src="/assets/images/products/swatch_1.webp"
           width="60"
           height="60"
           alt="image"
@@ -54,7 +54,7 @@ export default function Clolor2() {
       >
         <Image
           loading="lazy"
-          src="/assets/images/products/swatch_2.jpg"
+          src="/assets/images/products/swatch_2.webp"
           width="60"
           height="60"
           alt="image"

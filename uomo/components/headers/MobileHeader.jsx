@@ -1,5 +1,5 @@
 "use client";
-import { currencyOptions, languageOptions } from "@/data/footer";
+import { currencyOptions } from "@/data/footer";
 
 import { socialLinks } from "@/data/socials";
 
@@ -8,6 +8,7 @@ import CartLength from "./components/CartLength";
 import { openCart } from "@/utlis/openCart";
 import MobileNav from "./components/MobileNav";
 import Link from "next/link";
+import LanguageSwitcherSelect from "@/components/common/LanguageSwitcherSelect";
 
 export default function MobileHeader() {
   const [scrollDirection, setScrollDirection] = useState("down");
@@ -163,22 +164,10 @@ export default function MobileHeader() {
 
           <div className="container d-flex align-items-center">
             <label className="me-2 text-secondary">Language</label>
-            <select
+            <LanguageSwitcherSelect
               className="form-select form-select-sm bg-transparent border-0"
-              aria-label="Default select example"
-              name="store-language"
-              defaultValue={languageOptions[0].value}
-            >
-              {languageOptions.map((option, index) => (
-                <option
-                  key={index}
-                  className="footer-select__option"
-                  value={option.value}
-                >
-                  {option.text}
-                </option>
-              ))}
-            </select>
+              ariaLabel="Language selector"
+            />
           </div>
 
           <div className="container d-flex align-items-center">

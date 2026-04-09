@@ -8,7 +8,7 @@ export default function Banner() {
         loading="lazy"
         width="1920"
         height="960"
-        src="/assets/images/home/demo23/banner-2-bg.jpg"
+        src="/assets/images/home/demo23/banner-2-bg.webp"
         alt="image"
         className="position-absolute w-100 h-100 left-0 top-0 object-fit-cover"
       />

@@ -56,7 +56,7 @@ export default function DiscountSlider() {
             <div
               className="background-img"
               style={{
-                backgroundImage: "url(/assets/images/home/demo12/deal-bg.jpg)",
+                backgroundImage: "url(/assets/images/home/demo12/deal-bg.webp)",
               }}
             ></div>
             <div className="position-absolute position-center text-white text-center w-100">

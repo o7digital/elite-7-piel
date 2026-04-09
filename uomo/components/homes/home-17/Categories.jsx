@@ -50,7 +50,7 @@ export default function Categories() {
 
         <Link
           className="btn-link default-underline text-uppercase fs-13 fw-semi-bold theme-color"
-          href="/shop-1"
+          href="/shop"
         >
           Shop All Products
         </Link>
@@ -73,7 +73,7 @@ export default function Categories() {
               />
               <div className="text-center">
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="menu-link menu-link_us-s fw-semi-bold fs-15 theme-color text-uppercase"
                 >
                   {elm.name}

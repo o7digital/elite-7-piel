@@ -54,7 +54,7 @@ export default function Hero() {
                       </h2>
                       <div className="animate animate_fade animate_btt animate_delay-7">
                         <Link
-                          href="/shop-1"
+                          href="/shop"
                           className="btn btn-primary border-0 fw-semi-bold text-uppercase theme-bg-color-secondary border-radius-10 btn-50 fs-base text-primary"
                         >
                           Shop Now
@@ -75,31 +75,31 @@ export default function Hero() {
           <div className="col-md-6 col-lg-3 order-lg--1 mb-4">
             <ul className="categories-nav__list mb-0 h-100 border-1 border-radius-10 py-xl-4">
               <li className="categories-nav__item">
-                <Link href="/shop-1">INTERIOR</Link>
+                <Link href="/shop">INTERIOR</Link>
               </li>
               <li className="categories-nav__item">
-                <Link href="/shop-1">EXTERIOR</Link>
+                <Link href="/shop">EXTERIOR</Link>
               </li>
               <li className="categories-nav__item">
-                <Link href="/shop-1">PERFORMANCE</Link>
+                <Link href="/shop">PERFORMANCE</Link>
               </li>
               <li className="categories-nav__item">
-                <Link href="/shop-1">LIGHTING</Link>
+                <Link href="/shop">LIGHTING</Link>
               </li>
               <li className="categories-nav__item">
-                <Link href="/shop-1">WHEELS & TIRES</Link>
+                <Link href="/shop">WHEELS & TIRES</Link>
               </li>
               <li className="categories-nav__item">
-                <Link href="/shop-1">REPAIR PARTS</Link>
+                <Link href="/shop">REPAIR PARTS</Link>
               </li>
               <li className="categories-nav__item">
-                <Link href="/shop-1">BODY PARTS</Link>
+                <Link href="/shop">BODY PARTS</Link>
               </li>
               <li className="categories-nav__item">
-                <Link href="/shop-1">AUDIO & ELECTRONICS</Link>
+                <Link href="/shop">AUDIO & ELECTRONICS</Link>
               </li>
               <li className="categories-nav__item">
-                <Link href="/shop-1">DAMPING</Link>
+                <Link href="/shop">DAMPING</Link>
               </li>
             </ul>
           </div>
@@ -108,7 +108,7 @@ export default function Hero() {
               <div
                 className="background-img"
                 style={{
-                  backgroundImage: `url('/assets/images/home/demo18/banner-2.jpg')`,
+                  backgroundImage: `url('/assets/images/home/demo18/banner-2.webp')`,
                 }}
               ></div>
               <div className="content_abs content_center text-left container w-100 px-4 mx-3">
@@ -118,7 +118,7 @@ export default function Hero() {
                   INTERIOR
                 </h3>
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="btn-link default-underline text-uppercase fw-semi-bold fs-13"
                 >
                   Shop Now
@@ -130,7 +130,7 @@ export default function Hero() {
               <div
                 className="background-img"
                 style={{
-                  backgroundImage: `url('/assets/images/home/demo18/banner-3.jpg')`,
+                  backgroundImage: `url('/assets/images/home/demo18/banner-3.webp')`,
                 }}
               ></div>
               <div className="content_abs content_center text-left container w-100 px-4 mx-3">
@@ -140,7 +140,7 @@ export default function Hero() {
                   SEASON TYRES
                 </h3>
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="btn-link default-underline text-uppercase fw-semi-bold fs-13 text-white"
                 >
                   Shop Now

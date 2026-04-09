@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { stripLocalePrefix } from "@/lib/i18n/locale";
 
 const steps = [
   {
@@ -30,11 +31,12 @@ const steps = [
 export default function ChectoutSteps() {
   const [activePathIndex, setactivePathIndex] = useState(0);
   const pathname = usePathname();
+  const normalizedPathname = stripLocalePrefix(pathname);
   useEffect(() => {
-    const activeTab = steps.filter((elm) => elm.href == pathname)[0];
+    const activeTab = steps.filter((elm) => elm.href == normalizedPathname)[0];
     const activeTabIndex = steps.indexOf(activeTab);
     setactivePathIndex(activeTabIndex);
-  }, [pathname]);
+  }, [normalizedPathname]);
   return (
     <div className="checkout-steps">
       {steps.map((elm, i) => (

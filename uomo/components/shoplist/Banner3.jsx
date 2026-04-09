@@ -11,7 +11,7 @@ const slides = [
     title: "Women's ACCESSORIES",
     content:
       "Accessories are the best way to update your look. Add a title edge with new styles and new colors, or go for timeless pieces.",
-    imagePath: "/assets/images/shop/shop_banner3.jpg",
+    imagePath: "/assets/images/shop/shop_banner3.webp",
     alt: "Women's accessories",
   },
   {
@@ -20,7 +20,7 @@ const slides = [
     title: "Choose Your Best Suits",
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    imagePath: "/assets/images/shop/shop_banner3.jpg",
+    imagePath: "/assets/images/shop/shop_banner3.webp",
     alt: "Women's accessories",
   },
   {
@@ -29,7 +29,7 @@ const slides = [
     title: "World's Leading Quality",
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    imagePath: "/assets/images/shop/shop_banner3.jpg",
+    imagePath: "/assets/images/shop/shop_banner3.webp",
     alt: "Women's accessories",
   },
 ];

@@ -25,7 +25,7 @@ export default function Banner() {
                   {elm.subtitle}
                 </h3>
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="btn-link default-underline text-uppercase fw-semi-bold text-white fs-13"
                 >
                   Shop Now

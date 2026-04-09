@@ -5,11 +5,11 @@ import Colors from "./Colors";
 import Size from "./Size";
 import Link from "next/link";
 const imageUrls2 = [
-  "/assets/images/products/product_0-9.jpg",
-  "/assets/images/products/product_0-10.jpg",
-  "/assets/images/products/product_0-11.jpg",
-  "/assets/images/products/product_0-12.jpg",
-  "/assets/images/products/product_0-13.jpg",
+  "/assets/images/products/product_0-9.webp",
+  "/assets/images/products/product_0-10.webp",
+  "/assets/images/products/product_0-11.webp",
+  "/assets/images/products/product_0-12.webp",
+  "/assets/images/products/product_0-13.webp",
 ];
 import Image from "next/image";
 import {

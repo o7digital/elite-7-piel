@@ -4,15 +4,19 @@ import { useEffect } from "react";
 import { mainMenuItems } from "@/data/menu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { stripLocalePrefix } from "@/lib/i18n/locale";
 export default function MobileNav() {
   const pathname = usePathname();
+  const normalizedPathname = stripLocalePrefix(pathname);
 
   const isMenuItemActive = (item) => {
     if (item.exact) {
-      return pathname === item.href;
+      return normalizedPathname === item.href;
     }
 
-    return item.activePrefixes.some((prefix) => pathname.startsWith(prefix));
+    return item.activePrefixes.some((prefix) =>
+      normalizedPathname.startsWith(prefix)
+    );
   };
 
   useEffect(() => {

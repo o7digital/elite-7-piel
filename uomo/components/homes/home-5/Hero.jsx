@@ -54,13 +54,13 @@ export default function Hero() {
               </h2>
               <div className="d-flex align-items-center justify-content-center gap-4">
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="btn-link btn-link_lg color-white fw-medium animate animate_fade animate_btt animate_delay-7"
                 >
                   Shop Women
                 </Link>
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="btn-link btn-link_lg color-white fw-medium animate animate_fade animate_btt animate_delay-7"
                 >
                   Shop Men

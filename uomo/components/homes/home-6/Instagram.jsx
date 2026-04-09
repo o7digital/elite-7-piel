@@ -24,7 +24,7 @@ export default function Instagram() {
               <Image
                 loading="lazy"
                 className="instagram__img"
-                src="/assets/images/home/demo6/instagram1.jpg"
+                src="/assets/images/home/demo6/instagram1.webp"
                 width="466"
                 height="525"
                 alt="Insta image 1"
@@ -42,7 +42,7 @@ export default function Instagram() {
               <Image
                 loading="lazy"
                 className="instagram__img"
-                src="/assets/images/home/demo6/instagram2.jpg"
+                src="/assets/images/home/demo6/instagram2.webp"
                 width="466"
                 height="401"
                 alt="Insta image 2"
@@ -58,7 +58,7 @@ export default function Instagram() {
               <Image
                 loading="lazy"
                 className="instagram__img"
-                src="/assets/images/home/demo6/instagram3.jpg"
+                src="/assets/images/home/demo6/instagram3.webp"
                 width="466"
                 height="401"
                 alt="Insta image 3"
@@ -76,7 +76,7 @@ export default function Instagram() {
               <Image
                 loading="lazy"
                 className="instagram__img"
-                src="/assets/images/home/demo6/instagram4.jpg"
+                src="/assets/images/home/demo6/instagram4.webp"
                 width="466"
                 height="401"
                 alt="Insta image 4"
@@ -92,7 +92,7 @@ export default function Instagram() {
               <Image
                 loading="lazy"
                 className="instagram__img"
-                src="/assets/images/home/demo6/instagram5.jpg"
+                src="/assets/images/home/demo6/instagram5.webp"
                 width="466"
                 height="401"
                 alt="Insta image 5"

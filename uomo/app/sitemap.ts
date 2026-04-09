@@ -4,12 +4,19 @@ const siteUrl = "https://elite7piel.com";
 
 const routes = [
   "",
+  "/en",
   "/shop",
+  "/en/shop",
   "/about",
+  "/en/about",
   "/contact",
+  "/en/contact",
   "/faq",
+  "/en/faq",
   "/aviso-de-privacidad",
+  "/en/aviso-de-privacidad",
   "/politica-de-cookies",
+  "/en/politica-de-cookies",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

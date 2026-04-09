@@ -17,7 +17,7 @@ export default function Footer12() {
           </li>
           <li className="sub-menu__item px-3">
             <Link
-              href="/shop-1"
+              href="/shop"
               className="menu-link menu-link_us-s text-uppercase fw-semi-bold"
             >
               Shop

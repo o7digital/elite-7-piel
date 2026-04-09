@@ -11,7 +11,7 @@ export default function GridBanner() {
             <Image
               loading="lazy"
               className="w-100 h-auto"
-              src="/assets/images/home/demo2/grid_banner_1.jpg"
+              src="/assets/images/home/demo2/grid_banner_1.webp"
               width="450"
               height="450"
               alt="image"
@@ -20,7 +20,7 @@ export default function GridBanner() {
               <h3 className="text-uppercase fw-bold mb-1">New</h3>
               <h3 className="text-uppercase fw-bold mb-1">Horizons</h3>
               <Link
-                href="/shop-1"
+                href="/shop"
                 className="btn-link default-underline text-uppercase fw-medium"
               >
                 Shop Now
@@ -35,7 +35,7 @@ export default function GridBanner() {
             <Image
               loading="lazy"
               className="w-100 h-auto"
-              src="/assets/images/home/demo2/grid_banner_2.jpg"
+              src="/assets/images/home/demo2/grid_banner_2.webp"
               width="450"
               height="450"
               alt="image"
@@ -44,7 +44,7 @@ export default function GridBanner() {
               <h3 className="text-uppercase fw-bold mb-1">Summer</h3>
               <h3 className="text-uppercase fw-bold mb-1">Hats</h3>
               <Link
-                href="/shop-1"
+                href="/shop"
                 className="btn-link default-underline text-uppercase fw-medium"
               >
                 Shop Now
@@ -59,7 +59,7 @@ export default function GridBanner() {
             <Image
               loading="lazy"
               className="w-100 h-auto"
-              src="/assets/images/home/demo2/grid_banner_3.jpg"
+              src="/assets/images/home/demo2/grid_banner_3.webp"
               width="450"
               height="450"
               alt="image"
@@ -73,7 +73,7 @@ export default function GridBanner() {
                 To 10% Off
               </h3>
               <Link
-                href="/shop-1"
+                href="/shop"
                 className="btn-link default-underline text-uppercase text-white fw-medium"
               >
                 See More

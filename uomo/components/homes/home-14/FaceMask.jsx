@@ -52,7 +52,7 @@ export default function FaceMask() {
 
         <Link
           className="btn-link btn-link_md default-underline text-uppercase fw-semi-bold theme-color"
-          href="/shop-1"
+          href="/shop"
         >
           See All Products
         </Link>
@@ -65,7 +65,7 @@ export default function FaceMask() {
               className="background-img"
               style={{
                 backgroundImage:
-                  "url(/assets/images/home/demo14/grid_banner_5.jpg)",
+                  "url(/assets/images/home/demo14/grid_banner_5.webp)",
               }}
             ></div>
             <div className="content_abs top-0 mx-3 mt-3 mt-xl-4 pt-2 px-2">

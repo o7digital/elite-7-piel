@@ -9,7 +9,7 @@ export default function WhatsAppFloat() {
       className="whatsapp-float"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Contacter Elite 7 Piel sur WhatsApp"
+      aria-label="Contacta a ELITE 7 PIEL por WhatsApp"
       title="WhatsApp Elite 7 Piel"
     >
       <svg

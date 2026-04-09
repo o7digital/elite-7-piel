@@ -10,7 +10,7 @@ export default function Collections() {
           <div className="col-lg-6">
             <Image
               className="d-block w-100 h-auto mb-4"
-              src="/assets/images/home/demo21/banner-1.jpg"
+              src="/assets/images/home/demo21/banner-1.webp"
               alt="image"
               width="689"
               height="600"
@@ -21,7 +21,7 @@ export default function Collections() {
             <div className="text-center mb-3 mb-xl-5">
               <h3>
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="theme-color fw-bold text-uppercase"
                 >
                   baby boy collectıon
@@ -33,7 +33,7 @@ export default function Collections() {
             <div className="ms-lg-4">
               <Image
                 className="d-block w-100 h-auto mb-4"
-                src="/assets/images/home/demo21/banner-2.jpg"
+                src="/assets/images/home/demo21/banner-2.webp"
                 alt="image"
                 width="636"
                 height="458"
@@ -44,7 +44,7 @@ export default function Collections() {
               <div className="text-center mb-3 mb-xl-5">
                 <h3>
                   <Link
-                    href="/shop-1"
+                    href="/shop"
                     className="theme-color fw-bold text-uppercase"
                   >
                     baby gırl colectıon

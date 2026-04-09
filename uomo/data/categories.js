@@ -1,61 +1,61 @@
 export const categories = [
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo2/category1.jpg",
+    imgSrc: "/assets/images/home/demo2/category1.webp",
     name: "Accessories",
     productCount: 20,
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo2/category2.jpg",
+    imgSrc: "/assets/images/home/demo2/category2.webp",
     name: "Bags",
     productCount: 20,
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo2/category3.jpg",
+    imgSrc: "/assets/images/home/demo2/category3.webp",
     name: "Shoes",
     productCount: 20,
   },
   {
     id: 4,
-    imgSrc: "/assets/images/home/demo2/category4.jpg",
+    imgSrc: "/assets/images/home/demo2/category4.webp",
     name: "Outerwear",
     productCount: 20,
   },
   {
     id: 5,
-    imgSrc: "/assets/images/home/demo2/category5.jpg",
+    imgSrc: "/assets/images/home/demo2/category5.webp",
     name: "Top",
     productCount: 20,
   },
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo2/category1.jpg",
+    imgSrc: "/assets/images/home/demo2/category1.webp",
     name: "Accessories",
     productCount: 20,
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo2/category2.jpg",
+    imgSrc: "/assets/images/home/demo2/category2.webp",
     name: "Bags",
     productCount: 20,
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo2/category3.jpg",
+    imgSrc: "/assets/images/home/demo2/category3.webp",
     name: "Shoes",
     productCount: 20,
   },
   {
     id: 4,
-    imgSrc: "/assets/images/home/demo2/category4.jpg",
+    imgSrc: "/assets/images/home/demo2/category4.webp",
     name: "Outerwear",
     productCount: 20,
   },
   {
     id: 5,
-    imgSrc: "/assets/images/home/demo2/category5.jpg",
+    imgSrc: "/assets/images/home/demo2/category5.webp",
     name: "Top",
     productCount: 20,
   },
@@ -145,13 +145,13 @@ export const categories2 = [
 export const categoryBanners = [
   {
     id: 1,
-    imageUrl: "/assets/images/home/demo3/category_9.jpg",
+    imageUrl: "/assets/images/home/demo3/category_9.webp",
     price: 19,
     category: "Blazers",
   },
   {
     id: 2,
-    imageUrl: "/assets/images/home/demo3/category_10.jpg",
+    imageUrl: "/assets/images/home/demo3/category_10.webp",
     price: 19,
     category: "Sportswear",
   },
@@ -160,7 +160,7 @@ export const categoryBanners = [
 export const gridBannerItems = [
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo4/grid-banner-1.jpg",
+    imgSrc: "/assets/images/home/demo4/grid-banner-1.webp",
     imgWidth: 690,
     imgHeight: 450,
     category: "Basic Collection",
@@ -168,7 +168,7 @@ export const gridBannerItems = [
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo4/grid-banner-2.jpg",
+    imgSrc: "/assets/images/home/demo4/grid-banner-2.webp",
     imgWidth: 690,
     imgHeight: 285,
     category: "Shop Casual",
@@ -176,7 +176,7 @@ export const gridBannerItems = [
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo4/grid-banner-3.jpg",
+    imgSrc: "/assets/images/home/demo4/grid-banner-3.webp",
     imgWidth: 690,
     imgHeight: 285,
     category: "Want and Need",
@@ -184,7 +184,7 @@ export const gridBannerItems = [
   },
   {
     id: 4,
-    imgSrc: "/assets/images/home/demo4/grid-banner-4.jpg",
+    imgSrc: "/assets/images/home/demo4/grid-banner-4.webp",
     imgWidth: 690,
     imgHeight: 450,
     category: "Sale off This week",
@@ -253,31 +253,31 @@ export const categories3 = [
 export const collectionsData = [
   {
     id: 1,
-    imageSrc: "/assets/images/home/demo9/collection_grid_1.jpg",
+    imageSrc: "/assets/images/home/demo9/collection_grid_1.webp",
     title: "Furniture",
     productCount: "954 Products",
   },
   {
     id: 2,
-    imageSrc: "/assets/images/home/demo9/collection_grid_2.jpg",
+    imageSrc: "/assets/images/home/demo9/collection_grid_2.webp",
     title: "Clocks",
     productCount: "710 Products",
   },
   {
     id: 3,
-    imageSrc: "/assets/images/home/demo9/collection_grid_3.jpg",
+    imageSrc: "/assets/images/home/demo9/collection_grid_3.webp",
     title: "Accessories",
     productCount: "954 Products",
   },
   {
     id: 4,
-    imageSrc: "/assets/images/home/demo9/collection_grid_4.jpg",
+    imageSrc: "/assets/images/home/demo9/collection_grid_4.webp",
     title: "Lighting",
     productCount: "184 Products",
   },
   {
     id: 5,
-    imageSrc: "/assets/images/home/demo9/collection_grid_5.jpg",
+    imageSrc: "/assets/images/home/demo9/collection_grid_5.webp",
     title: "Toys",
     productCount: "245 Products",
   },
@@ -347,96 +347,96 @@ export const categories4 = [
 ];
 
 export const categories5 = [
-  { name: "Fruit", imageSrc: "/assets/images/home/demo12/category-1.jpg" },
+  { name: "Fruit", imageSrc: "/assets/images/home/demo12/category-1.webp" },
   {
     name: "Bakery",
-    imageSrc: "/assets/images/home/demo12/category-2.jpg",
+    imageSrc: "/assets/images/home/demo12/category-2.webp",
     productCount: 20,
   },
-  { name: "Fish", imageSrc: "/assets/images/home/demo12/category-3.jpg" },
-  { name: "Milk", imageSrc: "/assets/images/home/demo12/category-4.jpg" },
-  { name: "Vegetables", imageSrc: "/assets/images/home/demo12/category-5.jpg" },
-  { name: "Fruit", imageSrc: "/assets/images/home/demo12/category-1.jpg" },
+  { name: "Fish", imageSrc: "/assets/images/home/demo12/category-3.webp" },
+  { name: "Milk", imageSrc: "/assets/images/home/demo12/category-4.webp" },
+  { name: "Vegetables", imageSrc: "/assets/images/home/demo12/category-5.webp" },
+  { name: "Fruit", imageSrc: "/assets/images/home/demo12/category-1.webp" },
   {
     name: "Bakery",
-    imageSrc: "/assets/images/home/demo12/category-2.jpg",
+    imageSrc: "/assets/images/home/demo12/category-2.webp",
     productCount: 20,
   },
-  { name: "Fish", imageSrc: "/assets/images/home/demo12/category-3.jpg" },
-  { name: "Milk", imageSrc: "/assets/images/home/demo12/category-4.jpg" },
-  { name: "Vegetables", imageSrc: "/assets/images/home/demo12/category-5.jpg" },
+  { name: "Fish", imageSrc: "/assets/images/home/demo12/category-3.webp" },
+  { name: "Milk", imageSrc: "/assets/images/home/demo12/category-4.webp" },
+  { name: "Vegetables", imageSrc: "/assets/images/home/demo12/category-5.webp" },
 ];
 
 export const categorys6 = [
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo13/category-1.jpg",
+    imgSrc: "/assets/images/home/demo13/category-1.webp",
     imgAlt: "",
     category: "SQUARE",
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo13/category-2.jpg",
+    imgSrc: "/assets/images/home/demo13/category-2.webp",
     imgAlt: "",
     category: "AVIATOR",
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo13/category-3.jpg",
+    imgSrc: "/assets/images/home/demo13/category-3.webp",
     imgAlt: "",
     category: "RECTANGULAR",
   },
   {
     id: 4,
-    imgSrc: "/assets/images/home/demo13/category-4.jpg",
+    imgSrc: "/assets/images/home/demo13/category-4.webp",
     imgAlt: "",
     category: "ROUND",
   },
   {
     id: 5,
-    imgSrc: "/assets/images/home/demo13/category-5.jpg",
+    imgSrc: "/assets/images/home/demo13/category-5.webp",
     imgAlt: "",
     category: "OVAL",
   },
   {
     id: 6,
-    imgSrc: "/assets/images/home/demo13/category-6.jpg",
+    imgSrc: "/assets/images/home/demo13/category-6.webp",
     imgAlt: "",
     category: "GEOMETRIC",
   },
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo13/category-1.jpg",
+    imgSrc: "/assets/images/home/demo13/category-1.webp",
     imgAlt: "",
     category: "SQUARE",
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo13/category-2.jpg",
+    imgSrc: "/assets/images/home/demo13/category-2.webp",
     imgAlt: "",
     category: "AVIATOR",
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo13/category-3.jpg",
+    imgSrc: "/assets/images/home/demo13/category-3.webp",
     imgAlt: "",
     category: "RECTANGULAR",
   },
   {
     id: 4,
-    imgSrc: "/assets/images/home/demo13/category-4.jpg",
+    imgSrc: "/assets/images/home/demo13/category-4.webp",
     imgAlt: "",
     category: "ROUND",
   },
   {
     id: 5,
-    imgSrc: "/assets/images/home/demo13/category-5.jpg",
+    imgSrc: "/assets/images/home/demo13/category-5.webp",
     imgAlt: "",
     category: "OVAL",
   },
   {
     id: 6,
-    imgSrc: "/assets/images/home/demo13/category-6.jpg",
+    imgSrc: "/assets/images/home/demo13/category-6.webp",
     imgAlt: "",
     category: "GEOMETRIC",
   },
@@ -445,62 +445,62 @@ export const categorys6 = [
 export const categories7 = [
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo14/m1.jpg",
+    imgSrc: "/assets/images/home/demo14/m1.webp",
     title: "Hospital Equipment",
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo14/m2.jpg",
+    imgSrc: "/assets/images/home/demo14/m2.webp",
     title: "Blood Pressure",
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo14/m3.jpg",
+    imgSrc: "/assets/images/home/demo14/m3.webp",
     title: "Accessories",
   },
   {
     id: 4,
-    imgSrc: "/assets/images/home/demo14/m4.jpg",
+    imgSrc: "/assets/images/home/demo14/m4.webp",
     title: "Personal",
   },
   {
     id: 5,
-    imgSrc: "/assets/images/home/demo14/m5.jpg",
+    imgSrc: "/assets/images/home/demo14/m5.webp",
     title: "Independent Living",
   },
   {
     id: 6,
-    imgSrc: "/assets/images/home/demo14/m6.jpg",
+    imgSrc: "/assets/images/home/demo14/m6.webp",
     title: "Pharmacy",
   },
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo14/m1.jpg",
+    imgSrc: "/assets/images/home/demo14/m1.webp",
     title: "Hospital Equipment",
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo14/m2.jpg",
+    imgSrc: "/assets/images/home/demo14/m2.webp",
     title: "Blood Pressure",
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo14/m3.jpg",
+    imgSrc: "/assets/images/home/demo14/m3.webp",
     title: "Accessories",
   },
   {
     id: 4,
-    imgSrc: "/assets/images/home/demo14/m4.jpg",
+    imgSrc: "/assets/images/home/demo14/m4.webp",
     title: "Personal",
   },
   {
     id: 5,
-    imgSrc: "/assets/images/home/demo14/m5.jpg",
+    imgSrc: "/assets/images/home/demo14/m5.webp",
     title: "Independent Living",
   },
   {
     id: 6,
-    imgSrc: "/assets/images/home/demo14/m6.jpg",
+    imgSrc: "/assets/images/home/demo14/m6.webp",
     title: "Pharmacy",
   },
 ];
@@ -508,42 +508,42 @@ export const categories7 = [
 export const categories8 = [
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo15/category-1.jpg",
+    imgSrc: "/assets/images/home/demo15/category-1.webp",
     altText: "Lipstick",
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo15/category-2.jpg",
+    imgSrc: "/assets/images/home/demo15/category-2.webp",
     altText: "Foundation",
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo15/category-3.jpg",
+    imgSrc: "/assets/images/home/demo15/category-3.webp",
     altText: "Mascara",
   },
   {
     id: 4,
-    imgSrc: "/assets/images/home/demo15/category-4.jpg",
+    imgSrc: "/assets/images/home/demo15/category-4.webp",
     altText: "Skincare",
   },
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo15/category-1.jpg",
+    imgSrc: "/assets/images/home/demo15/category-1.webp",
     altText: "Lipstick",
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo15/category-2.jpg",
+    imgSrc: "/assets/images/home/demo15/category-2.webp",
     altText: "Foundation",
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo15/category-3.jpg",
+    imgSrc: "/assets/images/home/demo15/category-3.webp",
     altText: "Mascara",
   },
   {
     id: 4,
-    imgSrc: "/assets/images/home/demo15/category-4.jpg",
+    imgSrc: "/assets/images/home/demo15/category-4.webp",
     altText: "Skincare",
   },
 ];
@@ -598,62 +598,62 @@ export const categories9 = [
 export const categories10 = [
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo20/category-1.jpg",
+    imgSrc: "/assets/images/home/demo20/category-1.webp",
     name: "Bracelets",
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo20/category-2.jpg",
+    imgSrc: "/assets/images/home/demo20/category-2.webp",
     name: "Earrings",
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo20/category-3.jpg",
+    imgSrc: "/assets/images/home/demo20/category-3.webp",
     name: "Rings",
   },
   {
     id: 4,
-    imgSrc: "/assets/images/home/demo20/category-4.jpg",
+    imgSrc: "/assets/images/home/demo20/category-4.webp",
     name: "Charms",
   },
   {
     id: 5,
-    imgSrc: "/assets/images/home/demo20/category-5.jpg",
+    imgSrc: "/assets/images/home/demo20/category-5.webp",
     name: "Necklaces",
   },
   {
     id: 6,
-    imgSrc: "/assets/images/home/demo20/category-6.jpg",
+    imgSrc: "/assets/images/home/demo20/category-6.webp",
     name: "Brooches",
   },
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo20/category-1.jpg",
+    imgSrc: "/assets/images/home/demo20/category-1.webp",
     name: "Bracelets",
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo20/category-2.jpg",
+    imgSrc: "/assets/images/home/demo20/category-2.webp",
     name: "Earrings",
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo20/category-3.jpg",
+    imgSrc: "/assets/images/home/demo20/category-3.webp",
     name: "Rings",
   },
   {
     id: 4,
-    imgSrc: "/assets/images/home/demo20/category-4.jpg",
+    imgSrc: "/assets/images/home/demo20/category-4.webp",
     name: "Charms",
   },
   {
     id: 5,
-    imgSrc: "/assets/images/home/demo20/category-5.jpg",
+    imgSrc: "/assets/images/home/demo20/category-5.webp",
     name: "Necklaces",
   },
   {
     id: 6,
-    imgSrc: "/assets/images/home/demo20/category-6.jpg",
+    imgSrc: "/assets/images/home/demo20/category-6.webp",
     name: "Brooches",
   },
   // Add more categories as needed
@@ -662,62 +662,62 @@ export const categories10 = [
 export const categoriesData11 = [
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo21/category-1.jpg",
+    imgSrc: "/assets/images/home/demo21/category-1.webp",
     title: "Bikes",
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo21/category-2.jpg",
+    imgSrc: "/assets/images/home/demo21/category-2.webp",
     title: "Car Seats",
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo21/category-3.jpg",
+    imgSrc: "/assets/images/home/demo21/category-3.webp",
     title: "Diapers",
   },
   {
     id: 4,
-    imgSrc: "/assets/images/home/demo21/category-4.jpg",
+    imgSrc: "/assets/images/home/demo21/category-4.webp",
     title: "Skin Care",
   },
   {
     id: 5,
-    imgSrc: "/assets/images/home/demo21/category-5.jpg",
+    imgSrc: "/assets/images/home/demo21/category-5.webp",
     title: "Clothing",
   },
   {
     id: 6,
-    imgSrc: "/assets/images/home/demo21/category-6.jpg",
+    imgSrc: "/assets/images/home/demo21/category-6.webp",
     title: "Toys",
   },
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo21/category-1.jpg",
+    imgSrc: "/assets/images/home/demo21/category-1.webp",
     title: "Bikes",
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo21/category-2.jpg",
+    imgSrc: "/assets/images/home/demo21/category-2.webp",
     title: "Car Seats",
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo21/category-3.jpg",
+    imgSrc: "/assets/images/home/demo21/category-3.webp",
     title: "Diapers",
   },
   {
     id: 4,
-    imgSrc: "/assets/images/home/demo21/category-4.jpg",
+    imgSrc: "/assets/images/home/demo21/category-4.webp",
     title: "Skin Care",
   },
   {
     id: 5,
-    imgSrc: "/assets/images/home/demo21/category-5.jpg",
+    imgSrc: "/assets/images/home/demo21/category-5.webp",
     title: "Clothing",
   },
   {
     id: 6,
-    imgSrc: "/assets/images/home/demo21/category-6.jpg",
+    imgSrc: "/assets/images/home/demo21/category-6.webp",
     title: "Toys",
   },
 ];
@@ -725,7 +725,7 @@ export const categoriesData11 = [
 export const categoryData12 = [
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo22/category-1.jpg",
+    imgSrc: "/assets/images/home/demo22/category-1.webp",
     title: "Power Tools",
     products: [
       "Drills & Drivers",
@@ -736,7 +736,7 @@ export const categoryData12 = [
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo22/category-2.jpg",
+    imgSrc: "/assets/images/home/demo22/category-2.webp",
     title: "Hand Tools",
     products: [
       "Drills & Drivers",
@@ -747,7 +747,7 @@ export const categoryData12 = [
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo22/category-3.jpg",
+    imgSrc: "/assets/images/home/demo22/category-3.webp",
     title: "Lawn & Garden",
     products: [
       "Drills & Drivers",
@@ -758,7 +758,7 @@ export const categoryData12 = [
   },
   {
     id: 4,
-    imgSrc: "/assets/images/home/demo22/category-4.jpg",
+    imgSrc: "/assets/images/home/demo22/category-4.webp",
     title: "Tool Storage",
     products: [
       "Drills & Drivers",
@@ -769,7 +769,7 @@ export const categoryData12 = [
   },
   {
     id: 5,
-    imgSrc: "/assets/images/home/demo22/category-5.jpg",
+    imgSrc: "/assets/images/home/demo22/category-5.webp",
     title: "Kitchen Tools",
     products: [
       "Drills & Drivers",
@@ -780,7 +780,7 @@ export const categoryData12 = [
   },
   {
     id: 1,
-    imgSrc: "/assets/images/home/demo22/category-1.jpg",
+    imgSrc: "/assets/images/home/demo22/category-1.webp",
     title: "Power Tools",
     products: [
       "Drills & Drivers",
@@ -791,7 +791,7 @@ export const categoryData12 = [
   },
   {
     id: 2,
-    imgSrc: "/assets/images/home/demo22/category-2.jpg",
+    imgSrc: "/assets/images/home/demo22/category-2.webp",
     title: "Hand Tools",
     products: [
       "Drills & Drivers",
@@ -802,7 +802,7 @@ export const categoryData12 = [
   },
   {
     id: 3,
-    imgSrc: "/assets/images/home/demo22/category-3.jpg",
+    imgSrc: "/assets/images/home/demo22/category-3.webp",
     title: "Lawn & Garden",
     products: [
       "Drills & Drivers",
@@ -813,7 +813,7 @@ export const categoryData12 = [
   },
   {
     id: 4,
-    imgSrc: "/assets/images/home/demo22/category-4.jpg",
+    imgSrc: "/assets/images/home/demo22/category-4.webp",
     title: "Tool Storage",
     products: [
       "Drills & Drivers",
@@ -824,7 +824,7 @@ export const categoryData12 = [
   },
   {
     id: 5,
-    imgSrc: "/assets/images/home/demo22/category-5.jpg",
+    imgSrc: "/assets/images/home/demo22/category-5.webp",
     title: "Kitchen Tools",
     products: [
       "Drills & Drivers",

@@ -7,7 +7,7 @@ export default function NewArrival() {
       <div
         className="background-img"
         style={{
-          backgroundImage: `url(/assets/images/home/demo19/banner-2.jpg)`,
+          backgroundImage: `url(/assets/images/home/demo19/banner-2.webp)`,
           backgroundPosition: "center center",
         }}
       ></div>
@@ -16,7 +16,7 @@ export default function NewArrival() {
           NEW ARRIVALS
         </h2>
         <Link
-          href="/shop-1"
+          href="/shop"
           className="btn btn-outline-primary border-0 fs-13 text-uppercase fw-semi-bold btn-50 d-inline-flex align-items-center justify-content-center"
         >
           <span>Shop Now</span>

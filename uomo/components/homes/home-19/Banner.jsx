@@ -11,7 +11,7 @@ export default function Banner() {
       <div
         className="background-img"
         style={{
-          backgroundImage: `url('/assets/images/home/demo20/banner-4.jpg')`,
+          backgroundImage: `url('/assets/images/home/demo20/banner-4.webp')`,
         }}
       ></div>
 
@@ -24,7 +24,7 @@ export default function Banner() {
               </p>
               <h3 className="fs-60 fw-normal">Summer Collection</h3>
               <Link
-                href="/shop-1"
+                href="/shop"
                 className="btn-link default-underline text-uppercase fw-medium mt-3"
               >
                 Shop Now

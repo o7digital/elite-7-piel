@@ -53,7 +53,7 @@ export default function WeekDeals() {
       <div className="bg-image">
         <Image
           loading="lazy"
-          src="/assets/images/home/demo5/deal_bg.jpg"
+          src="/assets/images/home/demo5/deal_bg.webp"
           width="1903"
           height="699"
           alt="image"
@@ -78,7 +78,7 @@ export default function WeekDeals() {
             </div>
 
             <Link
-              href="/shop-1"
+              href="/shop"
               className="btn-link default-underline text-uppercase text-white fw-medium mt-3"
             >
               View All

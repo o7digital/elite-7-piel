@@ -8,7 +8,7 @@ export default function Hero() {
         loading="lazy"
         width="1920"
         height="960"
-        src="/assets/images/home/demo23/banner-1.jpg"
+        src="/assets/images/home/demo23/banner-1.webp"
         alt="image"
         className="position-absolute w-100 h-100 left-0 top-0 object-fit-cover"
       />

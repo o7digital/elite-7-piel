@@ -1,7 +1,7 @@
 export const products29 = [
   {
     id: 352,
-    imgSrc: "/assets/images/home/demo14/product-1.jpg",
+    imgSrc: "/assets/images/home/demo14/product-1.webp",
     category: "hospital equipment",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
@@ -11,7 +11,7 @@ export const products29 = [
   },
   {
     id: 353,
-    imgSrc: "/assets/images/home/demo14/product-2.jpg",
+    imgSrc: "/assets/images/home/demo14/product-2.webp",
     category: "hospital equipment",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
@@ -21,7 +21,7 @@ export const products29 = [
   },
   {
     id: 354,
-    imgSrc: "/assets/images/home/demo14/product-3.jpg",
+    imgSrc: "/assets/images/home/demo14/product-3.webp",
     category: "hospital equipment",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
@@ -31,7 +31,7 @@ export const products29 = [
   },
   {
     id: 355,
-    imgSrc: "/assets/images/home/demo14/product-4.jpg",
+    imgSrc: "/assets/images/home/demo14/product-4.webp",
     category: "hospital equipment",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
@@ -41,7 +41,7 @@ export const products29 = [
   },
   {
     id: 356,
-    imgSrc: "/assets/images/home/demo14/product-5.jpg",
+    imgSrc: "/assets/images/home/demo14/product-5.webp",
     category: "hospital equipment",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
@@ -51,7 +51,7 @@ export const products29 = [
   },
   {
     id: 357,
-    imgSrc: "/assets/images/home/demo14/product-1.jpg",
+    imgSrc: "/assets/images/home/demo14/product-1.webp",
     category: "hospital equipment",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
@@ -61,7 +61,7 @@ export const products29 = [
   },
   {
     id: 358,
-    imgSrc: "/assets/images/home/demo14/product-2.jpg",
+    imgSrc: "/assets/images/home/demo14/product-2.webp",
     category: "hospital equipment",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
@@ -71,7 +71,7 @@ export const products29 = [
   },
   {
     id: 359,
-    imgSrc: "/assets/images/home/demo14/product-3.jpg",
+    imgSrc: "/assets/images/home/demo14/product-3.webp",
     category: "hospital equipment",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
@@ -81,7 +81,7 @@ export const products29 = [
   },
   {
     id: 360,
-    imgSrc: "/assets/images/home/demo14/product-4.jpg",
+    imgSrc: "/assets/images/home/demo14/product-4.webp",
     category: "hospital equipment",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
@@ -91,7 +91,7 @@ export const products29 = [
   },
   {
     id: 361,
-    imgSrc: "/assets/images/home/demo14/product-5.jpg",
+    imgSrc: "/assets/images/home/demo14/product-5.webp",
     category: "hospital equipment",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
@@ -104,7 +104,7 @@ export const products29 = [
 export const products30 = [
   {
     id: 362,
-    imgSrc: "/assets/images/home/demo14/product-6.jpg",
+    imgSrc: "/assets/images/home/demo14/product-6.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -112,7 +112,7 @@ export const products30 = [
   },
   {
     id: 363,
-    imgSrc: "/assets/images/home/demo14/product-7.jpg",
+    imgSrc: "/assets/images/home/demo14/product-7.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -120,7 +120,7 @@ export const products30 = [
   },
   {
     id: 364,
-    imgSrc: "/assets/images/home/demo14/product-8.jpg",
+    imgSrc: "/assets/images/home/demo14/product-8.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -128,7 +128,7 @@ export const products30 = [
   },
   {
     id: 365,
-    imgSrc: "/assets/images/home/demo14/product-9.jpg",
+    imgSrc: "/assets/images/home/demo14/product-9.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -136,7 +136,7 @@ export const products30 = [
   },
   {
     id: 366,
-    imgSrc: "/assets/images/home/demo14/product-10.jpg",
+    imgSrc: "/assets/images/home/demo14/product-10.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -144,7 +144,7 @@ export const products30 = [
   },
   {
     id: 367,
-    imgSrc: "/assets/images/home/demo14/product-7.jpg",
+    imgSrc: "/assets/images/home/demo14/product-7.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -152,7 +152,7 @@ export const products30 = [
   },
   {
     id: 368,
-    imgSrc: "/assets/images/home/demo14/product-10.jpg",
+    imgSrc: "/assets/images/home/demo14/product-10.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -160,7 +160,7 @@ export const products30 = [
   },
   {
     id: 369,
-    imgSrc: "/assets/images/home/demo14/product-6.jpg",
+    imgSrc: "/assets/images/home/demo14/product-6.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -168,7 +168,7 @@ export const products30 = [
   },
   {
     id: 370,
-    imgSrc: "/assets/images/home/demo14/product-9.jpg",
+    imgSrc: "/assets/images/home/demo14/product-9.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -176,7 +176,7 @@ export const products30 = [
   },
   {
     id: 371,
-    imgSrc: "/assets/images/home/demo14/product-8.jpg",
+    imgSrc: "/assets/images/home/demo14/product-8.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -184,7 +184,7 @@ export const products30 = [
   },
   {
     id: 372,
-    imgSrc: "/assets/images/home/demo14/product-9.jpg",
+    imgSrc: "/assets/images/home/demo14/product-9.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -192,7 +192,7 @@ export const products30 = [
   },
   {
     id: 373,
-    imgSrc: "/assets/images/home/demo14/product-7.jpg",
+    imgSrc: "/assets/images/home/demo14/product-7.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -200,7 +200,7 @@ export const products30 = [
   },
   {
     id: 374,
-    imgSrc: "/assets/images/home/demo14/product-10.jpg",
+    imgSrc: "/assets/images/home/demo14/product-10.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -208,7 +208,7 @@ export const products30 = [
   },
   {
     id: 375,
-    imgSrc: "/assets/images/home/demo14/product-6.jpg",
+    imgSrc: "/assets/images/home/demo14/product-6.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -216,7 +216,7 @@ export const products30 = [
   },
   {
     id: 376,
-    imgSrc: "/assets/images/home/demo14/product-8.jpg",
+    imgSrc: "/assets/images/home/demo14/product-8.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -224,7 +224,7 @@ export const products30 = [
   },
   {
     id: 377,
-    imgSrc: "/assets/images/home/demo14/product-6.jpg",
+    imgSrc: "/assets/images/home/demo14/product-6.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -232,7 +232,7 @@ export const products30 = [
   },
   {
     id: 378,
-    imgSrc: "/assets/images/home/demo14/product-7.jpg",
+    imgSrc: "/assets/images/home/demo14/product-7.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -240,7 +240,7 @@ export const products30 = [
   },
   {
     id: 379,
-    imgSrc: "/assets/images/home/demo14/product-8.jpg",
+    imgSrc: "/assets/images/home/demo14/product-8.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -248,7 +248,7 @@ export const products30 = [
   },
   {
     id: 380,
-    imgSrc: "/assets/images/home/demo14/product-9.jpg",
+    imgSrc: "/assets/images/home/demo14/product-9.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -256,7 +256,7 @@ export const products30 = [
   },
   {
     id: 381,
-    imgSrc: "/assets/images/home/demo14/product-10.jpg",
+    imgSrc: "/assets/images/home/demo14/product-10.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -264,7 +264,7 @@ export const products30 = [
   },
   {
     id: 382,
-    imgSrc: "/assets/images/home/demo14/product-7.jpg",
+    imgSrc: "/assets/images/home/demo14/product-7.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -272,7 +272,7 @@ export const products30 = [
   },
   {
     id: 383,
-    imgSrc: "/assets/images/home/demo14/product-10.jpg",
+    imgSrc: "/assets/images/home/demo14/product-10.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -280,7 +280,7 @@ export const products30 = [
   },
   {
     id: 384,
-    imgSrc: "/assets/images/home/demo14/product-6.jpg",
+    imgSrc: "/assets/images/home/demo14/product-6.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -288,7 +288,7 @@ export const products30 = [
   },
   {
     id: 385,
-    imgSrc: "/assets/images/home/demo14/product-9.jpg",
+    imgSrc: "/assets/images/home/demo14/product-9.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -296,7 +296,7 @@ export const products30 = [
   },
   {
     id: 386,
-    imgSrc: "/assets/images/home/demo14/product-8.jpg",
+    imgSrc: "/assets/images/home/demo14/product-8.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -304,7 +304,7 @@ export const products30 = [
   },
   {
     id: 387,
-    imgSrc: "/assets/images/home/demo14/product-9.jpg",
+    imgSrc: "/assets/images/home/demo14/product-9.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -312,7 +312,7 @@ export const products30 = [
   },
   {
     id: 388,
-    imgSrc: "/assets/images/home/demo14/product-7.jpg",
+    imgSrc: "/assets/images/home/demo14/product-7.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -320,7 +320,7 @@ export const products30 = [
   },
   {
     id: 389,
-    imgSrc: "/assets/images/home/demo14/product-10.jpg",
+    imgSrc: "/assets/images/home/demo14/product-10.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -328,7 +328,7 @@ export const products30 = [
   },
   {
     id: 390,
-    imgSrc: "/assets/images/home/demo14/product-6.jpg",
+    imgSrc: "/assets/images/home/demo14/product-6.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -336,7 +336,7 @@ export const products30 = [
   },
   {
     id: 391,
-    imgSrc: "/assets/images/home/demo14/product-8.jpg",
+    imgSrc: "/assets/images/home/demo14/product-8.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -347,56 +347,56 @@ export const products30 = [
 export const products31 = [
   {
     id: 392,
-    imgSrc: "/assets/images/home/demo14/product-11.jpg",
+    imgSrc: "/assets/images/home/demo14/product-11.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
   },
   {
     id: 393,
-    imgSrc: "/assets/images/home/demo14/product-12.jpg",
+    imgSrc: "/assets/images/home/demo14/product-12.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
   },
   {
     id: 394,
-    imgSrc: "/assets/images/home/demo14/product-13.jpg",
+    imgSrc: "/assets/images/home/demo14/product-13.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
   },
   {
     id: 395,
-    imgSrc: "/assets/images/home/demo14/product-14.jpg",
+    imgSrc: "/assets/images/home/demo14/product-14.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
   },
   {
     id: 396,
-    imgSrc: "/assets/images/home/demo14/product-11.jpg",
+    imgSrc: "/assets/images/home/demo14/product-11.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
   },
   {
     id: 397,
-    imgSrc: "/assets/images/home/demo14/product-12.jpg",
+    imgSrc: "/assets/images/home/demo14/product-12.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
   },
   {
     id: 398,
-    imgSrc: "/assets/images/home/demo14/product-13.jpg",
+    imgSrc: "/assets/images/home/demo14/product-13.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
   },
   {
     id: 399,
-    imgSrc: "/assets/images/home/demo14/product-14.jpg",
+    imgSrc: "/assets/images/home/demo14/product-14.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
@@ -406,56 +406,56 @@ export const products31 = [
 export const products32 = [
   {
     id: 400,
-    imgSrc: "/assets/images/home/demo14/product-15.jpg",
+    imgSrc: "/assets/images/home/demo14/product-15.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
   },
   {
     id: 401,
-    imgSrc: "/assets/images/home/demo14/product-16.jpg",
+    imgSrc: "/assets/images/home/demo14/product-16.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
   },
   {
     id: 402,
-    imgSrc: "/assets/images/home/demo14/product-17.jpg",
+    imgSrc: "/assets/images/home/demo14/product-17.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
   },
   {
     id: 403,
-    imgSrc: "/assets/images/home/demo14/product-18.jpg",
+    imgSrc: "/assets/images/home/demo14/product-18.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
   },
   {
     id: 404,
-    imgSrc: "/assets/images/home/demo14/product-15.jpg",
+    imgSrc: "/assets/images/home/demo14/product-15.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
   },
   {
     id: 405,
-    imgSrc: "/assets/images/home/demo14/product-16.jpg",
+    imgSrc: "/assets/images/home/demo14/product-16.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
   },
   {
     id: 406,
-    imgSrc: "/assets/images/home/demo14/product-17.jpg",
+    imgSrc: "/assets/images/home/demo14/product-17.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",
   },
   {
     id: 407,
-    imgSrc: "/assets/images/home/demo14/product-18.jpg",
+    imgSrc: "/assets/images/home/demo14/product-18.webp",
     title: "Anti-Dust Filter, Breathable, 3 Layers of Purifying",
     price: 29,
     category: "hospital equipment",

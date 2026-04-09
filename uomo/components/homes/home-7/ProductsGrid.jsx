@@ -11,7 +11,7 @@ export default function ProductsGrid() {
           <div className="position-relative mb-4">
             <Image
               loading="lazy"
-              src="/assets/images/home/demo7/product-banner.jpg"
+              src="/assets/images/home/demo7/product-banner.webp"
               width="546"
               height="762"
               className="w-100 h-auto"

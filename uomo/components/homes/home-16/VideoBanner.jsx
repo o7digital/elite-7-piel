@@ -74,7 +74,7 @@ export default function VideoBanner() {
         onPause={() => setIsPlaying(false)}
         onPlay={() => setIsPlaying(true)}
         className="bg-video"
-        poster="/assets/images/home/demo16/video_bg.jpg"
+        poster="/assets/images/home/demo16/video_bg.webp"
       >
         <source src="/assets/videos/video_1.mp4" />
       </video>

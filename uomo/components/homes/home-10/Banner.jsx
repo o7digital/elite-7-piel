@@ -21,7 +21,7 @@ export default function Banner() {
               />
               <div className="content_abs bottom-0 text-center mx-3 mx-xl-4 mb-3 mb-xl-4 pb-2 px-2">
                 <Link
-                  href="/shop-1"
+                  href="/shop"
                   className="btn btn-outline-primary border-0 fs-base fw-normal btn-45 border-circle d-inline-flex align-items-center py-1"
                 >
                   <span>{elm.buttonText}</span>

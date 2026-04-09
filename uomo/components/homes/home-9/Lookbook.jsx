@@ -11,7 +11,7 @@ export default function Lookbook() {
       <Image
         className="w-100 h-auto"
         loading="lazy"
-        src="/assets/images/home/demo9/lookbook-bg.jpg"
+        src="/assets/images/home/demo9/lookbook-bg.webp"
         width="1903"
         height="709"
         alt="image"

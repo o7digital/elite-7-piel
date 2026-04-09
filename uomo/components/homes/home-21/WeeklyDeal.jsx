@@ -61,7 +61,7 @@ export default function WeeklyDeal() {
 
         <Link
           className="btn-link btn-link_md default-underline text-uppercase fw-semi-bold ms-md-auto mb-3"
-          href="/shop-1"
+          href="/shop"
         >
           See All Products
         </Link>
