@@ -9,10 +9,6 @@
     "lint": "next lint",
     "generate:i18n:es": "node scripts/generate-es-translations.mjs"
   },
-  "devDependencies": {
-    "@babel/parser": "^7.28.4",
-    "@babel/traverse": "^7.28.4"
-  },
   "dependencies": {
     "@popperjs/core": "2.11.8",
     "@react-google-maps/api": "^2.20.6",
@@ -31,6 +27,9 @@
   },
   "devDependencies": {
     "@babel/parser": "^7.29.0",
-    "@babel/traverse": "^7.29.0"
+    "@babel/traverse": "^7.29.0",
+    "@types/node": "^24.12.2",
+    "@types/react": "^19.2.14",
+    "typescript": "^5.9.3"
   }
 }
