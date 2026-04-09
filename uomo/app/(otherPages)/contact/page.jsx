@@ -1,5 +1,5 @@
 import Footer14 from "@/components/footers/Footer14";
-import Header1 from "@/components/headers/Header1";
+import Header14 from "@/components/headers/Header14";
 import Contact from "@/components/otherPages/Contact/Contact";
 import React from "react";
 
@@ -9,8 +9,8 @@ export const metadata = {
 };
 export default function ContactPage() {
   return (
-    <>
-      <Header1 />
+    <div className="theme-15">
+      <Header14 />
       <main className="page-wrapper">
         <div className="mb-4 pb-4"></div>
         <section className="contact-us container">
@@ -21,6 +21,6 @@ export default function ContactPage() {
         <Contact />
       </main>
       <Footer14 />
-    </>
+    </div>
   );
 }

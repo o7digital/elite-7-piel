@@ -155,6 +155,17 @@ export default function Footer14() {
                 {newsletterStatus.message}
               </p>
             ) : null}
+
+            <div className="mt-4 pt-2">
+              <strong className="fw-medium text-white">Pagos seguros</strong>
+              <div className="payment-badges mt-3" data-no-runtime-translate>
+                <span className="payment-badge payment-badge_visa">VISA</span>
+                <span className="payment-badge payment-badge_mastercard">
+                  MasterCard
+                </span>
+                <span className="payment-badge payment-badge_amex">AMEX</span>
+              </div>
+            </div>
           </div>
           {/* <!-- /.footer-column --> */}
         </div>
