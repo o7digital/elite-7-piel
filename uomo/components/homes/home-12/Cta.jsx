@@ -26,7 +26,7 @@ export default function Cta() {
           </div>
           <h3 className="mb-0 text-white fw-normal">
             <span>Place Your Orders At </span>
-            <span className="theme-color-secondary">+1 246-345-0695</span>
+            <span className="theme-color-secondary">+52 5510522299</span>
           </h3>
         </div>
 

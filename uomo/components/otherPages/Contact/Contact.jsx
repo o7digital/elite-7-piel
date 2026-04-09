@@ -57,7 +57,7 @@ export default function Contact() {
             <p className="mb-4">
               <strong>Telefono</strong>
               <br />
-              +1 246-345-0695
+              +52 5510522299
             </p>
             <p className="mb-0">
               <strong>Horario</strong>

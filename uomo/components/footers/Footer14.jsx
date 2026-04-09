@@ -4,7 +4,6 @@ import Link from "next/link";
 import {
   currencyOptions,
   footerLinks1,
-  footerLinks2,
   footerLinks3,
   languageOptions,
   socialLinks,
@@ -48,7 +47,7 @@ export default function Footer14() {
   return (
     <footer className="footer footer_type_1 dark">
       <div className="footer-middle container">
-        <div className="row row-cols-lg-5 row-cols-2">
+        <div className="row row-cols-lg-4 row-cols-2">
           <div className="footer-column footer-store-info col-12 mb-4 mb-lg-0">
             <div className="logo">
               <Link href="/" className="site-wordmark site-wordmark_footer text-white">
@@ -67,7 +66,7 @@ export default function Footer14() {
               </strong>
             </p>
             <p>
-              <strong className="fw-medium">+1 246-345-0695</strong>
+              <strong className="fw-medium">+52 5510522299</strong>
             </p>
 
             <ul className="social-links list-unstyled d-flex flex-wrap mb-0">
@@ -98,20 +97,6 @@ export default function Footer14() {
             <h6 className="sub-menu__title text-uppercase">Company</h6>
             <ul className="sub-menu__list list-unstyled">
               {footerLinks1.map((elm, i) => (
-                <li key={i} className="sub-menu__item">
-                  <Link href={elm.href} className="menu-link menu-link_us-s">
-                    {elm.text}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          {/* <!-- /.footer-column --> */}
-
-          <div className="footer-column footer-menu mb-4 mb-lg-0">
-            <h6 className="sub-menu__title text-uppercase">Shop</h6>
-            <ul className="sub-menu__list list-unstyled">
-              {footerLinks2.map((elm, i) => (
                 <li key={i} className="sub-menu__item">
                   <Link href={elm.href} className="menu-link menu-link_us-s">
                     {elm.text}
@@ -173,7 +158,7 @@ export default function Footer14() {
           </div>
           {/* <!-- /.footer-column --> */}
         </div>
-        {/* <!-- /.row-cols-5 --> */}
+        {/* <!-- /.row-cols-4 --> */}
       </div>
       {/* <!-- /.footer-middle container --> */}
 

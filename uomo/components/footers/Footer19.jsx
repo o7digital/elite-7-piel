@@ -62,7 +62,7 @@ export default function Footer19() {
               <strong className="fw-medium body-color">sale@uomo.com</strong>
             </p>
             <p>
-              <strong className="fw-medium body-color">+1 246-345-0695</strong>
+              <strong className="fw-medium body-color">+52 5510522299</strong>
             </p>
 
             <ul className="social-links list-unstyled d-flex flex-wrap mb-0">

@@ -8,17 +8,20 @@ export default function About() {
         <h2 className="page-title">QUIENES SOMOS</h2>
       </div>
       <div className="about-us__content pb-5 mb-5">
-        <p className="mb-5">
+        <div
+          className="mb-5 position-relative overflow-hidden"
+          style={{ aspectRatio: "1410 / 550" }}
+        >
           <Image
-            style={{ height: "fit-content" }}
+            fill
             loading="lazy"
-            className="w-100 h-auto d-block"
-            src="/assets/images/about/about-1.jpg"
-            width="1410"
-            height="550"
-            alt="Elite 7 Piel"
+            className="d-block"
+            style={{ objectFit: "cover" }}
+            src="/assets/images/about/meeting-room.webp"
+            sizes="(max-width: 1410px) 100vw, 1410px"
+            alt="Sala de reunion profesional"
           />
-        </p>
+        </div>
         <div className="mw-930">
           <h3 className="mb-4">Nuestra historia</h3>
           <p className="fs-6 fw-medium mb-4">
@@ -65,10 +68,10 @@ export default function About() {
               style={{ height: "fit-content" }}
               className="h-auto"
               loading="lazy"
-              src="/assets/images/about/about-2.jpg"
-              width="450"
-              height="500"
-              alt="Cuidado personal Elite 7 Piel"
+              src="/assets/images/quienes/compromiso.png"
+              width="340"
+              height="370"
+              alt="Compromiso Elite 7 Piel"
             />
           </div>
           <div className="content-wrapper col-lg-6 px-lg-4">

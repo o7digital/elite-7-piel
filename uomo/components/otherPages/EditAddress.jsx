@@ -19,7 +19,7 @@ export default function EditAddress() {
               <p>United States</p>
               <br />
               <p>sale@uomo.com</p>
-              <p>+1 246-345-0695</p>
+              <p>+52 5510522299</p>
             </div>
           </div>
           <div className="my-account__address-item">
@@ -33,7 +33,7 @@ export default function EditAddress() {
               <p>United States</p>
               <br />
               <p>sale@uomo.com</p>
-              <p>+1 246-345-0695</p>
+              <p>+52 5510522299</p>
             </div>
           </div>
         </div>

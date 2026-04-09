@@ -1,6 +1,6 @@
 .about-us {
   .page-title {
-    font-size: 2.1875rem;
+    font-size: 2.625rem;
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 2.5rem;
@@ -8,5 +8,54 @@
 
   &__content {
     line-height: 1.875rem;
+
+    h3 {
+      font-size: 2.25rem;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    h5 {
+      font-size: 1.75rem;
+      line-height: 1.25;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 1.1875rem;
+      line-height: 1.9;
+    }
+
+    .fs-6 {
+      font-size: 1.375rem !important;
+      line-height: 1.8;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .about-us {
+    .page-title {
+      font-size: 2.1rem;
+    }
+
+    &__content {
+      h3 {
+        font-size: 1.8rem;
+      }
+
+      h5 {
+        font-size: 1.45rem;
+      }
+
+      p {
+        font-size: 1.0625rem;
+        line-height: 1.8;
+      }
+
+      .fs-6 {
+        font-size: 1.2rem !important;
+      }
+    }
   }
 }

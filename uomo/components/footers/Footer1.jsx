@@ -1,11 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {
   currencyOptions,
   footerLinks1,
-  footerLinks2,
   footerLinks3,
   languageOptions,
   socialLinks,
@@ -49,17 +47,11 @@ export default function Footer1() {
   return (
     <footer className="footer footer_type_1">
       <div className="footer-middle container">
-        <div className="row row-cols-lg-5 row-cols-2">
+        <div className="row row-cols-lg-4 row-cols-2">
           <div className="footer-column footer-store-info col-12 mb-4 mb-lg-0">
             <div className="logo">
-              <Link href="/">
-                <Image
-                  src="/assets/images/logo.png"
-                  width={112}
-                  height={28}
-                  alt="Uomo"
-                  className="logo__image d-block"
-                />
+              <Link href="/" className="site-wordmark site-wordmark_footer">
+                ELITE 7 PIEL
               </Link>
             </div>
             {/* <!-- /.logo --> */}
@@ -74,7 +66,7 @@ export default function Footer1() {
               </strong>
             </p>
             <p>
-              <strong className="fw-medium">+1 246-345-0695</strong>
+              <strong className="fw-medium">+52 5510522299</strong>
             </p>
 
             <ul className="social-links list-unstyled d-flex flex-wrap mb-0">
@@ -105,19 +97,6 @@ export default function Footer1() {
             <h5 className="sub-menu__title text-uppercase">Company</h5>
             <ul className="sub-menu__list list-unstyled">
               {footerLinks1.map((elm, i) => (
-                <li key={i} className="sub-menu__item">
-                  <Link href={elm.href} className="menu-link menu-link_us-s">
-                    {elm.text}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          {/* <!-- /.footer-column --> */}
-          <div className="footer-column footer-menu mb-4 mb-lg-0">
-            <h5 className="sub-menu__title text-uppercase">Shop</h5>
-            <ul className="sub-menu__list list-unstyled">
-              {footerLinks2.map((elm, i) => (
                 <li key={i} className="sub-menu__item">
                   <Link href={elm.href} className="menu-link menu-link_us-s">
                     {elm.text}
@@ -176,22 +155,23 @@ export default function Footer1() {
             ) : null}
 
             <div className="mt-4 pt-3">
-              <strong className="fw-medium">Secure payments</strong>
-              <p className="mt-2">
-                <Image
-                  loading="lazy"
-                  width={324}
-                  height={38}
-                  src="/assets/images/payment-options.png"
-                  alt="Acceptable payment gateways"
-                  className="mw-100"
-                />
-              </p>
+              <strong className="fw-medium">Pagos seguros</strong>
+              <div className="mt-3 d-flex flex-wrap gap-2">
+                <span className="border rounded-pill px-3 py-2 fw-medium">
+                  VISA
+                </span>
+                <span className="border rounded-pill px-3 py-2 fw-medium">
+                  MasterCard
+                </span>
+                <span className="border rounded-pill px-3 py-2 fw-medium">
+                  AMEX
+                </span>
+              </div>
             </div>
           </div>
           {/* <!-- /.footer-column --> */}
         </div>
-        {/* <!-- /.row-cols-5 --> */}
+        {/* <!-- /.row-cols-4 --> */}
       </div>
       {/* <!-- /.footer-middle container --> */}
 
