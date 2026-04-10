@@ -5,8 +5,13 @@ import { products34 } from "@/data/products/cosmetics";
 import React from "react";
 import { Tooltip } from "react-tooltip";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { getLocaleFromPath } from "@/lib/i18n/locale";
 
 export default function Lookbook() {
+  const pathname = usePathname();
+  const locale = getLocaleFromPath(pathname);
+
   return (
     <section className="lookbook-products container">
       <div className="position-relative">
@@ -20,17 +25,20 @@ export default function Lookbook() {
         />
         <div className="content d-none d-lg-block text-center py-5 px-5 bg-white position-absolute position-center">
           <h3 className="fs-22 fw-medium text-uppercase mb-2">
-            Tienda de cuidado facial y capilar
+            {locale === "en"
+              ? "Facial and hair care store"
+              : "Tienda de cuidado facial y capilar"}
           </h3>
           <p className="fs-15 color-gray-5a5a5a mb-2">
-            Encuentra productos para cuidado de la piel, tecnologia facial en
-            casa y tratamientos para cabello dañado con enfoque profesional.
+            {locale === "en"
+              ? "Find skin care products, at-home facial technology, and treatments for damaged hair with a professional approach."
+              : "Encuentra productos para cuidado de la piel, tecnologia facial en casa y tratamientos para cabello dañado con enfoque profesional."}
           </p>
           <Link
             href="/shop"
             className="btn-link btn-link_md default-underline text-uppercase fw-medium"
           >
-            Explorar tienda
+            {locale === "en" ? "Explore store" : "Explorar tienda"}
           </Link>
         </div>
 

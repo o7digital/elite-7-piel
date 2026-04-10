@@ -10,8 +10,21 @@ import {
 } from "@/data/footer";
 import { submitFormspree } from "@/lib/formspree";
 import LanguageSwitcherSelect from "@/components/common/LanguageSwitcherSelect";
+import { usePathname } from "next/navigation";
+import { getLocaleFromPath } from "@/lib/i18n/locale";
+
+const FOOTER_LINK_LABELS = {
+  "/shop": { en: "Shop", es: "Tienda" },
+  "/about": { en: "About Us", es: "Quienes Somos" },
+  "/contact": { en: "Work with us", es: "Trabaja con Nosotros" },
+  "/faq": { en: "Frequently Asked Questions", es: "Preguntas Frecuentes" },
+  "/account_dashboard": { en: "My account", es: "Mi cuenta" },
+  "/aviso-de-privacidad": { en: "Privacy Notice", es: "Aviso de Privacidad" },
+};
 
 export default function Footer14() {
+  const pathname = usePathname();
+  const locale = getLocaleFromPath(pathname);
   const [newsletterStatus, setNewsletterStatus] = useState({
     type: "idle",
     message: "",
@@ -27,7 +40,7 @@ export default function Footer14() {
 
     setNewsletterStatus({
       type: "loading",
-      message: "Enviando...",
+      message: locale === "en" ? "Sending..." : "Enviando...",
     });
 
     try {
@@ -35,12 +48,19 @@ export default function Footer14() {
       form.reset();
       setNewsletterStatus({
         type: "success",
-        message: "Gracias. Tu suscripcion fue enviada.",
+        message:
+          locale === "en"
+            ? "Thank you. Your subscription was sent."
+            : "Gracias. Tu suscripcion fue enviada.",
       });
     } catch (error) {
       setNewsletterStatus({
         type: "error",
-        message: error.message || "No se pudo enviar el formulario.",
+        message:
+          error.message ||
+          (locale === "en"
+            ? "The form could not be sent."
+            : "No se pudo enviar el formulario."),
       });
     }
   };
@@ -95,12 +115,14 @@ export default function Footer14() {
           {/* <!-- /.footer-column --> */}
 
           <div className="footer-column footer-menu mb-4 mb-lg-0">
-            <h6 className="sub-menu__title text-uppercase">Company</h6>
+            <h6 className="sub-menu__title text-uppercase">
+              {locale === "en" ? "Company" : "Empresa"}
+            </h6>
             <ul className="sub-menu__list list-unstyled">
               {footerLinks1.map((elm, i) => (
                 <li key={i} className="sub-menu__item">
                   <Link href={elm.href} className="menu-link menu-link_us-s">
-                    {elm.text}
+                    {FOOTER_LINK_LABELS[elm.href]?.[locale] || elm.text}
                   </Link>
                 </li>
               ))}
@@ -109,12 +131,14 @@ export default function Footer14() {
           {/* <!-- /.footer-column --> */}
 
           <div className="footer-column footer-menu mb-4 mb-lg-0">
-            <h6 className="sub-menu__title text-uppercase">Help</h6>
+            <h6 className="sub-menu__title text-uppercase">
+              {locale === "en" ? "Help" : "Ayuda"}
+            </h6>
             <ul className="sub-menu__list list-unstyled">
               {footerLinks3.map((elm, i) => (
                 <li key={i} className="sub-menu__item">
                   <Link href={elm.href} className="menu-link menu-link_us-s">
-                    {elm.text}
+                    {FOOTER_LINK_LABELS[elm.href]?.[locale] || elm.text}
                   </Link>
                 </li>
               ))}
@@ -123,10 +147,13 @@ export default function Footer14() {
           {/* <!-- /.footer-column --> */}
 
           <div className="footer-column footer-newsletter col-12 mb-4 mb-lg-0">
-            <h6 className="sub-menu__title text-uppercase">Subscribe</h6>
+            <h6 className="sub-menu__title text-uppercase">
+              {locale === "en" ? "Subscribe" : "Suscribete"}
+            </h6>
             <p>
-              Be the first to get the latest news about trends, promotions, and
-              much more!
+              {locale === "en"
+                ? "Be the first to get the latest news about trends, promotions, and much more!"
+                : "Se la primera en conocer noticias sobre tendencias, promociones y mucho mas."}
             </p>
             <form
               onSubmit={handleNewsletterSubmit}
@@ -144,7 +171,13 @@ export default function Footer14() {
                 type="submit"
                 disabled={newsletterStatus.type === "loading"}
               >
-                {newsletterStatus.type === "loading" ? "Enviando..." : "Enviar"}
+                {newsletterStatus.type === "loading"
+                  ? locale === "en"
+                    ? "Sending..."
+                    : "Enviando..."
+                  : locale === "en"
+                  ? "Submit"
+                  : "Enviar"}
               </button>
             </form>
             {newsletterStatus.message ? (
@@ -158,7 +191,9 @@ export default function Footer14() {
             ) : null}
 
             <div className="mt-4 pt-2">
-              <strong className="fw-medium text-white">Pagos seguros</strong>
+              <strong className="fw-medium text-white">
+                {locale === "en" ? "Secure payments" : "Pagos seguros"}
+              </strong>
               <div className="payment-badges mt-3" data-no-runtime-translate>
                 <Image
                   src="/assets/images/pago/visa.webp"
@@ -210,14 +245,14 @@ export default function Footer14() {
               href="#header"
               className="text-white text-decoration-none me-md-4 d-inline-flex align-items-center mb-3 mb-md-0"
             >
-              Volver arriba
+              {locale === "en" ? "Back to top" : "Volver arriba"}
             </a>
             <div className="d-flex align-items-center">
               <label
                 htmlFor="footerSettingsLanguage"
                 className="me-2 text-white"
               >
-                Language
+                {locale === "en" ? "Language" : "Idioma"}
               </label>
               <LanguageSwitcherSelect
                 id="footerSettingsLanguage"
@@ -231,7 +266,7 @@ export default function Footer14() {
                 htmlFor="footerSettingsCurrency"
                 className="ms-md-3 me-2 text-white"
               >
-                Currency
+                {locale === "en" ? "Currency" : "Moneda"}
               </label>
               <select
                 id="footerSettingsCurrency"

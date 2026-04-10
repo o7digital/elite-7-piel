@@ -9,6 +9,13 @@ import {
   stripLocalePrefix,
 } from "@/lib/i18n/locale";
 
+const MENU_LABELS = {
+  "/": { es: "Inicio", en: "Home" },
+  "/shop": { es: "Tienda", en: "Shop" },
+  "/about": { es: "Quienes Somos", en: "About Us" },
+  "/contact": { es: "Contacto", en: "Contact" },
+};
+
 export default function Nav() {
   const pathname = usePathname();
   const normalizedPathname = stripLocalePrefix(pathname);
@@ -40,7 +47,7 @@ export default function Nav() {
               isMenuItemActive(item) ? "menu-active" : ""
             }`}
           >
-            {item.title}
+            {MENU_LABELS[item.href]?.[locale] || item.title}
           </Link>
         </li>
       ))}

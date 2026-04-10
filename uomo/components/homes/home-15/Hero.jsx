@@ -5,8 +5,29 @@ import { slideData10 } from "@/data/heroslides";
 import { Autoplay, EffectFade, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { getLocaleFromPath } from "@/lib/i18n/locale";
+
+const HERO_TEXTS = {
+  "Cuidado facial": {
+    en: "Facial care",
+  },
+  "Belleza profesional": {
+    en: "Professional beauty",
+  },
+  "Descubre cremas antiarrugas efectivas, crema para rejuvenecer la piel y productos anti edad profesionales para una rutina mas firme, luminosa y constante.":
+    {
+      en: "Discover effective anti-wrinkle creams, skin rejuvenation products, and professional anti-aging solutions for a firmer, brighter routine.",
+    },
+  "Compra productos de belleza originales, dispositivo de radiofrecuencia facial en casa y tratamiento capilar intensivo desde una sola tienda especializada.":
+    {
+      en: "Shop original beauty products, at-home facial radiofrequency devices, and intensive hair treatment from one specialized store.",
+    },
+};
 
 export default function Hero() {
+  const pathname = usePathname();
+  const locale = getLocaleFromPath(pathname);
   const swiperOptions = {
     autoplay: {
       delay: 5000,
@@ -44,19 +65,33 @@ export default function Hero() {
                 className="fs-70 mb-2 mb-lg-3 animate animate_fade animate_btt animate_delay-5 text-uppercase fw-normal"
                 style={{ fontFamily: "var(--font-variable-average_Sans)" }}
               >
-                {elm.title}
+                {locale === "en"
+                  ? HERO_TEXTS[elm.title]?.en || elm.title
+                  : elm.title}
               </h2>
               <p className="h6 mb-4 pb-2 animate animate_fade animate_btt animate_delay-5 lh-2rem">
-                {elm.description.split(" ").slice(0, 13).join(" ")}
+                {(locale === "en"
+                  ? HERO_TEXTS[elm.description]?.en || elm.description
+                  : elm.description
+                )
+                  .split(" ")
+                  .slice(0, 13)
+                  .join(" ")}
                 <br />
-                {elm.description.split(" ").slice(13).join(" ")}
+                {(locale === "en"
+                  ? HERO_TEXTS[elm.description]?.en || elm.description
+                  : elm.description
+                )
+                  .split(" ")
+                  .slice(13)
+                  .join(" ")}
               </p>
               <div className="animate animate_fade animate_btt animate_delay-7">
                 <Link
                   href="/shop"
                   className="btn btn-primary border-0 fs-base text-uppercase fw-normal btn-50"
                 >
-                  <span>VIEW MORE</span>
+                  <span>{locale === "en" ? "VIEW MORE" : "VER MAS"}</span>
                 </Link>
               </div>
             </div>
