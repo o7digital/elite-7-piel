@@ -19,11 +19,17 @@ export default function LanguageSwitcherSelect({
   id,
   name = "store-language",
   ariaLabel = "Language selector",
+  compact = false,
 }) {
   const pathname = usePathname();
   const router = useRouter();
   const locale = getLocaleFromPath(pathname);
-  const options = LANGUAGE_LABELS[locale] || LANGUAGE_LABELS.es;
+  const options = compact
+    ? [
+        { value: "es", label: "ES" },
+        { value: "en", label: "EN" },
+      ]
+    : LANGUAGE_LABELS[locale] || LANGUAGE_LABELS.es;
 
   return (
     <select

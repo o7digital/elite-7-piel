@@ -5,6 +5,7 @@ import Nav from "./components/Nav";
 import { openCart } from "@/utlis/openCart";
 import User from "./components/User";
 import SearchPopup from "./components/SearchPopup";
+import LanguageSwitcherSelect from "@/components/common/LanguageSwitcherSelect";
 
 export default function Header14() {
   return (
@@ -41,6 +42,14 @@ export default function Header14() {
             {/* <!-- /.logo --> */}
 
             <div className="header-tools d-flex align-items-center flex-1 justify-content-end me-2">
+              <div className="header-tools__item d-none d-lg-block">
+                <LanguageSwitcherSelect
+                  className="form-select form-select-sm bg-transparent border-0 py-0 pe-4"
+                  ariaLabel="Language selector"
+                  compact
+                />
+              </div>
+
               <SearchPopup />
               {/* <!-- /.header-tools__item hover-container --> */}
 

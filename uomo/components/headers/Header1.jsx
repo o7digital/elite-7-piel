@@ -6,6 +6,7 @@ import { openCart } from "@/utlis/openCart";
 import CartLength from "./components/CartLength";
 import User from "./components/User";
 import SearchPopup from "./components/SearchPopup";
+import LanguageSwitcherSelect from "@/components/common/LanguageSwitcherSelect";
 
 export default function Header1() {
   const [scrollDirection, setScrollDirection] = useState("down");
@@ -65,6 +66,14 @@ export default function Header1() {
           {/* <!-- /.navigation --> */}
 
           <div className="header-tools d-flex align-items-center">
+            <div className="header-tools__item d-none d-lg-block">
+              <LanguageSwitcherSelect
+                className="form-select form-select-sm bg-transparent border-0 py-0 pe-4"
+                ariaLabel="Language selector"
+                compact
+              />
+            </div>
+
             <SearchPopup />
 
             {/* <!-- /.header-tools__item hover-container --> */}
