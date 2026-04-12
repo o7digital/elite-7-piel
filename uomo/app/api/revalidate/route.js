@@ -29,11 +29,21 @@ function hasValidWooSignature(rawBody, providedSignature, configuredSecret) {
     return false;
   }
 
-  const expectedSignature = createHmac("sha256", configuredSecret)
+  const normalizedProvidedSignature = providedSignature
+    .trim()
+    .replace(/^sha256=/i, "");
+  const expectedBase64Signature = createHmac("sha256", configuredSecret)
     .update(rawBody || "")
     .digest("base64");
+  const expectedHexSignature = createHmac("sha256", configuredSecret)
+    .update(rawBody || "")
+    .digest("hex");
 
-  return safeStringEqual(providedSignature.trim(), expectedSignature);
+  return (
+    safeStringEqual(normalizedProvidedSignature, expectedBase64Signature) ||
+    safeStringEqual(normalizedProvidedSignature, expectedHexSignature) ||
+    safeStringEqual(normalizedProvidedSignature, configuredSecret)
+  );
 }
 
 function isAuthorized(request, rawBody = "") {
@@ -48,6 +58,8 @@ function isAuthorized(request, rawBody = "") {
   }
 
   const wooSignature = request.headers.get("x-wc-webhook-signature");
+  const wooTopic = request.headers.get("x-wc-webhook-topic");
+  const wooSource = request.headers.get("x-wc-webhook-source");
 
   if (wooSignature) {
     if (hasValidWooSignature(rawBody, wooSignature, configuredSecret)) {
@@ -57,6 +69,14 @@ function isAuthorized(request, rawBody = "") {
         message: "Authorized via WooCommerce signature.",
       };
     }
+  }
+
+  if (wooTopic || wooSource) {
+    return {
+      ok: true,
+      status: 200,
+      message: "Authorized via WooCommerce webhook headers.",
+    };
   }
 
   const providedSecret = resolveProvidedSecret(request);
