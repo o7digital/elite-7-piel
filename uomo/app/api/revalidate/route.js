@@ -57,12 +57,6 @@ function isAuthorized(request, rawBody = "") {
         message: "Authorized via WooCommerce signature.",
       };
     }
-
-    return {
-      ok: false,
-      status: 401,
-      message: "Invalid WooCommerce webhook signature.",
-    };
   }
 
   const providedSecret = resolveProvidedSecret(request);
