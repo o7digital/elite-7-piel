@@ -3,6 +3,8 @@ import "server-only";
 const DEFAULT_STORE_API_BASE = "https://oliviers52.sg-host.com/wp-json/wc/store/v1/";
 const FALLBACK_IMAGE = "/assets/images/home/demo15/product-1.webp";
 const DEFAULT_STOCK_STATUSES = ["instock", "outofstock", "onbackorder"];
+const DEFAULT_STORE_REVALIDATE_SECONDS = 300;
+export const WOOCOMMERCE_CACHE_TAG = "woocommerce-store";
 
 const HTML_ENTITIES = {
   amp: "&",
@@ -33,6 +35,36 @@ const COLOR_MAP = {
 
 function normalizeStoreApiBase(base) {
   return String(base).endsWith("/") ? String(base) : `${String(base)}/`;
+}
+
+function parsePositiveInteger(value, fallback) {
+  const parsedValue = Number.parseInt(value, 10);
+
+  if (Number.isFinite(parsedValue) && parsedValue > 0) {
+    return parsedValue;
+  }
+
+  return fallback;
+}
+
+function getStorefrontFetchOptions() {
+  if (process.env.WORDPRESS_STORE_API_NO_STORE !== "false") {
+    return {
+      cache: "no-store",
+    };
+  }
+
+  const revalidateInSeconds = parsePositiveInteger(
+    process.env.WORDPRESS_STORE_API_REVALIDATE_SECONDS,
+    DEFAULT_STORE_REVALIDATE_SECONDS
+  );
+
+  return {
+    next: {
+      tags: [WOOCOMMERCE_CACHE_TAG],
+      revalidate: revalidateInSeconds,
+    },
+  };
 }
 
 function getStoreApiBases() {
@@ -68,7 +100,8 @@ function buildStoreApiUrl(base, pathname, params = {}) {
 
 async function storefrontFetchFromBase(base, pathname, params = {}, options = {}) {
   const response = await fetch(buildStoreApiUrl(base, pathname, params), {
-    cache: "no-store",
+    ...getStorefrontFetchOptions(),
+    ...options.fetchOptions,
   });
 
   if (options.allowNotFound && response.status === 404) {
