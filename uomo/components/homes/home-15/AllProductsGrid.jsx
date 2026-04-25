@@ -55,8 +55,8 @@ export default function AllProductsGrid({ products = [] }) {
         .home15-catalog__title {
           margin: 0;
           color: #1d1d1d;
-          font-size: clamp(1.9rem, 2vw + 1.2rem, 3rem);
-          line-height: 1.05;
+          font-size: clamp(1.9rem, 1.2vw + 1.25rem, 2.6rem);
+          line-height: 1.1;
           font-weight: 700;
           letter-spacing: -0.03em;
         }

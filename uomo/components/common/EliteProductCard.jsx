@@ -161,13 +161,13 @@ export default function EliteProductCard({
           position: relative;
           display: block;
           width: 100%;
-          aspect-ratio: 1 / 1;
+          aspect-ratio: 1 / 1.06;
           background: #f7f7f7;
           overflow: hidden;
         }
 
         .dosalga-card__image {
-          object-fit: cover;
+          object-fit: contain;
           transition: opacity 0.35s ease, transform 0.35s ease;
           background: #f7f7f7;
         }
@@ -249,19 +249,19 @@ export default function EliteProductCard({
           align-items: center;
           text-align: center;
           gap: 8px;
-          padding: 26px 22px 24px;
+          padding: 26px 22px 26px;
         }
 
         .dosalga-card__title {
           margin: 0;
-          font-size: clamp(1rem, 0.7vw + 0.9rem, 1.95rem);
-          line-height: 1.2;
+          font-size: clamp(1.1rem, 1vw + 0.9rem, 1.52rem);
+          line-height: 1.14;
           font-weight: 700;
           letter-spacing: -0.02em;
-          max-width: 16ch;
+          max-width: 14ch;
           display: -webkit-box;
           -webkit-box-orient: vertical;
-          -webkit-line-clamp: 3;
+          -webkit-line-clamp: 5;
           overflow: hidden;
         }
 
@@ -292,9 +292,9 @@ export default function EliteProductCard({
         }
 
         .dosalga-card__price {
-          margin: 6px 0 0;
+          margin: 8px 0 0;
           color: #202020;
-          font-size: clamp(1.05rem, 0.6vw + 0.95rem, 1.35rem);
+          font-size: clamp(1.2rem, 1vw + 1rem, 1.5rem);
           line-height: 1;
           font-weight: 700;
         }
@@ -307,7 +307,7 @@ export default function EliteProductCard({
 
         .dosalga-card__star {
           color: #d7d7d7;
-          font-size: 1.1rem;
+          font-size: 1.45rem;
           line-height: 1;
         }
 
@@ -316,28 +316,28 @@ export default function EliteProductCard({
         }
 
         .dosalga-card__share {
-          padding-top: 10px;
+          padding-top: 12px;
           display: flex;
           flex-wrap: wrap;
           align-items: center;
           justify-content: center;
-          gap: 8px;
+          gap: 10px;
           color: #5e5e5e;
-          font-size: 0.82rem;
+          font-size: 0.95rem;
           text-transform: uppercase;
           letter-spacing: 0.04em;
         }
 
         .dosalga-card__share button {
-          min-width: 40px;
-          height: 34px;
+          min-width: 44px;
+          height: 40px;
           border-radius: 999px;
           border: 1px solid #d8d8d8;
           background: #ffffff;
           color: #333333;
-          font-size: 0.85rem;
+          font-size: 0.95rem;
           font-weight: 700;
-          padding: 0 10px;
+          padding: 0 12px;
         }
 
         .dosalga-card:hover .dosalga-card__image--primary {
