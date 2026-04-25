@@ -161,13 +161,13 @@ export default function EliteProductCard({
           position: relative;
           display: block;
           width: 100%;
-          aspect-ratio: 1 / 1.06;
+          aspect-ratio: 1 / 1;
           background: #f7f7f7;
           overflow: hidden;
         }
 
         .dosalga-card__image {
-          object-fit: contain;
+          object-fit: cover;
           transition: opacity 0.35s ease, transform 0.35s ease;
           background: #f7f7f7;
         }
@@ -184,6 +184,9 @@ export default function EliteProductCard({
           flex-direction: column;
           gap: 12px;
           z-index: 2;
+          opacity: 0;
+          transform: translateX(10px);
+          transition: opacity 0.25s ease, transform 0.25s ease;
         }
 
         .dosalga-card__icon-btn {
@@ -251,14 +254,14 @@ export default function EliteProductCard({
 
         .dosalga-card__title {
           margin: 0;
-          font-size: clamp(1.1rem, 1vw + 0.9rem, 1.5rem);
-          line-height: 1.14;
+          font-size: clamp(1rem, 0.7vw + 0.9rem, 1.95rem);
+          line-height: 1.2;
           font-weight: 700;
           letter-spacing: -0.02em;
-          max-width: 14ch;
+          max-width: 16ch;
           display: -webkit-box;
           -webkit-box-orient: vertical;
-          -webkit-line-clamp: 5;
+          -webkit-line-clamp: 3;
           overflow: hidden;
         }
 
@@ -289,9 +292,9 @@ export default function EliteProductCard({
         }
 
         .dosalga-card__price {
-          margin: 8px 0 0;
+          margin: 6px 0 0;
           color: #202020;
-          font-size: clamp(1.2rem, 1vw + 1rem, 1.5rem);
+          font-size: clamp(1.05rem, 0.6vw + 0.95rem, 1.35rem);
           line-height: 1;
           font-weight: 700;
         }
@@ -304,7 +307,7 @@ export default function EliteProductCard({
 
         .dosalga-card__star {
           color: #d7d7d7;
-          font-size: 1.45rem;
+          font-size: 1.1rem;
           line-height: 1;
         }
 
@@ -313,28 +316,28 @@ export default function EliteProductCard({
         }
 
         .dosalga-card__share {
-          padding-top: 12px;
+          padding-top: 10px;
           display: flex;
           flex-wrap: wrap;
           align-items: center;
           justify-content: center;
-          gap: 10px;
+          gap: 8px;
           color: #5e5e5e;
-          font-size: 0.95rem;
+          font-size: 0.82rem;
           text-transform: uppercase;
           letter-spacing: 0.04em;
         }
 
         .dosalga-card__share button {
-          min-width: 44px;
-          height: 40px;
+          min-width: 40px;
+          height: 34px;
           border-radius: 999px;
           border: 1px solid #d8d8d8;
           background: #ffffff;
           color: #333333;
-          font-size: 0.95rem;
+          font-size: 0.85rem;
           font-weight: 700;
-          padding: 0 12px;
+          padding: 0 10px;
         }
 
         .dosalga-card:hover .dosalga-card__image--primary {
@@ -352,8 +355,18 @@ export default function EliteProductCard({
           transform: translateY(0);
         }
 
+        .dosalga-card:hover .dosalga-card__actions {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
         @media (max-width: 991px) {
           .dosalga-card__cta {
+            opacity: 1;
+            transform: none;
+          }
+
+          .dosalga-card__actions {
             opacity: 1;
             transform: none;
           }

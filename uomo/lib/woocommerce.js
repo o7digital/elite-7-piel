@@ -245,17 +245,23 @@ function formatPrice(prices = {}) {
   const currency = prices.currency_code || "MXN";
 
   try {
-    return new Intl.NumberFormat("es-MX", {
+    const formatted = new Intl.NumberFormat("es-MX", {
       style: "currency",
       currency,
       minimumFractionDigits: Number(prices.currency_minor_unit ?? 2),
     }).format(value);
+
+    // Some storefront payloads already inject a symbol and can produce "$$...".
+    return formatted.replace(/^([^\d\s])\1+/, "$1");
   } catch {
     const prefix = prices.currency_prefix || "$";
     const suffix = prices.currency_suffix || "";
     const decimals = Number(prices.currency_minor_unit ?? 2);
 
-    return `${prefix}${value.toFixed(decimals)}${suffix}`;
+    return `${prefix}${value.toFixed(decimals)}${suffix}`.replace(
+      /^([^\d\s])\1+/,
+      "$1"
+    );
   }
 }
 
