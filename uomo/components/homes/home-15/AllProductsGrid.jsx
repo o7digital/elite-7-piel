@@ -1,6 +1,6 @@
 "use client";
 
-import DosalgaProductCard from "@/components/common/DosalgaProductCard";
+import EliteProductCard from "@/components/common/EliteProductCard";
 
 export default function AllProductsGrid({ products = [] }) {
   if (!products.length) {
@@ -22,7 +22,7 @@ export default function AllProductsGrid({ products = [] }) {
       <div className="row g-4">
         {products.map((product) => (
           <div key={product.id} className="col-sm-6 col-xl-3">
-            <DosalgaProductCard
+            <EliteProductCard
               product={product}
               detailHref={`/shop/product/${product.id}`}
             />

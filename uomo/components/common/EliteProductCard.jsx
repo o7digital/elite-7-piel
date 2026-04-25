@@ -20,7 +20,7 @@ function renderStars(rating = 0) {
   ));
 }
 
-export default function DosalgaProductCard({
+export default function EliteProductCard({
   product,
   detailHref = `/shop/product/${product.id}`,
 }) {

@@ -1,6 +1,6 @@
 "use client";
 
-import DosalgaProductCard from "@/components/common/DosalgaProductCard";
+import EliteProductCard from "@/components/common/EliteProductCard";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -266,7 +266,7 @@ export default function Shop1({ products = [], categories = [] }) {
         <div className="row g-4">
           {filteredProducts.map((product) => (
             <div key={product.id} className={gridColumnClass}>
-              <DosalgaProductCard
+              <EliteProductCard
                 product={product}
                 detailHref={`/shop/product/${product.id}`}
               />
