@@ -10,12 +10,8 @@ export default function AllProductsGrid({ products = [] }) {
   return (
     <section className="home15-catalog container">
       <div className="home15-catalog__header">
-        <div>
-          <p className="home15-catalog__eyebrow">Catalogo completo</p>
-          <h2 className="home15-catalog__title">Todos nuestros productos</h2>
-        </div>
         <p className="home15-catalog__count">
-          Mostrando {products.length} producto{products.length === 1 ? "" : "s"}
+          Showing {products.length} Products
         </p>
       </div>
 
@@ -32,55 +28,40 @@ export default function AllProductsGrid({ products = [] }) {
 
       <style jsx>{`
         .home15-catalog {
-          padding-top: 5rem;
+          padding-top: 4.5rem;
           padding-bottom: 3rem;
         }
 
         .home15-catalog__header {
           display: flex;
-          align-items: end;
-          justify-content: space-between;
+          align-items: center;
+          justify-content: flex-start;
           gap: 20px;
-          margin-bottom: 2.5rem;
-        }
-
-        .home15-catalog__eyebrow {
-          margin: 0 0 0.4rem;
-          color: #8d8d8d;
-          font-size: 0.92rem;
-          letter-spacing: 0.24em;
-          text-transform: uppercase;
-        }
-
-        .home15-catalog__title {
-          margin: 0;
-          color: #1d1d1d;
-          font-size: clamp(1.9rem, 1.2vw + 1.25rem, 2.6rem);
-          line-height: 1.1;
-          font-weight: 700;
-          letter-spacing: -0.03em;
+          margin-bottom: 2.2rem;
         }
 
         .home15-catalog__count {
           margin: 0;
-          color: #7b7b7b;
-          font-size: 1rem;
+          color: #8f8f8f;
+          font-size: 1.05rem;
+          line-height: 1.2;
+          font-weight: 500;
           white-space: nowrap;
         }
 
         @media (max-width: 767px) {
           .home15-catalog {
-            padding-top: 3.5rem;
+            padding-top: 3rem;
           }
 
           .home15-catalog__header {
-            flex-direction: column;
-            align-items: start;
-            margin-bottom: 1.75rem;
+            margin-bottom: 1.4rem;
           }
 
           .home15-catalog__count {
+            font-size: 1.45rem;
             white-space: normal;
+            max-width: 100%;
           }
         }
       `}</style>

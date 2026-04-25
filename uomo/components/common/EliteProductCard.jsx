@@ -15,7 +15,7 @@ function renderStars(rating = 0) {
       }`}
       aria-hidden="true"
     >
-      ★
+      {index < roundedRating ? "★" : "☆"}
     </span>
   ));
 }
@@ -228,8 +228,8 @@ export default function EliteProductCard({
         .dosalga-card__cta-btn {
           width: 100%;
           border: 0;
-          background: #1f1f1f;
-          color: #ffffff;
+          background: #1f1f1f !important;
+          color: #ffffff !important;
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -261,7 +261,7 @@ export default function EliteProductCard({
           max-width: 14ch;
           display: -webkit-box;
           -webkit-box-orient: vertical;
-          -webkit-line-clamp: 5;
+          -webkit-line-clamp: 4;
           overflow: hidden;
         }
 
@@ -307,7 +307,7 @@ export default function EliteProductCard({
 
         .dosalga-card__star {
           color: #d7d7d7;
-          font-size: 1.45rem;
+          font-size: 1.55rem;
           line-height: 1;
         }
 
@@ -385,6 +385,32 @@ export default function EliteProductCard({
           .dosalga-card__icon-btn {
             width: 40px;
             height: 40px;
+          }
+
+          .dosalga-card__icon-btn--dark {
+            background: #1f1f1f;
+            color: #fff;
+            border-color: #1f1f1f;
+          }
+        }
+
+        @media (max-width: 767px) {
+          .dosalga-card__media {
+            padding: 14px 14px 0;
+          }
+
+          .dosalga-card__cta {
+            left: 14px;
+            right: 14px;
+            bottom: 14px;
+          }
+
+          .dosalga-card__title {
+            font-size: clamp(1.95rem, 2.6vw + 1.2rem, 2.45rem);
+          }
+
+          .dosalga-card__price {
+            font-size: clamp(2rem, 2.2vw + 1.35rem, 2.55rem);
           }
         }
       `}</style>
