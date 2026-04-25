@@ -25,18 +25,13 @@ export default function DosalgaProductCard({
   detailHref = `/shop/product/${product.id}`,
 }) {
   const {
-    addProductToCart,
-    isAddedToCartProducts,
     isAddedtoWishlist,
-    setQuickViewItem,
     toggleWishlist,
   } = useContextElement();
 
-  const hasOptions = product.hasOptions || product.type === "variable";
   const imageAlt = product.title || "Producto";
   const shareLabel = "Compartir:";
   const isWishlisted = isAddedtoWishlist(product.id);
-  const isInCart = isAddedToCartProducts(product.id);
 
   const handleShare = (platform) => {
     if (typeof window === "undefined") {
@@ -57,12 +52,6 @@ export default function DosalgaProductCard({
 
     if (target) {
       window.open(target, "_blank", "noopener,noreferrer");
-    }
-  };
-
-  const handleAddToCart = () => {
-    if (!hasOptions && product.inStock) {
-      addProductToCart(product);
     }
   };
 
@@ -101,34 +90,21 @@ export default function DosalgaProductCard({
               <use href="#icon_heart" />
             </svg>
           </button>
-          <button
-            type="button"
+          <Link
+            href={detailHref}
             className="dosalga-card__icon-btn dosalga-card__icon-btn--dark"
-            aria-label="Vista rápida"
-            data-bs-toggle="modal"
-            data-bs-target="#quickView"
-            onClick={() => setQuickViewItem(product)}
+            aria-label="Ver detalle del producto"
           >
             <svg width="18" height="18" viewBox="0 0 18 18">
               <use href="#icon_view" />
             </svg>
-          </button>
+          </Link>
         </div>
 
         <div className="dosalga-card__cta">
-          {hasOptions || !product.inStock ? (
-            <Link href={detailHref} className="dosalga-card__cta-btn">
-              {product.inStock ? "Ver opciones" : "Agotado"}
-            </Link>
-          ) : (
-            <button
-              type="button"
-              className="dosalga-card__cta-btn"
-              onClick={handleAddToCart}
-            >
-              {isInCart ? "Ya en carrito" : "Agregar al carrito"}
-            </button>
-          )}
+          <Link href={detailHref} className="dosalga-card__cta-btn">
+            View product
+          </Link>
         </div>
       </div>
 

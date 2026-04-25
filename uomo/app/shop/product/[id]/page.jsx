@@ -9,7 +9,16 @@ const siteUrl = "https://elite7piel.com";
 
 export async function generateMetadata(props) {
   const params = await props.params;
-  const product = await getStoreProduct(params.id);
+  let product = null;
+
+  try {
+    product = await getStoreProduct(params.id);
+  } catch (error) {
+    console.error("[shop/product] Failed to load product metadata", {
+      productId: params.id,
+      error: error?.message || String(error),
+    });
+  }
 
   if (!product) {
     return {
@@ -55,7 +64,17 @@ export async function generateMetadata(props) {
 export default async function ShopProductPage(props) {
   const params = await props.params;
   const productId = params.id;
-  const product = await getStoreProduct(productId);
+  let product = null;
+
+  try {
+    product = await getStoreProduct(productId);
+  } catch (error) {
+    console.error("[shop/product] Failed to load product", {
+      productId,
+      error: error?.message || String(error),
+    });
+    notFound();
+  }
 
   if (!product) {
     notFound();
