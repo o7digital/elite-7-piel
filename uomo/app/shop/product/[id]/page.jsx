@@ -49,7 +49,7 @@ export async function generateMetadata(props) {
       title,
       description,
       url: canonicalPath,
-      type: "product",
+      type: "website",
       images: image ? [{ url: image, alt: product.title }] : undefined,
     },
     twitter: {
