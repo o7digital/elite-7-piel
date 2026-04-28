@@ -19,6 +19,8 @@ const FOOTER_LINK_LABELS = {
   "/contact": { en: "Work with us", es: "Trabaja con Nosotros" },
   "/faq": { en: "Frequently Asked Questions", es: "Preguntas Frecuentes" },
   "/account_dashboard": { en: "My account", es: "Mi cuenta" },
+  "/shipping-policy": { en: "Shipping Policy", es: "Politica de Envios" },
+  "/taxes-and-duties": { en: "Taxes and Duties", es: "Impuestos y Aranceles" },
   "/aviso-de-privacidad": { en: "Privacy Notice", es: "Aviso de Privacidad" },
 };
 

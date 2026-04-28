@@ -114,6 +114,59 @@ const manualExact = {
   "Política de Cookies | Elite 7 Piel": "Cookie Policy | Elite 7 Piel",
   "Consulta la Política de Cookies de Elite 7 Piel para conocer qué tecnologías se utilizan, con qué fines y cómo puedes administrarlas.":
     "Review the Elite 7 Piel Cookie Policy to learn what technologies are used, why they are used, and how you can manage them.",
+  "Politica de Envios | Elite 7 Piel": "Shipping Policy | Elite 7 Piel",
+  "Consulta la Politica de Envios de Elite 7 Piel, incluyendo tiempos de entrega, procesamiento y responsabilidades de envio.":
+    "Review Elite 7 Piel's Shipping Policy, including delivery times, processing, and shipping responsibilities.",
+  "Impuestos y Aranceles | Elite 7 Piel":
+    "Taxes and Duties | Elite 7 Piel",
+  "Consulta la politica de Impuestos y Aranceles de Elite 7 Piel para pedidos internacionales y cargos de importacion.":
+    "Review Elite 7 Piel's Taxes and Duties policy for international orders and import charges.",
+  "Politica de Envios": "Shipping Policy",
+  "En ELITE 7 PIEL realizamos envios internacionales con socios logisticos de confianza. Los productos pueden despacharse desde centros de cumplimiento ubicados fuera del pais de destino.":
+    "At ELITE 7 PIEL, we ship internationally through trusted logistics partners. Products may be dispatched from fulfillment centers located outside the destination country.",
+  "Si tienes dudas sobre el estado de tu envio o necesitas apoyo adicional, puedes escribirnos a victor.velazquez@elite7piel.com.":
+    "If you have questions about your shipment status or need additional support, you can contact us at victor.velazquez@elite7piel.com.",
+  "1. Tiempos de envio": "1. Shipping times",
+  "Los plazos estimados de entrega son de 10 a 20 dias habiles, dependiendo del destino, procesos aduanales y operacion del transportista.":
+    "Estimated delivery times are 10 to 20 business days, depending on destination, customs processing, and carrier operations.",
+  "Estos tiempos son estimaciones y pueden variar por factores fuera de nuestro control, incluyendo temporadas altas, condiciones climaticas o incidencias operativas.":
+    "These timelines are estimates and may vary due to factors beyond our control, including peak seasons, weather conditions, or operational incidents.",
+  "2. Procesamiento de pedidos": "2. Order processing",
+  "Los pedidos se procesan normalmente dentro de 2 a 5 dias habiles antes del envio.":
+    "Orders are typically processed within 2 to 5 business days before shipment.",
+  "Cuando el pedido sea despachado, compartiremos numero de rastreo cuando este disponible por parte del transportista.":
+    "Once the order is dispatched, we will share a tracking number when available from the carrier.",
+  "3. Responsabilidad de envio": "3. Shipping responsibility",
+  "Una vez que el pedido ha sido entregado al transportista, ELITE 7 PIEL no se hace responsable de retrasos, retenciones aduanales o incidencias de entrega atribuibles al transportista, autoridades aduaneras o informacion incorrecta proporcionada por el cliente.":
+    "Once an order has been handed to the carrier, ELITE 7 PIEL is not responsible for delays, customs holds, or delivery issues caused by the carrier, customs authorities, or incorrect information provided by the customer.",
+  "4. Direccion de entrega": "4. Delivery address",
+  "Es responsabilidad del cliente proporcionar datos completos y correctos de entrega. En caso de errores en la direccion, pueden generarse demoras, costos adicionales o devoluciones al origen.":
+    "The customer is responsible for providing complete and accurate delivery details. Address errors may cause delays, additional costs, or returns to origin.",
+  "5. Contacto para soporte": "5. Support contact",
+  "Para dudas sobre envios, rastreo o incidencias, puedes escribir a":
+    "For questions about shipping, tracking, or incidents, you can contact ",
+  "Impuestos y Aranceles de Importacion":
+    "Import Taxes and Duties",
+  "ELITE 7 PIEL opera como minorista en linea con envios internacionales. Dependiendo del pais de destino, los pedidos pueden estar sujetos a impuestos o cargos aduanales.":
+    "ELITE 7 PIEL operates as an online retailer with international shipping. Depending on the destination country, orders may be subject to taxes or customs charges.",
+  "Los cargos de importacion, impuestos locales o aranceles aplicables dependen del pais de destino y de sus autoridades aduaneras.":
+    "Import charges, local taxes, or applicable duties depend on the destination country and its customs authorities.",
+  "1. Cargos no incluidos": "1. Charges not included",
+  "Salvo indicacion expresa, los precios publicados no incluyen aranceles de importacion, IVA local, cargos aduanales ni otras tasas gubernamentales aplicables en el pais de destino.":
+    "Unless expressly stated, published prices do not include import duties, local VAT, customs fees, or other government charges applicable in the destination country.",
+  "2. Responsabilidad del cliente": "2. Customer responsibility",
+  "Cualquier impuesto, arancel o cargo adicional exigido por aduanas o transportistas es responsabilidad exclusiva del cliente al momento de la entrega o liberacion del pedido.":
+    "Any tax, duty, or additional charge required by customs or carriers is the sole responsibility of the customer at delivery or release of the order.",
+  "3. Pedidos a Estados Unidos": "3. Orders to the United States",
+  "Los pedidos enviados a Estados Unidos pueden no estar sujetos a Sales Tax en ciertos casos, salvo que la ley aplicable disponga lo contrario.":
+    "Orders shipped to the United States may not be subject to sales tax in certain cases, unless applicable law states otherwise.",
+  "4. Pedidos a Mexico": "4. Orders to Mexico",
+  "Los pedidos entregados en Mexico pueden estar sujetos a impuestos de importacion o IVA determinados por autoridades aduaneras o por el transportista al momento de la entrega.":
+    "Orders delivered in Mexico may be subject to import taxes or VAT determined by customs authorities or by the carrier at the time of delivery.",
+  "5. Sin control sobre cargos externos":
+    "5. No control over external charges",
+  "ELITE 7 PIEL no controla estos cargos ni puede garantizar de forma anticipada su monto exacto, ya que dependen de normativas y procesos de terceros.":
+    "ELITE 7 PIEL does not control these charges and cannot guarantee their exact amount in advance, since they depend on third-party regulations and processes.",
   "QUIENES SOMOS": "ABOUT US",
   "Sala de reunion profesional": "Professional meeting room",
   "Nuestra historia": "Our story",
@@ -133,6 +186,15 @@ const manualExact = {
   "Nuestro compromiso": "Our commitment",
   "En Elite 7 Piel queremos acompanarte en el camino hacia una piel mas saludable, un cabello mas fuerte y una belleza que refleje bienestar y confianza. Mas que una tienda, buscamos ser tu aliado con opciones practicas, confiables y cuidadosamente seleccionadas para que puedas cuidar de ti desde la comodidad de tu hogar.":
     "At Elite 7 Piel, we want to support you on the path toward healthier skin, stronger hair, and beauty that reflects wellbeing and confidence. More than a store, we aim to be your ally with practical, reliable, and carefully selected options so you can care for yourself from the comfort of home.",
+  "PRODUCTOS SELECCIONADOS": "SELECTED PRODUCTS",
+  "Elegimos cremas, tratamientos y tecnologia estetica con enfoque en calidad, seguridad y uso practico.":
+    "We select creams, treatments, and beauty technology with a focus on quality, safety, and practical use.",
+  "ATENCION CERCANA": "CLOSE SUPPORT",
+  "Acompanamos a cada cliente para ayudarle a encontrar opciones alineadas con su rutina y sus objetivos.":
+    "We support every client to help them find options aligned with their routine and goals.",
+  "BIENESTAR Y CONFIANZA": "WELLBEING AND CONFIDENCE",
+  "Buscamos ofrecer soluciones que ayuden a verse mejor, sentirse bien y fortalecer la confianza personal.":
+    "We aim to offer solutions that help you look better, feel good, and strengthen personal confidence.",
   "PREGUNTAS FRECUENTES": "FREQUENTLY ASKED QUESTIONS",
   "Aquí encontrarás respuestas rápidas sobre productos, envíos, pagos y atención. Si aún tienes dudas, puedes escribirnos desde la página de contacto.":
     "Here you will find quick answers about products, shipping, payments, and support. If you still have questions, you can contact us through the contact page.",

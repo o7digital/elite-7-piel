@@ -10,6 +10,8 @@ export const footerLinks2 = [
 export const footerLinks3 = [
   { href: "/faq", text: "Preguntas Frecuentes" },
   { href: "/account_dashboard", text: "Mi cuenta" },
+  { href: "/shipping-policy", text: "Politica de Envios" },
+  { href: "/taxes-and-duties", text: "Impuestos y Aranceles" },
   { href: "/aviso-de-privacidad", text: "Aviso de Privacidad" },
 ];
 

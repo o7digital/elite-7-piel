@@ -11,7 +11,7 @@ export const metadata = {
 
 const responsibleDetails = [
   { label: "Marca", value: "ELITE 7 PIEL" },
-  { label: "Responsable", value: "Victor Manuel Velazquez PEREZ" },
+  { label: "Responsable", value: "Victor Manuel Velazquez Perez" },
   { label: "RFC", value: "VEPV950228TLA" },
   {
     label: "Correo",
