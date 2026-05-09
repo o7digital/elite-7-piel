@@ -9,6 +9,7 @@ import {
 } from "@/data/footer";
 import { submitFormspree } from "@/lib/formspree";
 import LanguageSwitcherSelect from "@/components/common/LanguageSwitcherSelect";
+import FooterSeoKeywords from "@/components/common/FooterSeoKeywords";
 
 export default function Footer1() {
   const [newsletterStatus, setNewsletterStatus] = useState({
@@ -233,6 +234,7 @@ export default function Footer1() {
           {/* <!-- /.footer-settings --> */}
         </div>
         {/* <!-- /.d-flex --> */}
+        <FooterSeoKeywords />
       </div>
       {/* <!-- /.footer-bottom container --> */}
     </footer>
