@@ -9,8 +9,13 @@ import {
 } from "@/data/footer";
 import { submitFormspree } from "@/lib/formspree";
 import LanguageSwitcherSelect from "@/components/common/LanguageSwitcherSelect";
+import FooterSeoKeywords from "@/components/common/FooterSeoKeywords";
+import { getLocaleFromPath } from "@/lib/i18n/locale";
+import { usePathname } from "next/navigation";
 
 export default function Footer1() {
+  const pathname = usePathname();
+  const locale = getLocaleFromPath(pathname);
   const [newsletterStatus, setNewsletterStatus] = useState({
     type: "idle",
     message: "",
@@ -233,6 +238,7 @@ export default function Footer1() {
           {/* <!-- /.footer-settings --> */}
         </div>
         {/* <!-- /.d-flex --> */}
+        <FooterSeoKeywords locale={locale} />
       </div>
       {/* <!-- /.footer-bottom container --> */}
     </footer>
