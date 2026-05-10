@@ -12,7 +12,6 @@ import { submitFormspree } from "@/lib/formspree";
 import LanguageSwitcherSelect from "@/components/common/LanguageSwitcherSelect";
 import { usePathname } from "next/navigation";
 import { getLocaleFromPath } from "@/lib/i18n/locale";
-import FooterSeoKeywords from "@/components/common/FooterSeoKeywords";
 
 const FOOTER_LINK_LABELS = {
   "/shop": { en: "Shop", es: "Tienda" },
@@ -293,7 +292,6 @@ export default function Footer14() {
           {/* <!-- /.footer-settings --> */}
         </div>
         {/* <!-- /.d-flex --> */}
-        <FooterSeoKeywords />
       </div>
       {/* <!-- /.footer-bottom container --> */}
     </footer>
