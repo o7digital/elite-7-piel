@@ -11,6 +11,7 @@ const footerSeoKeywords = {
     "productos para el cuidado de la piel",
     "tienda de belleza México",
     "productos de belleza online",
+    "productos profesionales de belleza",
     "tratamiento capilar México",
     "productos para el cabello",
     "cuidado capilar",
@@ -19,7 +20,6 @@ const footerSeoKeywords = {
     "aparato facial antiedad",
     "radiofrecuencia facial en casa",
     "rejuvenecimiento facial",
-    "productos profesionales de belleza",
   ],
   en: [
     "facial care Mexico",
@@ -33,6 +33,7 @@ const footerSeoKeywords = {
     "skin care products",
     "beauty store Mexico",
     "online beauty products",
+    "professional beauty products",
     "hair treatment Mexico",
     "hair care products",
     "damaged hair repair",
@@ -40,7 +41,6 @@ const footerSeoKeywords = {
     "anti-aging facial device",
     "at-home radiofrequency device",
     "facial rejuvenation",
-    "professional beauty products",
     "skin and hair care store",
   ],
 };

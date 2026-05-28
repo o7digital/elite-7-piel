@@ -1,8 +1,11 @@
 import AppShell from "@/components/common/AppShell";
+import OliviaChatWidget from "@/components/common/OliviaChatWidget";
 import JsonLd from "@/components/common/JsonLd";
+import Script from "next/script";
 
 const siteName = "ELITE 7 PIEL";
 const siteUrl = "https://elite7piel.com";
+const googleAnalyticsId = "G-XNYV9KF9E8";
 const defaultTitle = "Cuidado facial y capilar profesional | ELITE 7 PIEL";
 const defaultDescription =
   "Compra productos de cuidado facial, tecnologia estetica en casa y tratamiento capilar profesional en ELITE 7 PIEL.";
@@ -106,7 +109,20 @@ export default function RootLayout({ children }) {
       <body id="top">
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${googleAnalyticsId}');
+          `}
+        </Script>
         <AppShell>{children}</AppShell>
+        <OliviaChatWidget />
       </body>
     </html>
   );

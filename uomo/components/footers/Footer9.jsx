@@ -1,5 +1,7 @@
 "use client";
 import React from "react";
+import { getLocaleFromPath } from "@/lib/i18n/locale";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -12,6 +14,9 @@ import {
 } from "@/data/footer";
 
 export default function Footer9() {
+  const pathname = usePathname();
+  const locale = getLocaleFromPath(pathname);
+  const showNewsletterPromo = !["es", "en"].includes(locale);
   return (
     <footer className="footer footer_type_1">
       <div className="footer-middle container">
@@ -107,27 +112,31 @@ export default function Footer9() {
           {/* <!-- /.footer-column --> */}
 
           <div className="footer-column footer-newsletter col-12 mb-4 mb-lg-0">
-            <h6 className="sub-menu__title text-uppercase">Subscribe</h6>
-            <p>
-              Be the first to get the latest news about trends, promotions, and
-              much more!
-            </p>
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="footer-newsletter__form position-relative bg-body"
-            >
-              <input
-                className="form-control border-white"
-                type="email"
-                name="email"
-                placeholder="Your email address"
-              />
-              <input
-                className="btn-link fw-medium bg-white position-absolute top-0 end-0 h-100"
-                type="submit"
-                defaultValue="JOIN"
-              />
-            </form>
+            {showNewsletterPromo ? (
+              <>
+                <h6 className="sub-menu__title text-uppercase">Subscribe</h6>
+                <p>
+                  Be the first to get the latest news about trends, promotions, and
+                  much more!
+                </p>
+                <form
+                  onSubmit={(e) => e.preventDefault()}
+                  className="footer-newsletter__form position-relative bg-body"
+                >
+                  <input
+                    className="form-control border-white"
+                    type="email"
+                    name="email"
+                    placeholder="Your email address"
+                  />
+                  <input
+                    className="btn-link fw-medium bg-white position-absolute top-0 end-0 h-100"
+                    type="submit"
+                    defaultValue="JOIN"
+                  />
+                </form>
+              </>
+            ) : null}
 
             <div className="mt-4 pt-3 d-flex align-items-center justify-content-around gap-3 flex-wrap">
               <a
