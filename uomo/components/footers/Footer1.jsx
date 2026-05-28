@@ -16,6 +16,7 @@ import { usePathname } from "next/navigation";
 export default function Footer1() {
   const pathname = usePathname();
   const locale = getLocaleFromPath(pathname);
+  const showNewsletterPromo = !["es", "en"].includes(locale);
   const [newsletterStatus, setNewsletterStatus] = useState({
     type: "idle",
     message: "",
@@ -125,38 +126,42 @@ export default function Footer1() {
           </div>
           {/* <!-- /.footer-column --> */}
           <div className="footer-column footer-newsletter col-12 mb-4 mb-lg-0">
-            <h5 className="sub-menu__title text-uppercase">Subscribe</h5>
-            <p>
-              Be the first to get the latest news about trends, promotions, and
-              much more!
-            </p>
-            <form
-              onSubmit={handleNewsletterSubmit}
-              className="footer-newsletter__form position-relative bg-body"
-            >
-              <input
-                className="form-control border-white"
-                type="email"
-                name="email"
-                placeholder="Your email address"
-                required
-              />
-              <button
-                className="btn-link fw-medium bg-white position-absolute top-0 end-0 h-100"
-                type="submit"
-                disabled={newsletterStatus.type === "loading"}
-              >
-                {newsletterStatus.type === "loading" ? "Enviando..." : "Enviar"}
-              </button>
-            </form>
-            {newsletterStatus.message ? (
-              <p
-                className={`mt-2 mb-0 small ${
-                  newsletterStatus.type === "error" ? "text-danger" : "text-success"
-                }`}
-              >
-                {newsletterStatus.message}
-              </p>
+            {showNewsletterPromo ? (
+              <>
+                <h5 className="sub-menu__title text-uppercase">Subscribe</h5>
+                <p>
+                  Be the first to get the latest news about trends, promotions, and
+                  much more!
+                </p>
+                <form
+                  onSubmit={handleNewsletterSubmit}
+                  className="footer-newsletter__form position-relative bg-body"
+                >
+                  <input
+                    className="form-control border-white"
+                    type="email"
+                    name="email"
+                    placeholder="Your email address"
+                    required
+                  />
+                  <button
+                    className="btn-link fw-medium bg-white position-absolute top-0 end-0 h-100"
+                    type="submit"
+                    disabled={newsletterStatus.type === "loading"}
+                  >
+                    {newsletterStatus.type === "loading" ? "Enviando..." : "Enviar"}
+                  </button>
+                </form>
+                {newsletterStatus.message ? (
+                  <p
+                    className={`mt-2 mb-0 small ${
+                      newsletterStatus.type === "error" ? "text-danger" : "text-success"
+                    }`}
+                  >
+                    {newsletterStatus.message}
+                  </p>
+                ) : null}
+              </>
             ) : null}
 
             <div className="mt-4 pt-3">
