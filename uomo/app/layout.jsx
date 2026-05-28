@@ -1,4 +1,5 @@
 import AppShell from "@/components/common/AppShell";
+import OliviaChatWidget from "@/components/common/OliviaChatWidget";
 import JsonLd from "@/components/common/JsonLd";
 import Script from "next/script";
 
@@ -121,6 +122,7 @@ export default function RootLayout({ children }) {
           `}
         </Script>
         <AppShell>{children}</AppShell>
+        <OliviaChatWidget />
       </body>
     </html>
   );
