@@ -103,7 +103,7 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es-MX">
-      <body>
+      <body id="top">
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
         <AppShell>{children}</AppShell>

@@ -15,14 +15,18 @@ import { getLocaleFromPath } from "@/lib/i18n/locale";
 import FooterSeoKeywords from "@/components/common/FooterSeoKeywords";
 
 const FOOTER_LINK_LABELS = {
-  "/shop": { en: "Shop", es: "Tienda" },
-  "/about": { en: "About Us", es: "Quienes Somos" },
-  "/contact": { en: "Work with us", es: "Trabaja con Nosotros" },
-  "/faq": { en: "Frequently Asked Questions", es: "Preguntas Frecuentes" },
-  "/account_dashboard": { en: "My account", es: "Mi cuenta" },
-  "/shipping-policy": { en: "Shipping Policy", es: "Politica de Envios" },
-  "/taxes-and-duties": { en: "Taxes and Duties", es: "Impuestos y Aranceles" },
-  "/aviso-de-privacidad": { en: "Privacy Notice", es: "Aviso de Privacidad" },
+  Tienda: { en: "Shop", es: "Tienda" },
+  "Quiénes Somos": { en: "About Us", es: "Quiénes Somos" },
+  Contacto: { en: "Contact", es: "Contacto" },
+  "Trabaja con Nosotros": { en: "Work with us", es: "Trabaja con Nosotros" },
+  "Preguntas Frecuentes": {
+    en: "Frequently Asked Questions",
+    es: "Preguntas Frecuentes",
+  },
+  "Mi cuenta": { en: "My account", es: "Mi cuenta" },
+  "Politica de Envios": { en: "Shipping Policy", es: "Politica de Envios" },
+  "Impuestos y Aranceles": { en: "Taxes and Duties", es: "Impuestos y Aranceles" },
+  "Aviso de Privacidad": { en: "Privacy Notice", es: "Aviso de Privacidad" },
 };
 
 export default function Footer14() {
@@ -125,7 +129,7 @@ export default function Footer14() {
               {footerLinks1.map((elm, i) => (
                 <li key={i} className="sub-menu__item">
                   <Link href={elm.href} className="menu-link menu-link_us-s">
-                    {FOOTER_LINK_LABELS[elm.href]?.[locale] || elm.text}
+                    {FOOTER_LINK_LABELS[elm.text]?.[locale] || elm.text}
                   </Link>
                 </li>
               ))}
@@ -141,7 +145,7 @@ export default function Footer14() {
               {footerLinks3.map((elm, i) => (
                 <li key={i} className="sub-menu__item">
                   <Link href={elm.href} className="menu-link menu-link_us-s">
-                    {FOOTER_LINK_LABELS[elm.href]?.[locale] || elm.text}
+                    {FOOTER_LINK_LABELS[elm.text]?.[locale] || elm.text}
                   </Link>
                 </li>
               ))}
@@ -245,8 +249,8 @@ export default function Footer14() {
           </div>
           <div className="footer-settings d-block d-md-flex align-items-center">
             <a
-              href="#header"
-              className="text-white text-decoration-none me-md-4 d-inline-flex align-items-center mb-3 mb-md-0"
+              href="#top"
+              className="btn btn-link p-0 text-white text-decoration-none me-md-4 d-inline-flex align-items-center mb-3 mb-md-0"
             >
               {locale === "en" ? "Back to top" : "Volver arriba"}
             </a>

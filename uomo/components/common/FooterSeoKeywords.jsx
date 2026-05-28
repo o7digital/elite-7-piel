@@ -1,34 +1,52 @@
-import { seoKeywordContent } from "@/data/seoKeywordContent";
-
-const suffix = "Mexico CDMX";
-
-const globalKeywords = {
+const footerSeoKeywords = {
   es: [
-    "cuidado facial",
-    "tratamiento capilar",
-    "belleza profesional",
-    "tecnologia estetica",
-    "elite 7 piel",
+    "cuidado facial México",
+    "skincare México",
+    "belleza profesional México",
+    "tratamiento facial CDMX",
+    "tecnología estética México",
+    "cremas antiarrugas México",
+    "crema rejuvenecedora",
+    "crema hidratante facial",
+    "productos para el cuidado de la piel",
+    "tienda de belleza México",
+    "productos de belleza online",
+    "tratamiento capilar México",
+    "productos para el cabello",
+    "cuidado capilar",
+    "reparación del cabello dañado",
+    "crecimiento del cabello",
+    "aparato facial antiedad",
+    "radiofrecuencia facial en casa",
+    "rejuvenecimiento facial",
+    "productos profesionales de belleza",
   ],
   en: [
-    "facial care",
-    "hair treatment",
-    "professional beauty",
-    "beauty technology",
-    "elite 7 piel",
+    "facial care Mexico",
+    "skincare Mexico",
+    "professional beauty Mexico",
+    "facial treatment CDMX",
+    "beauty technology Mexico",
+    "anti-wrinkle cream",
+    "skin rejuvenation cream",
+    "facial moisturizer",
+    "skin care products",
+    "beauty store Mexico",
+    "online beauty products",
+    "hair treatment Mexico",
+    "hair care products",
+    "damaged hair repair",
+    "hair growth products",
+    "anti-aging facial device",
+    "at-home radiofrequency device",
+    "facial rejuvenation",
+    "professional beauty products",
+    "skin and hair care store",
   ],
 };
 
-function withLocation(keyword) {
-  return keyword.endsWith(suffix) ? keyword : `${keyword} ${suffix}`;
-}
-
 export default function FooterSeoKeywords({ locale = "es" }) {
-  const keywordKey = locale === "en" ? "enKeywords" : "esKeywords";
-  const keywords = [
-    ...(globalKeywords[locale] || globalKeywords.es),
-    ...seoKeywordContent.sections.flatMap((section) => section[keywordKey]),
-  ].map(withLocation);
+  const keywords = footerSeoKeywords[locale] || footerSeoKeywords.es;
 
   return (
     <nav
