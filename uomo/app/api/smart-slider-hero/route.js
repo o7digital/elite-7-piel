@@ -15,7 +15,15 @@ export async function GET() {
   const html = await response.text();
   const patchedHtml = html
     .replace('"autoplay":{"enabled":0', '"autoplay":{"enabled":1')
-    .replace('"duration":8000', '"duration":5000');
+    .replace('"duration":8000', '"duration":5000')
+    .replaceAll(
+      /<div class="n2-ss-slide-background" data-public-id="(?:9|10)"[\s\S]*?<div data-color="RGBA\(255,255,255,0\)" style="background-color: RGBA\(255,255,255,0\);" class="n2-ss-slide-background-color"><\/div><\/div>/g,
+      ""
+    )
+    .replaceAll(
+      /<div data-slide-duration="0" data-id="(?:13|14)" data-slide-public-id="(?:9|10)"[\s\S]*?class="n2-ss-layer n2-ow [^"]+" data-sstype="slide" data-pm="default"><\/div><\/div><\/div>/g,
+      ""
+    );
 
   return new Response(patchedHtml, {
     headers: {
