@@ -4,7 +4,7 @@ export const heroPromotions = [
     active: true,
     slogan: "Tu piel merece Elite 7",
     offer: "Promos especiales disponibles",
-    couponCode: "",
+    couponCode: "DGJ7FEVE",
   },
   {
     slideId: "2",
