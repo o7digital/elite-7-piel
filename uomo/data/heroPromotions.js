@@ -11,7 +11,7 @@ export const heroPromotions = [
     active: true,
     slogan: "Glow natural todos los dias",
     offer: "Hasta 40% OFF en productos seleccionados",
-    couponCode: "",
+    couponCode: "F6YMSBXX",
   },
   {
     slideId: "3",
