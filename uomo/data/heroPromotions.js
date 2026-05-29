@@ -18,7 +18,7 @@ export const heroPromotions = [
     active: true,
     slogan: "Cuida tu piel con amor",
     offer: "Kit de consentimiento personal a precio especial",
-    couponCode: "",
+    couponCode: "XH62V75H",
   },
   {
     slideId: "4",
