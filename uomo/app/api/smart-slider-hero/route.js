@@ -27,6 +27,19 @@ export async function GET() {
     .replace(
       "<head>",
       `<head><style>
+      html, body { margin:0 !important; overflow:hidden !important; background:#f3f3f3 !important; }
+      #n2-ss-2:not(.n2-ss-loaded) { opacity:0 !important; }
+      #n2-ss-2.n2-ss-loaded { opacity:1 !important; transition:opacity 160ms ease-out; }
+      #n2-ss-2:not(.n2-ss-loaded) .n2-ss-slide-background:not([data-public-id="1"]),
+      #n2-ss-2:not(.n2-ss-loaded) [data-slide-public-id]:not([data-slide-public-id="1"]) {
+        display:none !important;
+        visibility:hidden !important;
+        opacity:0 !important;
+      }
+      .n2-ss-slide--focus,
+      ss3-loader,
+      .n2-ss-spinner-simple-white-container,
+      .n2-ss-spinner-simple-white { display:none !important; visibility:hidden !important; opacity:0 !important; }
       .n2-ss-slide-background[data-public-id="9"],
       .n2-ss-slide-background[data-public-id="10"],
       [data-slide-public-id="9"],
@@ -37,7 +50,7 @@ export async function GET() {
   return new Response(patchedHtml, {
     headers: {
       "Content-Type": "text/html; charset=utf-8",
-      "Cache-Control": "s-maxage=300, stale-while-revalidate=3600",
+      "Cache-Control": "public, max-age=0, s-maxage=60, stale-while-revalidate=120",
     },
   });
 }
