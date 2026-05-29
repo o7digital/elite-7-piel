@@ -127,6 +127,11 @@ export async function GET(request) {
         transform:translateY(-20%);
         z-index:40;
         max-width:min(560px, calc(100vw - 56px));
+        padding:22px 26px 20px;
+        background:rgba(72,72,72,.38);
+        border:1px solid rgba(255,255,255,.18);
+        border-radius:8px;
+        backdrop-filter:blur(2px);
         color:#ffffff;
         font-family:Arial, Helvetica, sans-serif;
         text-shadow:0 2px 18px rgba(0,0,0,.42);
@@ -143,7 +148,7 @@ export async function GET(request) {
         display:inline-block;
         margin:0;
         padding:12px 18px;
-        background:rgba(0,0,0,.58);
+        background:rgba(255,255,255,.1);
         border:1px solid rgba(255,255,255,.35);
         font-size:clamp(17px, 1.5vw, 24px);
         line-height:1.25;
@@ -167,6 +172,7 @@ export async function GET(request) {
           top:58%;
           transform:translateY(-50%);
           max-width:none;
+          padding:14px 16px;
         }
         .elite-hero-promo__slogan {
           margin:0 0 8px;
