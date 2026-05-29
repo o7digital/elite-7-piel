@@ -46,7 +46,7 @@ export const heroPromotions = [
     active: true,
     slogan: "Serums que transforman tu piel",
     offer: "Hot Sale Elite 7 con precios especiales",
-    couponCode: "",
+    couponCode: "TS57QR29",
   },
   {
     slideId: "8",
