@@ -51,7 +51,10 @@ export default function AllProductsGrid({ products = [] }) {
 
         @media (max-width: 767px) {
           .home15-catalog {
+            max-width: calc(100% - 80px);
             padding-top: 3rem;
+            padding-left: 0;
+            padding-right: 0;
           }
 
           .home15-catalog__header {
@@ -62,6 +65,12 @@ export default function AllProductsGrid({ products = [] }) {
             font-size: 1.45rem;
             white-space: normal;
             max-width: 100%;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .home15-catalog {
+            max-width: calc(100% - 24px);
           }
         }
       `}</style>

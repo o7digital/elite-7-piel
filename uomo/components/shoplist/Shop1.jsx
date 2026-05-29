@@ -503,6 +503,12 @@ export default function Shop1({ products = [], categories = [] }) {
         }
 
         @media (max-width: 767px) {
+          .dosalga-shop {
+            max-width: calc(100% - 80px);
+            padding-left: 0;
+            padding-right: 0;
+          }
+
           .dosalga-shop__controls {
             gap: 12px;
           }
@@ -515,6 +521,12 @@ export default function Shop1({ products = [], categories = [] }) {
           .dosalga-shop__views {
             width: 100%;
             justify-content: flex-end;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .dosalga-shop {
+            max-width: calc(100% - 24px);
           }
         }
       `}</style>
