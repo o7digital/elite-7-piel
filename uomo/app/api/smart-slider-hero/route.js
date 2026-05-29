@@ -17,12 +17,21 @@ export async function GET() {
     .replace('"autoplay":{"enabled":0', '"autoplay":{"enabled":1')
     .replace('"duration":8000', '"duration":5000')
     .replaceAll(
-      /<div class="n2-ss-slide-background" data-public-id="(?:9|10)"[\s\S]*?<div data-color="RGBA\(255,255,255,0\)" style="background-color: RGBA\(255,255,255,0\);" class="n2-ss-slide-background-color"><\/div><\/div>/g,
+      /<div class="n2-ss-slide-background" data-public-id="(?:9|10)"[\s\S]*?<\/div><\/div>/g,
       ""
     )
     .replaceAll(
-      /<div data-slide-duration="0" data-id="(?:13|14)" data-slide-public-id="(?:9|10)"[\s\S]*?class="n2-ss-layer n2-ow [^"]+" data-sstype="slide" data-pm="default"><\/div><\/div><\/div>/g,
+      /<div[^>]*data-slide-public-id="(?:9|10)"[\s\S]*?data-sstype="slide"[^>]*><\/div><\/div><\/div>/g,
       ""
+    )
+    .replace(
+      "<head>",
+      `<head><style>
+      .n2-ss-slide-background[data-public-id="9"],
+      .n2-ss-slide-background[data-public-id="10"],
+      [data-slide-public-id="9"],
+      [data-slide-public-id="10"] { display:none !important; visibility:hidden !important; opacity:0 !important; }
+      </style>`
     );
 
   return new Response(patchedHtml, {
