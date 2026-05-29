@@ -32,7 +32,7 @@ export const heroPromotions = [
     active: true,
     slogan: "Entre mas llevas, mas ahorras",
     offer: "2 productos 10% OFF, 3 productos 15% OFF, 5 productos 25% OFF",
-    couponCode: "",
+    couponCode: "ZXV9JGAU",
   },
   {
     slideId: "6",
