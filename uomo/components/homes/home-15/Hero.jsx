@@ -1,4 +1,14 @@
+"use client";
+
+import { useMemo } from "react";
+import { usePathname } from "next/navigation";
+import { getLocaleFromPath } from "@/lib/i18n/locale";
+
 export default function Hero() {
+  const pathname = usePathname();
+  const locale = useMemo(() => getLocaleFromPath(pathname || "/"), [pathname]);
+  const sliderSrc = `/api/smart-slider-hero?locale=${locale}`;
+
   return (
     <section
       className="w-100"
@@ -9,7 +19,7 @@ export default function Hero() {
       }}
     >
       <iframe
-        src="/api/smart-slider-hero"
+        src={sliderSrc}
         title="Smart Slider 3 Hero"
         style={{
           width: "100%",
