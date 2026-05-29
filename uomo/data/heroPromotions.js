@@ -1,0 +1,58 @@
+export const heroPromotions = [
+  {
+    slideId: "1",
+    active: true,
+    slogan: "Tu piel merece Elite 7",
+    offer: "Promos especiales disponibles",
+    couponCode: "",
+  },
+  {
+    slideId: "2",
+    active: true,
+    slogan: "Glow natural todos los dias",
+    offer: "Hasta 40% OFF en productos seleccionados",
+    couponCode: "",
+  },
+  {
+    slideId: "3",
+    active: true,
+    slogan: "Cuida tu piel con amor",
+    offer: "Kit de consentimiento personal a precio especial",
+    couponCode: "",
+  },
+  {
+    slideId: "4",
+    active: true,
+    slogan: "Skincare que si enamora",
+    offer: "Hasta 30% OFF en rutinas de temporada",
+    couponCode: "",
+  },
+  {
+    slideId: "5",
+    active: true,
+    slogan: "Entre mas llevas, mas ahorras",
+    offer: "2 productos 10% OFF, 3 productos 15% OFF, 5 productos 25% OFF",
+    couponCode: "",
+  },
+  {
+    slideId: "6",
+    active: true,
+    slogan: "Una piel sana cambia todo",
+    offer: "2x1 en productos seleccionados",
+    couponCode: "",
+  },
+  {
+    slideId: "7",
+    active: true,
+    slogan: "Serums que transforman tu piel",
+    offer: "Hot Sale Elite 7 con precios especiales",
+    couponCode: "",
+  },
+  {
+    slideId: "8",
+    active: true,
+    slogan: "Glow starts here",
+    offer: "Flash Sale: serums, aceites y kits especiales",
+    couponCode: "",
+  },
+];
