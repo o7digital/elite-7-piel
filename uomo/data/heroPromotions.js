@@ -39,7 +39,7 @@ export const heroPromotions = [
     active: true,
     slogan: "Una piel sana cambia todo",
     offer: "2x1 en productos seleccionados",
-    couponCode: "",
+    couponCode: "TPNUHKMA",
   },
   {
     slideId: "7",
