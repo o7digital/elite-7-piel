@@ -25,7 +25,7 @@ export const heroPromotions = [
     active: true,
     slogan: "Skincare que si enamora",
     offer: "Hasta 30% OFF en rutinas de temporada",
-    couponCode: "",
+    couponCode: "TUMWXVUN",
   },
   {
     slideId: "5",
