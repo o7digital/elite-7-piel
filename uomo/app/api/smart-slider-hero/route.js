@@ -14,9 +14,24 @@ function escapeHtml(value = "") {
     .replace(/'/g, "&#39;");
 }
 
-function buildPromoMarkup(promotion) {
+function resolvePromotionText(promotion, locale) {
+  if (locale === "en") {
+    return {
+      slogan: promotion.sloganEn || promotion.sloganEs || "",
+      offer: promotion.offerEn || promotion.offerEs || "",
+    };
+  }
+
+  return {
+    slogan: promotion.sloganEs || promotion.sloganEn || "",
+    offer: promotion.offerEs || promotion.offerEn || "",
+  };
+}
+
+function buildPromoMarkup(promotion, locale) {
+  const text = resolvePromotionText(promotion, locale);
   const couponMarkup = promotion.couponCode
-    ? `<span class="elite-hero-promo__coupon">Codigo ${escapeHtml(
+    ? `<span class="elite-hero-promo__coupon">${locale === "en" ? "Code" : "Codigo"} ${escapeHtml(
         promotion.couponCode
       )}</span>`
     : "";
@@ -24,13 +39,33 @@ function buildPromoMarkup(promotion) {
   return `<div class="elite-hero-promo" data-promo-slide="${escapeHtml(
     promotion.slideId
   )}">
-    <p class="elite-hero-promo__slogan">${escapeHtml(promotion.slogan)}</p>
-    <p class="elite-hero-promo__offer">${escapeHtml(promotion.offer)}</p>
+    <p class="elite-hero-promo__slogan">${escapeHtml(text.slogan)}</p>
+    <p class="elite-hero-promo__offer">${escapeHtml(text.offer)}</p>
     ${couponMarkup}
   </div>`;
 }
 
-function injectHeroPromotions(html = "") {
+function getLocaleFromRequest(request) {
+  const url = new URL(request.url);
+  const localeParam = url.searchParams.get("locale");
+  if (localeParam === "en" || localeParam === "es") {
+    return localeParam;
+  }
+
+  const referer = request.headers.get("referer");
+  if (referer) {
+    try {
+      const refererUrl = new URL(referer);
+      return refererUrl.pathname.startsWith("/en") ? "en" : "es";
+    } catch {
+      return "es";
+    }
+  }
+
+  return url.pathname.startsWith("/en") ? "en" : "es";
+}
+
+function injectHeroPromotions(html = "", locale = "es") {
   return heroPromotions
     .filter((promotion) => promotion.active)
     .reduce((nextHtml, promotion) => {
@@ -39,11 +74,12 @@ function injectHeroPromotions(html = "") {
         "i"
       );
 
-      return nextHtml.replace(pattern, `$1${buildPromoMarkup(promotion)}`);
+      return nextHtml.replace(pattern, `$1${buildPromoMarkup(promotion, locale)}`);
     }, html);
 }
 
-export async function GET() {
+export async function GET(request) {
+  const locale = getLocaleFromRequest(request);
   const response = await fetch(SMART_SLIDER_URL, {
     cache: "no-store",
   });
@@ -53,7 +89,7 @@ export async function GET() {
   }
 
   const html = await response.text();
-  const patchedHtml = injectHeroPromotions(html)
+  const patchedHtml = injectHeroPromotions(html, locale)
     .replace('"autoplay":{"enabled":0', '"autoplay":{"enabled":1')
     .replace('"duration":8000', '"duration":5000')
     .replaceAll(
