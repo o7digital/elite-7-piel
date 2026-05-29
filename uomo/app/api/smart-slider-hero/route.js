@@ -162,18 +162,26 @@ export async function GET(request) {
       }
       @media (max-width:700px) {
         .elite-hero-promo {
-          left:20px;
-          right:20px;
-          top:52%;
-          transform:translateY(-12%);
+          left:14px;
+          right:14px;
+          top:58%;
+          transform:translateY(-50%);
           max-width:none;
         }
         .elite-hero-promo__slogan {
-          font-size:34px;
+          margin:0 0 8px;
+          font-size:clamp(16px, 7.5vw, 28px);
+          line-height:1.02;
         }
         .elite-hero-promo__offer {
-          font-size:16px;
-          padding:10px 14px;
+          font-size:clamp(12px, 4.1vw, 15px);
+          padding:7px 9px;
+          line-height:1.15;
+        }
+        .elite-hero-promo__coupon {
+          margin-top:8px;
+          padding:7px 10px;
+          font-size:12px;
         }
       }
       </style>`

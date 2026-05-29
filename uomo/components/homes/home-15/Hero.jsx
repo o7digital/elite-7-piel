@@ -23,7 +23,7 @@ export default function Hero() {
         title="Smart Slider 3 Hero"
         style={{
           width: "100%",
-          height: "clamp(360px, 57.14vw, 800px)",
+          height: "clamp(250px, 57.14vw, 800px)",
           border: 0,
           display: "block",
         }}
