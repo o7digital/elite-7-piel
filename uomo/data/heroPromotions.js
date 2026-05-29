@@ -53,6 +53,6 @@ export const heroPromotions = [
     active: true,
     slogan: "Glow starts here",
     offer: "Flash Sale: serums, aceites y kits especiales",
-    couponCode: "",
+    couponCode: "JJAG9SHT",
   },
 ];
