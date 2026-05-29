@@ -57,7 +57,7 @@ export default function Categories() {
                 width="330"
                 height="400"
                 style={{ height: "fit-content" }}
-                alt="image"
+                alt={elm.altText}
               />
               <div className="text-center">
                 <Link

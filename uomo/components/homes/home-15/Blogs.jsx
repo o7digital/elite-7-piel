@@ -64,7 +64,7 @@ export default function Blogs() {
                   src={elm.imgSrc}
                   width="331"
                   height="300"
-                  alt="image"
+                  alt={elm.title}
                 />
               </div>
               <div className="blog-grid__item-detail">

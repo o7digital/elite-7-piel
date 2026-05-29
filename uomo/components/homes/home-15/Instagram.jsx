@@ -20,7 +20,7 @@ export default function Instagram() {
                 src={elm.src}
                 width="240"
                 height="230"
-                alt="image"
+                alt={`Publicacion de ELITE 7 PIEL en Instagram ${i + 1}`}
               />
             </a>
           </div>
