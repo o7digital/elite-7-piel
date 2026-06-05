@@ -13,27 +13,7 @@ export default function Header14() {
       <div className="header-desk_type_8">
         <div className="header-middle py-4">
           <div className="container d-flex align-items-center my-2">
-            <div className="flex-1 d-flex align-items-center gap-3">
-              <div className="service-promotion__icon">
-                <svg
-                  width="40"
-                  height="39"
-                  viewBox="0 0 53 52"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <use href="#icon_headphone"></use>
-                </svg>
-              </div>
-              <div className="service-promotion__content-wrap">
-                <h3 className="service-promotion__title h6 text-uppercase mb-0">
-                  Need Help
-                </h3>
-                <p className="service-promotion__content fs-base mb-0">
-                  0 1 800 ELITE
-                </p>
-              </div>
-            </div>
+            <div className="flex-1" aria-hidden="true"></div>
             <div className="logo">
               <Link href="/" className="site-wordmark">
                 ELITE 7 PIEL

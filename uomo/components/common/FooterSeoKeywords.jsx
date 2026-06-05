@@ -1,3 +1,5 @@
+import { localizeKeywords } from "@/lib/seo/localizedKeywords";
+
 const footerSeoKeywords = {
   es: [
     "cuidado facial México",
@@ -46,7 +48,7 @@ const footerSeoKeywords = {
 };
 
 export default function FooterSeoKeywords({ locale = "es" }) {
-  const keywords = footerSeoKeywords[locale] || footerSeoKeywords.es;
+  const keywords = localizeKeywords(footerSeoKeywords[locale] || footerSeoKeywords.es);
 
   return (
     <nav

@@ -2,6 +2,7 @@ import { heroPromotions } from "@/data/heroPromotions";
 
 const SMART_SLIDER_URL =
   "https://oliviers52.sg-host.com/?n2prerender=1&n2app=smartslider&n2controller=slider&n2action=iframe&sliderid=2&hash=26e4bc6b941926287a7281c60d9238d3";
+const HERO_SLIDE_IDS = new Set(["1", "2", "3", "4", "5", "6", "7", "8"]);
 
 export const dynamic = "force-dynamic";
 
@@ -78,6 +79,18 @@ function injectHeroPromotions(html = "", locale = "es") {
     }, html);
 }
 
+function removeNonHeroSlides(html = "") {
+  return html
+    .replace(
+      /<div class="n2-ss-slide-background" data-public-id="([^"]+)"[\s\S]*?<\/div><\/div>/g,
+      (match, slideId) => (HERO_SLIDE_IDS.has(slideId) ? match : "")
+    )
+    .replace(
+      /<div(?=[^>]*data-slide-public-id="([^"]+)")[^>]*class="[^"]*n2-ss-slide[^"]*"[^>]*>[\s\S]*?<div[^>]*data-sstype="slide"[^>]*><\/div><\/div><\/div>/g,
+      (match, slideId) => (HERO_SLIDE_IDS.has(slideId) ? match : "")
+    );
+}
+
 export async function GET(request) {
   const locale = getLocaleFromRequest(request);
   const response = await fetch(SMART_SLIDER_URL, {
@@ -89,17 +102,10 @@ export async function GET(request) {
   }
 
   const html = await response.text();
-  const patchedHtml = injectHeroPromotions(html, locale)
+  const sliderHtml = removeNonHeroSlides(html);
+  const patchedHtml = injectHeroPromotions(sliderHtml, locale)
     .replace('"autoplay":{"enabled":0', '"autoplay":{"enabled":1')
     .replace('"duration":8000', '"duration":5000')
-    .replaceAll(
-      /<div class="n2-ss-slide-background" data-public-id="(?:9|10)"[\s\S]*?<\/div><\/div>/g,
-      ""
-    )
-    .replaceAll(
-      /<div[^>]*data-slide-public-id="(?:9|10)"[\s\S]*?data-sstype="slide"[^>]*><\/div><\/div><\/div>/g,
-      ""
-    )
     .replace(
       "<head>",
       `<head><style>
@@ -116,10 +122,6 @@ export async function GET(request) {
       ss3-loader,
       .n2-ss-spinner-simple-white-container,
       .n2-ss-spinner-simple-white { display:none !important; visibility:hidden !important; opacity:0 !important; }
-      .n2-ss-slide-background[data-public-id="9"],
-      .n2-ss-slide-background[data-public-id="10"],
-      [data-slide-public-id="9"],
-      [data-slide-public-id="10"] { display:none !important; visibility:hidden !important; opacity:0 !important; }
       .elite-hero-promo {
         position:absolute;
         left:clamp(28px, 7vw, 120px);

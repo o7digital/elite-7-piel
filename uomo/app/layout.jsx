@@ -1,6 +1,7 @@
 import AppShell from "@/components/common/AppShell";
 import OliviaChatWidget from "@/components/common/OliviaChatWidget";
 import JsonLd from "@/components/common/JsonLd";
+import { localizeKeywords } from "@/lib/seo/localizedKeywords";
 import Script from "next/script";
 
 const siteName = "ELITE 7 PIEL";
@@ -50,13 +51,13 @@ export const metadata = {
   applicationName: siteName,
   title: defaultTitle,
   description: defaultDescription,
-  keywords: [
+  keywords: localizeKeywords([
     "cuidado facial",
     "tratamiento capilar",
     "belleza profesional",
     "tecnologia estetica",
     "elite 7 piel",
-  ],
+  ]),
   referrer: "origin-when-cross-origin",
   category: "beauty",
   creator: siteName,

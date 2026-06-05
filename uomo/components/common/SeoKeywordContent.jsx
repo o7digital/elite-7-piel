@@ -1,6 +1,7 @@
 "use client";
 
 import { seoKeywordContent } from "@/data/seoKeywordContent";
+import { localizeKeyword } from "@/lib/seo/localizedKeywords";
 
 export default function SeoKeywordContent() {
   return (
@@ -32,7 +33,7 @@ export default function SeoKeywordContent() {
                 aria-label={section.esTitle}
               >
                 {section.esKeywords.map((keyword) => (
-                  <li key={keyword}>{keyword}</li>
+                  <li key={keyword}>{localizeKeyword(keyword)}</li>
                 ))}
               </ul>
             </section>
