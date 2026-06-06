@@ -46,7 +46,7 @@ export default function EliteProductCard({
       FALLBACK_IMAGE,
     ].filter(Boolean);
 
-    return [...new Set(sourceImages)].slice(0, 5);
+    return [...new Set(sourceImages)].slice(0, 1);
   }, [product.images, product.imgSrc, product.imgSrc2]);
 
   const visibleImages = galleryImages.map((src) =>
@@ -89,7 +89,7 @@ export default function EliteProductCard({
                 fill
                 sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 25vw"
                 className="dosalga-card__image"
-                priority={index === 0}
+                loading="lazy"
                 style={{
                   "--slide-delay": `${index * 1.25}s`,
                   "--slide-duration": `${slideDuration}s`,

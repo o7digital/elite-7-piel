@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {
   currencyOptions,
   footerLinks1,
@@ -207,25 +206,31 @@ export default function Footer14() {
                 {locale === "en" ? "Secure payments" : "Pagos seguros"}
               </strong>
               <div className="payment-badges mt-3" data-no-runtime-translate>
-                <Image
+                <img
                   src="/assets/images/pago/visa.webp"
                   alt="Visa"
                   width={343}
                   height={147}
+                  loading="eager"
+                  decoding="sync"
                   className="payment-badge-image"
                 />
-                <Image
+                <img
                   src="/assets/images/pago/mc.png"
                   alt="MasterCard"
                   width={286}
                   height={176}
+                  loading="eager"
+                  decoding="sync"
                   className="payment-badge-image"
                 />
-                <Image
+                <img
                   src="/assets/images/pago/amex.png"
                   alt="Amex"
                   width={268}
                   height={188}
+                  loading="eager"
+                  decoding="sync"
                   className="payment-badge-image"
                 />
               </div>
