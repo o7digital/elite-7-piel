@@ -87,14 +87,21 @@ export default function Footer14() {
               <strong className="fw-medium">
                 <a
                   href="mailto:ventas@elite7piel.com"
-                  className="text-white text-decoration-none"
+                  className="footer-contact-link text-white text-decoration-none"
                 >
                   ventas@elite7piel.com
                 </a>
               </strong>
             </p>
             <p>
-              <strong className="fw-medium">+52 5510522299</strong>
+              <strong className="fw-medium">
+                <a
+                  href="tel:+525510522299"
+                  className="footer-contact-link text-white text-decoration-none"
+                >
+                  +52 5510522299
+                </a>
+              </strong>
             </p>
 
             <ul className="social-links list-unstyled d-flex flex-wrap mb-0">

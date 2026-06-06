@@ -185,6 +185,17 @@ body {
   letter-spacing: 0.14em;
 }
 
+.footer-contact-link {
+  cursor: pointer;
+  transition: color 0.18s ease, opacity 0.18s ease;
+}
+
+.footer-contact-link:hover,
+.footer-contact-link:focus-visible {
+  color: #d9bf6a !important;
+  opacity: 1;
+}
+
 .elite-hero-slider {
   position: relative;
   width: 100%;
