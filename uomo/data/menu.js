@@ -29,7 +29,14 @@ export const mainMenuItems = [
     id: 4,
     title: "Contacto",
     href: "/contact",
-    activePrefixes: ["/contact"],
+    activePrefixes: ["/contact", "/faq"],
+    subMenu: [
+      {
+        id: 1,
+        title: "Preguntas Frecuentes",
+        href: "/faq",
+      },
+    ],
   },
 ];
 

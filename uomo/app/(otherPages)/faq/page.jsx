@@ -1,7 +1,8 @@
 import Footer14 from "@/components/footers/Footer14";
 import JsonLd from "@/components/common/JsonLd";
 import Header14 from "@/components/headers/Header14";
-import Faq, { faqSections } from "@/components/otherPages/Faq";
+import Faq from "@/components/otherPages/Faq";
+import { getFaqSections } from "@/data/faq";
 import React from "react";
 
 export const metadata = {
@@ -13,7 +14,7 @@ export const metadata = {
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqSections.flatMap((section) =>
+  mainEntity: getFaqSections("es").flatMap((section) =>
     section.items.map((item) => ({
       "@type": "Question",
       name: item.heading,

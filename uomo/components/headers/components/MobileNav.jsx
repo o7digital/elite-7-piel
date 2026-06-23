@@ -4,10 +4,20 @@ import { useEffect } from "react";
 import { mainMenuItems } from "@/data/menu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { stripLocalePrefix } from "@/lib/i18n/locale";
+import { getLocaleFromPath, stripLocalePrefix } from "@/lib/i18n/locale";
+
+const MENU_LABELS = {
+  "/": { es: "Inicio", en: "Home" },
+  "/shop": { es: "Tienda", en: "Shop" },
+  "/about": { es: "Quienes Somos", en: "About Us" },
+  "/contact": { es: "Contacto", en: "Contact" },
+  "/faq": { es: "Preguntas Frecuentes", en: "Frequently Asked Questions" },
+};
+
 export default function MobileNav() {
   const pathname = usePathname();
   const normalizedPathname = stripLocalePrefix(pathname);
+  const locale = getLocaleFromPath(pathname);
 
   const isMenuItemActive = (item) => {
     if (item.exact) {
@@ -51,8 +61,26 @@ export default function MobileNav() {
               isMenuItemActive(item) ? "menu-active" : ""
             }`}
           >
-            {item.title}
+            {MENU_LABELS[item.href]?.[locale] || item.title}
           </Link>
+          {item.subMenu?.length ? (
+            <ul className="sub-menu__list list-unstyled ms-3 mb-0">
+              {item.subMenu.map((subItem) => (
+                <li key={subItem.id} className="sub-menu__item">
+                  <Link
+                    href={subItem.href}
+                    className={`menu-link menu-link_us-s ${
+                      normalizedPathname === subItem.href
+                        ? "menu-link_active"
+                        : ""
+                    }`}
+                  >
+                    {MENU_LABELS[subItem.href]?.[locale] || subItem.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </li>
       ))}
     </>
