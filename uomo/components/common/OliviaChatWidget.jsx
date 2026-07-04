@@ -15,6 +15,7 @@ export default function OliviaChatWidget() {
     root.dataset.ready = "true";
 
     const siteCode = "elite7piel";
+    const offline = true;
     const leadEndpoint = "https://www.o7digital.com/api/o7-lead";
     const chatEndpoint = "https://www.o7digital.com/api/o7-chat";
 
@@ -58,7 +59,9 @@ export default function OliviaChatWidget() {
     const lang = langTag.startsWith("fr") || path.startsWith("/fr") ? "fr" : langTag.startsWith("en") || path.startsWith("/en") ? "en" : "es";
     const t = copy[lang];
     let isOpen = false, isLoading = false, leadSent = false;
-    let messages = [{ role: "assistant", content: t.welcome }];
+    let messages = offline
+      ? [{ role: "assistant", content: "Offline" }, { role: "assistant", content: "Add more credit" }]
+      : [{ role: "assistant", content: t.welcome }];
     let lead = { firstName: "", lastName: "", email: "", phone: "" };
 
     const esc = (v) => String(v).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
@@ -66,7 +69,7 @@ export default function OliviaChatWidget() {
 
     const render = () => {
       const msgs = messages.map((m) => `<div class="olivia-message ${m.role}">${esc(m.content)}</div>`).join("") + (isLoading ? '<div class="olivia-message assistant">...</div>' : "");
-      root.innerHTML = `<section class="olivia-panel ${isOpen ? "is-open" : ""}"><header class="olivia-header"><div><p class="olivia-title">${esc(t.title)}</p><p class="olivia-status">${esc(t.status)} · ${esc(t.online)}</p></div><button type="button" class="olivia-close">x</button></header><div class="olivia-messages">${msgs}</div>${leadSent ? "" : `<form class="olivia-lead"><p>${esc(t.leadIntro)}</p><input required name="firstName" placeholder="${esc(t.firstName)}" value="${esc(lead.firstName)}"/><input required name="lastName" placeholder="${esc(t.lastName)}" value="${esc(lead.lastName)}"/><input required type="email" name="email" placeholder="${esc(t.email)}" value="${esc(lead.email)}"/><input required type="tel" name="phone" placeholder="${esc(t.phone)}" value="${esc(lead.phone)}"/><button type="submit" ${isLoading ? "disabled" : ""}>${esc(t.submitLead)}</button></form>`}<div class="olivia-composer"><input class="olivia-input" ${!leadSent || isLoading ? "disabled" : ""} placeholder="${esc(t.placeholder)}"/><button type="button" class="olivia-send" ${!leadSent || isLoading ? "disabled" : ""}>&gt;</button></div></section><div class="olivia-closed">${isOpen ? "" : `<button type="button" class="olivia-teaser"><span class="olivia-avatar">O</span><span>${esc(t.teaser)}</span></button>`}<button type="button" class="olivia-toggle">${isOpen ? "x" : "Olivia"}</button></div>`;
+      root.innerHTML = `<section class="olivia-panel ${isOpen ? "is-open" : ""}"><header class="olivia-header"><div><p class="olivia-title">${esc(t.title)}</p><p class="olivia-status">${offline ? "Offline · Add more credit" : `${esc(t.status)} · ${esc(t.online)}`}</p></div><button type="button" class="olivia-close">x</button></header><div class="olivia-messages">${msgs}</div>${offline || leadSent ? "" : `<form class="olivia-lead"><p>${esc(t.leadIntro)}</p><input required name="firstName" placeholder="${esc(t.firstName)}" value="${esc(lead.firstName)}"/><input required name="lastName" placeholder="${esc(t.lastName)}" value="${esc(lead.lastName)}"/><input required type="email" name="email" placeholder="${esc(t.email)}" value="${esc(lead.email)}"/><input required type="tel" name="phone" placeholder="${esc(t.phone)}" value="${esc(lead.phone)}"/><button type="submit" ${isLoading ? "disabled" : ""}>${esc(t.submitLead)}</button></form>`}<div class="olivia-composer"><input class="olivia-input" disabled placeholder="${offline ? "Offline — Add more credit" : esc(t.placeholder)}"/><button type="button" class="olivia-send" disabled>&gt;</button></div></section><div class="olivia-closed">${isOpen ? "" : `<button type="button" class="olivia-teaser"><span class="olivia-avatar">O</span><span>${offline ? "Offline — Add more credit" : esc(t.teaser)}</span></button>`}<button type="button" class="olivia-toggle">${isOpen ? "x" : "Olivia"}</button></div>`;
       bind();
       const box = root.querySelector(".olivia-messages"); if (box) box.scrollTop = box.scrollHeight;
     };
@@ -77,7 +80,7 @@ export default function OliviaChatWidget() {
     };
 
     const submitLead = async (e) => {
-      e.preventDefault(); if (isLoading) return; saveLead();
+      e.preventDefault(); if (offline || isLoading) return; saveLead();
       if (!lead.firstName.trim() || !lead.lastName.trim() || !lead.email.trim() || !lead.phone.trim()) return;
       isLoading = true; render();
       try {
@@ -89,6 +92,7 @@ export default function OliviaChatWidget() {
     };
 
     const sendMessage = async () => {
+      if (offline) return;
       const i = root.querySelector(".olivia-input"); const message = i?.value?.trim() || "";
       if (!message || isLoading || !leadSent) return;
       messages.push({ role: "user", content: message }); isLoading = true; render();
