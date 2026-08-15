@@ -58,7 +58,7 @@ export default function OliviaChatWidget() {
     const path = window.location.pathname;
     const lang = langTag.startsWith("fr") || path.startsWith("/fr") ? "fr" : langTag.startsWith("en") || path.startsWith("/en") ? "en" : "es";
     const t = copy[lang];
-    let isOpen = false, isLoading = false, leadSent = false;
+    let isOpen = false, isLoading = false, leadSent = true;
     let messages = offline
       ? [{ role: "assistant", content: "Offline" }]
       : [{ role: "assistant", content: t.welcome }];
