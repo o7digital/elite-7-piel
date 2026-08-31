@@ -34,6 +34,7 @@ export default function OliviaChatWidget() {
 .olivia-lead{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px 0 4px;padding:15px;border:1px solid #cfb573;border-radius:18px;background:#fff;box-shadow:0 16px 34px -24px #000}.olivia-lead p,.olivia-lead textarea,.olivia-lead button{grid-column:1/-1}.olivia-lead p{margin:0 0 3px;color:#27302f;font-size:12px;line-height:1.4}.olivia-lead p strong{display:block;margin-bottom:3px;font:700 17px Georgia,serif;color:#111}
 .olivia-lead input,.olivia-lead textarea,.olivia-composer input{width:100%;min-width:0;border:1px solid #ded8ca;border-radius:11px;background:#faf9f6;color:#171717;font:inherit;font-size:14px;outline:none}.olivia-lead input,.olivia-lead textarea{padding:10px}.olivia-lead textarea{min-height:62px;resize:vertical}.olivia-lead input::placeholder,.olivia-lead textarea::placeholder,.olivia-composer input::placeholder{color:#777}
 .olivia-lead button,.olivia-composer button,.olivia-toggle{background:linear-gradient(145deg,#e2c987,#b99248);color:#101010;font-weight:900}.olivia-lead button{padding:11px 14px;border-radius:999px}.olivia-composer{display:grid;grid-template-columns:1fr 44px;gap:8px;padding:12px;background:#101010;border-top:1px solid rgba(255,255,255,.1)}
+.olivia-consent{grid-column:1/-1;display:flex;align-items:flex-start;gap:7px;color:rgba(255,255,255,.72);font-size:10px;line-height:1.35}.olivia-consent input{width:15px;height:15px;flex:0 0 auto;margin:0;accent-color:#d6b264}.olivia-consent a{color:#e3c77f;text-decoration:underline}
 .olivia-composer input{padding:11px 13px;background:#fff}.olivia-composer button{border-radius:50%;font-size:18px}
 .olivia-composer button:disabled,.olivia-lead button:disabled,.olivia-composer input:disabled{opacity:.58;cursor:not-allowed}
 .olivia-closed{display:flex;justify-content:flex-end}.olivia-teaser{display:flex;align-items:center;gap:10px;padding:8px 13px 8px 8px;border:1px solid rgba(214,178,100,.65);border-radius:999px;background:#101010;color:#fff;box-shadow:0 22px 46px -17px rgba(0,0,0,.7);animation:olivia-float 5.5s ease-in-out infinite}.olivia-teaser>span:nth-child(2){text-align:left;font-weight:800}.olivia-teaser small{display:block;color:#aaa;font-size:9px;font-weight:400}.olivia-avatar{width:42px;height:42px}.olivia-toggle{display:none}
@@ -46,9 +47,9 @@ export default function OliviaChatWidget() {
     document.head.appendChild(style);
 
     const copy = {
-      es: { title: "Olivia AI", status: "Asesora de belleza Elite 7 Piel", online: "En línea", teaser: "¿Te ayudo a elegir?", open: "Abrir chat", close: "Cerrar chat", welcome: "Hola, soy Olivia AI, asesora digital de ELITE 7 PIEL. Puedo orientarte sobre cuidado facial, capilar, productos, pedidos y envíos. ¿Qué te gustaría mejorar o consultar hoy?", leadTitle: "Sigamos con tu consulta", leadIntro: "Déjanos tus datos para que un asesor prepare un seguimiento personalizado.", firstName: "Nombre", lastName: "Apellido", email: "Email", phone: "Teléfono", reason: "Motivo de tu consulta", submitLead: "Solicitar seguimiento", leadThanks: "Gracias. Un asesor de ELITE 7 PIEL dará seguimiento a tu solicitud.", placeholder: "Escribe tu pregunta...", send: "Enviar", error: "No pude enviar el mensaje. Intenta de nuevo o contacta directamente a ELITE 7 PIEL." },
-      en: { title: "Olivia AI", status: "Elite 7 Piel beauty advisor", online: "Online", teaser: "Can I help you choose?", open: "Open chat", close: "Close chat", welcome: "Hello, I am Olivia AI, ELITE 7 PIEL's digital advisor. I can help with facial care, hair care, products, orders and shipping. What would you like to improve or ask today?", leadTitle: "Let's continue your inquiry", leadIntro: "Leave your details so an advisor can prepare a personalized follow-up.", firstName: "First name", lastName: "Last name", email: "Email", phone: "Phone", reason: "Reason for your inquiry", submitLead: "Request follow-up", leadThanks: "Thank you. An ELITE 7 PIEL advisor will follow up on your request.", placeholder: "Write your question...", send: "Send", error: "I could not send the message. Please try again or contact ELITE 7 PIEL directly." },
-      fr: { title: "Olivia AI", status: "Conseillère beauté Elite 7 Piel", online: "En ligne", teaser: "Je vous aide à choisir ?", open: "Ouvrir le chat", close: "Fermer le chat", welcome: "Bonjour, je suis Olivia AI, conseillère digitale d'ELITE 7 PIEL. Je peux vous orienter sur les soins du visage, des cheveux, les produits, commandes et livraisons. Que souhaitez-vous améliorer ou demander ?", leadTitle: "Poursuivons votre demande", leadIntro: "Laissez vos coordonnées afin qu'un conseiller prépare un suivi personnalisé.", firstName: "Prénom", lastName: "Nom", email: "Email", phone: "Téléphone", reason: "Motif de votre demande", submitLead: "Demander un suivi", leadThanks: "Merci. Un conseiller ELITE 7 PIEL assurera le suivi de votre demande.", placeholder: "Écrivez votre question...", send: "Envoyer", error: "Je n'ai pas pu envoyer le message. Réessayez ou contactez directement ELITE 7 PIEL." },
+      es: { title: "Olivia AI", status: "Asesora de belleza Elite 7 Piel", online: "En línea", teaser: "¿Te ayudo a elegir?", open: "Abrir chat", close: "Cerrar chat", welcome: "Hola, soy Olivia AI, asesora digital de ELITE 7 PIEL. Puedo orientarte sobre cuidado facial, capilar, productos, pedidos y envíos. ¿Qué te gustaría mejorar o consultar hoy?", consent: "He leído el Aviso de Privacidad y acepto compartir mis datos.", privacy: "Ver Aviso de Privacidad", leadTitle: "Sigamos con tu consulta", leadIntro: "Déjanos tus datos para que un asesor prepare un seguimiento personalizado.", firstName: "Nombre", lastName: "Apellido", email: "Email", phone: "Teléfono", reason: "Motivo de tu consulta", submitLead: "Solicitar seguimiento", leadThanks: "Gracias. Un asesor de ELITE 7 PIEL dará seguimiento a tu solicitud.", placeholder: "Escribe tu pregunta...", send: "Enviar", error: "No pude enviar el mensaje. Intenta de nuevo o contacta directamente a ELITE 7 PIEL." },
+      en: { title: "Olivia AI", status: "Elite 7 Piel beauty advisor", online: "Online", teaser: "Can I help you choose?", open: "Open chat", close: "Close chat", welcome: "Hello, I am Olivia AI, ELITE 7 PIEL's digital advisor. I can help with facial care, hair care, products, orders and shipping. What would you like to improve or ask today?", consent: "I have read the Privacy Notice and agree to share my data.", privacy: "View Privacy Notice", leadTitle: "Let's continue your inquiry", leadIntro: "Leave your details so an advisor can prepare a personalized follow-up.", firstName: "First name", lastName: "Last name", email: "Email", phone: "Phone", reason: "Reason for your inquiry", submitLead: "Request follow-up", leadThanks: "Thank you. An ELITE 7 PIEL advisor will follow up on your request.", placeholder: "Write your question...", send: "Send", error: "I could not send the message. Please try again or contact ELITE 7 PIEL directly." },
+      fr: { title: "Olivia AI", status: "Conseillère beauté Elite 7 Piel", online: "En ligne", teaser: "Je vous aide à choisir ?", open: "Ouvrir le chat", close: "Fermer le chat", welcome: "Bonjour, je suis Olivia AI, conseillère digitale d'ELITE 7 PIEL. Je peux vous orienter sur les soins du visage, des cheveux, les produits, commandes et livraisons. Que souhaitez-vous améliorer ou demander ?", consent: "J'ai lu l'Avis de confidentialité et j'accepte de partager mes données.", privacy: "Voir l'Avis de confidentialité", leadTitle: "Poursuivons votre demande", leadIntro: "Laissez vos coordonnées afin qu'un conseiller prépare un suivi personnalisé.", firstName: "Prénom", lastName: "Nom", email: "Email", phone: "Téléphone", reason: "Motif de votre demande", submitLead: "Demander un suivi", leadThanks: "Merci. Un conseiller ELITE 7 PIEL assurera le suivi de votre demande.", placeholder: "Écrivez votre question...", send: "Envoyer", error: "Je n'ai pas pu envoyer le message. Réessayez ou contactez directement ELITE 7 PIEL." },
     };
 
     const langTag = (document.documentElement.lang || "").toLowerCase();
@@ -56,6 +57,10 @@ export default function OliviaChatWidget() {
     const lang = langTag.startsWith("fr") || path.startsWith("/fr") ? "fr" : langTag.startsWith("en") || path.startsWith("/en") ? "en" : "es";
     const t = copy[lang];
     let isOpen = false, isLoading = false, leadSent = false, widgetIdentity = "";
+    let hasConsent = localStorage.getItem("oliviaConsent:elite7piel") === "accepted";
+    let consentAt = localStorage.getItem("oliviaConsentAt:elite7piel") || "";
+    const visitorId = localStorage.getItem("oliviaVisitorId:elite7piel") || crypto.randomUUID();
+    localStorage.setItem("oliviaVisitorId:elite7piel", visitorId);
     let messages = [{ role: "assistant", content: t.welcome }];
     let lead = { firstName: "", lastName: "", email: "", phone: "", reason: "" };
 
@@ -68,14 +73,14 @@ export default function OliviaChatWidget() {
       if (!line.trim()) return '<span class="olivia-message-space"></span>';
       return `<span class="olivia-message-line">${formatted}</span>`;
     }).join("");
-    const pageMetadata = () => ({ pageUrl: location.href, pageTitle: document.title, pageContent: document.body.innerText.replace(/\s+/g, " ").slice(0, 5000), source: "website" });
+    const pageMetadata = () => ({ pageUrl: location.href, pageTitle: document.title, pageContent: document.body.innerText.replace(/\s+/g, " ").slice(0, 5000), source: "website", dataConsent: hasConsent, dataConsentAt: consentAt || undefined, consentVersion: "elite7piel-privacy-chat-2026-08-31" });
     const answerForTurn = (answer, turn) => turn >= 2 ? answer : String(answer).split(/\n\n+/).filter((paragraph) => !/(nombre.*correo.*tel[eé]fono|name.*email.*phone|nom.*email.*t[eé]l[eé]phone|seguimiento personalizado.*comp[aá]rteme)/i.test(paragraph)).join("\n\n").trim();
 
     const render = () => {
       const userTurns = messages.filter((message) => message.role === "user").length;
       const msgs = messages.map((m) => `<div class="olivia-message ${m.role}">${rich(m.content)}</div>`).join("") + (isLoading ? '<div class="olivia-message assistant">•••</div>' : "");
       const leadForm = userTurns >= 2 && !leadSent && !isLoading ? `<form class="olivia-lead"><p><strong>${esc(t.leadTitle)}</strong>${esc(t.leadIntro)}</p><input required name="firstName" placeholder="${esc(t.firstName)}" value="${esc(lead.firstName)}"/><input required name="lastName" placeholder="${esc(t.lastName)}" value="${esc(lead.lastName)}"/><input required type="email" name="email" placeholder="${esc(t.email)}" value="${esc(lead.email)}"/><input required type="tel" name="phone" placeholder="${esc(t.phone)}" value="${esc(lead.phone)}"/><textarea required name="reason" placeholder="${esc(t.reason)}">${esc(lead.reason)}</textarea><button type="submit">${esc(t.submitLead)} →</button></form>` : "";
-      root.innerHTML = `<section class="olivia-panel ${isOpen ? "is-open" : ""}"><header class="olivia-header"><span class="olivia-head-avatar">O<i></i></span><div class="olivia-brand"><p class="olivia-title">${esc(t.title)} <b>v2</b></p><p class="olivia-status"><i></i>${esc(t.status)} · ${esc(t.online)}</p></div><button type="button" class="olivia-close" aria-label="${esc(t.close)}">×</button></header><div class="olivia-messages"><div class="olivia-date">ELITE 7 PIEL · ASESORA DIGITAL</div>${msgs}${leadForm}</div><div class="olivia-composer"><input class="olivia-input" ${!widgetIdentity || isLoading ? "disabled" : ""} placeholder="${esc(t.placeholder)}"/><button type="button" class="olivia-send" ${!widgetIdentity || isLoading ? "disabled" : ""}>➤</button></div></section><div class="olivia-closed">${isOpen ? "" : `<button type="button" class="olivia-teaser"><span class="olivia-avatar">O<i></i></span><span>${esc(t.teaser)}<small>Olivia AI v2 · ${esc(t.online)}</small></span></button>`}</div>`;
+      root.innerHTML = `<section class="olivia-panel ${isOpen ? "is-open" : ""}"><header class="olivia-header"><span class="olivia-head-avatar">O<i></i></span><div class="olivia-brand"><p class="olivia-title">${esc(t.title)} <b>v2</b></p><p class="olivia-status"><i></i>${esc(t.status)} · ${esc(t.online)}</p></div><button type="button" class="olivia-close" aria-label="${esc(t.close)}">×</button></header><div class="olivia-messages"><div class="olivia-date">ELITE 7 PIEL · ASESORA DIGITAL</div>${msgs}${leadForm}</div><div class="olivia-composer">${hasConsent ? "" : `<label class="olivia-consent"><input type="checkbox" class="olivia-consent-input"/><span>${esc(t.consent)} <a href="/aviso-de-privacidad" target="_blank" rel="noopener noreferrer">${esc(t.privacy)}</a></span></label>`}<input class="olivia-input" ${!widgetIdentity || !hasConsent || isLoading ? "disabled" : ""} placeholder="${esc(t.placeholder)}"/><button type="button" class="olivia-send" ${!widgetIdentity || !hasConsent || isLoading ? "disabled" : ""}>➤</button></div></section><div class="olivia-closed">${isOpen ? "" : `<button type="button" class="olivia-teaser"><span class="olivia-avatar">O<i></i></span><span>${esc(t.teaser)}<small>Olivia AI v2 · ${esc(t.online)}</small></span></button>`}</div>`;
       bind();
       const box = root.querySelector(".olivia-messages"); if (box) box.scrollTop = box.scrollHeight;
     };
@@ -86,12 +91,13 @@ export default function OliviaChatWidget() {
     };
 
     const submitLead = async (e) => {
-      e.preventDefault(); if (isLoading) return; saveLead();
+      e.preventDefault(); if (isLoading || !hasConsent) return; saveLead();
       if (!lead.firstName.trim() || !lead.lastName.trim() || !lead.email.trim() || !lead.phone.trim() || !lead.reason.trim()) return;
       isLoading = true; render();
       try {
-        const r = await fetch(leadEndpoint, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ ...lead, name: `${lead.firstName} ${lead.lastName}`, source: "Chat Olivia AI v2 Elite 7 Piel", language: lang, siteCode, subject: "Nuevo contacto Olivia AI · Elite 7 Piel", message: `${lead.reason}\n\nConversación:\n${transcript()}` }) });
+        const r = await fetch(leadEndpoint, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ ...lead, name: `${lead.firstName} ${lead.lastName}`, source: "Chat Olivia AI v2 Elite 7 Piel", language: lang, siteCode, subject: "Nuevo contacto Olivia AI · Elite 7 Piel", privacyConsent: "Aceptado", privacyConsentAt: consentAt, privacyConsentVersion: "elite7piel-privacy-chat-2026-08-31", pageUrl: location.href, message: `${lead.reason}\n\nConsentimiento: aceptado el ${consentAt}\n\nConversación:\n${transcript()}` }) });
         if (!r.ok) throw new Error("lead");
+        fetch(`${apiBase}/widget/conversations`, { method: "POST", headers: { "Content-Type": "application/json", "X-Olivia-Widget-Identity": widgetIdentity }, body: JSON.stringify({ clientCode: siteCode, visitorId, content: lead.reason, source: "website", language: lang, visitorName: `${lead.firstName} ${lead.lastName}`, email: lead.email, phone: lead.phone, metadata: { ...pageMetadata(), lead } }) }).catch(() => {});
         leadSent = true; messages.push({ role: "assistant", content: t.leadThanks });
       } catch { messages.push({ role: "assistant", content: t.error }); }
       isLoading = false; render();
@@ -99,13 +105,17 @@ export default function OliviaChatWidget() {
 
     const sendMessage = async () => {
       const i = root.querySelector(".olivia-input"); const message = i?.value?.trim() || "";
-      if (!message || isLoading || !widgetIdentity) return;
+      if (!message || isLoading || !widgetIdentity || !hasConsent) return;
       messages.push({ role: "user", content: message }); isLoading = true; render();
       try {
-        const r = await fetch(chatEndpoint, { method: "POST", headers: { "Content-Type": "application/json", "X-Olivia-Widget-Identity": widgetIdentity }, body: JSON.stringify({ message, language: lang, clientCode: siteCode, clientId: siteCode, metadata: pageMetadata(), history: messages.slice(-12) }) });
+        const secureHeaders = { "Content-Type": "application/json", "X-Olivia-Widget-Identity": widgetIdentity };
+        fetch(`${apiBase}/widget/conversations`, { method: "POST", headers: secureHeaders, body: JSON.stringify({ clientCode: siteCode, visitorId, content: message, source: "website", language: lang, metadata: pageMetadata() }) }).catch(() => {});
+        const r = await fetch(chatEndpoint, { method: "POST", headers: secureHeaders, body: JSON.stringify({ message, language: lang, clientCode: siteCode, clientId: siteCode, visitorId, metadata: pageMetadata(), history: messages.slice(-12) }) });
         const d = await r.json();
         const turn = messages.filter((item) => item.role === "user").length;
-        messages.push({ role: "assistant", content: answerForTurn(d.reply || t.error, turn) || t.error });
+        const answer = answerForTurn(d.reply || t.error, turn) || t.error;
+        messages.push({ role: "assistant", content: answer });
+        fetch(`${apiBase}/widget/conversations`, { method: "PATCH", headers: secureHeaders, body: JSON.stringify({ clientCode: siteCode, visitorId, content: answer, model: d.mode || "olivia-v2" }) }).catch(() => {});
       } catch { messages.push({ role: "assistant", content: t.error }); }
       isLoading = false; render();
     };
@@ -115,6 +125,14 @@ export default function OliviaChatWidget() {
       root.querySelector(".olivia-close")?.addEventListener("click", () => { isOpen = false; render(); });
       root.querySelector(".olivia-lead")?.addEventListener("submit", submitLead);
       root.querySelectorAll(".olivia-lead input,.olivia-lead textarea").forEach((el) => el.addEventListener("input", saveLead));
+      root.querySelector(".olivia-consent-input")?.addEventListener("change", (event) => {
+        if (!event.target.checked) return;
+        hasConsent = true;
+        consentAt = new Date().toISOString();
+        localStorage.setItem("oliviaConsent:elite7piel", "accepted");
+        localStorage.setItem("oliviaConsentAt:elite7piel", consentAt);
+        render();
+      });
       root.querySelector(".olivia-send")?.addEventListener("click", sendMessage);
       root.querySelector(".olivia-input")?.addEventListener("keydown", (e) => { if (e.key === "Enter") sendMessage(); });
     };
