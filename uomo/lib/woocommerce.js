@@ -1,6 +1,7 @@
 import "server-only";
+import { getWordPressUrl } from "@/lib/wordpress-config.mjs";
 
-const DEFAULT_STORE_API_BASE = "https://oliviers52.sg-host.com/wp-json/wc/store/v1/";
+const DEFAULT_STORE_API_BASE = getWordPressUrl("wp-json/wc/store/v1/");
 const FALLBACK_IMAGE = "/assets/images/home/demo15/product-1.webp";
 const DEFAULT_STOCK_STATUSES = ["instock", "outofstock", "onbackorder"];
 const DEFAULT_STORE_REVALIDATE_SECONDS = 300;

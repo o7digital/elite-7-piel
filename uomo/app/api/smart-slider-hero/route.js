@@ -1,7 +1,8 @@
 import { heroPromotions } from "@/data/heroPromotions";
+import { getWordPressUrl } from "@/lib/wordpress-config.mjs";
 
 const SMART_SLIDER_URL =
-  "https://oliviers52.sg-host.com/?n2prerender=1&n2app=smartslider&n2controller=slider&n2action=iframe&sliderid=2&hash=26e4bc6b941926287a7281c60d9238d3";
+  getWordPressUrl("?n2prerender=1&n2app=smartslider&n2controller=slider&n2action=iframe&sliderid=2&hash=26e4bc6b941926287a7281c60d9238d3");
 const HERO_SLIDE_IDS = new Set(["1", "2", "3", "4", "5", "6", "7", "8"]);
 
 export const dynamic = "force-dynamic";

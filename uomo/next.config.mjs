@@ -1,5 +1,6 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { WORDPRESS_URL } from "./lib/wordpress-config.mjs";
 
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 
@@ -12,8 +13,8 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "oliviers52.sg-host.com",
+        protocol: new URL(WORDPRESS_URL).protocol.replace(":", ""),
+        hostname: new URL(WORDPRESS_URL).hostname,
       },
     ],
   },

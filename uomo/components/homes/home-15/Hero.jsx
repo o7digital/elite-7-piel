@@ -6,47 +6,56 @@ import { Autoplay, EffectFade, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { heroPromotions } from "@/data/heroPromotions";
 import { getLocaleFromPath } from "@/lib/i18n/locale";
+import { getWordPressUrl } from "@/lib/wordpress-config.mjs";
 
 const heroSlides = [
   {
     id: "1",
-    image:
-      "https://oliviers52.sg-host.com/wp-content/uploads/2026/05/content-pixie-fMx0jcIxKmw-unsplash-scaled.jpg",
+    image: getWordPressUrl(
+      "wp-content/uploads/2026/05/content-pixie-fMx0jcIxKmw-unsplash-scaled.jpg"
+    ),
   },
   {
     id: "2",
-    image:
-      "https://oliviers52.sg-host.com/wp-content/uploads/2026/05/maria-kovalets-w1okCRYQSMY-unsplash-scaled.jpg",
+    image: getWordPressUrl(
+      "wp-content/uploads/2026/05/maria-kovalets-w1okCRYQSMY-unsplash-scaled.jpg"
+    ),
   },
   {
     id: "3",
-    image:
-      "https://oliviers52.sg-host.com/wp-content/uploads/2026/05/aleksandrs-karevs-5TOxn3yB7K0-unsplash-scaled.jpg",
+    image: getWordPressUrl(
+      "wp-content/uploads/2026/05/aleksandrs-karevs-5TOxn3yB7K0-unsplash-scaled.jpg"
+    ),
   },
   {
     id: "4",
-    image:
-      "https://oliviers52.sg-host.com/wp-content/uploads/2026/05/birgith-roosipuu-kmqIoF9H1bw-unsplash-scaled.jpg",
+    image: getWordPressUrl(
+      "wp-content/uploads/2026/05/birgith-roosipuu-kmqIoF9H1bw-unsplash-scaled.jpg"
+    ),
   },
   {
     id: "5",
-    image:
-      "https://oliviers52.sg-host.com/wp-content/uploads/2026/05/nora-topicals-qOo68ggoshY-unsplash-scaled.jpg",
+    image: getWordPressUrl(
+      "wp-content/uploads/2026/05/nora-topicals-qOo68ggoshY-unsplash-scaled.jpg"
+    ),
   },
   {
     id: "6",
-    image:
-      "https://oliviers52.sg-host.com/wp-content/uploads/2026/05/poko-skincare-iexrtpiWLEw-unsplash-scaled.jpg",
+    image: getWordPressUrl(
+      "wp-content/uploads/2026/05/poko-skincare-iexrtpiWLEw-unsplash-scaled.jpg"
+    ),
   },
   {
     id: "7",
-    image:
-      "https://oliviers52.sg-host.com/wp-content/uploads/2026/05/elsa-olofsson-7K93db_iq08-unsplash-scaled.jpg",
+    image: getWordPressUrl(
+      "wp-content/uploads/2026/05/elsa-olofsson-7K93db_iq08-unsplash-scaled.jpg"
+    ),
   },
   {
     id: "8",
-    image:
-      "https://oliviers52.sg-host.com/wp-content/uploads/2026/05/ibnu-ihza-Z7u2bpbE65Q-unsplash-scaled.jpg",
+    image: getWordPressUrl(
+      "wp-content/uploads/2026/05/ibnu-ihza-Z7u2bpbE65Q-unsplash-scaled.jpg"
+    ),
   },
 ];
 
