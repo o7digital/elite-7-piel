@@ -36,6 +36,14 @@ const COLOR_MAP = {
   yellow: "#f1c40f",
 };
 
+const CATEGORY_LABELS = {
+  electronicos: "Electronics",
+};
+
+function getCategoryLabel(category) {
+  return CATEGORY_LABELS[category.slug] || decodeHtmlEntities(category.name);
+}
+
 function normalizeStoreApiBase(base) {
   return String(base).endsWith("/") ? String(base) : `${String(base)}/`;
 }
@@ -299,7 +307,7 @@ function getPublicProductId(productId, sourceKey) {
 function normalizeCategory(category) {
   return {
     id: category.slug,
-    name: decodeHtmlEntities(category.name),
+    name: getCategoryLabel(category),
     slug: category.slug,
     count: Number(category.count || 0),
     reviewCount: Number(category.review_count || 0),
@@ -311,7 +319,7 @@ function normalizeProduct(product, source) {
   const images = normalizeImages(product);
   const categoryData = (product.categories || []).map((category) => ({
     id: category.id,
-    name: decodeHtmlEntities(category.name),
+    name: getCategoryLabel(category),
     slug: category.slug,
   }));
   const tagNames = (product.tags || [])
