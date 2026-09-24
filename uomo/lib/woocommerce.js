@@ -1,7 +1,9 @@
 import "server-only";
-import { getWordPressUrl } from "@/lib/wordpress-config.mjs";
+import { WORDPRESS_PRODUCT_URLS } from "@/lib/wordpress-config.mjs";
 
-const DEFAULT_STORE_API_BASE = getWordPressUrl("wp-json/wc/store/v1/");
+const DEFAULT_STORE_API_BASES = WORDPRESS_PRODUCT_URLS.map((wordpressUrl) =>
+  new URL("wp-json/wc/store/v1/", `${wordpressUrl}/`).toString()
+);
 const FALLBACK_IMAGE = "/assets/images/home/demo15/product-1.webp";
 const DEFAULT_STOCK_STATUSES = ["instock", "outofstock", "onbackorder"];
 const DEFAULT_STORE_REVALIDATE_SECONDS = 300;
@@ -69,13 +71,29 @@ function getStorefrontFetchOptions() {
 }
 
 function getStoreApiBases() {
+  const configuredBases = (process.env.WORDPRESS_STORE_API_URLS || "")
+    .split(",")
+    .map((base) => base.trim())
+    .filter(Boolean);
+  const fallbackBases = [
+    process.env.WORDPRESS_STORE_API_URL || DEFAULT_STORE_API_BASES[0],
+    ...DEFAULT_STORE_API_BASES.slice(1),
+  ];
+
   return [
     ...new Set(
-      [process.env.WORDPRESS_STORE_API_URL, DEFAULT_STORE_API_BASE]
+      (configuredBases.length ? configuredBases : fallbackBases)
         .filter(Boolean)
         .map(normalizeStoreApiBase)
     ),
   ];
+}
+
+function getStoreSources() {
+  return getStoreApiBases().map((base, index) => ({
+    base,
+    key: index === 0 ? "primary" : `store${index + 1}`,
+  }));
 }
 
 function buildStoreApiUrl(base, pathname, params = {}) {
@@ -118,88 +136,33 @@ async function storefrontFetchFromBase(base, pathname, params = {}, options = {}
   return response.json();
 }
 
-let preferredStoreApiBasePromise;
+async function storefrontFetchAll(pathname, params = {}, options = {}) {
+  const sources = options.sourceKey
+    ? getStoreSources().filter((source) => source.key === options.sourceKey)
+    : getStoreSources();
+  const results = await Promise.allSettled(
+    sources.map(async (source) => ({
+      source,
+      data: await storefrontFetchFromBase(
+        source.base,
+        pathname,
+        params,
+        options
+      ),
+    }))
+  );
+  const fulfilled = results
+    .filter((result) => result.status === "fulfilled")
+    .map((result) => result.value);
 
-async function resolvePreferredStoreApiBase() {
-  if (!preferredStoreApiBasePromise) {
-    preferredStoreApiBasePromise = (async () => {
-      const bases = getStoreApiBases();
-      let bestBase = bases[0];
-      let bestCount = -1;
-      let lastError;
-
-      for (const base of bases) {
-        try {
-          const products = await storefrontFetchFromBase(
-            base,
-            "products",
-            {
-              page: 1,
-              per_page: 100,
-              catalog_visibility: "any",
-              stock_status: DEFAULT_STOCK_STATUSES,
-            },
-            {}
-          );
-          const count = Array.isArray(products) ? products.length : 0;
-
-          if (count > bestCount) {
-            bestCount = count;
-            bestBase = base;
-          }
-        } catch (error) {
-          lastError = error;
-        }
-      }
-
-      if (bestCount >= 0) {
-        return bestBase;
-      }
-
-      throw lastError || new Error("Unable to resolve a WooCommerce Store API base.");
-    })();
+  if (fulfilled.length || (options.allowNotFound && results.length)) {
+    return fulfilled;
   }
 
-  return preferredStoreApiBasePromise;
-}
-
-async function storefrontFetch(pathname, params = {}, options = {}) {
-  const bases = [];
-  let notFoundOnAllBases = false;
-
-  try {
-    bases.push(await resolvePreferredStoreApiBase());
-  } catch {
-    // Fall back to trying every known base below.
-  }
-
-  getStoreApiBases().forEach((base) => {
-    if (!bases.includes(base)) {
-      bases.push(base);
-    }
-  });
-
-  let lastError;
-
-  for (const base of bases) {
-    try {
-      const result = await storefrontFetchFromBase(base, pathname, params, options);
-
-      if (result !== null) {
-        return result;
-      }
-
-      notFoundOnAllBases = true;
-    } catch (error) {
-      lastError = error;
-    }
-  }
-
-  if (options.allowNotFound && notFoundOnAllBases) {
-    return null;
-  }
-
-  throw lastError || new Error("WooCommerce storefront request failed.");
+  const firstFailure = results.find((result) => result.status === "rejected");
+  throw (
+    firstFailure?.reason || new Error("WooCommerce storefront request failed.")
+  );
 }
 
 function decodeHtmlEntities(value = "") {
@@ -329,9 +292,13 @@ function normalizeAttributes(product) {
     .filter((attribute) => attribute.values.length);
 }
 
+function getPublicProductId(productId, sourceKey) {
+  return sourceKey === "primary" ? productId : `${sourceKey}-${productId}`;
+}
+
 function normalizeCategory(category) {
   return {
-    id: category.id,
+    id: category.slug,
     name: decodeHtmlEntities(category.name),
     slug: category.slug,
     count: Number(category.count || 0),
@@ -340,7 +307,7 @@ function normalizeCategory(category) {
   };
 }
 
-function normalizeProduct(product) {
+function normalizeProduct(product, source) {
   const images = normalizeImages(product);
   const categoryData = (product.categories || []).map((category) => ({
     id: category.id,
@@ -358,7 +325,9 @@ function normalizeProduct(product) {
   );
 
   return {
-    id: product.id,
+    id: getPublicProductId(product.id, source.key),
+    sourceKey: source.key,
+    sourceProductId: product.id,
     slug: product.slug,
     type: product.type,
     createdAt:
@@ -366,6 +335,9 @@ function normalizeProduct(product) {
     title: decodeHtmlEntities(product.name),
     category: categoryData[0]?.name || "Product",
     categoryIds: categoryData.map((category) => category.id).filter(Boolean),
+    sourceCategoryIds: categoryData
+      .map((category) => category.id)
+      .filter(Boolean),
     categorySlugs: categoryData.map((category) => category.slug).filter(Boolean),
     categories: categoryData.map((category) => category.name),
     tags: tagNames,
@@ -400,67 +372,133 @@ function normalizeProduct(product) {
 }
 
 export async function getStoreProducts(options = {}) {
-  const products = await storefrontFetch("products", {
-    catalog_visibility: options.catalogVisibility || "any",
-    category: options.category,
-    exclude: options.exclude,
-    order: options.order || "desc",
-    orderby: options.orderby || "date",
-    page: options.page || 1,
-    per_page: options.perPage || 8,
-    search: options.search,
-    stock_status: options.stockStatus || DEFAULT_STOCK_STATUSES,
-  });
+  const responses = await storefrontFetchAll(
+    "products",
+    {
+      catalog_visibility: options.catalogVisibility || "any",
+      category: options.category,
+      exclude: options.exclude,
+      order: options.order || "desc",
+      orderby: options.orderby || "date",
+      page: options.page || 1,
+      per_page: options.perPage || 8,
+      search: options.search,
+      stock_status: options.stockStatus || DEFAULT_STOCK_STATUSES,
+    },
+    {
+      sourceKey: options.sourceKey,
+    }
+  );
 
-  return products.map(normalizeProduct);
+  return responses.flatMap(({ data, source }) =>
+    data.map((product) => normalizeProduct(product, source))
+  );
 }
 
 export async function getAllStoreProducts(options = {}) {
   const pageSize = options.perPage || 100;
   const maxPages = options.maxPages || 20;
-  const allProducts = [];
+  const productResults = await Promise.allSettled(
+    getStoreSources().map(async (source) => {
+      const sourceProducts = [];
 
-  for (let page = 1; page <= maxPages; page += 1) {
-    const pageProducts = await getStoreProducts({
-      ...options,
-      page,
-      perPage: pageSize,
-    });
+      for (let page = 1; page <= maxPages; page += 1) {
+        const pageProducts = await getStoreProducts({
+          ...options,
+          sourceKey: source.key,
+          page,
+          perPage: pageSize,
+        });
 
-    allProducts.push(...pageProducts);
+        sourceProducts.push(...pageProducts);
 
-    if (pageProducts.length < pageSize) {
-      break;
-    }
+        if (pageProducts.length < pageSize) {
+          break;
+        }
+      }
+
+      return sourceProducts;
+    })
+  );
+  const productsBySource = productResults
+    .filter((result) => result.status === "fulfilled")
+    .map((result) => result.value);
+
+  if (!productsBySource.length) {
+    const firstFailure = productResults.find(
+      (result) => result.status === "rejected"
+    );
+    throw (
+      firstFailure?.reason || new Error("WooCommerce storefront request failed.")
+    );
   }
+
+  const allProducts = productsBySource.flat();
 
   return Array.from(
     new Map(allProducts.map((product) => [product.id, product])).values()
+  ).sort((left, right) => {
+    const leftDate = new Date(left.createdAt || 0).getTime();
+    const rightDate = new Date(right.createdAt || 0).getTime();
+
+    return rightDate - leftDate || String(right.id).localeCompare(String(left.id));
+  });
+}
+
+function mergeCategories(categories) {
+  const categoriesBySlug = new Map();
+
+  categories.forEach((category) => {
+    const current = categoriesBySlug.get(category.slug);
+
+    if (current) {
+      current.count += category.count;
+      current.reviewCount += category.reviewCount;
+      return;
+    }
+
+    categoriesBySlug.set(category.slug, { ...category });
+  });
+
+  return Array.from(categoriesBySlug.values()).sort((left, right) =>
+    left.name.localeCompare(right.name, "es")
   );
 }
 
 export async function getStoreCategories(options = {}) {
-  const categories = await storefrontFetch("products/categories", {
+  const responses = await storefrontFetchAll("products/categories", {
     hide_empty: options.hideEmpty ?? true,
     page: options.page || 1,
     per_page: options.perPage || 50,
   });
 
-  return categories.map(normalizeCategory);
+  return mergeCategories(
+    responses.flatMap(({ data }) => data.map(normalizeCategory))
+  );
 }
 
 export async function getStoreProduct(productId) {
-  const product = await storefrontFetch(`products/${productId}`, {}, {
-    allowNotFound: true,
-  });
+  const productIdMatch = String(productId).match(/^(store\d+)-(\d+)$/);
+  const sourceKey = productIdMatch?.[1] || "primary";
+  const sourceProductId = productIdMatch?.[2] || productId;
+  const responses = await storefrontFetchAll(
+    `products/${sourceProductId}`,
+    {},
+    {
+      allowNotFound: true,
+      sourceKey,
+    }
+  );
+  const match = responses.find(({ data }) => data);
 
-  return product ? normalizeProduct(product) : null;
+  return match ? normalizeProduct(match.data, match.source) : null;
 }
 
 export async function getRelatedStoreProducts(product, options = {}) {
   const relatedProducts = await getStoreProducts({
-    category: product.categoryIds?.[0],
+    category: product.sourceCategoryIds?.[0],
     perPage: (options.perPage || 8) + 1,
+    sourceKey: product.sourceKey,
   });
 
   return relatedProducts

@@ -1,6 +1,6 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { WORDPRESS_URL } from "./lib/wordpress-config.mjs";
+import { WORDPRESS_PRODUCT_URLS } from "./lib/wordpress-config.mjs";
 
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 
@@ -11,12 +11,10 @@ const nextConfig = {
     root: projectRoot,
   },
   images: {
-    remotePatterns: [
-      {
-        protocol: new URL(WORDPRESS_URL).protocol.replace(":", ""),
-        hostname: new URL(WORDPRESS_URL).hostname,
-      },
-    ],
+    remotePatterns: WORDPRESS_PRODUCT_URLS.map((wordpressUrl) => ({
+      protocol: new URL(wordpressUrl).protocol.replace(":", ""),
+      hostname: new URL(wordpressUrl).hostname,
+    })),
   },
   sassOptions: {
     quietDeps: true, // This will silence deprecation warnings

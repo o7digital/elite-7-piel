@@ -17,21 +17,22 @@ function buildFallbackCategories(products = []) {
   const categoryMap = new Map();
 
   products.forEach((product) => {
-    product.categoryIds?.forEach((categoryId, index) => {
+    product.categorySlugs?.forEach((categorySlug, index) => {
       const categoryName = product.categories?.[index] || product.category;
 
-      if (!categoryId || !categoryName) {
+      if (!categorySlug || !categoryName) {
         return;
       }
 
-      const current = categoryMap.get(categoryId) || {
-        id: categoryId,
+      const current = categoryMap.get(categorySlug) || {
+        id: categorySlug,
+        slug: categorySlug,
         name: categoryName,
         count: 0,
       };
 
       current.count += 1;
-      categoryMap.set(categoryId, current);
+      categoryMap.set(categorySlug, current);
     });
   });
 
@@ -47,7 +48,9 @@ function sortProducts(products, sortKey) {
         const leftDate = new Date(left.createdAt || 0).getTime();
         const rightDate = new Date(right.createdAt || 0).getTime();
 
-        return leftDate - rightDate || left.id - right.id;
+        return (
+          leftDate - rightDate || String(left.id).localeCompare(String(right.id))
+        );
       });
     case "price_low":
       return nextProducts.sort((left, right) => left.price - right.price);
@@ -58,7 +61,7 @@ function sortProducts(products, sortKey) {
         return (
           right.reviewCount - left.reviewCount ||
           right.rating - left.rating ||
-          right.id - left.id
+          String(right.id).localeCompare(String(left.id))
         );
       });
     case "newest":
@@ -67,7 +70,9 @@ function sortProducts(products, sortKey) {
         const leftDate = new Date(left.createdAt || 0).getTime();
         const rightDate = new Date(right.createdAt || 0).getTime();
 
-        return rightDate - leftDate || right.id - left.id;
+        return (
+          rightDate - leftDate || String(right.id).localeCompare(String(left.id))
+        );
       });
   }
 }
@@ -110,14 +115,16 @@ export default function Shop1({ products = [], categories = [] }) {
     }
 
     return categories.filter((category) =>
-      products.some((product) => product.categoryIds?.includes(category.id))
+      products.some((product) =>
+        product.categorySlugs?.includes(category.slug)
+      )
     );
   }, [categories, products]);
 
   const filteredProducts = useMemo(() => {
     const nextProducts = selectedCategory
       ? products.filter((product) =>
-          product.categoryIds?.includes(Number(selectedCategory))
+          product.categorySlugs?.includes(selectedCategory)
         )
       : products;
 
