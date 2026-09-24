@@ -12,6 +12,7 @@ import {
 const MENU_LABELS = {
   "/": { es: "Inicio", en: "Home" },
   "/shop": { es: "Tienda", en: "Shop" },
+  "/especiales": { es: "Especiales", en: "Specials" },
   "/about": { es: "Quienes Somos", en: "About Us" },
   "/contact": { es: "Contacto", en: "Contact" },
   "/faq": { es: "Preguntas Frecuentes", en: "Frequently Asked Questions" },

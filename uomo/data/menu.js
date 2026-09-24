@@ -21,12 +21,18 @@ export const mainMenuItems = [
   },
   {
     id: 3,
+    title: "Especiales",
+    href: "/especiales",
+    activePrefixes: ["/especiales"],
+  },
+  {
+    id: 4,
     title: "Quienes Somos",
     href: "/about",
     activePrefixes: ["/about"],
   },
   {
-    id: 4,
+    id: 5,
     title: "Contacto",
     href: "/contact",
     activePrefixes: ["/contact", "/faq"],

@@ -77,7 +77,7 @@ function sortProducts(products, sortKey) {
   }
 }
 
-export default function Shop1({ products = [], categories = [] }) {
+export default function Shop1({ products = [], categories = [], title = "" }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [sortKey, setSortKey] = useState("newest");
@@ -144,6 +144,7 @@ export default function Shop1({ products = [], categories = [] }) {
 
   return (
     <section className="dosalga-shop container">
+      {title ? <h1 className="dosalga-shop__title">{title}</h1> : null}
       <div className="dosalga-shop__toolbar">
         <p className="dosalga-shop__count">
           Mostrando {filteredProducts.length} producto
@@ -292,6 +293,11 @@ export default function Shop1({ products = [], categories = [] }) {
           position: relative;
           padding-top: 7rem;
           padding-bottom: 7rem;
+        }
+
+        .dosalga-shop__title {
+          margin: 0 0 2.75rem;
+          text-align: center;
         }
 
         .dosalga-shop__toolbar {

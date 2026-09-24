@@ -406,8 +406,11 @@ export async function getStoreProducts(options = {}) {
 export async function getAllStoreProducts(options = {}) {
   const pageSize = options.perPage || 100;
   const maxPages = options.maxPages || 20;
+  const sources = options.sourceKey
+    ? getStoreSources().filter((source) => source.key === options.sourceKey)
+    : getStoreSources();
   const productResults = await Promise.allSettled(
-    getStoreSources().map(async (source) => {
+    sources.map(async (source) => {
       const sourceProducts = [];
 
       for (let page = 1; page <= maxPages; page += 1) {
@@ -474,11 +477,15 @@ function mergeCategories(categories) {
 }
 
 export async function getStoreCategories(options = {}) {
-  const responses = await storefrontFetchAll("products/categories", {
-    hide_empty: options.hideEmpty ?? true,
-    page: options.page || 1,
-    per_page: options.perPage || 50,
-  });
+  const responses = await storefrontFetchAll(
+    "products/categories",
+    {
+      hide_empty: options.hideEmpty ?? true,
+      page: options.page || 1,
+      per_page: options.perPage || 50,
+    },
+    { sourceKey: options.sourceKey }
+  );
 
   return mergeCategories(
     responses.flatMap(({ data }) => data.map(normalizeCategory))

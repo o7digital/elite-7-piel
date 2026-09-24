@@ -7,6 +7,7 @@ const siteUrl = "https://elite7piel.com";
 const routes = [
   "",
   "/shop",
+  "/especiales",
   "/about",
   "/contact",
   "/faq",
