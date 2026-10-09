@@ -6,20 +6,27 @@ import AllProductsGrid from "@/components/homes/home-15/AllProductsGrid";
 import Hero from "@/components/homes/home-15/Hero";
 import Lookbook from "@/components/homes/home-15/Lookbook";
 import { demoHomeMetadata } from "@/lib/seo/pageMetadata";
-import { getAllStoreProducts } from "@/lib/woocommerce";
-import React from "react";
+import { getCatalogProducts } from "@/lib/woocommerce";
+import React, { Suspense } from "react";
+import CatalogLoading from "@/components/common/CatalogLoading";
 
 export const metadata = demoHomeMetadata;
-export default async function HomePage15() {
-  const products = await getAllStoreProducts({ perPage: 100, sourceKey: "primary" }).catch(() => []);
+async function Catalog() {
+  const products = await getCatalogProducts({ perPage: 100, sourceKey: "primary" }).catch(() => []);
 
+  return <AllProductsGrid products={products} />;
+}
+
+export default function HomePage15() {
   return (
     <>
       <div className="theme-15">
         <Header14 />
         <main>
           <Hero />
-          <AllProductsGrid products={products} />
+          <Suspense fallback={<CatalogLoading />}>
+            <Catalog />
+          </Suspense>
           <div className="mb-3 mb-xl-5 pb-3 pt-1 pb-xl-5"></div>
           <Lookbook />
         </main>

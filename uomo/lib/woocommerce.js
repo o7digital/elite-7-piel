@@ -59,7 +59,7 @@ function parsePositiveInteger(value, fallback) {
 }
 
 function getStorefrontFetchOptions() {
-  if (process.env.WORDPRESS_STORE_API_NO_STORE !== "false") {
+  if (process.env.WORDPRESS_STORE_API_NO_STORE === "true") {
     return {
       cache: "no-store",
     };
@@ -141,7 +141,13 @@ async function storefrontFetchFromBase(base, pathname, params = {}, options = {}
     );
   }
 
-  return response.json();
+  const data = await response.json();
+  if (Array.isArray(data)) {
+    Object.defineProperty(data, "totalPages", {
+      value: Number(response.headers.get("x-wp-totalpages")) || undefined,
+    });
+  }
+  return data;
 }
 
 async function storefrontFetchAll(pathname, params = {}, options = {}) {
@@ -398,33 +404,50 @@ export async function getStoreProducts(options = {}) {
     }
   );
 
-  return responses.flatMap(({ data, source }) =>
+  const products = responses.flatMap(({ data, source }) =>
     data.map((product) => normalizeProduct(product, source))
   );
+  if (responses.length === 1) {
+    Object.defineProperty(products, "totalPages", {
+      value: responses[0].data.totalPages,
+    });
+  }
+  return products;
 }
 
 export async function getAllStoreProducts(options = {}) {
-  const pageSize = options.perPage || 100;
+  const pageSize = Math.min(options.perPage || 40, 40);
   const maxPages = options.maxPages || 20;
   const sources = options.sourceKey
     ? getStoreSources().filter((source) => source.key === options.sourceKey)
     : getStoreSources();
   const productResults = await Promise.allSettled(
     sources.map(async (source) => {
-      const sourceProducts = [];
+      const fetchPage = (page) => getStoreProducts({
+        ...options,
+        sourceKey: source.key,
+        page,
+        perPage: pageSize,
+      });
+      const firstPage = await fetchPage(1);
+      const sourceProducts = [...firstPage];
 
-      for (let page = 1; page <= maxPages; page += 1) {
-        const pageProducts = await getStoreProducts({
-          ...options,
-          sourceKey: source.key,
-          page,
-          perPage: pageSize,
-        });
-
-        sourceProducts.push(...pageProducts);
-
-        if (pageProducts.length < pageSize) {
-          break;
+      if (firstPage.totalPages) {
+        const lastPage = Math.min(firstPage.totalPages, maxPages);
+        // Limit concurrent requests to avoid overwhelming either WordPress store.
+        for (let page = 2; page <= lastPage; page += 4) {
+          const pages = await Promise.all(
+            Array.from({ length: Math.min(4, lastPage - page + 1) }, (_, offset) =>
+              fetchPage(page + offset)
+            )
+          );
+          sourceProducts.push(...pages.flat());
+        }
+      } else if (firstPage.length === pageSize) {
+        for (let page = 2; page <= maxPages; page += 1) {
+          const pageProducts = await fetchPage(page);
+          sourceProducts.push(...pageProducts);
+          if (pageProducts.length < pageSize) break;
         }
       }
 
@@ -454,6 +477,27 @@ export async function getAllStoreProducts(options = {}) {
 
     return rightDate - leftDate || String(right.id).localeCompare(String(left.id));
   });
+}
+
+// Send only card and filter data to the browser; full descriptions stay on product pages.
+export async function getCatalogProducts(options = {}) {
+  const products = await getAllStoreProducts(options);
+  return products.map((product) => ({
+    id: product.id,
+    sourceKey: product.sourceKey,
+    title: product.title,
+    createdAt: product.createdAt,
+    category: product.category,
+    categories: product.categories,
+    categorySlugs: product.categorySlugs,
+    tags: product.tags,
+    price: product.price,
+    priceDisplay: product.priceDisplay,
+    rating: product.rating,
+    reviewCount: product.reviewCount,
+    images: product.images.slice(0, 1),
+    imgSrc: product.imgSrc,
+  }));
 }
 
 function mergeCategories(categories) {

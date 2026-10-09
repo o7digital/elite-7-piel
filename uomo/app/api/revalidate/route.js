@@ -61,7 +61,7 @@ async function handleRevalidation(request) {
     );
   }
 
-  revalidateTag(WOOCOMMERCE_CACHE_TAG);
+  revalidateTag(WOOCOMMERCE_CACHE_TAG, "max");
 
   return NextResponse.json({
     ok: true,

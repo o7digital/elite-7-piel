@@ -82,6 +82,11 @@ export default function Shop1({ products = [], categories = [], title = "" }) {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [sortKey, setSortKey] = useState("newest");
   const [columnCount, setColumnCount] = useState(4);
+  const [displayLimit, setDisplayLimit] = useState(24);
+
+  useEffect(() => {
+    setDisplayLimit(24);
+  }, [selectedCategory, sortKey]);
 
   const sidebarRef = useRef(null);
   const toggleRef = useRef(null);
@@ -272,7 +277,7 @@ export default function Shop1({ products = [], categories = [], title = "" }) {
 
       {filteredProducts.length ? (
         <div className="row g-4">
-          {filteredProducts.map((product) => (
+          {filteredProducts.slice(0, displayLimit).map((product) => (
             <div key={product.id} className={gridColumnClass}>
               <EliteProductCard
                 product={product}
@@ -287,6 +292,12 @@ export default function Shop1({ products = [], categories = [], title = "" }) {
           <p>Prueba con otra categoría o vuelve a cargar la tienda.</p>
         </div>
       )}
+
+      {displayLimit < filteredProducts.length ? (
+        <div className="text-center mt-4">
+          <button type="button" className="btn btn-dark" onClick={() => setDisplayLimit((limit) => limit + 24)}>Ver más productos</button>
+        </div>
+      ) : null}
 
       <style jsx>{`
         .dosalga-shop {

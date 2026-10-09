@@ -1,7 +1,7 @@
 "use client";
 
 import EliteProductCard from "@/components/common/EliteProductCard";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const SORT_OPTIONS = [
   { value: "newest", label: "Más reciente" },
@@ -50,9 +50,11 @@ export default function AllProductsGrid({ products = [] }) {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sortKey, setSortKey] = useState("newest");
 
-  if (!products.length) {
-    return null;
-  }
+  const [displayLimit, setDisplayLimit] = useState(24);
+
+  useEffect(() => {
+    setDisplayLimit(24);
+  }, [query, selectedCategory, sortKey]);
 
   const categories = useMemo(() => {
     const map = new Map();
@@ -157,7 +159,7 @@ export default function AllProductsGrid({ products = [] }) {
 
       {visibleProducts.length ? (
         <div className="row g-4">
-          {visibleProducts.map((product) => (
+          {visibleProducts.slice(0, displayLimit).map((product) => (
             <div key={product.id} className="col-sm-6 col-xl-3">
               <EliteProductCard
                 product={product}
@@ -181,6 +183,12 @@ export default function AllProductsGrid({ products = [] }) {
           </button>
         </div>
       )}
+
+      {displayLimit < visibleProducts.length ? (
+        <div className="text-center mt-4">
+          <button type="button" className="btn btn-dark" onClick={() => setDisplayLimit((limit) => limit + 24)}>Ver más productos</button>
+        </div>
+      ) : null}
 
       <style jsx>{`
         .home15-catalog {
