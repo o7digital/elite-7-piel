@@ -11,7 +11,7 @@ import React from "react";
 
 export const metadata = demoHomeMetadata;
 export default async function HomePage15() {
-  const products = await getAllStoreProducts({ perPage: 100 }).catch(() => []);
+  const products = await getAllStoreProducts({ perPage: 100, sourceKey: "primary" }).catch(() => []);
 
   return (
     <>

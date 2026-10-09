@@ -9,8 +9,8 @@ export const metadata = shopSeoMetadata;
 
 export default async function ShopPage() {
   const [products, categories] = await Promise.all([
-    getAllStoreProducts({ perPage: 100 }).catch(() => []),
-    getStoreCategories({ perPage: 100 }).catch(() => []),
+    getAllStoreProducts({ perPage: 100, sourceKey: "primary" }).catch(() => []),
+    getStoreCategories({ perPage: 100, sourceKey: "primary" }).catch(() => []),
   ]);
 
   return (
