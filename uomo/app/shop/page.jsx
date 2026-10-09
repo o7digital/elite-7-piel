@@ -5,17 +5,16 @@ import Header1 from "@/components/headers/Header1";
 import SeoKeywordContent from "@/components/common/SeoKeywordContent";
 import Shop1 from "@/components/shoplist/Shop1";
 import { shopSeoMetadata } from "@/data/seoKeywordContent";
-import { getCatalogProducts, getStoreCategories } from "@/lib/woocommerce";
+import { getCatalogProducts } from "@/lib/woocommerce";
 
 export const metadata = shopSeoMetadata;
 
-async function Catalog() {
-  const [products, categories] = await Promise.all([
-    getCatalogProducts({ perPage: 100, sourceKey: "primary" }).catch(() => []),
-    getStoreCategories({ perPage: 100, sourceKey: "primary" }).catch(() => []),
-  ]);
+export const revalidate = 300;
 
-  return <Shop1 products={products} categories={categories} />;
+async function Catalog() {
+  const products = await getCatalogProducts({ sourceKey: "primary" });
+
+  return <Shop1 products={products} />;
 }
 
 export default function ShopPage() {

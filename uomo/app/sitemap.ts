@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { allBlogs } from "@/data/blogs";
-import { getAllStoreProducts } from "@/lib/woocommerce";
+import { getCatalogProducts } from "@/lib/woocommerce";
+
+export const revalidate = 300;
 
 const siteUrl = "https://elite7piel.com";
 
@@ -43,7 +45,7 @@ function toSitemapEntry(
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date();
-  const products = await getAllStoreProducts({ perPage: 100 }).catch(() => []);
+  const products = await getCatalogProducts({ perPage: 100 }).catch(() => []);
 
   const staticRoutes = routes.map((route) =>
     toSitemapEntry(route, {

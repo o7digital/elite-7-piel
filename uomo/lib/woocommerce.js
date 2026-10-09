@@ -1,4 +1,6 @@
 import "server-only";
+import primaryCatalogSnapshot from "@/data/catalog-snapshots/primary.json";
+import secondaryCatalogSnapshot from "@/data/catalog-snapshots/store2.json";
 import { WORDPRESS_PRODUCT_URLS } from "@/lib/wordpress-config.mjs";
 
 const DEFAULT_STORE_API_BASES = WORDPRESS_PRODUCT_URLS.map((wordpressUrl) =>
@@ -127,6 +129,7 @@ function buildStoreApiUrl(base, pathname, params = {}) {
 
 async function storefrontFetchFromBase(base, pathname, params = {}, options = {}) {
   const response = await fetch(buildStoreApiUrl(base, pathname, params), {
+    signal: AbortSignal.timeout(8000),
     ...getStorefrontFetchOptions(),
     ...options.fetchOptions,
   });
@@ -389,6 +392,7 @@ export async function getStoreProducts(options = {}) {
   const responses = await storefrontFetchAll(
     "products",
     {
+      _fields: options.fields,
       catalog_visibility: options.catalogVisibility || "any",
       category: options.category,
       exclude: options.exclude,
@@ -401,6 +405,7 @@ export async function getStoreProducts(options = {}) {
     },
     {
       sourceKey: options.sourceKey,
+      fetchOptions: options.signal ? { signal: options.signal } : undefined,
     }
   );
 
@@ -479,9 +484,36 @@ export async function getAllStoreProducts(options = {}) {
   });
 }
 
-// Send only card and filter data to the browser; full descriptions stay on product pages.
+const CATALOG_SNAPSHOTS = {
+  primary: primaryCatalogSnapshot,
+  store2: secondaryCatalogSnapshot,
+};
+const CATALOG_FIELDS = "id,name,date_created,date_created_gmt,modified,categories,tags,prices,average_rating,review_count,images";
+
+// Builds use a verified catalog; live refreshes have a strict time budget and retain a fallback.
 export async function getCatalogProducts(options = {}) {
-  const products = await getAllStoreProducts(options);
+  const sources = options.sourceKey
+    ? getStoreSources().filter((source) => source.key === options.sourceKey)
+    : getStoreSources();
+  const catalogs = await Promise.all(sources.map(async (source) => {
+    const fallback = CATALOG_SNAPSHOTS[source.key] || [];
+    if (process.env.NEXT_PHASE === "phase-production-build") return fallback;
+    try {
+      const products = await getAllStoreProducts({
+        ...options,
+        sourceKey: source.key,
+        fields: CATALOG_FIELDS,
+        signal: AbortSignal.timeout(6000),
+      });
+      return toCatalogProducts(products);
+    } catch {
+      return fallback;
+    }
+  }));
+  return catalogs.flat();
+}
+
+function toCatalogProducts(products) {
   return products.map((product) => ({
     id: product.id,
     sourceKey: product.sourceKey,

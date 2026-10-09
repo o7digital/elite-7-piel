@@ -11,8 +11,9 @@ import React, { Suspense } from "react";
 import CatalogLoading from "@/components/common/CatalogLoading";
 
 export const metadata = demoHomeMetadata;
+export const revalidate = 300;
 async function Catalog() {
-  const products = await getCatalogProducts({ perPage: 100, sourceKey: "primary" }).catch(() => []);
+  const products = await getCatalogProducts({ sourceKey: "primary" });
 
   return <AllProductsGrid products={products} />;
 }

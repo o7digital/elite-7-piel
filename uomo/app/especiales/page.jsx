@@ -3,7 +3,7 @@ import CatalogLoading from "@/components/common/CatalogLoading";
 import Footer1 from "@/components/footers/Footer1";
 import Header1 from "@/components/headers/Header1";
 import Shop1 from "@/components/shoplist/Shop1";
-import { getCatalogProducts, getStoreCategories } from "@/lib/woocommerce";
+import { getCatalogProducts } from "@/lib/woocommerce";
 
 export const metadata = {
   title: "Especiales | ELITE 7 PIEL",
@@ -12,13 +12,12 @@ export const metadata = {
   alternates: { canonical: "/especiales" },
 };
 
-async function Catalog() {
-  const [products, categories] = await Promise.all([
-    getCatalogProducts({ perPage: 100, sourceKey: "store2" }).catch(() => []),
-    getStoreCategories({ perPage: 100, sourceKey: "store2" }).catch(() => []),
-  ]);
+export const revalidate = 300;
 
-  return <Shop1 products={products} categories={categories} title="Especiales" />;
+async function Catalog() {
+  const products = await getCatalogProducts({ sourceKey: "store2" });
+
+  return <Shop1 products={products} title="Especiales" />;
 }
 
 export default function SpecialsPage() {
