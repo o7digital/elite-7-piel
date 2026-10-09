@@ -51,6 +51,9 @@ export default function AllProductsGrid({ products = [] }) {
   const [sortKey, setSortKey] = useState("newest");
 
   const [displayLimit, setDisplayLimit] = useState(24);
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  useEffect(() => { setIsHydrated(true); }, []);
 
   useEffect(() => {
     setDisplayLimit(24);
@@ -106,7 +109,7 @@ export default function AllProductsGrid({ products = [] }) {
   }, [products, query, selectedCategory, sortKey]);
 
   return (
-    <section className="home15-catalog container">
+    <section className="home15-catalog container" data-runtime-translate-pending={isHydrated ? undefined : ""}>
       <div className="home15-catalog__header">
         <p className="home15-catalog__count">
           Mostrando {visibleProducts.length} producto

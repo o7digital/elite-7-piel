@@ -15,7 +15,7 @@ import {
 
 const TEXT_ATTRIBUTES = ["placeholder", "title", "aria-label", "alt"];
 const SKIPPED_TAGS = new Set(["SCRIPT", "STYLE", "NOSCRIPT", "SVG"]);
-const SKIP_TRANSLATION_SELECTOR = "[data-no-runtime-translate]";
+const SKIP_TRANSLATION_SELECTOR = "[data-no-runtime-translate], [data-runtime-translate-pending]";
 
 function shouldSkipElement(element) {
   return !!element?.closest(SKIP_TRANSLATION_SELECTOR);
@@ -84,6 +84,7 @@ function translateAttributes(root, translator) {
 
 function rewriteAnchors(root, locale) {
   root.querySelectorAll("a[href]").forEach((anchor) => {
+    if (shouldSkipElement(anchor)) return;
     const rawHref = anchor.getAttribute("href");
     if (!rawHref) {
       return;
@@ -96,6 +97,7 @@ function rewriteAnchors(root, locale) {
   });
 
   root.querySelectorAll("form[action]").forEach((form) => {
+    if (shouldSkipElement(form)) return;
     const rawAction = form.getAttribute("action");
     if (!rawAction) {
       return;

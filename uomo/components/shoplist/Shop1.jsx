@@ -83,6 +83,9 @@ export default function Shop1({ products = [], categories = [], title = "" }) {
   const [sortKey, setSortKey] = useState("newest");
   const [columnCount, setColumnCount] = useState(4);
   const [displayLimit, setDisplayLimit] = useState(24);
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  useEffect(() => { setIsHydrated(true); }, []);
 
   useEffect(() => {
     setDisplayLimit(24);
@@ -148,7 +151,7 @@ export default function Shop1({ products = [], categories = [], title = "" }) {
         : "col-md-6 col-xl-3";
 
   return (
-    <section className="dosalga-shop container">
+    <section className="dosalga-shop container" data-runtime-translate-pending={isHydrated ? undefined : ""}>
       {title ? <h1 className="dosalga-shop__title">{title}</h1> : null}
       <div className="dosalga-shop__toolbar">
         <p className="dosalga-shop__count">
