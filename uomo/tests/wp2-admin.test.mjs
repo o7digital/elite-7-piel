@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 // Node tests bypass Next's server-only build marker, keeping the production implementation.
 const moduleUrl = new URL("../lib/wp2-admin.mjs", import.meta.url);
 const source = readFileSync(moduleUrl, "utf8").replace('import "server-only";', "").replace(/from "(\.\/[^\"]+)"/g, (_, path) => `from "${new URL(path, moduleUrl).href}"`);
-const { saveWP2Product, loadWP2Products, readAuthorization, ADMIN_META_KEY } = await import(`data:text/javascript;base64,${Buffer.from(source).toString("base64")}`);
+const { saveWP2Product, loadWP2Products, readAuthorization, loadWP2Clients, saveWP2Client, ADMIN_META_KEY } = await import(`data:text/javascript;base64,${Buffer.from(source).toString("base64")}`);
 const product = { id: 996, name: "Set JR", price: "800", regular_price: "800", categories: [{ name: "Geles", slug: "geles" }], images: [], meta_data: [] };
 const auth = "Basic dXNlcjpwYXNz";
 const response = (data, pages = 1) => new Response(JSON.stringify(data), { headers: { "Content-Type": "application/json", "x-wp-totalpages": String(pages) } });
@@ -44,5 +44,23 @@ test("loading WP2 reads every catalog page and returns saved internal data", asy
   const original = globalThis.fetch;
   globalThis.fetch = async (url) => response([{ ...product, id: Number(new URL(url).searchParams.get("page")), meta_data: [{ key: ADMIN_META_KEY, value: { salePrice: 450, purchasePrice: 200, updatedAt: "saved" } }] }], 3);
   try { const loaded = await loadWP2Products(auth); assert.equal(loaded.length, 3); assert.equal(loaded[0].adminDraft.purchasePrice, 200); assert.equal(loaded[0].price, 800); }
+  finally { globalThis.fetch = original; }
+});
+
+
+test("client reads and writes use the private WP2 namespace and preserve conflict checks", async () => {
+  const original = globalThis.fetch; const calls = [];
+  globalThis.fetch = async (url, options) => { calls.push({ url: String(url), options }); return response(options.method ? { id: 12, firstName: "Ana" } : [{ id: 12, firstName: "Ana" }]); };
+  try {
+    const clients = await loadWP2Clients(auth); assert.equal(clients.length, 1); assert.match(calls[0].url, /wp-json\/elite7\/v1\/clients/);
+    await saveWP2Client(auth, { client: { firstName: "Ana", email: "ana@example.com" } }); assert.equal(calls[1].options.method, "POST");
+    await saveWP2Client(auth, { id: 12, expectedUpdatedAt: "old", client: { firstName: "Ana" } }); assert.match(calls[2].url, /clients\/12$/); assert.equal(calls[2].options.method, "PUT"); assert.equal(JSON.parse(calls[2].options.body).expectedUpdatedAt, "old");
+    await assert.rejects(saveWP2Client(auth, { id: -1, client: { firstName: "Ana" } }), (error) => error.status === 400);
+  } finally { globalThis.fetch = original; }
+});
+
+test("missing WordPress module returns an actionable client setup error", async () => {
+  const original = globalThis.fetch; globalThis.fetch = async () => new Response("{}", { status: 404 });
+  try { await assert.rejects(loadWP2Clients(auth), (error) => error.status === 404 && error.message.includes("Instala y activa")); }
   finally { globalThis.fetch = original; }
 });

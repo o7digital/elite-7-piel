@@ -1,0 +1,20 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import vm from "node:vm";
+import { createAdminProduct, calculateEconomics } from "../lib/admin-specials.mjs";
+const source = readFileSync(new URL("../../wordpress/elite7-wp2-admin/product-margin.js", import.meta.url), "utf8");
+test("native WordPress margin fields match the dashboard calculation", () => {
+  const fields = {}; const handlers = {};
+  const product = createAdminProduct({ price: 200 }, { purchasePrice: 100, shippingCost: 10, packagingCost: 5, feePercent: 5, shippingMode: "included", shippingCharge: 20 });
+  for (const [key, value] of Object.entries(product)) fields[`elite7_${key}`] = { value: String(value ?? "") };
+  fields.elite7_realMargin = { value: "" }; fields.elite7_profit = { value: "" };
+  const panel = { addEventListener(name, callback) { handlers[name] = callback; } };
+  vm.runInNewContext(source, { document: { readyState: "complete", getElementById(id) { return id === "elite7_specials_panel" ? panel : fields[id]; } }, Number });
+  assert.equal(fields.elite7_profit.value, calculateEconomics(product).profit.toFixed(2));
+  assert.equal(fields.elite7_realMargin.value, calculateEconomics(product).margin.toFixed(2));
+  fields.elite7_shippingMode.value = "separate"; handlers.change();
+  assert.equal(fields.elite7_profit.value, calculateEconomics({ ...product, shippingMode: "separate" }).profit.toFixed(2));
+  fields.elite7_purchasePrice.value = ""; handlers.input();
+  assert.equal(fields.elite7_realMargin.value, "Por definir"); assert.equal(fields.elite7_profit.value, "Por definir");
+});

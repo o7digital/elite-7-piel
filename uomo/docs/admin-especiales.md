@@ -41,3 +41,13 @@ CJ is shown as a future integration; this version makes no CJ requests.
 Run `node --test tests/*.test.mjs` and `npm run build` from `uomo/`. Browser checks cover desktop/mobile, the calculator, login, saving, bulk margin rules and exports with mocked WP2 responses. A real authenticated WP2 read/write remains necessary when the VPS and account access are available.
 
 References: [WordPress application passwords](https://developer.wordpress.org/advanced-administration/security/application-passwords/), [WooCommerce REST API](https://woocommerce.github.io/woocommerce-rest-api-docs/).
+
+## WP2 native fields and client database
+
+The WordPress module lives in `wordpress/elite7-wp2-admin/` at the repository root. Its installable package is available at `/admin/elite7-wp2-admin.zip` on the admin preview. Install and activate this package on WP2 once the VPS is available.
+
+It adds Fabricante, Distribuidor, purchase/proposed sale prices, target margin, live actual margin and profit, carrier options (Estafeta/DHL/etc.) and shipping costs to WooCommerce's product editor. Existing categories remain unchanged. Manufacturer/distributor are also available in the Vercel editor, search, CSV and backups.
+
+The client directory uses private WordPress records, with authenticated `elite7/v1/clients` endpoints. It stores contact, company/RFC and address details. No customer accounts or emails are created. The Vercel **Clientes** view creates/edits these records through `/api/admin/wp2/customers`; it requires a WP2 connection and an active WordPress module. No sample personal data is included.
+
+No plugin has been installed remotely while the VPS is unreachable. Live WordPress validation must follow restoration of the VPS and authenticated access.

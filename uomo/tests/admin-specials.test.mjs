@@ -49,3 +49,12 @@ test("review filters include unknown margins while healthy filters require known
   assert.equal(filterAdminProducts(products, { margin: "healthy" }).length, 1);
   assert.equal(filterAdminProducts(products, { search: "JR", category: "geles", margin: "missing" }).length, 1);
 });
+
+test("manufacturer and distributor round-trip and legacy suppliers remain available", () => {
+  const draft = validateDraft({ manufacturer: " JR ", distributor: " Elite Distribución ", salePrice: 200, carrier: "Estafeta" });
+  assert.equal(draft.manufacturer, "JR"); assert.equal(draft.distributor, "Elite Distribución"); assert.equal(draft.carrier, "Estafeta");
+  const product = createAdminProduct(base, draft);
+  assert.equal(filterAdminProducts([product], { search: "distribucion" }).length, 1);
+  assert.equal(parseCsv(serializeCsv([product]))[0].distributor, "Elite Distribución");
+  assert.equal(createAdminProduct(base, { supplier: "Legacy supplier" }).distributor, "Legacy supplier");
+});

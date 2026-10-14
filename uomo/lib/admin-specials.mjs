@@ -2,8 +2,8 @@ import { getProductBrands, normalizeSearch } from "./specials-filters.mjs";
 
 export const DEFAULT_TARGET_MARGIN = 35;
 const NUMERIC_FIELDS = ["purchasePrice", "salePrice", "shippingCost", "shippingCharge", "packagingCost", "feePercent", "targetMargin", "stock", "deliveryDays"];
-const TEXT_FIELDS = ["supplier", "carrier", "notes"];
-export const CSV_COLUMNS = ["id", "title", "brand", "category", "purchasePrice", "salePrice", "shippingMode", "shippingCost", "shippingCharge", "packagingCost", "feePercent", "targetMargin", "stock", "carrier", "deliveryDays", "supplier", "notes"];
+const TEXT_FIELDS = ["manufacturer", "distributor", "supplier", "carrier", "notes"];
+export const CSV_COLUMNS = ["id", "title", "brand", "category", "manufacturer", "distributor", "purchasePrice", "salePrice", "shippingMode", "shippingCost", "shippingCharge", "packagingCost", "feePercent", "targetMargin", "stock", "carrier", "deliveryDays", "supplier", "notes"];
 
 export function createAdminProduct(product, draft = {}) {
   return {
@@ -21,6 +21,8 @@ export function createAdminProduct(product, draft = {}) {
     deliveryDays: null,
     supplier: "", carrier: "", notes: "",
     ...draft,
+    manufacturer: draft.manufacturer || "",
+    distributor: draft.distributor ?? draft.supplier ?? "",
   };
 }
 
@@ -76,7 +78,7 @@ export function filterAdminProducts(products, filters = {}) {
   const words = normalizeSearch(filters.search).split(/\s+/).filter(Boolean);
   const found = products.filter((product) => {
     const economics = calculateEconomics(product);
-    const text = normalizeSearch([product.id, product.title, ...product.brands, product.supplier].join(" "));
+    const text = normalizeSearch([product.id, product.title, ...product.brands, product.manufacturer, product.distributor, product.supplier].join(" "));
     return words.every((word) => text.includes(word)) &&
       (!filters.category || product.categorySlugs.includes(filters.category)) &&
       (!filters.brand || product.brands.includes(filters.brand)) &&

@@ -2,6 +2,7 @@ import "server-only";
 import { SECONDARY_WORDPRESS_URL } from "./wordpress-config.mjs";
 import { getProductBrands } from "./specials-filters.mjs";
 import { validateDraft } from "./admin-specials.mjs";
+import { validateClient } from "./admin-clients.mjs";
 
 export const ADMIN_META_KEY = "_elite7_admin_specials_v1";
 
@@ -15,17 +16,19 @@ export function readAuthorization(request) {
   return authorization;
 }
 
-export async function wp2Request(path, authorization, options = {}) {
+export async function wp2Request(path, authorization, options = {}, namespace = "wc/v3") {
   let response;
   try {
-    response = await fetch(new URL(`wp-json/wc/v3/${path}`, `${SECONDARY_WORDPRESS_URL}/`), {
+    response = await fetch(new URL(`wp-json/${namespace}/${path}`, `${SECONDARY_WORDPRESS_URL}/`), {
       ...options, cache: "no-store", signal: AbortSignal.timeout(12000),
       headers: { Authorization: authorization, "Content-Type": "application/json", ...options.headers },
     });
   } catch { throw new WP2Error("WP2 no responde. Revisa la disponibilidad del servidor WordPress y vuelve a intentar."); }
   if (!response.ok) {
     if (response.status === 401 || response.status === 403) throw new WP2Error("WP2 rechazó el acceso. Usa un usuario administrador o gestor de tienda y su contraseña de aplicación de WordPress.", response.status);
-    if (response.status === 404) throw new WP2Error("No se encontró el producto o la API WooCommerce en WP2.", 404);
+    if (response.status === 409) throw new WP2Error(namespace === "elite7/v1" ? "El correo ya existe o la ficha fue modificada. Revisa el correo y actualiza la lista antes de guardar." : "El producto fue modificado. Actualiza antes de guardar.", 409);
+    if (response.status === 400) throw new WP2Error("WP2 rechazó los datos. Revisa los campos y vuelve a intentar.", 400);
+    if (response.status === 404) throw new WP2Error(namespace === "elite7/v1" ? "Instala y activa el módulo Elite 7 WP2 Admin en WordPress para habilitar la base de clientes." : "No se encontró el producto o la API WooCommerce en WP2.", 404);
     throw new WP2Error(`WP2 no pudo completar la operación (HTTP ${response.status}).`);
   }
   try { return { data: await response.json(), totalPages: Number(response.headers.get("x-wp-totalpages")) || 1 }; }
@@ -82,4 +85,25 @@ export async function saveWP2Product(authorization, input) {
   }
   const { data: updated } = await wp2Request(`products/${id}`, authorization, { method: "PUT", body: JSON.stringify(body) });
   return normalizeWP2Product(updated);
+}
+
+export async function loadWP2Clients(authorization) {
+  const first = await wp2Request("clients?page=1", authorization, {}, "elite7/v1");
+  if (first.totalPages > 50) throw new WP2Error("La lista supera el límite de 5,000 clientes de esta versión.");
+  const clients = [...first.data];
+  for (let page = 2; page <= first.totalPages; page += 4) {
+    const pages = await Promise.all(Array.from({ length: Math.min(4, first.totalPages - page + 1) }, (_, offset) => wp2Request(`clients?page=${page + offset}`, authorization, {}, "elite7/v1")));
+    clients.push(...pages.flatMap((result) => result.data));
+  }
+  return clients;
+}
+
+export async function saveWP2Client(authorization, input) {
+  if (!input || (input.id !== undefined && (!Number.isSafeInteger(input.id) || input.id <= 0))) throw new WP2Error("El identificador del cliente no es válido.", 400);
+  let data;
+  try { data = validateClient(input.client); } catch (error) { throw new WP2Error(error.message, 400); }
+  if (input.id && typeof input.expectedUpdatedAt !== "string") throw new WP2Error("Actualiza la ficha del cliente antes de guardar.", 400);
+  const body = { ...data, ...(input.id ? { expectedUpdatedAt: input.expectedUpdatedAt } : {}) };
+  const result = await wp2Request(input.id ? `clients/${input.id}` : "clients", authorization, { method: input.id ? "PUT" : "POST", body: JSON.stringify(body) }, "elite7/v1");
+  return result.data;
 }
