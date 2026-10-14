@@ -9,9 +9,36 @@ import { openCart } from "@/utlis/openCart";
 import MobileNav from "./components/MobileNav";
 import Link from "next/link";
 import LanguageSwitcherSelect from "@/components/common/LanguageSwitcherSelect";
+import { usePathname } from "next/navigation";
+import { getLocaleFromPath, localizeHref } from "@/lib/i18n/locale";
 
 export default function MobileHeader() {
   const [scrollDirection, setScrollDirection] = useState("down");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const locale = getLocaleFromPath(pathname);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    document.body.classList.toggle("mobile-menu-opened", menuOpen);
+    if (!menuOpen) return;
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+    const closeOnDesktop = () => {
+      if (window.innerWidth >= 992) setMenuOpen(false);
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    window.addEventListener("resize", closeOnDesktop);
+    return () => {
+      document.body.classList.remove("mobile-menu-opened");
+      document.removeEventListener("keydown", closeOnEscape);
+      window.removeEventListener("resize", closeOnDesktop);
+    };
+  }, [menuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,11 +74,18 @@ export default function MobileHeader() {
   return (
     <div
       className={`header-mobile header_sticky ${
-        scrollDirection == "up" ? "header_sticky-active" : "position-absolute"
+        menuOpen || scrollDirection == "up" ? "header_sticky-active" : "position-absolute"
       } `}
     >
       <div className="container d-flex align-items-center h-100">
-        <a className="mobile-nav-activator d-block position-relative" href="#">
+        <button
+          type="button"
+          className="mobile-nav-activator d-block position-relative"
+          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
+          onClick={() => setMenuOpen((open) => !open)}
+        >
           <svg
             className="nav-icon"
             width="25"
@@ -62,7 +96,7 @@ export default function MobileHeader() {
             <use href="#icon_nav" />
           </svg>
           <span className="btn-close-lg position-absolute top-0 start-0 w-100"></span>
-        </a>
+        </button>
 
         <div className="logo">
           <Link href="/" className="site-wordmark site-wordmark_mobile">
@@ -92,10 +126,10 @@ export default function MobileHeader() {
       </div>
       {/* <!-- /.container --> */}
 
-      <nav className="header-mobile__navigation navigation d-flex flex-column w-100 position-absolute top-100 bg-body overflow-auto">
+      <nav id="mobile-navigation" aria-label="Menú principal" inert={!menuOpen} aria-hidden={!menuOpen} className="header-mobile__navigation navigation d-flex flex-column w-100 position-absolute top-100 bg-body overflow-auto">
         <div className="container">
           <form
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={(event) => event.preventDefault()}
             className="search-field position-relative mt-4 mb-3"
           >
             <div className="position-relative">
@@ -137,7 +171,7 @@ export default function MobileHeader() {
         <div className="container">
           <div className="overflow-hidden">
             <ul className="navigation__list list-unstyled position-relative">
-              <MobileNav />
+              <MobileNav onNavigate={() => setMenuOpen(false)} />
             </ul>
             {/* <!-- /.navigation__list --> */}
           </div>
@@ -146,7 +180,7 @@ export default function MobileHeader() {
         {/* <!-- /.container --> */}
 
         <div className="border-top mt-auto pb-2">
-          <div className="customer-links container mt-4 mb-2 pb-1">
+          <Link href={localizeHref("/account_dashboard", locale)} onClick={() => setMenuOpen(false)} className="customer-links container d-block mt-4 mb-2 pb-1">
             <svg
               className="d-inline-block align-middle"
               width="20"
@@ -160,7 +194,7 @@ export default function MobileHeader() {
             <span className="d-inline-block ms-2 text-uppercase align-middle fw-medium">
               My Account
             </span>
-          </div>
+          </Link>
 
           <div className="container d-flex align-items-center">
             <label className="me-2 text-secondary">Language</label>

@@ -376,3 +376,24 @@ body {
     bottom: 4.75rem;
   }
 }
+
+// Keep mobile support controls clear of the bottom navigation.
+@media (max-width: 767.98px) {
+  body #olivia-chat {
+    bottom: calc(76px + env(safe-area-inset-bottom));
+    left: auto;
+    right: max(10px, env(safe-area-inset-right));
+    max-width: calc(100vw - 20px);
+
+    .olivia-panel {
+      width: min(410px, calc(100vw - 20px));
+      height: calc(100dvh - 170px - env(safe-area-inset-bottom));
+    }
+  }
+
+  .whatsapp-float {
+    right: auto;
+    left: 1rem;
+    bottom: calc(76px + env(safe-area-inset-bottom));
+  }
+}

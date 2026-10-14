@@ -77,6 +77,17 @@
 }
 
 .mobile-nav-activator {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px;
+
+  .btn-close-lg {
+    top: 10px !important;
+  }
+
   .nav-icon,
   .btn-close-lg {
     transition: all .24s;
@@ -93,14 +104,30 @@
   overflow: hidden;
 
   .header-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     z-index: $zindex-modal;
   }
 
   .header-mobile__navigation {
     height: calc(100vh - 100%);
     max-height: calc(100vh - 100%);
+    height: calc(100dvh - 100%);
+    max-height: calc(100dvh - 100%);
+    padding-bottom: env(safe-area-inset-bottom);
+    overscroll-behavior: contain;
     transition: max-height .35s, height .35s;
     border-top: 1px solid $light;
+  }
+
+  #olivia-chat,
+  .whatsapp-float,
+  .cookieConsentContainer,
+  .footer-mobile {
+    visibility: hidden;
+    pointer-events: none;
   }
 
   .navigation__list {

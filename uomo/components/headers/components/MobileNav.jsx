@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
 import { mainMenuItems } from "@/data/menu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { getLocaleFromPath, stripLocalePrefix } from "@/lib/i18n/locale";
+import { getLocaleFromPath, stripLocalePrefix, localizeHref } from "@/lib/i18n/locale";
 
 const MENU_LABELS = {
   "/": { es: "Inicio", en: "Home" },
@@ -15,7 +14,7 @@ const MENU_LABELS = {
   "/faq": { es: "Preguntas Frecuentes", en: "Frequently Asked Questions" },
 };
 
-export default function MobileNav() {
+export default function MobileNav({ onNavigate }) {
   const pathname = usePathname();
   const normalizedPathname = stripLocalePrefix(pathname);
   const locale = getLocaleFromPath(pathname);
@@ -30,34 +29,13 @@ export default function MobileNav() {
     );
   };
 
-  useEffect(() => {
-    const selectors = {
-      mobileMenu: ".navigation",
-      mobileMenuActiveClass: "mobile-menu-opened",
-    };
-
-    const mobileDropdown = document.querySelector(selectors.mobileMenu);
-
-    const removeMenu = (event) => {
-      if (event) {
-        event.preventDefault();
-      }
-
-      if (document.body.classList.contains(selectors.mobileMenuActiveClass)) {
-        document.body.classList.remove(selectors.mobileMenuActiveClass);
-        document.body.style.paddingRight = "";
-        mobileDropdown.style.paddingRight = "";
-      }
-    };
-    removeMenu();
-  }, [pathname]);
-
   return (
     <>
       {mainMenuItems.map((item) => (
         <li key={item.id} className="navigation__item">
           <Link
-            href={item.href}
+            href={localizeHref(item.href, locale)}
+            onClick={onNavigate}
             className={`navigation__link ${
               isMenuItemActive(item) ? "menu-active" : ""
             }`}
@@ -69,7 +47,8 @@ export default function MobileNav() {
               {item.subMenu.map((subItem) => (
                 <li key={subItem.id} className="sub-menu__item">
                   <Link
-                    href={subItem.href}
+                    href={localizeHref(subItem.href, locale)}
+                    onClick={onNavigate}
                     className={`menu-link menu-link_us-s ${
                       normalizedPathname === subItem.href
                         ? "menu-link_active"
