@@ -221,14 +221,16 @@ function normalizePrice(prices = {}) {
   return amount / 10 ** minorUnit;
 }
 
-function formatPrice(prices = {}) {
+function formatPrice(prices = {}, sourceKey) {
   const value = normalizePrice(prices);
-  const currency = prices.currency_code || "MXN";
+  // Especiales amounts are Mexican pesos despite the upstream USD label.
+  const currency = sourceKey === "store2" ? "MXN" : prices.currency_code || "MXN";
 
   try {
     const formatted = new Intl.NumberFormat("es-MX", {
       style: "currency",
       currency,
+      ...(sourceKey === "store2" ? { currencyDisplay: "code" } : {}),
       minimumFractionDigits: Number(prices.currency_minor_unit ?? 2),
     }).format(value);
 
@@ -360,7 +362,7 @@ function normalizeProduct(product, source) {
     tags: tagNames,
     sku: decodeHtmlEntities(product.sku || "N/A"),
     price: normalizePrice(product.prices),
-    priceDisplay: formatPrice(product.prices),
+    priceDisplay: formatPrice(product.prices, source.key),
     rating: Number(product.average_rating || 0),
     reviewCount: Number(product.review_count || 0),
     reviews: product.review_count
