@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { stripLocalePrefix } from "@/lib/i18n/locale";
 import "react-tooltip/dist/react-tooltip.css";
 import "../../public/assets/css/plugins/swiper.min.css";
 import "../../public/assets/sass/style.scss";
@@ -27,9 +29,13 @@ import ProductReviews from "@/components/asides/ProductReviews";
 import MobileFooter1 from "@/components/footers/MobileFooter1";
 
 export default function AppShell({ children }) {
+  const pathname = stripLocalePrefix(usePathname());
+  const isAdmin = pathname === "/admin" || pathname.startsWith("/admin/");
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap.esm").catch(() => {});
   }, []);
+
+  if (isAdmin) return children;
 
   return (
     <>

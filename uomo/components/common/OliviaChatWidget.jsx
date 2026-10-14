@@ -1,9 +1,14 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { stripLocalePrefix } from "@/lib/i18n/locale";
 
 export default function OliviaChatWidget() {
+  const pathname = stripLocalePrefix(usePathname());
+  const isAdmin = pathname === "/admin" || pathname.startsWith("/admin/");
   useEffect(() => {
+    if (isAdmin) return;
     const rootId = "olivia-chat";
     let root = document.getElementById(rootId);
     if (!root) {
@@ -154,7 +159,7 @@ export default function OliviaChatWidget() {
       style.remove();
       root?.remove();
     };
-  }, []);
+  }, [isAdmin]);
 
   return null;
 }
