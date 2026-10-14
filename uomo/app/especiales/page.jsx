@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import CatalogLoading from "@/components/common/CatalogLoading";
 import Footer1 from "@/components/footers/Footer1";
 import Header1 from "@/components/headers/Header1";
-import Shop1 from "@/components/shoplist/Shop1";
+import SpecialsCatalog from "@/components/shoplist/SpecialsCatalog";
 import { getCatalogProducts } from "@/lib/woocommerce";
 
 export const metadata = {
@@ -17,7 +17,7 @@ export const revalidate = 300;
 async function Catalog() {
   const products = await getCatalogProducts({ sourceKey: "store2" });
 
-  return <Shop1 products={products} title="Especiales" />;
+  return <SpecialsCatalog products={products} />;
 }
 
 export default function SpecialsPage() {

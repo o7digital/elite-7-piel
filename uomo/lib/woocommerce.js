@@ -2,6 +2,7 @@ import "server-only";
 import primaryCatalogSnapshot from "@/data/catalog-snapshots/primary.json";
 import secondaryCatalogSnapshot from "@/data/catalog-snapshots/store2.json";
 import { WORDPRESS_PRODUCT_URLS } from "@/lib/wordpress-config.mjs";
+import { getProductBrands } from "@/lib/specials-filters.mjs";
 
 const DEFAULT_STORE_API_BASES = WORDPRESS_PRODUCT_URLS.map((wordpressUrl) =>
   new URL("wp-json/wc/store/v1/", `${wordpressUrl}/`).toString()
@@ -360,6 +361,7 @@ function normalizeProduct(product, source) {
     categorySlugs: categoryData.map((category) => category.slug).filter(Boolean),
     categories: categoryData.map((category) => category.name),
     tags: tagNames,
+    brands: getProductBrands(product),
     sku: decodeHtmlEntities(product.sku || "N/A"),
     price: normalizePrice(product.prices),
     priceDisplay: formatPrice(product.prices, source.key),
@@ -490,7 +492,7 @@ const CATALOG_SNAPSHOTS = {
   primary: primaryCatalogSnapshot,
   store2: secondaryCatalogSnapshot,
 };
-const CATALOG_FIELDS = "id,name,date_created,date_created_gmt,modified,categories,tags,prices,average_rating,review_count,images";
+const CATALOG_FIELDS = "id,name,date_created,date_created_gmt,modified,categories,tags,brands,attributes,prices,average_rating,review_count,images";
 
 // Builds use a verified catalog; live refreshes have a strict time budget and retain a fallback.
 export async function getCatalogProducts(options = {}) {
@@ -525,6 +527,7 @@ function toCatalogProducts(products) {
     categories: product.categories,
     categorySlugs: product.categorySlugs,
     tags: product.tags,
+    brands: product.brands,
     price: product.price,
     priceDisplay: product.priceDisplay,
     rating: product.rating,
